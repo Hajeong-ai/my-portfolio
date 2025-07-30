@@ -1,0 +1,576 @@
+/* 기본 설정 */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", "Segoe UI", Roboto, sans-serif;
+  background-color: #ffffff;
+  color: #111;
+  line-height: 1.6;
+  display: flex;
+  height: 100vh;
+}
+
+/* 컨테이너 */
+.container {
+  max-width: 900px;
+  margin: 100px auto 100px;
+  padding: 60px px;
+  padding-bottom: 140px;
+  width: 100%;
+  display: block;
+    position: relative;
+}
+
+/* 헤더 */
+.header-container {
+  position: fixed;
+  top: 100;
+  left: 0;
+  width: 100%;
+  background: transparent;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 30px 40px;
+  padding-left: 60px;
+  gap: 1100px;
+  z-index: 1000;
+}
+
+.logo {
+  text-decoration: none;
+  color: #000;
+  font-weight: 300;
+  font-size: 1.0rem;
+    white-space: nowrap; /* 줄바꿈 방지 */
+}
+
+/* 내비게이션 */
+.nav-links {
+  display: flex;
+  justify-content: flex-start;
+  gap: 36px;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: #1e1e2f;
+  font-weight: 300;
+  font-size: 0.9rem;    /* Works, Resume 등 메뉴 글씨 크기 */
+  letter-spacing: 0.5px;
+}
+.nav-links a:hover {
+  color: #007bff; /* Bootstrap 스타일의 진한 파란색 */
+  transition: color 0.2s ease;
+}
+
+
+/* 프로젝트 섹션 */
+.project {
+  background: white;
+  padding: 12px;
+  margin-bottom: 30px;
+  border-radius: 12px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.project:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 6px 20px #3b82f655; /* 파란색 그림자 */
+}
+
+.project-link:hover .project {
+  background-color: #fafafa;
+}
+
+.project-image {
+  width: 100%;
+  height: 300px;
+  border-radius: 6px;
+  margin-bottom: 8px;
+  object-fit: cover;
+}
+
+/* 커스텀 커서 */
+.custom-cursor {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background-color: rgba(100, 100, 100, 0.2);
+  border: 1.5px solid white;
+  pointer-events: none;
+  z-index: 9999;
+  transform: translate(-50%, -50%);
+  transition: width 0.2s ease, height 0.2s ease, background-color 0.2s ease;
+}
+
+a:hover ~ .custom-cursor,
+button:hover ~ .custom-cursor {
+  width: 48px;
+  height: 48px;
+  background-color: rgba(100, 100, 100, 0.3);
+}
+
+/* 사이드바 */
+.sidebar {
+  position: fixed;
+  top: 400px; /* Overview 섹션의 시작 위치에 맞춰 조절 */
+  left: 70px;
+  background-color: rgba(255, 255, 255, 0.9);
+  border: none;
+  box-shadow: none;
+  padding: 20px 16px;
+  width: 140px;
+  z-index: 1000;
+  font-family: sans-serif;
+  transform: none; /* 중앙 정렬 제거 */
+}
+
+
+.sidebar ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.sidebar li {
+  margin: 18px 0;
+}
+
+.sidebar a {
+  color: #999;
+  text-decoration: none;
+  font-weight: 400;
+  transition: all 0.3s;
+  position: relative;
+}
+
+
+.sidebar a.active {
+  color: #000; /* 현재 위치에 해당하는 항목은 검정 */
+  font-weight: 500;
+}
+
+/* hover 상태일 때 강조 */
+.sidebar a:hover {
+  color: #000;
+}
+
+.sidebar a.active::before {
+  color: #000;
+  margin-right: 4px;
+}
+
+/* 고정된 푸터 */
+footer {
+  position: fixed;
+  bottom: 20px;
+  left: 0;
+  width: 100%;
+  padding: 0 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.8rem;
+  font-family: 'SF Pro Text', sans-serif;
+  color: #787878;
+  z-index: 999;
+  pointer-events: none; /* prevents accidental interference, remove if links are not working */
+}
+
+.footer-left,
+.footer-right {
+  pointer-events: auto; /* allow clicks */
+}
+
+.footer-right {
+  display: flex;
+  gap: 20px;
+}
+
+.footer-right a {
+  color: #787878;
+  text-decoration: none;
+  border-bottom: 1.5px solid #787878;
+  transition: color 0.3s ease, border-bottom 0.3s ease;
+}
+
+.footer-right a:hover {
+  color: #000;
+  border-bottom: 1.5px solid #000;
+}
+
+
+.about-project-wrapper {
+  display: flex;
+  justify-content: center;     /* 수평 중앙 정렬 */
+  align-items: flex-start;     /* 필요에 따라 center로 변경 가능 */
+  max-width: 1200px;
+  margin: 0 auto;              /* 전체 페이지 중앙으로 */
+  gap: 80px;                   /* About과 Projects 사이 간격 */
+  padding-top: 100px;
+  padding-bottom: 100px;
+}
+
+
+
+/* About과 Projects가 나란히 잘 보이도록 width 명시 */
+#about {
+  flex: 1;
+  min-width: 300px;
+}
+
+#projects {
+  flex: 2;
+  min-width: 500px;
+}
+
+/* 모든 h2 아래 간격 넓히기 */
+h2 {
+  font-weight: 200;
+  margin-bottom: 32px; /* or 40px 등 원하는 값 */
+}
+
+/* 기본 회색 커서 */
+.custom-cursor {
+  position: fixed;
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  background-color: rgba(100, 100, 100, 0.2);
+  border: 1.5px solid white;
+  pointer-events: none;
+  z-index: 9999;
+  transform: translate(-50%, -50%);
+  transition: all 0.2s ease;
+}
+
+
+/* 기본 상태에서는 안 보이게 */
+.emoji-cursor {
+  position: fixed;
+  top: 0;
+  left: 0;
+  font-size: 32px;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+  z-index: 9999;
+}
+
+/* project 위에 hover 시 보이게 */
+.project:hover ~ .emoji-cursor {
+  opacity: 1;
+}
+
+.custom-cursor.hidden {
+  opacity: 0;
+}
+
+.project-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.tag {
+  background-color: #ffffff;
+  border: 1px solid #ddd; /* 연한 회색 stroke */
+  color: #444;
+  font-size: 13px;
+  padding: 6px 14px;
+  border-radius: 999px;  /* pill shape */
+  font-weight: 500;
+  display: inline-block;
+  transition: background-color 0.2s ease;
+}
+
+.tag:hover {
+  background-color: #f5f5f5;
+}
+
+.project-title {
+  color: #000;
+  font-weight: 500;
+  margin-bottom: 15px; /* 기존보다 여백을 늘려줌 */
+}
+
+.project-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;               /* 태그 간 간격 더 넓게 */
+  margin-bottom: 20px;     /* 태그 아래 여백 더 넓게 */
+  padding-bottom: 20px;    /* 전체 영역에 여유 공간 */
+}
+
+.tag {
+  display: inline-block;
+  padding: 6px 16px;       /* 내부 패딩 확장 → 크고 시원해짐 */
+  margin-right: 8px;       /* 오른쪽 간격 약간 증가 */
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 30px;
+  font-size: 14px;         /* 글씨도 살짝 키움 */
+  color: #444;
+  font-weight: 400;        /* 굵기 추가로 가독성 향상 */
+}
+
+
+.project-link {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+}
+
+.project-link:hover .project {
+  background-color: #ffffff;
+  cursor: pointer;
+}
+
+.scroll-hint {
+  font-size: 0.75rem;
+  font-weight: 200;
+  color: #5b5b5b;
+  margin-left: 212px;
+}
+
+#about p {
+  color: #555;        /* 원하던 색상 */
+  font-weight: 250;   /* 글씨 굵기 */
+}
+
+.theme-toggle-container {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 20px;
+}
+
+/* 기본 스위치 스타일 */
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 52px;
+  height: 28px;
+}
+
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+/* 슬라이더 스타일 */
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  transition: 0.4s;
+  border-radius: 34px;
+}
+
+.slider::before {
+  position: absolute;
+  content: "";
+  height: 22px;
+  width: 22px;
+  left: 3px;
+  bottom: 3px;
+  background-color: white;
+  transition: 0.4s;
+  border-radius: 50%;
+}
+
+/* 체크 상태일 때 */
+input:checked + .slider {
+  background-color: #4cd964;
+}
+
+input:checked + .slider::before {
+  transform: translateX(24px);
+}
+body.dark-mode {
+  background-color: #121212;
+  color: #f5f5f5;
+}
+
+body.dark-mode a {
+  color: #90caf9;
+}
+
+body.dark-mode .project {
+  background-color: #1e1e1e;
+  border-color: #333;
+}
+
+
+/* Next Project Section */
+.next-project {
+  margin-top: 80px;
+  padding-top: 60px;
+  padding-bottom: 120px;
+  border-top: 1px solid #eee;
+  background-color: #fff;
+  display: flex;
+  justify-content: flex-end;  /* 오른쪽으로 정렬 */
+  padding-right: 0px;        /* 오른쪽 여백 */
+}
+
+.next-wrapper {
+  max-width: 320px;           /* 가로 길이 축소 */
+  width: 100%;
+  text-align: left;
+}
+
+.next-label {
+  font-size: 0.9rem;
+  color: #888;
+  margin-bottom: 12px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.next-link {
+  text-decoration: none;
+  color: inherit;
+}
+
+.next-card {
+  padding: 20px 26px;
+  border: 1px solid #ddd;
+  border-radius: 12px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #f9f9f9;
+  transition: box-shadow 0.3s ease;
+}
+
+.next-card:hover {
+  box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+}
+
+.next-title {
+  font-size: 1.0rem;
+  font-weight: 500;
+}
+
+.next-arrow {
+  font-size: 1.2rem;
+  color: #333;
+}
+
+.dual-project-nav {
+  display: flex;
+  justify-content: space-between;
+  gap: 40px;
+  flex-wrap: wrap;
+  padding-top: 60px;
+  padding-bottom: 120px;
+  border-top: 1px solid #eee;
+  background-color: #fff;
+}
+
+.prev-wrapper,
+.next-wrapper {
+  max-width: 320px;
+  width: 100%;
+  text-align: left;
+}
+
+.prev-wrapper .next-card,
+.next-wrapper .next-card {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.prev-wrapper .next-card span {
+  order: -1; /* ← 왼쪽으로 보내기 */
+}
+
+/* 대표 이미지 스타일 */
+.hero-image {
+  width: 100%;
+  max-width: 1100px;
+  margin: 0 auto 80px;
+  padding: 0 20px;
+}
+
+.hero-image img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 12px;
+  object-fit: cover;
+}
+
+
+.project-intro {
+  max-width: 1000px;
+  margin: 40px auto;
+  padding: 0 20px;
+  font-size: 1.2rem;
+  line-height: 1.7;
+  color: #111;
+}
+
+.project-meta {
+  display: flex;
+  justify-content: space-between;    /* 각 항목 좌우로 균등 분산 */
+  gap: 120px;                         /* 항목 간 간격 조절 */
+  margin-top: 60px;
+  padding: 0 0px;                    /* 전체 여백 → 더 왼쪽에서 시작 가능 */
+  max-width: 2000px;
+  margin-left: 0;
+  margin-right: auto;
+  text-align: left;
+  flex-wrap: wrap;                   /* 좁은 화면에서도 감싸짐 */
+}
+
+
+.meta-block {
+  flex: 1.5;            /* ✅ 균등한 너비 */
+  min-width: 100;       /* ✅ 최소 너비 제한 없애기 */
+}
+
+.meta-block h3 {
+  font-size: 1.2rem;
+  margin-bottom: 12px;
+  color: #000;
+  font-weight: 300;  
+}
+
+.meta-block p {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: #333;
+}
+
+main.content section {
+  margin-bottom: 300px; /* 원하는 간격 (예: 60~120px) */
+}
+
+
+.image-caption {
+  font-size: 0.75rem;     /* 작은 글씨 */
+  color: #666;            /* 회색 톤 */
+  margin-top: 6px;
+  text-align: center;
+}

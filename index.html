@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hajeong Hwang – UX Designer</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <div class="header-container">
+    <a href="index.html" class="logo">Hajeong Hwang</a>
+      <nav class="nav-links">
+        <a href="#works">Works</a>
+        <a href="Resume.html">Resume</a>
+          <a href="About.html">About</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <div class="about-project-wrapper">
+     <section id="about" data-aos="fade-up">
+      <h2>Design for User Experience</h2>
+      <img src="images/IMG_9201.jpg" width="300" style="border-radius: 2px;"/>
+      <p class="image-caption">Picture of myself at New York MoMa</p>  
+    </section>
+
+   <section id="projects" data-aos="fade-up">
+  <h2>Projects
+     <span class="scroll-hint">Scroll down to view more works ↓</span>
+  </h2>
+
+<!-- ✅ Project 1 -->
+<a href="project1.html" class="project-link" target="_blank">
+  <div class="project" data-aos="zoom-in-up">
+    <img src="images/project1.jpg" alt="Project 1 Thumbnail" class="project-image" />
+    <h3 class="project-title">Routine Out Loud</h3>
+    <div class="project-tags">
+      <span class="tag">#Internship</span>
+      <span class="tag">#Product Design</span>
+      <span class="tag">#UI/UX</span>
+    </div>
+  </div>
+</a>
+
+<!-- ✅ Project 2 -->
+<a href="project2.html" class="project-link" target="_blank">
+  <div class="project" data-aos="zoom-in-up">
+    <img src="images/project2.jpg" alt="Project 2 Thumbnail" class="project-image" />
+    <h3 class="project-title">Placie</h3>
+    <div class="project-tags">
+      <span class="tag">#UI/UX</span>
+      <span class="tag">#UX Research</span>
+      <span class="tag">#Design</span>
+    </div>
+  </div>
+</a>
+
+<!-- ✅ Project 3 -->
+<a href="project3.html" class="project-link" target="_blank">
+  <div class="project" data-aos="zoom-in-up">
+    <img src="images/project3.jpg" alt="Project 3 Thumbnail" class="project-image" />
+    <h3 class="project-title">Duo Mobile App Re-design</h3>
+    <div class="project-tags">
+      <span class="tag">#case study</span>
+      <span class="tag">#ux research</span>
+    </div>
+  </div>
+</a>
+
+<!-- ✅ Project 4 -->
+<a href="project4.html" class="project-link" target="_blank">
+  <div class="project" data-aos="zoom-in-up">
+    <img src="images/project4.jpg" alt="Project 4 Thumbnail" class="project-image" />
+    <h3 class="project-title"> UW DFP</h3>
+    <div class="project-tags">
+      <span class="tag">#case study</span>
+      <span class="tag">#ux research</span>
+    </div>
+  </div>
+</a>
+
+<!-- ✅ Project 5 -->
+<a href="project5.html" class="project-link" target="_blank">
+  <div class="project" data-aos="zoom-in-up">
+    <img src="images/project5.jpg" alt="Project 5 Thumbnail" class="project-image" />
+    <h3 class="project-title"> UW DFP</h3>
+    <div class="project-tags">
+      <span class="tag">#Data</span>
+      <span class="tag">#ux research</span>
+    </div>
+  </div>
+</a>
+
+</section>
+
+  </main>
+
+  <script>
+    const toggleBtn = document.getElementById('toggle-theme');
+    toggleBtn.addEventListener('click', () => {
+      document.body.classList.toggle('dark-mode');
+    });
+  </script>
+<div class="custom-cursor"></div>
+<script>
+const cursor = document.querySelector(".custom-cursor");
+document.addEventListener("mousemove", (e) => {
+  cursor.style.top = `${e.clientY}px`;
+  cursor.style.left = `${e.clientX}px`;
+});
+</script>
+</body>
+</html>
+
+<footer>
+  <p class="footer-left">© 2025 Hajeong Hwang</p>
+  <div class="footer-right">
+    <a href="mailto:your.email@example.com" target="_blank">email ↗</a>
+    <a href="https://www.linkedin.com/in/yourprofile" target="_blank">linkedin ↗</a>
+  </div>
+</footer>
+
+<div class="emoji-cursor">👀</div>
+
+<script>
+  const emojiCursor = document.querySelector('.emoji-cursor');
+  const grayCursor = document.querySelector('.custom-cursor');
+  const projects = document.querySelectorAll('.project');
+
+  document.addEventListener('mousemove', (e) => {
+    emojiCursor.style.top = `${e.clientY}px`;
+    emojiCursor.style.left = `${e.clientX}px`;
+    grayCursor.style.top = `${e.clientY}px`;
+    grayCursor.style.left = `${e.clientX}px`;
+  });
+
+  projects.forEach(project => {
+    project.addEventListener('mouseenter', () => {
+      emojiCursor.style.opacity = '1';
+      grayCursor.classList.add('hidden');
+    });
+    project.addEventListener('mouseleave', () => {
+      emojiCursor.style.opacity = '0';
+      grayCursor.classList.remove('hidden');
+    });
+  });
+</script>
+
