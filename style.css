@@ -101,20 +101,6 @@ body {
 }
 
 /* 커스텀 커서 */
-.custom-cursor {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 30px;
-  height: 30px;
-  border-radius: 50%;
-  background-color: rgba(100, 100, 100, 0.2);
-  border: 1.5px solid white;
-  pointer-events: none;
-  z-index: 9999;
-  transform: translate(-50%, -50%);
-  transition: width 0.2s ease, height 0.2s ease, background-color 0.2s ease;
-}
 
 a:hover ~ .custom-cursor,
 button:hover ~ .custom-cursor {
@@ -185,7 +171,7 @@ footer {
   align-items: center;
   font-size: 0.8rem;
   font-family: 'SF Pro Text', sans-serif;
-  color: #787878;
+  color: #9f9f9f;
   z-index: 999;
   pointer-events: none; /* prevents accidental interference, remove if links are not working */
 }
@@ -246,11 +232,11 @@ h2 {
 /* 기본 회색 커서 */
 .custom-cursor {
   position: fixed;
-  width: 35px;
-  height: 35px;
+  width: 34px;
+  height: 34px;
   border-radius: 50%;
   background-color: rgba(100, 100, 100, 0.2);
-  border: 1.5px solid white;
+  border: 1.5px solid rgba(255, 255, 255, 0.5);
   pointer-events: none;
   z-index: 9999;
   transform: translate(-50%, -50%);
@@ -344,7 +330,10 @@ h2 {
   font-size: 0.75rem;
   font-weight: 200;
   color: #5b5b5b;
-  margin-left: 212px;
+  text-align: right;
+  margin-left: 0; /* 또는 필요시 소폭 조정 (ex. 12px 등) */
+  display: block;
+  padding-left: 4px; /* 약간의 여백만 줄 수도 있어요 */
 }
 
 #about p {
@@ -458,12 +447,12 @@ body.dark-mode .project {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: #f9f9f9;
+  background-color: #ffffff;
   transition: box-shadow 0.3s ease;
 }
 
 .next-card:hover {
-  box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+  box-shadow: 0 8px 20px #3b82f655;
 }
 
 .next-title {
@@ -573,4 +562,13 @@ main.content section {
   color: #666;            /* 회색 톤 */
   margin-top: 6px;
   text-align: center;
+}
+
+.centered-section {
+  text-align: left;
+}
+
+.centered-section img {
+  margin: 0 auto;
+  display: block;
 }
