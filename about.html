@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<!-- ✅ 헤더는 가장 위에 위치 -->
+  <header>
+    <div class="header-container">
+    <a href="index.html" class="logo">Hajeong Hwang</a>
+      <nav class="nav-links">
+        <a href="index.html">Works</a></li>
+        <a href="Resume.html">Resume</a>
+        <a href="About.html" class="active">About</a>
+      </nav>
+    </div>
+  </header>
+  
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>About Hajeong</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <main class="page-wrapper">
+    <section class="intro-section">
+      <div class="intro-text">
+        <h2>
+        Hi there 👋<br>
+        Nice to meet you. I’m Hajeong Hwang, a UX designer passionate about crafting intuitive experiences.<br>
+        Currently a master’s student at the University of Washington, as<br>
+         Human-Centered Design and Engineering major.
+        </h2>
+
+      </div>
+      <div class="image-flip-wrapper">
+        <img src="images/about.photo.png" alt="Hajeong at a restaurant" class="profile-image front"/>
+        <img src="images/BCF62089-EEE0-4C07-8C3F-C0BB31E19A46.JPG" alt="Hajeong back" class="profile-image back" /> 
+        </div>
+    </section>
+
+    <section class="intro-description">
+        <p>I’m Hajeong Hwang, an undergraduate UX/UI designer interested in user research and data visualization. I’m currently pursuing a bachelor’s degree at UCLA, with a major in International Development Studies with a minor in Digital Humanities.<br>
+            I love to provide solutions to users through digital platforms. While studying international development, I have consistently put an effort into designing solutions within human needs, such as posters and mobile apps. Recently, my interest has been in providing users with digital solutions by utilizing Extended Reality (XR). Specifically, I am passionate about providing students with immersive learning experiences by integrating digital technologies into education.</p>
+    </section>
+
+    <section class="education-section">
+      <h2>Studies</h2>
+      <ul>
+          <p>M.S. Human-Centered Design and Engineering<br>
+          University of Washington, Seattle / 2025 – 2027</p>
+
+          <p>B.A. International Development Studies<br>
+          University of California, Los Angeles (UCLA) / 2023 – 2025</p>
+      </ul>
+
+      <h4>Other Courses</h4>
+      <ul>
+        <p>Google UX Certification</p>
+      </ul>
+    </section>
+
+    <section class="hobby">
+      <h2>Outside of Work...</h2>
+      <ul>
+    </section>
+  </main>
+</body>
+</html>
+
+<footer>
+  <p class="footer-left">© 2025 Hajeong Hwang</p>
+  <div class="footer-right">
+    <a href="hajeongh@uw.edu" target="_blank">email ↗</a>
+    <a href="https://www.linkedin.com/in/hajeong-hwang-211613296/" target="_blank">linkedin ↗</a>
+  </div>
+</footer>
+
+
+
+<div class="cursor-circle"></div>
+<script>
+  const cursor = document.querySelector('.cursor-circle');
+  document.addEventListener('mousemove', (e) => {
+    cursor.style.left = e.clientX + 'px';
+    cursor.style.top = e.clientY + 'px';
+  });
+</script>

@@ -13,37 +13,28 @@ body {
   font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", "Segoe UI", Roboto, sans-serif;
   background-color: #ffffff;
   color: #111;
-  line-height: 1.6;
-  display: flex;
-  height: 100vh;
+  line-height: 1.8;
+  margin-bottom: 20px;
 }
 
-/* 컨테이너 */
-.container {
-  max-width: 900px;
-  margin: 100px auto 100px;
-  padding: 60px px;
-  padding-bottom: 140px;
-  width: 100%;
-  display: block;
-    position: relative;
+h3 {
+  font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", "Segoe UI", Roboto, sans-serif;
 }
 
 /* 헤더 */
 .header-container {
   position: fixed;
-  top: 100;
+  top: 0;
   left: 0;
   width: 100%;
   background: transparent;
   display: flex;
-  justify-content: flex-start;
+  justify-content: space-between; /* 좌우로 요소 정렬 */
   align-items: center;
-  padding: 30px 40px;
-  padding-left: 60px;
-  gap: 1100px;
+  padding: 40px 60px 30px; /* 위 50px, 좌우 60px, 아래 30px */
   z-index: 1000;
 }
+
 
 .logo {
   text-decoration: none;
@@ -61,17 +52,43 @@ body {
 }
 
 .nav-links a {
+  position: relative; /* 밑줄을 위한 기준 */
   text-decoration: none;
   color: #1e1e2f;
   font-weight: 300;
-  font-size: 0.9rem;    /* Works, Resume 등 메뉴 글씨 크기 */
+  font-size: 0.9rem;
   letter-spacing: 0.5px;
+  transition: color 0.2s ease;
 }
 .nav-links a:hover {
   color: #007bff; /* Bootstrap 스타일의 진한 파란색 */
   transition: color 0.2s ease;
 }
 
+.nav-links a.active {
+  color: #007bff;
+  font-weight: 300;
+}
+
+.nav-links a::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0px;
+  width: 0;
+  height: 1px;
+  background-color: #007bff;
+  transition: width 0.45s ease;
+}
+
+.nav-links a:hover::after {
+  width: 100%;
+}
+
+/* hover 시 텍스트 색상도 변경 (선택사항) */
+.nav-links a:hover {
+  color: #007bff;
+}
 
 /* 프로젝트 섹션 */
 .project {
@@ -145,17 +162,17 @@ button:hover ~ .custom-cursor {
 
 
 .sidebar a.active {
-  color: #000; /* 현재 위치에 해당하는 항목은 검정 */
+  color: #007bff; /* 현재 위치에 해당하는 항목은 검정 */
   font-weight: 500;
 }
 
 /* hover 상태일 때 강조 */
 .sidebar a:hover {
-  color: #000;
+  color: #007bff;
 }
 
 .sidebar a.active::before {
-  color: #000;
+  color: #007bff;
   margin-right: 4px;
 }
 
@@ -206,7 +223,8 @@ footer {
   max-width: 1200px;
   margin: 0 auto;              /* 전체 페이지 중앙으로 */
   gap: 80px;                   /* About과 Projects 사이 간격 */
-  padding-top: 100px;
+  padding-top: 0px;
+  margin-top: 0px;
   padding-bottom: 100px;
 }
 
@@ -226,7 +244,9 @@ footer {
 /* 모든 h2 아래 간격 넓히기 */
 h2 {
   font-weight: 200;
-  margin-bottom: 32px; /* or 40px 등 원하는 값 */
+  margin-bottom: 5px; /* or 40px 등 원하는 값 */
+  margin-top: 0px;
+
 }
 
 /* 기본 회색 커서 */
@@ -255,6 +275,8 @@ h2 {
   transition: opacity 0.2s ease;
   z-index: 9999;
 }
+
+
 
 /* project 위에 hover 시 보이게 */
 .project:hover ~ .emoji-cursor {
@@ -286,12 +308,14 @@ h2 {
 
 .tag:hover {
   background-color: #f5f5f5;
+  color: #007bff;
 }
 
 .project-title {
-  color: #000;
-  font-weight: 500;
-  margin-bottom: 15px; /* 기존보다 여백을 늘려줌 */
+  color: #171717;
+  font-weight: 400;
+  margin-bottom: 15px;/* 기존보다 여백을 늘려줌 */
+  font-size: 20px;
 }
 
 .project-tags {
@@ -314,6 +338,22 @@ h2 {
   font-weight: 400;        /* 굵기 추가로 가독성 향상 */
 }
 
+.projects-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center; /* center 정렬 */
+  margin-bottom: 20px;
+}
+
+.projects-header h2 {
+  margin: 0;
+  font-weight: 200;
+}
+
+.section-title {
+  font-size: 1.5rem;
+  font-weight: 400;
+}
 
 .project-link {
   text-decoration: none;
@@ -434,6 +474,15 @@ body.dark-mode .project {
   letter-spacing: 1px;
   text-transform: uppercase;
 }
+/* Next Project 텍스트 오른쪽 정렬 */
+.next-wrapper .next-label {
+  text-align: right;
+}
+
+/* Previous Project 텍스트 왼쪽 정렬 */
+.prev-wrapper .next-label {
+  text-align: left;
+}
 
 .next-link {
   text-decoration: none;
@@ -442,7 +491,7 @@ body.dark-mode .project {
 
 .next-card {
   padding: 20px 26px;
-  border: 1px solid #ddd;
+  border: 1px solid #e9e9e9;
   border-radius: 12px;
   display: flex;
   justify-content: space-between;
@@ -452,7 +501,8 @@ body.dark-mode .project {
 }
 
 .next-card:hover {
-  box-shadow: 0 8px 20px #3b82f655;
+  color: #007bff;
+  background-color: #f5f5f5
 }
 
 .next-title {
@@ -492,6 +542,11 @@ body.dark-mode .project {
 
 .prev-wrapper .next-card span {
   order: -1; /* ← 왼쪽으로 보내기 */
+}
+
+.left-align-title {
+  text-align: left;
+  margin-left: 0;
 }
 
 /* 대표 이미지 스타일 */
@@ -552,15 +607,11 @@ body.dark-mode .project {
   color: #333;
 }
 
-main.content section {
-  margin-bottom: 300px; /* 원하는 간격 (예: 60~120px) */
-}
-
 
 .image-caption {
   font-size: 0.75rem;     /* 작은 글씨 */
   color: #666;            /* 회색 톤 */
-  margin-top: 6px;
+  margin-top: 20px;
   text-align: center;
 }
 
@@ -571,4 +622,114 @@ main.content section {
 .centered-section img {
   margin: 0 auto;
   display: block;
+}
+
+.intro-section {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 40px;
+}
+
+.intro-text {
+  flex: 1;
+  font-size: 1rem;
+  line-height: 1.6;
+  color: #505050;
+}
+
+.image-flip-wrapper {
+  position: relative;
+  width: 340px;
+  height: 340px;
+  perspective: 1000px;
+}
+
+.profile-image {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 1px solid #ccc;
+  backface-visibility: hidden;
+  transition: transform 0.6s ease, box-shadow 0.3s ease;
+  box-shadow: #007bff;
+}
+
+/* 앞면 이미지 */
+.profile-image.front {
+  transform: rotateY(0deg);
+  z-index: 2;
+  box-shadow: #007bff
+}
+
+/* 뒷면 이미지 - 기본적으로 안 보이게 */
+.profile-image.back {
+  transform: rotateY(180deg);
+  z-index: 1;
+}
+
+/* hover 시 회전 + 살짝 떠오르기 효과 */
+.image-flip-wrapper:hover .front {
+  transform: rotateY(180deg) translateY(-4px);
+  box-shadow: 0 6px 20px rgba(59, 130, 246, 0.3);
+}
+
+.image-flip-wrapper:hover .back {
+  transform: rotateY(0deg) translateY(-4px);
+  box-shadow: 0 6px 20px rgba(59, 130, 246, 0.3);
+  z-index: 3;
+}
+
+.education-section {
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: #505050;
+}
+
+.education-section h3,
+.education-section h4 {
+  font-weight: 300;
+  margin-top: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.page-wrapper {
+  max-width: 1000px;        /* 홈페이지와 동일 */
+  margin: 100px auto 100px; /* 위 아래 여백 일치 */
+  padding: 120px 0 140px;    /* 위쪽 60px, 아래쪽 넉넉히 140px */
+  width: 100%;
+  display: block;
+  position: relative;
+}
+
+section {
+  margin-bottom: 140px;
+  scroll-margin-top: 160px; /* 원하는 간격 */
+}
+
+::selection {
+  background-color: #007bff;  /* 파란색 배경 */
+  color: #ffffff;             /* 흰색 글씨 */
+}
+.intro-description {
+  color: #505050;
+}
+
+.intro-heading {
+  font-weight: 200;
+  font-size: 1.5rem;
+  line-height: 1;
+  margin-bottom: 10;
+}
+
+.intro-heading .line1,
+.intro-heading .line2 {
+  display: block;
+}
+
+.intro-heading .line2 {
+  margin-top: -6px; /* 이 값을 줄이거나 조절해서 간격 조정 */
+  
 }

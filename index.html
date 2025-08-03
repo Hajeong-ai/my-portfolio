@@ -12,28 +12,31 @@
     <div class="header-container">
     <a href="index.html" class="logo">Hajeong Hwang</a>
       <nav class="nav-links">
-        <a href="#works">Works</a>
+        <a href="index.html">Works</a></li>
         <a href="Resume.html">Resume</a>
           <a href="About.html">About</a>
       </nav>
     </div>
   </header>
 
-  <main class="container">
+  <main class="page-wrapper">
     <div class="about-project-wrapper">
      <section id="about" data-aos="fade-up" class="centered-section">
-      <h2>Design for User Experience</h2>
-      <img src="images/IMG_9201.jpg" width="300" style="border-radius: 2px;"/>
+      <h2 class="intro-heading">
+        <span class="line1">Hi! I'm Hajeong,</span><br>
+        <span class="line2">a <span id="typed-text"></span></span></h2>
+      <img src="images/IMG_9201.jpg" width="300" style="border-radius: 2px; margin-top: 40px;"/>
       <p class="image-caption">Picture of myself at New York MoMa</p>  
     </section>
 
-   <section id="projects" data-aos="fade-up">
-  <h2>Projects
-     <span class="scroll-hint">Scroll down to view more works ↓</span>
-  </h2>
+<section id="projects" data-aos="fade-up">
+  <div class="projects-header">
+    <h2>Projects</h2>
+    <span class="scroll-hint">Scroll down to view more works ↓</span>
+  </div>
 
 <!-- ✅ Project 1 -->
-<a href="project1.html" class="project-link" target="_blank">
+<a href="project1.html" class="project-link" target="_self">
   <div class="project" data-aos="zoom-in-up">
     <img src="images/project1.jpg" alt="Project 1 Thumbnail" class="project-image" />
     <h3 class="project-title">Routine Out Loud</h3>
@@ -46,10 +49,11 @@
 </a>
 
 <!-- ✅ Project 2 -->
-<a href="project2.html" class="project-link" target="_blank">
+<a href="project2.html" class="project-link" target="_self">
   <div class="project" data-aos="zoom-in-up">
     <img src="images/project2.jpg" alt="Project 2 Thumbnail" class="project-image" />
-    <h3 class="project-title">Placie</h3>
+    <h3 class="project-title">
+    </h3>
     <div class="project-tags">
       <span class="tag">#UI/UX</span>
       <span class="tag">#UX Research</span>
@@ -59,7 +63,7 @@
 </a>
 
 <!-- ✅ Project 3 -->
-<a href="project3.html" class="project-link" target="_blank">
+<a href="project3.html" class="project-link" target="_self">
   <div class="project" data-aos="zoom-in-up">
     <img src="images/142.png" alt="Project 3 Thumbnail" class="project-image" />
     <h3 class="project-title">Duo Mobile App Re-design</h3>
@@ -71,7 +75,7 @@
 </a>
 
 <!-- ✅ Project 4 -->
-<a href="project4.html" class="project-link" target="_blank">
+<a href="project4.html" class="project-link" target="_self">
   <div class="project" data-aos="zoom-in-up">
     <img src="images/project4.jpg" alt="Project 4 Thumbnail" class="project-image" />
     <h3 class="project-title">UW DFP</h3>
@@ -83,7 +87,7 @@
 </a>
 
 <!-- ✅ Project 5 -->
-<a href="project5.html" class="project-link" target="_blank">
+<a href="project5.html" class="project-link" target="_self">
   <div class="project" data-aos="zoom-in-up">
     <img src="images/project5.jpg" alt="Project 5 Thumbnail" class="project-image" />
     <h3 class="project-title">MyNavMate</h3>
@@ -112,6 +116,20 @@ document.addEventListener("mousemove", (e) => {
   cursor.style.left = `${e.clientX}px`;
 });
 </script>
+
+<!-- Typed.js CDN -->
+<script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+
+<script>
+  const typed = new Typed('#typed-text', {
+    strings: ['UX Designer', 'UX Researcher', 'Product Designer'],
+    typeSpeed: 60,
+    backSpeed: 30,
+    backDelay: 2000,
+    loop: true
+  });
+</script>
+
 </body>
 </html>
 
