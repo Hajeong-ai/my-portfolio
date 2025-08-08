@@ -760,175 +760,140 @@ section {
 color: #000;
 }
 
-/*모바일
-/* 공통: 이미지와 컨테이너가 화면에 맞게 */
-img, video {
-  max-width: 100%;
-  height: auto;
-}
 
-/* 프로젝트 썸네일은 화면 크기에 따라 유연하게 */
-.project-image {
-  width: 100%;
-  height: clamp(160px, 35vw, 300px); /* 모바일에서 너무 크지 않게 */
-  object-fit: cover;
-  border-radius: 6px;
-}
-
-/* 1024px 이하 태블릿 */
-@media (max-width: 1024px) {
-  .page-wrapper {
-    max-width: 90%;
-    padding: 100px 0 120px; /* 상단 여백 조금 줄임 (헤더 겹침 방지) */
-  }
-
-  .header-container {
-    padding: 24px 24px 20px;
-  }
-
-  .nav-links {
-    gap: 20px;
-  }
-
-  .project-meta {
-    gap: 60px;
-  }
-}
-
-/* 768px 이하 모바일 */
+/* ===============  모바일 전용 스타일  =============== */
 @media (max-width: 768px) {
-  /* 헤더 영역 */
-  .header-container {
-    padding: 18px 16px;
-    gap: 12px;
+  /* 전체 구조: 스크롤 시 가로 스크롤 제거 */
+  html, body {
+    overflow-x: hidden;
+    margin: 0;
+    padding: 0;
+    display: block; /* 데스크톱 flex 강제 해제 */
   }
-  .logo { font-size: 0.95rem; }
-  .nav-links {
-    gap: 16px;
-    flex-wrap: wrap;            /* 줄바꿈 허용 */
-  }
-  .nav-links a { font-size: 0.9rem; }
 
-    .intro-section {
+  /* 헤더 */
+  .header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 18px 20px;
+  }
+
+  /* 로고 크기 축소 */
+  .logo {
+    font-size: 1.1rem;
+    white-space: nowrap;
+  }
+
+  /* 햄버거 버튼 */
+  .hamburger {
+    display: block;
+    background: none;
+    border: 0;
+    padding: 6px;
+    cursor: pointer;
+    z-index: 2001;
+  }
+  .hamburger span {
+    display: block;
+    width: 26px;
+    height: 2px;
+    background: #111;
+    margin: 6px 0;
+    transition: transform .25s ease, opacity .25s ease;
+  }
+  /* 햄버거 X 애니메이션 */
+  .hamburger.is-open span:nth-child(1) {
+    transform: translateY(8px) rotate(45deg);
+  }
+  .hamburger.is-open span:nth-child(2) {
+    opacity: 0;
+  }
+  .hamburger.is-open span:nth-child(3) {
+    transform: translateY(-8px) rotate(-45deg);
+  }
+
+  /* 네비게이션 드롭다운 */
+  .nav-links {
+    display: none;
+    position: fixed;
+    right: 16px;
+    top: 64px;
+    background: #fff;
+    border: 1px solid #eee;
+    border-radius: 12px;
+    padding: 12px 14px;
+    flex-direction: column;
+    gap: 10px;
+    box-shadow: 0 10px 30px rgba(0,0,0,.08);
+    z-index: 2000;
+  }
+  .nav-links a {
+    display: block;
+    padding: 8px 2px;
+    font-size: 1rem;
+  }
+  .nav-links.open {
+    display: flex;
+  }
+
+  /* 인트로 & 프로젝트 세로 배치 */
+  .about-project-wrapper {
     flex-direction: column;
     align-items: center;
-    text-align: center;
-    gap: 20px; /* 섹션 간격 */
+    gap: 32px;
+    padding: 24px 16px;
+  }
+  #about, #projects {
+    width: 100%;
+    min-width: 0;
   }
 
-  .intro-section img {
-    max-width: 90%;
+  /* 인트로 텍스트 */
+  #about h2 {
+    font-size: 1.5rem;
+    line-height: 1.3;
+    text-align: center;
+  }
+  #about p {
+    font-size: 0.95rem;
+    line-height: 1.4;
+    text-align: center;
+  }
+
+  /* 인트로 이미지 */
+  #about img {
+    max-width: 100%;
     height: auto;
   }
 
-  /* 본문 여백/폭 */
-  .page-wrapper {
-    max-width: 92vw;
-    margin: 80px auto 80px;     /* 헤더가 fixed라 상단 여백 유지 */
-    padding: 80px 0 100px;
-  }
-
-  /* About 상단 섹션: 좌우 -> 위아래로 쌓기 */
-  .intro-section {
-    flex-direction: column;
-    align-items: center;
-    gap: 24px;
-    margin-bottom: 64px;
-  }
-  .intro-text {
-    font-size: 0.95rem;
-    line-height: 1.7;
-    text-align: left;           /* 원하면 center로 바꿔도 됨 */
+  /* 프로젝트 박스 */
+  .project-card {
     width: 100%;
-  }
-
-  /* 동그란 프로필 이미지 크기 축소 */
-  .image-flip-wrapper,
-  .profile-image {
-    width: 240px;
-    height: 240px;
-  }
-
-  /* 사이드바는 모바일에선 숨기거나 맨 위로 이동 */
-  .sidebar {
-    display: none;              /* 간단히 숨김. (필요 시 상단 탭으로 리디자인 추천) */
-  }
-
-  /* 섹션 간격/앵커 스크롤 보정 */
-  section {
-    margin-bottom: 96px;
-    scroll-margin-top: 120px;   /* 헤더에 안 가려지게 */
-  }
-
-  /* 프로젝트 카드 여백/그림자 살짝 완화 */
-  .project {
-    padding: 10px;
-    box-shadow: 0 1px 8px rgba(0,0,0,0.06);
-  }
-
-  /* “Projects  |  Scroll down …” 헤더 정렬 */
-  .projects-header {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 8px;
-  }
-  .scroll-hint {
-    text-align: left;
-    font-size: 0.8rem;
-  }
-
-  /* Next/Prev project 네비 */
-  .dual-project-nav {
-    gap: 16px;
-    padding-top: 40px;
-    padding-bottom: 80px;
-  }
-  .next-wrapper, .prev-wrapper {
     max-width: 100%;
   }
-}
+  .project-image {
+    width: 100%;
+    height: auto; /* 비율 유지 */
+    border-radius: 12px;
+  }
+  .project-tags {
+    flex-wrap: wrap;
+  }
 
-/* 420px 이하 초소형 기기 */
-@media (max-width: 420px) {
-  .header-container { padding: 14px 14px; }
-  .nav-links a { font-size: 0.85rem; }
-  h2 { font-size: 1.1rem; }
-  .project-title { font-size: 1rem; }
-  .project-image { height: clamp(140px, 40vw, 220px); }
-}
+  /* next-project 섹션 */
+  .next-project h2 {
+    text-align: center;
+    font-size: 1.3rem;
+  }
 
-.hamburger {
-  display: none;
-  flex-direction: column;
-  gap: 6px;
-  cursor: pointer;
-}
-
-.hamburger span {
-  width: 25px;
-  height: 2px;
-  background-color: #000;
-}
-
-@media (max-width: 768px) {
-  .nav-links {
-    display: none; /* 기본적으로 숨김 */
+  /* 푸터 */
+  footer {
     flex-direction: column;
-    gap: 10px;
-    background: white;
-    position: absolute;
-    top: 60px;
-    right: 20px;
-    padding: 15px;
-    border-radius: 8px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-  }
-
-  .nav-links.active {
-    display: flex;
-  }
-
-  .hamburger {
-    display: flex;
+    align-items: center;
+    gap: 12px;
+    text-align: center;
+    padding: 20px 0;
   }
 }
+
