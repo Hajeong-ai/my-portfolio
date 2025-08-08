@@ -899,3 +899,22 @@ color: #000;
   .custom-cursor, .emoji-cursor { pointer-events:none; }
 }
 
+/* 모바일(≤768px)에서는 섹션 네비게이션 숨김 + 본문 폭 정리 */
+@media (max-width: 768px) {
+  .sidebar {
+    display: none !important;
+  }
+
+  /* 사이드바 자리로 밀어놨던 본문 여백 복구 */
+  .with-sidebar .content,
+  main.content {
+    margin-left: 0 !important;
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  /* 앵커 점프 시 헤더에 안 가려지도록 보정(필요시 값 조절) */
+  section {
+    scroll-margin-top: 100px;
+  }
+}
