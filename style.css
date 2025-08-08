@@ -96,7 +96,7 @@ h3 {
   padding: 12px;
   margin-bottom: 30px;
   border-radius: 12px;
-  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 12px rgba(20, 20, 20, 0.1);
   transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
@@ -291,13 +291,13 @@ h2 {
 .project-tags {
   display: flex;
   flex-wrap: wrap;
-  gap: 8px;
+  gap: 6px;
   margin-bottom: 12px;
 }
 
 .tag {
-  background-color: #ffffff;
-  border: 1px solid #ddd; /* 연한 회색 stroke */
+  background-color: #cce1ff;
+  border: 1px solid #5098f6; /* 연한 회색 stroke */
   color: #444;
   font-size: 13px;
   padding: 6px 14px;
@@ -314,15 +314,15 @@ h2 {
 
 .project-title {
   color: #171717;
-  font-weight: 400;
+  font-weight: 500;
   margin-bottom: 15px;/* 기존보다 여백을 늘려줌 */
-  font-size: 20px;
+  font-size: 22px;
 }
 
 .project-tags {
   display: flex;
   flex-wrap: wrap;
-  gap: 6px;               /* 태그 간 간격 더 넓게 */
+  gap: 4px;               /* 태그 간 간격 더 넓게 */
   margin-bottom: 20px;     /* 태그 아래 여백 더 넓게 */
   padding-bottom: 20px;    /* 전체 영역에 여유 공간 */
 }
