@@ -895,5 +895,6 @@ color: #000;
     text-align: center;
     padding: 20px 0;
   }
+  .custom-cursor, .emoji-cursor { pointer-events:none; }
 }
 

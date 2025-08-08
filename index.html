@@ -12,12 +12,12 @@
     <div class="header-container">
     <a href="index.html" class="logo">Hajeong Hwang</a>
 
-    <!-- 햄버거 버튼 -->
-    <button class="hamburger" id="hamburger" aria-label="Open menu">
-      <span></span><span></span><span></span>
-    </button>
+      <!-- 햄버거 버튼 -->
+      <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
 
-      <nav class="nav-links">
+      <nav class="nav-links" id="nav">
         <a href="index.html">Works</a></li>
         <a href="Resume.html">Resume</a>
           <a href="About.html">About</a>
@@ -108,85 +108,79 @@
 
   </main>
 
+<!-- ✅ footer와 모든 스크립트는 </body> 바로 위에 둡니다 -->
+  <footer>
+    <p class="footer-left">© 2025 Hajeong Hwang</p>
+    <div class="footer-right">
+      <a href="hajeongh@uw.edu" target="_blank">email ↗</a>
+      <a href="https://www.linkedin.com/in/hajeong-hwang-211613296/" target="_blank">linkedin ↗</a>
+    </div>
+  </footer>
+
+  <div class="custom-cursor"></div>
+  <div class="emoji-cursor">👀</div>
+
+  <!-- Typed.js -->
+  <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+
   <script>
-    const toggleBtn = document.getElementById('toggle-theme');
-    toggleBtn.addEventListener('click', () => {
-      document.body.classList.toggle('dark-mode');
+    // --- 커스텀 커서 (pointer-events: none; CSS로 꼭 처리!)
+    const cursor = document.querySelector(".custom-cursor");
+    const emojiCursor = document.querySelector('.emoji-cursor');
+    const projects = document.querySelectorAll('.project');
+
+    document.addEventListener("mousemove", (e) => {
+      cursor.style.top = `${e.clientY}px`;
+      cursor.style.left = `${e.clientX}px`;
+      emojiCursor.style.top = `${e.clientY}px`;
+      emojiCursor.style.left = `${e.clientX}px`;
     });
-  </script>
-<div class="custom-cursor"></div>
-<script>
-const cursor = document.querySelector(".custom-cursor");
-document.addEventListener("mousemove", (e) => {
-  cursor.style.top = `${e.clientY}px`;
-  cursor.style.left = `${e.clientX}px`;
-});
-</script>
 
-<!-- Typed.js CDN -->
-<script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
-
-<script>
-  const typed = new Typed('#typed-text', {
-    strings: ['UX Designer', 'UX Researcher', 'Product Designer', 'Creative Thinker'],
-    typeSpeed: 60,
-    backSpeed: 30,
-    backDelay: 2000,
-    loop: true
-  });
-</script>
-
-</body>
-</html>
-
-<footer>
-  <p class="footer-left">© 2025 Hajeong Hwang</p>
-  <div class="footer-right">
-    <a href="hajeongh@uw.edu" target="_blank">email ↗</a>
-    <a href="https://www.linkedin.com/in/hajeong-hwang-211613296/" target="_blank">linkedin ↗</a>
-  </div>
-</footer>
-
-<div class="emoji-cursor">👀</div>
-
-<script>
-  const emojiCursor = document.querySelector('.emoji-cursor');
-  const grayCursor = document.querySelector('.custom-cursor');
-  const projects = document.querySelectorAll('.project');
-
-  document.addEventListener('mousemove', (e) => {
-    emojiCursor.style.top = `${e.clientY}px`;
-    emojiCursor.style.left = `${e.clientX}px`;
-    grayCursor.style.top = `${e.clientY}px`;
-    grayCursor.style.left = `${e.clientX}px`;
-  });
-
-  projects.forEach(project => {
-    project.addEventListener('mouseenter', () => {
-      emojiCursor.style.opacity = '1';
-      grayCursor.classList.add('hidden');
+    projects.forEach(p => {
+      p.addEventListener('mouseenter', () => {
+        emojiCursor.style.opacity = '1';
+        cursor.classList.add('hidden');
+      });
+      p.addEventListener('mouseleave', () => {
+        emojiCursor.style.opacity = '0';
+        cursor.classList.remove('hidden');
+      });
     });
-    project.addEventListener('mouseleave', () => {
-      emojiCursor.style.opacity = '0';
-      grayCursor.classList.remove('hidden');
+
+    // --- Typed.js
+    new Typed('#typed-text', {
+      strings: ['UX Designer', 'UX Researcher', 'Product Designer', 'Creative Thinker'],
+      typeSpeed: 60, backSpeed: 30, backDelay: 2000, loop: true
     });
-  });
-</script>
 
-<script>
-  const btn = document.getElementById('hamburger');
-  const nav = document.getElementById('nav');
+    // --- 햄버거 토글
+    const btn = document.getElementById('hamburger');
+    const nav = document.getElementById('nav');
 
-  btn.addEventListener('click', () => {
-    nav.classList.toggle('open');
-    btn.classList.toggle('is-open');
-  });
-
-  /* 화면 키우면 드롭다운 상태 초기화 */
-  window.addEventListener('resize', () => {
-    if (window.innerWidth > 768) {
+    function closeMenu(){
       nav.classList.remove('open');
       btn.classList.remove('is-open');
+      btn.setAttribute('aria-expanded', 'false');
     }
-  });
-</script>
+
+    btn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const willOpen = !nav.classList.contains('open');
+      nav.classList.toggle('open', willOpen);
+      btn.classList.toggle('is-open', willOpen);
+      btn.setAttribute('aria-expanded', String(willOpen));
+    });
+
+    // 메뉴 클릭 또는 바깥 클릭 시 닫기
+    nav.addEventListener('click', (e) => { if (e.target.tagName === 'A') closeMenu(); });
+    document.addEventListener('click', (e) => {
+      if (!nav.contains(e.target) && !btn.contains(e.target)) closeMenu();
+    });
+
+    // 뷰포트 커지면 초기화
+    window.addEventListener('resize', () => {
+      if (window.innerWidth > 768) closeMenu();
+    });
+  </script>
+</body>
+</html>
