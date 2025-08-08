@@ -178,7 +178,7 @@ button:hover ~ .custom-cursor {
 
 /* 고정된 푸터 */
 footer {
-  position: fixed;
+  position: static;
   bottom: 20px;
   left: 0;
   width: 100%;
@@ -191,6 +191,7 @@ footer {
   color: #9f9f9f;
   z-index: 999;
   pointer-events: none; /* prevents accidental interference, remove if links are not working */
+  margin-top: 10px;         /* 본문과 간격 */
 }
 
 .footer-left,
