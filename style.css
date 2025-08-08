@@ -230,7 +230,6 @@ footer {
 }
 
 
-
 /* About과 Projects가 나란히 잘 보이도록 width 명시 */
 #about {
   flex: 1;
@@ -238,7 +237,7 @@ footer {
 }
 
 #projects {
-  flex: 2;
+  flex: 3;
   min-width: 500px;
 }
 
@@ -723,6 +722,7 @@ section {
   font-size: 1.5rem;
   line-height: 1;
   margin-bottom: 10;
+  margin-top: 8px;
 }
 
 .intro-heading .line1,
