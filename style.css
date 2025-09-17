@@ -1023,15 +1023,38 @@ color: #000;
 .ut-copy{ display:none; }
 
 /* 카드/슬라이드 */
-.ut-stage{
-  position:relative; background:#fff; border:1px solid #eee; border-radius:20px;
-  min-height:460px; display:grid; place-items:center; box-shadow:0 10px 30px rgba(0,0,0,.06);
-  overflow:hidden;
+.ut-stage {
+  position: relative;
+  display: grid;
+  place-items: center;     /* 가로/세로 정중앙 */
+  width: 90%;
+  aspect-ratio: 16/9;      /* 필요시 4/3 등으로 낮추면 위 여백이 더 줄어듦 */
+  border-radius: 20px;
+  border: 1px solid #eee;
+  background:#fff;
+  overflow: hidden;
+  /* padding: 0;  ← 혹시 padding 있으면 제거 */
 }
-.ut-slide{ position:absolute; inset:0; display:grid; place-items:center; padding:20px;
-  opacity:0; transform:translateX(2%); transition:opacity .45s ease, transform .45s ease;
+
+.ut-stage figure,
+.ut-slide { margin: 0; }
+
+.ut-slide {
+  position:absolute; inset:0;
+  display:grid; place-items:center;
+  opacity:0; transform:translateX(2%);
+  transition:opacity .45s ease, transform .45s ease;
 }
-.ut-slide img{ width:min(92%,880px); height:auto; display:block; border-radius:12px; }
+
+.ut-slide img {
+  max-width: 92%;
+  max-height: 92%;
+  width: auto; height: auto;
+  object-fit: contain;    /* 비율 유지 */
+  display:block;
+  /* 이미지 상단이 넓게 비면 살짝 위로 올리기 ↓ */
+  transform: translateY(-4%);
+}
 
 /* 상태 라디오(숨김) */
 .ut-deck input[type="radio"]{ position:absolute; opacity:0; pointer-events:none; }
@@ -1078,3 +1101,32 @@ color: #000;
 #ut-s3:checked ~ .ut-frame .ut-nav [for="ut-s2"]{ display:grid; } /* 3 <- 2 */
 
 
+.solution-image-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* 2개씩 가로 배치 */
+  gap: 24px;
+  margin-top: 40px;
+  justify-items: center; /* 각 칸 가운데 정렬 */
+}
+
+.solution-image-grid figure {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 450px;
+  text-align: center;
+}
+
+.solution-image-grid img {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  display: block;
+}
+
+.solution-image-grid figcaption {
+  margin-top: 8px;
+  font-size: 0.8rem;
+  color: #666;
+  line-height: 1.4;
+}
