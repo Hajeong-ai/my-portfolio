@@ -38,9 +38,9 @@
         <li><a href="#overview">Overview</a></li>
         <li><a href="#Background">Background</a></li>
         <li><a href="#Research">Resesarch</a></li>
-        <li><a href="#Ideation">Ideation</a></li>
         <li><a href="#Design">Design</a></li>
-        <li><a href="#reflection">Reflection</a></li>
+        <li><a href="#User Test">User Test</a></li>
+        <li><a href="#Reflection">Reflection</a></li>
       </ul>
     </aside>
 
@@ -48,7 +48,7 @@
     <main class="content">
         <!-- ✅ 대표 이미지 -->
 <section class="hero-image">
-  <img src="your-image.jpg" alt="Project Hero Image" />
+  <img src="images/141.png" alt="Project Hero Image" />
 </section>
 <section id="overview">
   <h2>Overview</h2>
@@ -80,14 +80,10 @@
         <h2>Background</h2>
         <p>Duo Mobile is a multifactor authentication app that provides additional security. Many universities use the Duo Mobile app to strengthen security through a second verification. Students verify their account in the Duo Mobile app by approving a push notification during their login process.</p>
       </section>
-<이미지>
-      <section id="research-method" class="research-method-section">
+    
+      <section id="Research" class="research-method-section">
   <h2>Research Method</h2>
   <div class="research-method-wrapper">
-    <div class="research-icons">
-      <img src="chat-icon.svg" alt="Interview Icon" class="icon" />
-      <img src="group-icon.svg" alt="Group Icon" class="icon" />
-    </div>
     <div class="research-details">
       <p><strong>Directed interview</strong> (5 parts)</p>
       <p>Number of Interviewees: 7</p>
@@ -108,32 +104,28 @@
   </p>
 
   <div class="finding-points">
-    <p><strong>1.</strong> Users use Duo Mobile very frequently, but they feel the current user flow is complex, leading to low satisfaction (5.8).</p>
+    <p>1. Users use Duo Mobile very frequently, but they feel the current user flow is complex, leading to low satisfaction (5.8).</p>
 
-    <p><strong>2.</strong> Users understand the need for second verification, but they want something <strong>quicker</strong> and <strong>easier</strong>.</p>
+    <p>2.Users understand the need for second verification, but they want something <strong>quicker</strong> and <strong>easier</strong>.</p>
 
-    <p><strong>3.</strong> Users want more <strong>diverse verification methods</strong> beyond phone number verification, as the lack of a clear user flow for changing phone numbers causes inconvenience.</p>
+    <p>3.Users want more <strong>diverse verification methods</strong> beyond phone number verification, as the lack of a clear user flow for changing phone numbers causes inconvenience.</p>
   </div>
 </section>
 
       <section id="Research Questions">
         <h2>Research Questions</h2>
-        <p>How can a redesigned Duo Mobile app deliver a faster, more seamless verification experience?</p>
-        <p>How can we ensure that users have more diverse methods of accessing the Duo account, especially when they have problems with their mobile devices?</p>
+        <p>1. How can a redesigned Duo Mobile app deliver a faster, more seamless verification experience?</p>
+        <p>2. How can we ensure that users have more diverse methods of accessing the Duo account, especially when they have problems with their mobile devices?</p>
       </section>
 
-    <section id="Ideation">
-        <h2>Ideation</h2>
-        <p>Based on the findings from the interviews, ideation was conducted through Crazy 8's to come up with ways to improve user experience.</p>
-      </section>
-
-    <section id="Solution">
+      <section id="Design">
+        <h2>Design</h2>
       <div class="solution-text">
         <h2>1. Sign-up Page (web)</h2>
         <p>The sign-up process enables users to include their phone numbers and email addresses on their accounts, which helps users when they face changes in their mobile devices.</p>  
       </div>
-      <div class="solution-image">
-       <img src="prototype1.gif" alt="Daily Check-In Prototype" />
+      <div class="solution-web">
+       <img src="images/Duo web.gif"  width="1000" alt="Daily Check-In Prototype" />
       </div>
     </section>
 
@@ -142,8 +134,8 @@
         <h2>2. Phone Number Change (web)</h2>
         <p>Users can change their personal information by logging into their account through their email or phone number. In the new web interface, users can change their account details in settings when they need to change their personal information.</p>
       </div>
-      <div class="solution-image">
-      <img src="prototype2.gif" alt="Journaling Prototype" />
+      <div class="solution-web">
+      <img src="images/Duo web 2.gif" width="1000" alt="Journaling Prototype" />
        </div>
     </section>
 
@@ -152,16 +144,22 @@
         <h2>3. Quicker, Easier Second Verification (app)</h2>
         <p>Verifying an account using Face ID is easier and quicker compared to current Duo Mobile verification process.</p>
         </div>
-      <div class="solution-image">
-     <img src="prototype2.gif" alt="Journaling Prototype" />
-     </div>
+<!-- 묶는 래퍼 추가 -->
+<div class="solutions-row">
+  <div class="solution-image">
+    <img src="images/duo origina.gif" alt="Journaling Prototype – Original" />
+  </div>
+  <div class="solution-image">
+    <img src="images/Duo App.gif" alt="Journaling Prototype – App" />
+  </div>
+</div>
+
 </section>
       </section>
 
     <section id="Iterate & Test">
         <h2>Iterate & Test</h2>
         <h2>After re-designing using Figma, I conducted a user test with seven interviewees, asking them to conduct tasks corresponding to the three user flows.</h2>
-        <p>UX research, ideation, wireframing, etc.</p>
     </section>
 
     <section id="Research Questions For the User Test">
@@ -169,18 +167,208 @@
     <h2>2. Does Duo Web reduce user pain points when they change their phone number and try to log in to their school account?</h2>
     </section>
 
-    <section id="User Test Results">
+    <section id="User Test">
     <h2>User Test Results</h2>
-    <p>1. User satisfaction with the current Duo was 5.8 on a scale of 1-10 which increased to 8.4 after completing tasks with the redesigned version — a 44.8% improvement.</p>
-    <p>2. The task completion time for Task 2 was reduced by 8 seconds, dropping to 7 seconds compared to when using the current Duo Mobile app.</p>
-    <p>3. The perceived ease of use improved from 3.8 to 4.6, reflecting a 21.1% increase.</p>
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>User Test – Image Deck</title>
+
+<style>
+  /* ============== 전역은 건드리지 않습니다(배경: 흰색 유지) ============== */
+
+  /* 래퍼: 컴포넌트 스코프 */
+  .ut-deck{ width:min(1100px,92vw); margin:0 auto; padding:4rem 0; }
+
+  .ut-frame{
+    display:grid; grid-template-columns:460px 1fr;
+    gap:28px; align-items:stretch;
+  }
+  @media (max-width:900px){
+    .ut-frame{ grid-template-columns:1fr; gap:18px; }
+  }
+
+  /* 좌측 텍스트 */
+  .ut-panel{ padding-top:.25rem; }
+  .ut-heading{ margin:0 0 1rem; font-weight:700; font-size:clamp(26px,2.2vw,36px); }
+  .ut-copy{ display:none; }
+  .ut-finding{ font-style:italic; line-height:1.6; margin:.25rem 0 .75rem; }
+  .ut-note{ color:#666; line-height:1.6; margin:0; }
+
+  /* 우측 카드/슬라이드 */
+  .ut-stage{
+    position:relative; background:#fff; border:1px solid #eee; border-radius:20px;
+    min-height:460px; display:grid; place-items:center; box-shadow:0 10px 30px rgba(0,0,0,.06);
+    overflow:hidden;
+  }
+  .ut-slide{
+    position:absolute; inset:0; display:grid; place-items:center; padding:20px;
+    opacity:0; transform:translateX(2%); transition:opacity .45s ease, transform .45s ease;
+    z-index:1; pointer-events:none;     /* 이미지가 클릭을 가로막지 않게 */
+  }
+  .ut-slide img{ width:min(92%,880px); height:auto; display:block; border-radius:12px; }
+
+  /* 상태 라디오(숨김) */
+  .ut-deck input[type="radio"]{ position:absolute; opacity:0; pointer-events:none; }
+
+  /* 선택된 슬라이드/카피만 보이게 */
+  #ut-s1:checked ~ .ut-frame .ut-stage .ut-slide[data-i="1"],
+  #ut-s2:checked ~ .ut-frame .ut-stage .ut-slide[data-i="2"],
+  #ut-s3:checked ~ .ut-frame .ut-stage .ut-slide[data-i="3"]{
+    opacity:1; transform:translateX(0);
+  }
+  #ut-s1:checked ~ .ut-frame .ut-panel .ut-copy[data-i="1"],
+  #ut-s2:checked ~ .ut-frame .ut-panel .ut-copy[data-i="2"],
+  #ut-s3:checked ~ .ut-frame .ut-panel .ut-copy[data-i="3"]{
+    display:block;
+  }
+
+  /* 화살표(버튼) */
+  .ut-nav{ position:absolute; inset:0; z-index:10; }
+  .ut-arrow{
+    position:absolute; top:50%; transform:translateY(-50%);
+    width:44px; height:44px; display:grid; place-items:center;
+    border-radius:999px; background:#0000000d; border:1px solid #0000001a; color:#111;
+    cursor:pointer; user-select:none; pointer-events:auto; z-index:11;
+  }
+  .ut-arrow:hover{ background:#0000001a; }
+  .ut-prev{ left:10px; } .ut-next{ right:10px; }
+  @media (max-width:900px){ .ut-arrow{ width:40px; height:40px; } }
+
+  /* 도트 네비(라디오와 연동) */
+  .ut-dots{ display:flex; gap:10px; justify-content:center; margin-top:1rem; }
+  .ut-dot{
+    width:10px; height:10px; border-radius:999px;
+    background:#00000018; border:1px solid #00000024; cursor:pointer;
+  }
+  #ut-s1:checked ~ .ut-dots label[for="ut-s1"],
+  #ut-s2:checked ~ .ut-dots label[for="ut-s2"],
+  #ut-s3:checked ~ .ut-dots label[for="ut-s3"]{
+    background:#ff5252; border-color:transparent;
+  }
+
+  /* 포커스 접근성 */
+  .ut-arrow:focus-visible,.ut-dot:focus-visible{
+    outline:3px solid #ff5252; outline-offset:2px;
+  }
+</style>
+</head>
+<body>
+
+<section class="ut-deck" aria-label="User Test Results carousel" tabindex="-1">
+  <!-- 라디오 상태 -->
+  <input type="radio" name="ut-slide" id="ut-s1" checked>
+  <input type="radio" name="ut-slide" id="ut-s2">
+  <input type="radio" name="ut-slide" id="ut-s3">
+
+  <div class="ut-frame">
+    <!-- 좌측 카피 -->
+    <aside class="ut-panel" aria-live="polite">
+
+      <div class="ut-copy" data-i="1">
+        <p class="ut-finding"><strong>Finding 1.</strong>User satisfaction with the current Duo was 5.8 on a scale of 1-10 which increased to 8.4 after completing tasks with the redesigned version — a 44.8% improvement.</p>
+      </div>
+
+      <div class="ut-copy" data-i="2">
+        <p class="ut-finding"><strong>Finding 2.</strong>The task completion time for Task 2 was reduced by 8 seconds, dropping to 7 seconds compared to when using the current Duo Mobile app.</p>
+      </div>
+
+      <div class="ut-copy" data-i="3">
+        <p class="ut-finding"><strong>Finding 3.</strong>The perceived ease of use improved from 3.8 to 4.6, reflecting a 21.1% increase.</p>
+        <p class="ut-note">Clear improvements in efficiency and perceived ease.</p>
+      </div>
+    </aside>
+
+    <!-- 우측 슬라이드 -->
+    <div class="ut-stage" role="group" aria-roledescription="slide">
+      <figure class="ut-slide" data-i="1">
+        <img src="/images/chart-01.png" alt="User Participation – pie charts" />
+      </figure>
+      <figure class="ut-slide" data-i="2">
+        <img src="/images/chart-02.png" alt="Perceived inconvenience – bar chart" />
+      </figure>
+      <figure class="ut-slide" data-i="3">
+        <img src="/images/chart-03.png" alt="Satisfaction, time, ease – metrics" />
+      </figure>
+
+      <!-- 화살표 버튼 -->
+      <div class="ut-nav" aria-hidden="false">
+        <button type="button" class="ut-arrow ut-prev" aria-label="Previous">‹</button>
+        <button type="button" class="ut-arrow ut-next" aria-label="Next">›</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- 도트 -->
+  <div class="ut-dots" role="tablist" aria-label="Slides">
+    <label class="ut-dot" for="ut-s1" role="tab" title="Slide 1"></label>
+    <label class="ut-dot" for="ut-s2" role="tab" title="Slide 2"></label>
+    <label class="ut-dot" for="ut-s3" role="tab" title="Slide 3"></label>
+  </div>
+</section>
+
+<!-- 스크립트: 반드시 바디 끝(또는 defer) -->
+<script>
+(function(){
+  // DOM 준비 후 초기화
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
+  } else { init(); }
+
+  function init(){
+    // 페이지에 여러 ut-deck이 있어도 각각 독립 동작
+    document.querySelectorAll('.ut-deck').forEach(setupDeck);
+  }
+
+  function setupDeck(deck){
+    const radios = Array.from(deck.querySelectorAll('input[name="ut-slide"]'));
+    const prev = deck.querySelector('.ut-prev');
+    const next = deck.querySelector('.ut-next');
+    if (!radios.length || !prev || !next) return;
+
+    const getIndex = () => Math.max(0, radios.findIndex(r => r.checked));
+    const go = step => {
+      const i = (getIndex() + step + radios.length) % radios.length;
+      radios[i].checked = true;
+    };
+
+    prev.addEventListener('click', () => go(-1));
+    next.addEventListener('click', () => go(+1));
+
+    // 키보드 좌우 화살표 (덱이 포커스 받았을 때)
+    deck.addEventListener('keydown', e => {
+      if (e.key === 'ArrowLeft') { e.preventDefault(); go(-1); }
+      if (e.key === 'ArrowRight'){ e.preventDefault(); go(+1); }
+    });
+
+    // 모바일 스와이프
+    let sx = null, sy = null;
+    deck.addEventListener('touchstart', e => {
+      const t = e.changedTouches[0]; sx = t.clientX; sy = t.clientY;
+    }, {passive:true});
+    deck.addEventListener('touchend', e => {
+      if (sx === null) return;
+      const t = e.changedTouches[0];
+      const dx = t.clientX - sx, dy = t.clientY - sy;
+      if (Math.abs(dx) > 40 && Math.abs(dx) > Math.abs(dy)) {
+        go(dx < 0 ? +1 : -1);
+      }
+      sx = sy = null;
+    }, {passive:true});
+  }
+})();
+</script>
+</body>
+</html>
     </section>
 
     <section id="Reflection">
       <h2>What did I learn?</h2>
-      <p>As an international student who frequently changes phone numbers, it was meaningful for me to understand the pain points of other students in the same situation and solve them through design.</p>
-      <p>The Duo Mobile Re-design project gave me the opportunity to equip the skills needed to implement detailed interfaces and interactions using Figma.</p>
-      <p>Conducting surveys with users taught me the importance of empathizing with users and understanding their pain points before initiating ideation.</p>
+      <p>1. As an international student who frequently changes phone numbers, it was meaningful for me to understand the pain points of other students in the same situation and solve them through design.</p>
+      <p>2. The Duo Mobile Re-design project gave me the opportunity to equip the skills needed to implement detailed interfaces and interactions using Figma.</p>
+      <p>3. Conducting surveys with users taught me the importance of empathizing with users and understanding their pain points before initiating ideation.</p>
     </section>
 
 
