@@ -37,8 +37,11 @@
       <ul>
         <li><a href="#overview">Overview</a></li>
         <li><a href="#problem">Problem</a></li>
-        <li><a href="#process">Process</a></li>
-        <li><a href="#solution">Solution</a></li>
+        <li><a href="#User Research">User Research</a></li>
+        <li><a href="#solution">User Persona</a></li>
+        <li><a href="#User Flow">User Flow</a></li>
+        <li><a href="#User Flow">Design</a></li>
+        <li><a href="#User Flow">Feedbacks</a></li>
         <li><a href="#reflection">Reflection</a></li>
       </ul>
     </aside>
@@ -75,23 +78,203 @@
 </section>
 
       <section id="problem">
+        <h2>Problem</h2>
+        <p>We conducted qualitative in-depth interview with 6 interviewees. Given a limited time-frame, we kept interviews relatively open-ended. Participants shared their screen and walked through how they use the platform.<br>
+        We asked questions regarding frequency of using platform, typical uses, challanegs with the platform, and compares with competitors.</p>
+      </section>
+
+      <section id="User Research">
         <h2>User Interview</h2>
         <p>We conducted qualitative in-depth interview with 6 interviewees. Given a limited time-frame, we kept interviews relatively open-ended. Participants shared their screen and walked through how they use the platform.<br>
         We asked questions regarding frequency of using platform, typical uses, challanegs with the platform, and compares with competitors.</p>
       </section>
 
-      <section id="solution">
+      <section id="User Persona">
         <h2>User Persona</h2>
-       <img src="images/overleaef User Persona.png" width="1000">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>User Persona Section</title>
+  <style>
+    :root{
+      --bg:#ffffff;
+      --text:#0b0b0b;
+      --muted:#6b7280; /* gray-500 */
+      --accent:#111827; /* gray-900 for headings */
+      --card:#f9fafb;  /* gray-50 */
+      --border:#e5e7eb; /* gray-200 */
+      --maxw:1100px;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-size:16px; line-height:1.6;
+      font-family: "SF Pro Text","SF Pro","SF Pro Display", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+      -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale;
+      color:var(--text); background:var(--bg);
+    }
+    
+.section{
+width: 100%;
+max-width: 100%;
+margin: 56px 0 0 0; /* 상단 마진 복구 */
+padding: 0 clamp(48px, 6vw, 80px);
+background: var(--bg);
+}
+
+
+.grid{
+display:grid;
+grid-template-columns: minmax(320px, 400px) minmax(280px, 1fr) minmax(280px, 1fr);
+gap: clamp(32px, 4vw, 64px);
+align-items:start;
+width: 100%;
+max-width: none; /* 중앙정렬 제한 해제 */
+margin: 0; /* 완전 왼쪽 정렬 */
+justify-content: start;
+}
+
+    .title{
+      font-family: "SF Pro Display","SF Pro","SF Pro Text", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial;
+      font-weight: 700; letter-spacing:-0.01em; color:var(--accent);
+      font-size: clamp(28px, 4vw, 40px);
+      margin-top: 12px;
+    }
+    /* Persona card */
+    .persona{
+      background:var(--card); border:1px solid var(--border); border-radius:16px;
+      padding:18px; display:flex; gap:14px; align-items:flex-start;
+    }
+    .avatar{flex:0 0 48px; height:48px; width:48px; border-radius:9999px; display:grid; place-items:center; position:relative}
+    .avatar svg{display:block; height:100%; width:100%}
+    .p-main{min-width:0}
+    .p-name{font-weight:800; letter-spacing:-0.01em}
+    .p-sub{color:var(--muted); font-size:0.95rem}
+    .col h3{font-size:1.05rem; margin:10px 0; font-weight:800}
+    .col ul{margin:0; padding-left:20px}
+    .col li{margin:8px 0}
+
+    /* Headings on right columns */
+    .needs-motivation h3{margin-top:0}
+
+    /* Layout for each row (persona block + needs + motivation) */
+    .row{display:contents}
+
+    /* Responsive */
+@media (min-width: 1024px) {
+  .grid {
+    grid-template-columns:
+      minmax(300px, 360px)   /* Persona */
+      minmax(320px, 1fr)     /* Needs */
+      minmax(320px, 1fr);    /* Motivation */
+    gap: clamp(28px, 3.5vw, 56px);
+  }
+}
+
+
+    /* Small visual detail for headings */
+    .dot-title{display:flex; align-items:center; gap:10px;}
+    .dot{height:8px; width:8px; border-radius:50%; background:#6366f1}
+
+    /* Subtle card hover (desktop) */
+    @media (hover:hover){
+      .persona{transition: box-shadow .2s ease, transform .2s ease}
+      .persona:hover{box-shadow:0 6px 24px rgba(2,6,23,.08); transform: translateY(-2px)}
+    }
+  </style>
+</head>
+<body>
+  <section class="section">
+    <div class="grid">
+      <!-- Row 1: Persona A + Needs + Motivation -->
+      <div class="row">
+        <!-- Persona Card -->
+        <article class="persona" aria-labelledby="p1-name">
+          <div class="avatar" aria-hidden="true">
+            <!-- Simple colorful avatar -->
+            <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" role="img">
+              <circle cx="32" cy="22" r="12" fill="#a78bfa"/>
+              <circle cx="32" cy="22" r="7" fill="#fef3c7"/>
+              <path d="M12 56c2-12 12-20 20-20s18 8 20 20" fill="#60a5fa"/>
+            </svg>
+          </div>
+          <div class="p-main">
+            <div id="p1-name" class="p-name">JORDAN</div>
+            <div class="p-sub">26 years old</div>
+            <div class="p-sub">Graphic Designer</div>
+            <div class="p-sub">Brooklyn, NY</div>
+          </div>
+        </article>
+
+        <!-- Needs -->
+        <div class="col needs needs-motivation">
+          <div class="dot-title"><span class="dot" aria-hidden="true"></span><h3>Needs</h3></div>
+          <ul>
+            <li>Quickly find affordable office furniture and design tools.</li>
+            <li>Sell used equipment and products to minimize clutter.</li>
+            <li>Navigate the platform easily without distractions.</li>
+          </ul>
+        </div>
+
+        <!-- Motivation -->
+        <div class="col motivation needs-motivation">
+          <div class="dot-title"><span class="dot" aria-hidden="true"></span><h3>Motivation</h3></div>
+          <p>Save time buying and selling. Has used classifieds for years but feels current designs slow the process; wants a more efficient flow.</p>
+        </div>
+      </div>
+      <!-- Row 2: Persona B + Needs + Motivation -->
+      <div class="row">
+        <!-- Persona Card -->
+        <article class="persona" aria-labelledby="p2-name">
+          <div class="avatar" aria-hidden="true">
+            <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" role="img">
+              <circle cx="32" cy="22" r="12" fill="#fb7185"/>
+              <circle cx="32" cy="22" r="7" fill="#fde68a"/>
+              <path d="M12 56c2-12 12-20 20-20s18 8 20 20" fill="#34d399"/>
+            </svg>
+          </div>
+          <div class="p-main">
+            <div id="p2-name" class="p-name">RACHEL</div>
+            <div class="p-sub">22 years old</div>
+            <div class="p-sub">Undergrad Student</div>
+            <div class="p-sub">Manhattan, NY</div>
+          </div>
+        </article>
+
+        <!-- Needs -->
+        <div class="col needs needs-motivation">
+          <div class="dot-title"><span class="dot" aria-hidden="true"></span><h3>Needs</h3></div>
+          <ul>
+            <li>Find affordable secondhand textbooks, furniture, and clothes.</li>
+            <li>Sell items she no longer needs for quick cash.</li>
+            <li>Quickly assess listing legitimacy and trustworthiness.</li>
+          </ul>
+        </div>
+
+        <!-- Motivation -->
+        <div class="col motivation needs-motivation">
+          <div class="dot-title"><span class="dot" aria-hidden="true"></span><h3>Motivation</h3></div>
+          <p>Wants a more efficient, user‑friendly experience that helps her find what she needs quickly while keeping transactions safe and trustworthy.</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+</body>
+</html>
+
       </section>
 
-      <section id="solution">
+      <section id="User Flow">
         <h2>User Flow - Original</h2>
         <p>Final design mockups, images, and user testing results.</p>
         <img src="images/overleaf original flow.png"width="1100"/>
       </section>
 
-      <section id="solution">
+      <section id="Design">
+        <h2>Design</h2>
         <h2>User Flow - Expected</h2>
         <p>Final design mockups, images, and user testing results.</p>
         <img src="images/overleaf expected.png"width="1100"/>
@@ -107,32 +290,37 @@
   <div class="solution-image-grid">
     <figure>
       <img src="images/Frame 236.png" alt="Account settings page" />
-      <figcaption>Account settings page</figcaption>
+      <figcaption>Editing Suggestion Type#1</figcaption>
     </figure>
     <figure>
       <img src="images/Frame 237.png" alt="Edit profile view" />
-      <figcaption>Edit profile view</figcaption>
+      <figcaption>Editing  Suggestion Type#2</figcaption>
     </figure>
     <figure>
       <img src="images/Frame 238.png" alt="Update email screen" />
-      <figcaption>Update email screen</figcaption>
+      <figcaption>We optimized the information architecture of AI suggestions, making the process of receiving and adopting them more intuitive.</figcaption>
     </figure>
     <figure>
       <img src="images/Frame 239.png" alt="Confirmation dialog" />
-      <figcaption>Confirmation dialog</figcaption>
+      <figcaption>We connected previously scattered features to a unified editing-centered experience.</figcaption>
     </figure>
 
   </div>
-
 
       <section id="Solution">
       <div class="solution-text">
         <h2>2. Collaboration</h2>
         <p>Users can change their personal information by logging into their account through their email or phone number. In the new web interface, users can change their account details in settings when they need to change their personal information.</p>
       </div>
-      <div class="solution-image">
-      <img src="images/Screen Recording 2025-09-17 at 3.46.13 PM.gif" width="600" />
-       </div>
+  <div class="solution-image-grid">
+    <figure>
+      <img src="images/Frame 256.png" alt="Account settings page" />
+      <figcaption>Account settings page</figcaption>
+    </figure>
+    <figure>
+      <img src="images/Frame 257.png" alt="Edit profile view" />
+      <figcaption>Edit profile view</figcaption>
+    </figure>
     </section>
       
       <section id="reflection">
