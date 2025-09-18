@@ -827,6 +827,7 @@ color: #000;
   display: block;
   width: 100%;        /* 부모 너비에 맞추기 */
   height: auto;  
+  justify-content: center;
   }
   }
 
@@ -1129,4 +1130,8 @@ color: #000;
   font-size: 0.8rem;
   color: #666;
   line-height: 1.4;
+}
+
+.spacer {
+  height: 30px; /* 행 사이 간격 */
 }

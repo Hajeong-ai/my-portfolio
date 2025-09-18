@@ -37,7 +37,9 @@
       <ul>
         <li><a href="#overview">Overview</a></li>
         <li><a href="#problem">Problem</a></li>
-        <li><a href="#process">Process</a></li>
+        <li><a href="#Research">Research</a></li>
+        <li><a href="#User Persona">User Persona</a></li>
+        <li><a href="#User Flow">User Flow</a></li>
         <li><a href="#solution">Solution</a></li>
         <li><a href="#reflection">Reflection</a></li>
       </ul>
@@ -47,7 +49,7 @@
     <main class="content">
         <!-- ✅ 대표 이미지 -->
 <section class="hero-image">
-  <img src="your-image.jpg" alt="Project Hero Image" />
+  <img src="images/placie-thumbnail.png" alt="Project Hero Image" />
 </section>
 <section id="overview">
   <h2>Overview</h2>
@@ -77,11 +79,13 @@
 
     <section id="Background">
         <h2>Problem</h2>
+              <div class="spacer"></div>
         <p>The current mobile app lacks a personalized recommendation feature. Currently, there is an app that recommends restaurants, cafes, and places to visit; however, these features are separate and do not integrate.</p>
       </section>
 
       <section id="research-method" class="research-method-section">
   <h2>Research Method</h2>
+        <div class="spacer"></div>
   <div class="research-method-wrapper">
     <div class="research-details">
       <p><strong>Directed interview</strong> (5 parts)</p>
@@ -92,24 +96,196 @@
 
     <section id="Findings">
     <h2>Findings</h2>
+      <div class="spacer"></div>
     <p>1. Users are high-technology savviness people who want high-quality, straightforward, and fun interfaces.</br>
     <p>2. Users wanted a straightforward mobile app that has a personalized recommendation feature.</br>
     <p>3. Users are familiar with finding places using community-oriented apps, such as Reddit, TikTok, and Instagram.</p>
     </section>
 
 
-<section id="Research Questions"></section>
+<section id="User Persona"></section>
   <h2>User Persona</h2>
-<img src="images/Digital Humanities 110 Persona.png" width="1000"> 
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>User Persona Section</title>
+  <style>
+    :root{
+      --bg:#ffffff;
+      --text:#0b0b0b;
+      --muted:#6b7280; /* gray-500 */
+      --accent:#111827; /* gray-900 for headings */
+      --card:#f9fafb;  /* gray-50 */
+      --border:#e5e7eb; /* gray-200 */
+      --maxw:1100px;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-size:16px; line-height:1.6;
+      font-family: "SF Pro Text","SF Pro","SF Pro Display", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+      -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale;
+      color:var(--text); background:var(--bg);
+    }
+    
+.section{
+width: 100%;
+max-width: 100%;
+margin: 56px 0 0 0; /* 상단 마진 복구 */
+padding: 0 clamp(48px, 6vw, 80px);
+background: var(--bg);
+}
+
+
+.grid{
+display:grid;
+grid-template-columns: minmax(320px, 400px) minmax(280px, 1fr) minmax(280px, 1fr);
+gap: clamp(32px, 4vw, 64px);
+align-items:start;
+width: 100%;
+max-width: none; /* 중앙정렬 제한 해제 */
+margin: 0; /* 완전 왼쪽 정렬 */
+justify-content: start;
+}
+
+    .title{
+      font-family: "SF Pro Display","SF Pro","SF Pro Text", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial;
+      font-weight: 700; letter-spacing:-0.01em; color:var(--accent);
+      font-size: clamp(28px, 4vw, 40px);
+      margin-top: 12px;
+    }
+    /* Persona card */
+    .persona{
+      background:var(--card); border:1px solid var(--border); border-radius:16px;
+      padding:18px; display:flex; gap:14px; align-items:flex-start;
+    }
+    .avatar{flex:0 0 48px; height:48px; width:48px; border-radius:9999px; display:grid; place-items:center; position:relative}
+    .avatar svg{display:block; height:100%; width:100%}
+    .p-main{min-width:0}
+    .p-name{font-weight:800; letter-spacing:-0.01em}
+    .p-sub{color:var(--muted); font-size:0.95rem}
+    .col h3{font-size:1.05rem; margin:10px 0; font-weight:800}
+    .col ul{margin:0; padding-left:20px}
+    .col li{margin:8px 0}
+
+    /* Headings on right columns */
+    .needs-motivation h3{margin-top:0}
+
+    /* Layout for each row (persona block + needs + motivation) */
+    .row{display:contents}
+
+    /* Responsive */
+@media (min-width: 1024px) {
+  .grid {
+    grid-template-columns:
+      minmax(300px, 360px)   /* Persona */
+      minmax(320px, 1fr)     /* Needs */
+      minmax(320px, 1fr);    /* Motivation */
+    gap: clamp(28px, 3.5vw, 56px);
+  }
+}
+
+
+    /* Small visual detail for headings */
+    .dot-title{display:flex; align-items:center; gap:10px;}
+    .dot{height:8px; width:8px; border-radius:50%; background:#6366f1}
+
+    /* Subtle card hover (desktop) */
+    @media (hover:hover){
+      .persona{transition: box-shadow .2s ease, transform .2s ease}
+      .persona:hover{box-shadow:0 6px 24px rgba(2,6,23,.08); transform: translateY(-2px)}
+    }
+  </style>
+</head>
+<body>
+  <section class="section">
+    <div class="grid">
+      <!-- Row 1: Persona A + Needs + Motivation -->
+      <div class="row">
+        <!-- Persona Card -->
+        <article class="persona" aria-labelledby="p1-name">
+          <div class="avatar" aria-hidden="true">
+            <!-- Simple colorful avatar -->
+            <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" role="img">
+              <circle cx="32" cy="22" r="12" fill="#a78bfa"/>
+              <circle cx="32" cy="22" r="7" fill="#fef3c7"/>
+              <path d="M12 56c2-12 12-20 20-20s18 8 20 20" fill="#60a5fa"/>
+            </svg>
+          </div>
+          <div class="p-main">
+            <div id="p1-name" class="p-name">JORDAN</div>
+            <div class="p-sub">26 years old</div>
+            <div class="p-sub">Graphic Designer</div>
+            <div class="p-sub">Brooklyn, NY</div>
+          </div>
+        </article>
+
+        <!-- Needs -->
+        <div class="col needs needs-motivation">
+          <div class="dot-title"><span class="dot" aria-hidden="true"></span><h3>Needs</h3></div>
+          <ul>
+            <li>Quickly find affordable office furniture and design tools.</li>
+            <li>Sell used equipment and products to minimize clutter.</li>
+            <li>Navigate the platform easily without distractions.</li>
+          </ul>
+        </div>
+
+        <!-- Motivation -->
+        <div class="col motivation needs-motivation">
+          <div class="dot-title"><span class="dot" aria-hidden="true"></span><h3>Motivation</h3></div>
+          <p>Save time buying and selling. Has used classifieds for years but feels current designs slow the process; wants a more efficient flow.</p>
+        </div>
+      </div>
+      <!-- Row 2: Persona B + Needs + Motivation -->
+      <div class="row">
+        <!-- Persona Card -->
+        <article class="persona" aria-labelledby="p2-name">
+          <div class="avatar" aria-hidden="true">
+            <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" role="img">
+              <circle cx="32" cy="22" r="12" fill="#fb7185"/>
+              <circle cx="32" cy="22" r="7" fill="#fde68a"/>
+              <path d="M12 56c2-12 12-20 20-20s18 8 20 20" fill="#34d399"/>
+            </svg>
+          </div>
+          <div class="p-main">
+            <div id="p2-name" class="p-name">RACHEL</div>
+            <div class="p-sub">22 years old</div>
+            <div class="p-sub">Undergrad Student</div>
+            <div class="p-sub">Manhattan, NY</div>
+          </div>
+        </article>
+
+        <!-- Needs -->
+        <div class="col needs needs-motivation">
+          <div class="dot-title"><span class="dot" aria-hidden="true"></span><h3>Needs</h3></div>
+          <ul>
+            <li>Find affordable secondhand textbooks, furniture, and clothes.</li>
+            <li>Sell items she no longer needs for quick cash.</li>
+            <li>Quickly assess listing legitimacy and trustworthiness.</li>
+          </ul>
+        </div>
+
+        <!-- Motivation -->
+        <div class="col motivation needs-motivation">
+          <div class="dot-title"><span class="dot" aria-hidden="true"></span><h3>Motivation</h3></div>
+          <p>Wants a more efficient, user‑friendly experience that helps her find what she needs quickly while keeping transactions safe and trustworthy.</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+</body>
+</html>
 </section>
 
 <section id="Research Questions"></section>
   <h2>User Journey Map</h2>
-<img src="images/User Journey Map.png" width="1000"> 
+<img src="images/User Journey Map.png" width="1100"> 
 </section>
 
 <section id="Research Questions"></section>
   <h2>User Flow</h2>
+  <div class="spacer"></div>
   <p>
     After conducting direct interviews, I documented and analyzed the responses to identify insights and key findings.
     Using affinity diagramming, I organized these insights, focusing on three insights that highlight the user's pain points.
@@ -120,34 +296,38 @@
 <section id="Research Questions"></section>
     <section id="Research Questions">
         <h2>Design</h2>
+              <div class="spacer"></div>
         <p>How can a redesigned Duo Mobile app deliver a faster, more seamless verification experience?</p>
+        <img src="images/Mock-ups.png" width="1100"> 
     </section>
 
 <section id="Research Questions"></section>
     <section id="Research Questions">
         <h2>User test</h2>
-        <p>User test goal: “Find the places you want to visit after receiving recommendations from Placie”</p>
-        <img src="images/Mock-ups.png" width="1000"> 
+              <div class="spacer"></div>
+        <h2>User test goal: “Find the places you want to visit after receiving recommendations from Placie”</h2>
     </section>
 
     <section id="User Test Results">
     <h2>User Test Results</h2>
-    <p>1. User satisfaction with the current Duo was 5.8 on a scale of 1-10 which increased to 8.4 after completing tasks with the redesigned version — a 44.8% improvement.</p>
-    <p>2. The task completion time for Task 2 was reduced by 8 seconds, dropping to 7 seconds compared to when using the current Duo Mobile app.</p>
-    <p>3. The perceived ease of use improved from 3.8 to 4.6, reflecting a 21.1% increase.</p>
+          <div class="spacer"></div>
+    <p>During the usability test with 6 participants, 100% were able to complete the main goal flow, demonstrating overall task success.
+However, a minor system error occurred on the review submission pages, where users can write both public and private reviews, which caused 1 participant (17%) to experience confusion during goal completion.</p>
+    <p>Despite this, participants provided valuable qualitative feedback.</p>
+    <p>1. 4 out of 6 participants (67%) suggested having separate diary and review features to reduce cognitive load.</br>
+    <p>2. 2 participants (33%) expressed interest in a social sharing feature for their diary entries to enhance motivation.</br>
+    <p>3. 3 participants (50%) requested estimated ride times to better plan their visits.</br>
+    <p>Overall, participants highlighted Plaice’s clean interface and intuitive navigation (mentioned by 5 out of 6 participants, 83%), while also identifying opportunities for improvement in review-related interactions.</br>
     </section>
 
     <section id="User Test Results">
     <h2>Iterate, Iterate, Iterate</h2>
     </section>
 
-      <section id="Branding">
-    <h2>Branding</h2>
-    <img src="images/placie Branding.png" width="1000">
-    </section>
 
     <section id="reflection">
         <h2>What did I learn?</h2>
+              <div class="spacer"></div>
         <p>1. If I could collaborate with developers, I would incorporate algorithm into an app to enhance recommendation feature.</p>
         <p>The Duo Mobile Re-design project gave me the opportunity to equip the skills needed to implement detailed interfaces and interactions using Figma.</p>
         <p>Conducting surveys with users taught me the importance of empathizing with users and understanding their pain points before initiating ideation.</p>
