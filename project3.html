@@ -82,6 +82,13 @@
         <p>Duo Mobile is a multifactor authentication app that provides additional security. Many universities use the Duo Mobile app to strengthen security through a second verification. Students verify their account in the Duo Mobile app by approving a push notification during their login process.</p>
       </section>
     
+      <section id="Background">
+        <h2>Background</h2>
+              <div class="spacer"></div>
+        <p>Duo Mobile is a multifactor authentication app that provides additional security. Many universities use the Duo Mobile app to strengthen security through a second verification. Students verify their account in the Duo Mobile app by approving a push notification during their login process.</p>
+      </section>
+    
+
 <section class="research-section">
   <h2>Research Method</h2>
   <div class="research-item">
@@ -102,6 +109,7 @@
     </div>
   </div>
 </section>
+
 
 
       <section id="findings" class="findings-section">
@@ -135,6 +143,32 @@
        <img src="images/Duo web.gif"  width="800"/>
       </div>
     </section>
+
+    <section class="feature-block">
+  <div class="feature-ctr">
+    <!-- Left Text -->
+    <div class="feature-copy">
+      <p class="feature-step">02</p>
+      <h3 class="feature-title">Phone Number Change (web)</h3>
+      <p class="feature-desc">
+        Users can change their personal information by logging into their account 
+        through their email or phone number. In the new web interface, users can 
+        change their account details in settings when they need to update their personal information.
+      </p>
+      <ul class="feature-points">
+        <li>Account settings accessible from sidebar</li>
+        <li>Verification code via SMS before change</li>
+        <li>Save confirmation with visual feedback</li>
+      </ul>
+    </div>
+
+    <!-- Right Image -->
+    <figure class="feature-media">
+      <img src="images/Duo web 22.gif" alt="Phone number change screen" />
+    </figure>
+  </div>
+</section>
+
 
      <section id="Solution">
       <div class="solution-text">
@@ -176,198 +210,9 @@
 
     <section id="User Test">
     <h2>User Test Results</h2>
-<!DOCTYPE html>
-<html lang="ko">
-<head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>User Test – Image Deck</title>
-
-<style>
-  /* ============== 전역은 건드리지 않습니다(배경: 흰색 유지) ============== */
-
-  /* 래퍼: 컴포넌트 스코프 */
-  .ut-deck{ width:min(1100px,92vw); margin:0 auto; padding:4rem 0; }
-
-  .ut-frame{
-    display:grid; grid-template-columns:460px 1fr;
-    gap:28px; align-items:stretch;
-  }
-  @media (max-width:900px){
-    .ut-frame{ grid-template-columns:1fr; gap:18px; }
-  }
-
-  /* 좌측 텍스트 */
-  .ut-panel{ padding-top:.25rem; }
-  .ut-heading{ margin:0 0 1rem; font-weight:700; font-size:clamp(26px,2.2vw,36px); }
-  .ut-copy{ display:none; }
-  .ut-finding{ font-style:italic; line-height:1.6; margin:.25rem 0 .75rem; }
-  .ut-note{ color:#666; line-height:1.6; margin:0; }
-
-  /* 우측 카드/슬라이드 */
-  .ut-stage{
-    position:relative; background:#fff; border:1px solid #eee; border-radius:20px;
-    min-height:460px; display:grid; place-items:center; box-shadow:0 10px 30px rgba(0,0,0,.06);
-    overflow:hidden;
-  }
-  .ut-slide{
-    position:absolute; inset:0; display:grid; place-items:center; padding:20px;
-    opacity:0; transform:translateX(2%); transition:opacity .45s ease, transform .45s ease;
-    z-index:1; pointer-events:none;     /* 이미지가 클릭을 가로막지 않게 */
-  }
-  .ut-slide img{ width:min(92%,880px); height:auto; display:block; border-radius:12px; }
-
-  /* 상태 라디오(숨김) */
-  .ut-deck input[type="radio"]{ position:absolute; opacity:0; pointer-events:none; }
-
-  /* 선택된 슬라이드/카피만 보이게 */
-  #ut-s1:checked ~ .ut-frame .ut-stage .ut-slide[data-i="1"],
-  #ut-s2:checked ~ .ut-frame .ut-stage .ut-slide[data-i="2"],
-  #ut-s3:checked ~ .ut-frame .ut-stage .ut-slide[data-i="3"]{
-    opacity:1; transform:translateX(0);
-  }
-  #ut-s1:checked ~ .ut-frame .ut-panel .ut-copy[data-i="1"],
-  #ut-s2:checked ~ .ut-frame .ut-panel .ut-copy[data-i="2"],
-  #ut-s3:checked ~ .ut-frame .ut-panel .ut-copy[data-i="3"]{
-    display:block;
-  }
-
-  /* 화살표(버튼) */
-  .ut-nav{ position:absolute; inset:0; z-index:10; }
-  .ut-arrow{
-    position:absolute; top:50%; transform:translateY(-50%);
-    width:44px; height:44px; display:grid; place-items:center;
-    border-radius:999px; background:#0000000d; border:1px solid #0000001a; color:#111;
-    cursor:pointer; user-select:none; pointer-events:auto; z-index:11;
-  }
-  .ut-arrow:hover{ background:#0000001a; }
-  .ut-prev{ left:10px; } .ut-next{ right:10px; }
-  @media (max-width:900px){ .ut-arrow{ width:40px; height:40px; } }
-
-  /* 도트 네비(라디오와 연동) */
-  .ut-dots{ display:flex; gap:10px; justify-content:center; margin-top:1rem; }
-  .ut-dot{
-    width:10px; height:10px; border-radius:999px;
-    background:#00000018; border:1px solid #00000024; cursor:pointer;
-  }
-  #ut-s1:checked ~ .ut-dots label[for="ut-s1"],
-  #ut-s2:checked ~ .ut-dots label[for="ut-s2"],
-  #ut-s3:checked ~ .ut-dots label[for="ut-s3"]{
-    background:#ff5252; border-color:transparent;
-  }
-
-  /* 포커스 접근성 */
-  .ut-arrow:focus-visible,.ut-dot:focus-visible{
-    outline:3px solid #ff5252; outline-offset:2px;
-  }
-</style>
-</head>
-<body>
-
-<section class="ut-deck" aria-label="User Test Results carousel" tabindex="-1">
-  <!-- 라디오 상태 -->
-  <input type="radio" name="ut-slide" id="ut-s1" checked>
-  <input type="radio" name="ut-slide" id="ut-s2">
-  <input type="radio" name="ut-slide" id="ut-s3">
-
-  <div class="ut-frame">
-    <!-- 좌측 카피 -->
-    <aside class="ut-panel" aria-live="polite">
-
-      <div class="ut-copy" data-i="1">
-        <p class="ut-finding"><strong>Finding 1.</strong>User satisfaction with the current Duo was 5.8 on a scale of 1-10 which increased to 8.4 after completing tasks with the redesigned version — a 44.8% improvement.</p>
-      </div>
-
-      <div class="ut-copy" data-i="2">
-        <p class="ut-finding"><strong>Finding 2.</strong>The task completion time for Task 2 was reduced by 8 seconds, dropping to 7 seconds compared to when using the current Duo Mobile app.</p>
-      </div>
-
-      <div class="ut-copy" data-i="3">
-        <p class="ut-finding"><strong>Finding 3.</strong>The perceived ease of use improved from 3.8 to 4.6, reflecting a 21.1% increase.</p>
-      </div>
-    </aside>
-
-    <!-- 우측 슬라이드 -->
-    <div class="ut-stage" role="group" aria-roledescription="slide">
-      <figure class="ut-slide" data-i="1">
-        <img src="/images/Frame 104.png" alt="User Participation – pie charts" width="500"/>
-      </figure>
-      <figure class="ut-slide" data-i="2">
-        <img src="/images/Frame 105.png" alt="Perceived inconvenience – bar chart" />
-      </figure>
-      <figure class="ut-slide" data-i="3">
-        <img src="/images/Frame 106.png" alt="Satisfaction, time, ease – metrics" />
-      </figure>
-
-      <!-- 화살표 버튼 -->
-      <div class="ut-nav" aria-hidden="false">
-        <button type="button" class="ut-arrow ut-prev" aria-label="Previous">‹</button>
-        <button type="button" class="ut-arrow ut-next" aria-label="Next">›</button>
-      </div>
-    </div>
-  </div>
-
-  <!-- 도트 -->
-  <div class="ut-dots" role="tablist" aria-label="Slides">
-    <label class="ut-dot" for="ut-s1" role="tab" title="Slide 1"></label>
-    <label class="ut-dot" for="ut-s2" role="tab" title="Slide 2"></label>
-    <label class="ut-dot" for="ut-s3" role="tab" title="Slide 3"></label>
-  </div>
-</section>
-
-<!-- 스크립트: 반드시 바디 끝(또는 defer) -->
-<script>
-(function(){
-  // DOM 준비 후 초기화
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', init);
-  } else { init(); }
-
-  function init(){
-    // 페이지에 여러 ut-deck이 있어도 각각 독립 동작
-    document.querySelectorAll('.ut-deck').forEach(setupDeck);
-  }
-
-  function setupDeck(deck){
-    const radios = Array.from(deck.querySelectorAll('input[name="ut-slide"]'));
-    const prev = deck.querySelector('.ut-prev');
-    const next = deck.querySelector('.ut-next');
-    if (!radios.length || !prev || !next) return;
-
-    const getIndex = () => Math.max(0, radios.findIndex(r => r.checked));
-    const go = step => {
-      const i = (getIndex() + step + radios.length) % radios.length;
-      radios[i].checked = true;
-    };
-
-    prev.addEventListener('click', () => go(-1));
-    next.addEventListener('click', () => go(+1));
-
-    // 키보드 좌우 화살표 (덱이 포커스 받았을 때)
-    deck.addEventListener('keydown', e => {
-      if (e.key === 'ArrowLeft') { e.preventDefault(); go(-1); }
-      if (e.key === 'ArrowRight'){ e.preventDefault(); go(+1); }
-    });
-
-    // 모바일 스와이프
-    let sx = null, sy = null;
-    deck.addEventListener('touchstart', e => {
-      const t = e.changedTouches[0]; sx = t.clientX; sy = t.clientY;
-    }, {passive:true});
-    deck.addEventListener('touchend', e => {
-      if (sx === null) return;
-      const t = e.changedTouches[0];
-      const dx = t.clientX - sx, dy = t.clientY - sy;
-      if (Math.abs(dx) > 40 && Math.abs(dx) > Math.abs(dy)) {
-        go(dx < 0 ? +1 : -1);
-      }
-      sx = sy = null;
-    }, {passive:true});
-  }
-})();
-</script>
-</body>
-</html>
+        <img src="images/Frame 104.png" width="200"/>
+        <img src="images/Frame 105.png" width="200"/>
+        <img src="images/Frame 106.png" width="200"/>
     </section>
 
     <section id="Reflection">
