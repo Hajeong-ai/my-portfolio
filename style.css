@@ -1508,6 +1508,7 @@ section[id="User Test"] img{
   display:inline-flex; align-items:center; gap:8px;
   font-weight:700;
   color:#2b2e38;
+  margin-bottom: 8px;
   font-size: 1.02rem;
 }
 .solu__tag span{
