@@ -49,7 +49,7 @@
     <main class="content">
         <!-- ✅ 대표 이미지 -->
 <section class="hero-image">
-  <img src="images/placie-thumbnail.png" alt="Project Hero Image" />
+  <img src="images/placie-thumbnail.png" alt="Project Hero Image" width="1500"/>
 </section>
 <section id="overview">
   <h2>Overview</h2>
@@ -80,7 +80,7 @@
     <section id="Background">
         <h2>Problem</h2>
               <div class="spacer"></div>
-        <p>The current mobile app lacks a personalized recommendation feature. Currently, there is an app that recommends restaurants, cafes, and places to visit; however, these features are separate and do not integrate.</p>
+        <p>The current place-finding apps provide recommendations in silos. Food, cafés, and attractions are separated, forcing users to switch between platforms. This fragmented process frustrates users, wastes time, and prevents them from having a seamless discovery experience. There is a clear need for an integrated, personalized recommendation app that combines all categories into one intuitive interface.</p>
       </section>
 
       <section id="research-method" class="research-method-section">
@@ -100,22 +100,26 @@
       <img src="group-icon.svg" alt="Group Icon">
     </div>
     <div class="text">
-      Number of Interviewees: 7
+      Number of Interviewees: 6
     </div>
   </div>
 </section>
 
     <section id="Findings">
-    <h2>Findings</h2>
+    <h2>Findings & User Persona</h2>
       <div class="spacer"></div>
     <p>1. Users are high-technology savviness people who want high-quality, straightforward, and fun interfaces.</br>
     <p>2. Users wanted a straightforward mobile app that has a personalized recommendation feature.</br>
     <p>3. Users are familiar with finding places using community-oriented apps, such as Reddit, TikTok, and Instagram.</p>
+      <div class="spacer"></div>
+    <img src="images/Placie User Persona.png" width="1050">
     </section>
+
 
 <section id="Research Questions"></section>
   <h2>User Journey Map</h2>
-<img src="images/User Journey Map.png" width="1100"> 
+    <div class="spacer"></div>
+<img src="images/User Journey Map.png" width="1050"> 
 </section>
 
 <section id="Research Questions"></section>
@@ -125,22 +129,31 @@
     After conducting direct interviews, I documented and analyzed the responses to identify insights and key findings.
     Using affinity diagramming, I organized these insights, focusing on three insights that highlight the user's pain points.
   </p>
-  <img src="images/flow.png" width="1000"> 
+  <img src="images/flow.png" width="1050"> 
 </section>
 
-<section id="Research Questions"></section>
-    <section id="Research Questions">
-        <h2>Design</h2>
-              <div class="spacer"></div>
-        <p>How can a redesigned Duo Mobile app deliver a faster, more seamless verification experience?</p>
-        <img src="images/Mock-ups.png" width="1100"> 
-    </section>
+<section id="Research Questions">
+  <h2>Design</h2>
+  <div class="spacer"></div>
+  <p>How can a redesigned Duo Mobile app deliver a faster, more seamless verification experience?</p>
+  <div class="spacer"></div>
+  <div class="design-center">
+    <img src="images/Mock-ups.png" width="2000"> 
+ <a href="https://www.figma.com/proto/your-prototype-link" 
+   class="btn-proto" 
+   target="_blank" 
+   rel="noopener noreferrer">
+   Click to see prototype
+</a>
+  </div>
+</section>
 
 <section id="Research Questions"></section>
     <section id="Research Questions">
         <h2>User test</h2>
               <div class="spacer"></div>
-        <h2>User test goal: “Find the places you want to visit after receiving recommendations from Placie”</h2>
+          <p>After completing the prototype, I conducted user testing with six participants, defining the goal of the test as follows:</p>
+        <h2>“Find the places you want to visit after receiving recommendations from Placie”</h2>
     </section>
 
     <section id="User Test Results">
@@ -196,5 +209,80 @@ However, a minor system error occurred on the review submission pages, where use
     </main>
 
   </div>
+
+  <script>
+(function(){
+  // 사이드바 링크 수집 (href가 #으로 시작하는 것만)
+  const navLinks = Array.from(document.querySelectorAll('.sidebar a[href^="#"]'));
+  if (!navLinks.length) return;
+
+  // href -> section 매핑
+  const secMap = navLinks
+    .map(a => {
+      try{
+        const id = decodeURIComponent(a.getAttribute('href').trim().slice(1));
+        const sec = document.getElementById(id);
+        return sec ? {link:a, sec} : null;
+      }catch(e){ return null; }
+    })
+    .filter(Boolean);
+
+  if (!secMap.length) return;
+
+  // active 토글 함수
+  const setActive = (link) => {
+    navLinks.forEach(a => a.classList.remove('active'));
+    if (link) link.classList.add('active');
+  };
+
+  // IntersectionObserver 설정
+  // 화면의 가운데 근처에 들어온 섹션을 "활성"으로 판단
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      const item = secMap.find(x => x.sec === entry.target);
+      if (!item) return;
+
+      if (entry.isIntersecting) {
+        // 현재 보이는 섹션을 active
+        setActive(item.link);
+      }
+    });
+  }, {
+    // 고정 헤더 고려: 위쪽 25%와 아래쪽 55%는 제외하고 가운데에 들어오면 활성화
+    root: null,
+    rootMargin: "-25% 0px -55% 0px",
+    threshold: 0.01
+  });
+
+  // 모든 섹션 관찰 시작
+  secMap.forEach(({sec}) => observer.observe(sec));
+
+  // 클릭 시 스무스 스크롤 + 즉시 active 토글(체감 반응성)
+  navLinks.forEach(a => {
+    a.addEventListener('click', (e) => {
+      const href = a.getAttribute('href');
+      if (!href || !href.startsWith('#')) return;
+      const id = href.slice(1);
+      const target = document.getElementById(id);
+      if (!target) return;
+
+      e.preventDefault();
+      // 브라우저 기본 스무스(이미 html{scroll-behavior:smooth} 있음)
+      target.scrollIntoView({behavior:'smooth', block:'start'});
+      setActive(a);
+      // 스크롤 완료 후 IO가 알아서 다시 정확히 맞춰줄 거야
+    });
+  });
+
+  // 페이지 진입 시 맨 위 섹션 활성화(새로고침 대비)
+  // 뷰포트에 있는 첫 섹션을 찾고, 없으면 첫 링크를 활성화
+  const inViewFirst = secMap.find(({sec}) => {
+    const r = sec.getBoundingClientRect();
+    return r.top < window.innerHeight * 0.5 && r.bottom > window.innerHeight * 0.2;
+  });
+  setActive(inViewFirst ? inViewFirst.link : navLinks[0]);
+})();
+</script>
+
 </body>
 </html>

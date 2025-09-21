@@ -48,8 +48,10 @@
     <main class="content">
         <!-- ✅ 대표 이미지 -->
 <section class="hero-image">
-  <img src="images/141.png" alt="Project Hero Image" />
+  <img src="images/141.png" alt="Project Hero Image" width="1500"/>
 </section>
+        <div class="spacer"></div>
+        
 <section id="overview">
   <h2>Overview</h2>
   <p>The “Duo Mobile app Re-design project” aimed to enhance the user experience by simplifying and diversifying verification methods on Duo Mobile and through a new web interface. I identified user pain points through user research and testing to validate the improvements, resulting in a more seamless and satisfying user experience.</p>
@@ -77,11 +79,11 @@
 
 
       <section id="Background">
-        <h2>Background</h2>
+        <h2>My Role</h2>
               <div class="spacer"></div>
         <p>Duo Mobile is a multifactor authentication app that provides additional security. Many universities use the Duo Mobile app to strengthen security through a second verification. Students verify their account in the Duo Mobile app by approving a push notification during their login process.</p>
       </section>
-    
+
       <section id="Background">
         <h2>Background</h2>
               <div class="spacer"></div>
@@ -90,10 +92,20 @@
     
 
 <section class="research-section">
-  <h2>Research Method</h2>
+  <h2>User Research Method</h2>
   <div class="research-item">
     <div class="icon-circle">
-      <img src="chat-icon.svg" alt="Chat Icon">
+<!-- User Research Icon -->
+<svg class="icon" viewBox="0 0 24 24" aria-label="User research" role="img" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+  <!-- head -->
+  <circle cx="9" cy="8" r="3"></circle>
+  <!-- shoulders -->
+  <path d="M4.5 18.5c0-3 2.5-5 4.5-5s4.5 2 4.5 5"></path>
+  <!-- magnifier -->
+  <circle cx="16.5" cy="16.5" r="3.25"></circle>
+  <line x1="19" y1="19" x2="21" y2="21"></line>
+</svg>
+
     </div>
     <div class="text">
       <strong>Directed interview</strong> (5 parts)
@@ -102,15 +114,22 @@
 
   <div class="research-item">
     <div class="icon-circle">
-      <img src="group-icon.svg" alt="Group Icon">
+<!-- Interviewees Icon -->
+<svg class="icon" viewBox="0 0 24 24" aria-label="Interviewees" role="img" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+  <!-- main person -->
+  <circle cx="10" cy="8" r="3"></circle>
+  <path d="M5.5 18.5c0-3 2.5-5 4.5-5s4.5 2 4.5 5"></path>
+  <!-- side person -->
+  <circle cx="17" cy="9" r="2.5"></circle>
+  <path d="M14.5 18.5c.2-2.4 1.9-4 3.5-4s3.3 1.6 3.5 4"></path>
+</svg>
+
     </div>
     <div class="text">
       Number of Interviewees: 7
     </div>
   </div>
 </section>
-
-
 
       <section id="findings" class="findings-section">
   <h2>Research Findings</h2>
@@ -120,11 +139,12 @@
   <div class="finding-points">
     <p>1. Users use Duo Mobile very frequently, but they feel the current user flow is complex, leading to low satisfaction (5.8).</p>
 
-    <p>2.Users understand the need for second verification, but they want something <strong>quicker</strong> and <strong>easier</strong>.</p>
+    <p>2.Users understand the need for second verification, but they want something <span class="highlight">quicker and easier.</span></p>
 
     <p>3.Users want more <strong>diverse verification methods</strong> beyond phone number verification, as the lack of a clear user flow for changing phone numbers causes inconvenience.</p>
   </div>
 </section>
+
 
       <section id="Research Questions">
         <h2>Research Questions</h2>
@@ -133,48 +153,25 @@
         <p>2. How can we ensure that users have more diverse methods of accessing the Duo account, especially when they have problems with their mobile devices?</p>
       </section>
 
+
       <section id="Design">
         <h2>Design Solution</h2>
       <div class="solution-text">
         <h2>1. Sign-up Page (web)</h2>
         <p>The sign-up process enables users to include their phone numbers and email addresses on their accounts, which helps users when they face changes in their mobile devices.</p>  
       </div>
+              <div class="spacer"></div>
       <div class="solution-web">
        <img src="images/Duo web.gif"  width="800"/>
       </div>
     </section>
-
-    <section class="feature-block">
-  <div class="feature-ctr">
-    <!-- Left Text -->
-    <div class="feature-copy">
-      <p class="feature-step">02</p>
-      <h3 class="feature-title">Phone Number Change (web)</h3>
-      <p class="feature-desc">
-        Users can change their personal information by logging into their account 
-        through their email or phone number. In the new web interface, users can 
-        change their account details in settings when they need to update their personal information.
-      </p>
-      <ul class="feature-points">
-        <li>Account settings accessible from sidebar</li>
-        <li>Verification code via SMS before change</li>
-        <li>Save confirmation with visual feedback</li>
-      </ul>
-    </div>
-
-    <!-- Right Image -->
-    <figure class="feature-media">
-      <img src="images/Duo web 22.gif" alt="Phone number change screen" />
-    </figure>
-  </div>
-</section>
-
 
      <section id="Solution">
       <div class="solution-text">
         <h2>2. Phone Number Change (web)</h2>
         <p>Users can change their personal information by logging into their account through their email or phone number. In the new web interface, users can change their account details in settings when they need to change their personal information.</p>
       </div>
+              <div class="spacer"></div>
       <div class="solution-web">
       <img src="images/Duo web 22.gif" width="800"/>
        </div>
@@ -185,34 +182,42 @@
         <h2>3. Quicker, Easier Second Verification (app)</h2>
         <p>Verifying an account using Face ID is easier and quicker compared to current Duo Mobile verification process.</p>
         </div>
+       <div class="spacer"></div>
 <!-- 묶는 래퍼 추가 -->
-<div class="solutions-row">
-  <div class="solution-image">
-    <img src="images/duo origina (1).gif" alt="Journaling Prototype – Original" />
-  </div>
-  <div class="solution-image">
-    <img src="images/Duo App.gif" alt="Journaling Prototype – App" />
-  </div>
+<div class="solutions-row tight">
+  <figure class="solution-image">
+    <img src="images/duo origina (1).gif" alt="Original Flow" />
+    <figcaption>Original Duo Mobile Verification</figcaption>
+  </figure>
+
+  <figure class="solution-image">
+    <img src="images/Duo App.gif" alt="Redesigned App Flow" />
+    <figcaption>Redesigned Verification with Face ID</figcaption>
+  </figure>
 </div>
 
-</section>
       </section>
 
     <section id="Iterate & Test">
-        <h2>Iterate & Test</h2>
-        <h2>After re-designing using Figma, I conducted a user test with seven interviewees, asking them to conduct tasks corresponding to the three user flows.</h2>
-    </section>
-
-    <section id="Research Questions For the User Test">
+        <h2>User Test</h2>
+        <div class="spacer"></div>
+        <p>After re-designing using Figma, I conducted a user test with seven interviewees, asking them to conduct tasks corresponding to the three user flows.</p>
+        <p>While conducting a user testing, I focused on two questions:</p>
     <h2>1. Does the re-designed Duo mobile app allow users to verify their accounts in an easier and faster way?</h2>
     <h2>2. Does Duo Web reduce user pain points when they change their phone number and try to log in to their school account?</h2>
     </section>
 
     <section id="User Test">
     <h2>User Test Results</h2>
+    <div class="spacer"></div>
         <img src="images/Frame 104.png" width="200"/>
         <img src="images/Frame 105.png" width="200"/>
         <img src="images/Frame 106.png" width="200"/>
+    <div class="spacer"></div>
+    <div class="spacer"></div>
+      <p>1. User satisfaction with the current Duo was 5.8 on a scale of 1-10 which increased to 8.4 after completing tasks with the redesigned version — a 44.8% improvement.</br>
+<p>2. The task completion time for Task 2 was reduced by 8 seconds, dropping to 7 seconds compared to when using the current Duo Mobile app.</br>
+  <p>3. The perceived ease of use improved from 3.8 to 4.6, reflecting a 21.1% increase.</p>
     </section>
 
     <section id="Reflection">
@@ -251,5 +256,80 @@
     </main>
 
   </div>
+
+  <script>
+(function(){
+  // 사이드바 링크 수집 (href가 #으로 시작하는 것만)
+  const navLinks = Array.from(document.querySelectorAll('.sidebar a[href^="#"]'));
+  if (!navLinks.length) return;
+
+  // href -> section 매핑
+  const secMap = navLinks
+    .map(a => {
+      try{
+        const id = decodeURIComponent(a.getAttribute('href').trim().slice(1));
+        const sec = document.getElementById(id);
+        return sec ? {link:a, sec} : null;
+      }catch(e){ return null; }
+    })
+    .filter(Boolean);
+
+  if (!secMap.length) return;
+
+  // active 토글 함수
+  const setActive = (link) => {
+    navLinks.forEach(a => a.classList.remove('active'));
+    if (link) link.classList.add('active');
+  };
+
+  // IntersectionObserver 설정
+  // 화면의 가운데 근처에 들어온 섹션을 "활성"으로 판단
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      const item = secMap.find(x => x.sec === entry.target);
+      if (!item) return;
+
+      if (entry.isIntersecting) {
+        // 현재 보이는 섹션을 active
+        setActive(item.link);
+      }
+    });
+  }, {
+    // 고정 헤더 고려: 위쪽 25%와 아래쪽 55%는 제외하고 가운데에 들어오면 활성화
+    root: null,
+    rootMargin: "-25% 0px -55% 0px",
+    threshold: 0.01
+  });
+
+  // 모든 섹션 관찰 시작
+  secMap.forEach(({sec}) => observer.observe(sec));
+
+  // 클릭 시 스무스 스크롤 + 즉시 active 토글(체감 반응성)
+  navLinks.forEach(a => {
+    a.addEventListener('click', (e) => {
+      const href = a.getAttribute('href');
+      if (!href || !href.startsWith('#')) return;
+      const id = href.slice(1);
+      const target = document.getElementById(id);
+      if (!target) return;
+
+      e.preventDefault();
+      // 브라우저 기본 스무스(이미 html{scroll-behavior:smooth} 있음)
+      target.scrollIntoView({behavior:'smooth', block:'start'});
+      setActive(a);
+      // 스크롤 완료 후 IO가 알아서 다시 정확히 맞춰줄 거야
+    });
+  });
+
+  // 페이지 진입 시 맨 위 섹션 활성화(새로고침 대비)
+  // 뷰포트에 있는 첫 섹션을 찾고, 없으면 첫 링크를 활성화
+  const inViewFirst = secMap.find(({sec}) => {
+    const r = sec.getBoundingClientRect();
+    return r.top < window.innerHeight * 0.5 && r.bottom > window.innerHeight * 0.2;
+  });
+  setActive(inViewFirst ? inViewFirst.link : navLinks[0]);
+})();
+</script>
+
 </body>
 </html>

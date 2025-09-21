@@ -559,9 +559,9 @@ body.dark-mode .project {
 /* 대표 이미지 스타일 */
 .hero-image {
   width: 100%;
-  max-width: 1100px;
-  margin: 0 auto 80px;
-  padding: 0 20px;
+  max-width: 1700px;   /* 🔼 전체 최대 크기 더 넓게 */
+  margin: 40px auto 60px; /* 🔼 위쪽 여백 줄이고, 아래 여백도 약간 줄임 */
+  padding: 0 10px;     /* 🔼 좌우 패딩 줄여서 이미지 더 크게 */
 }
 
 .hero-image img {
@@ -570,6 +570,7 @@ body.dark-mode .project {
   display: block;
   border-radius: 12px;
   object-fit: cover;
+  transform: scale(1.05);   /* 🔼 살짝 확대 효과 */
 }
 
 
@@ -1106,7 +1107,7 @@ color: #000;
 .solution-image-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr); /* 2개씩 가로 배치 */
-  gap: 24px;
+  gap: 100px;
   margin-top: 40px;
   justify-items: center; /* 각 칸 가운데 정렬 */
 }
@@ -1122,7 +1123,7 @@ color: #000;
 .solution-image-grid img {
   width: 100%;
   height: auto;
-  border-radius: 8px;
+  border-radius: 50px;
   display: block;
 }
 
@@ -1223,7 +1224,10 @@ color: #000;
 }
 
 /* 이미지 컨테이너: 목업 제거, 카드 느낌만 */
-.proto__media { margin: 0; }
+.proto__media { 
+  margin: 0; 
+  justify-self: end;   /* ✅ 오른쪽 끝으로 이동 */
+}
 .proto__img {
   display: block;
   width: 370px;                /* ✅ 고정 너비 370px */
@@ -1307,7 +1311,7 @@ color: #000;
 .stat-number{
   font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", "Segoe UI", Roboto, sans-serif;
   font-weight: 700;
-  color: #ef4444;                 /* 트렌디한 레드 포인트 */
+  color: #0054FF;                 /* 트렌디한 레드 포인트 */
   font-size: clamp(36px, 6vw, 64px);
   letter-spacing: -0.5px;
   margin: 2px 0 14px;
@@ -1617,3 +1621,190 @@ section[id="User Test"] img{
   color:var(--a-text); background:#fff; border:1px solid var(--a-line); text-decoration:none;
 }
 .btn-ghost:hover{ background:#fafafa; }
+
+
+.btn-proto{
+  display:inline-block;
+  padding:12px 18px;
+  border-radius:12px;
+  background:#FF944C;      /* 주색 */
+  color:#fff;               /* 흰 글자 */
+  font-weight:600;
+  text-decoration:none;
+  transition:transform .15s ease, box-shadow .15s ease, filter .15s ease;
+}
+
+.btn-proto:hover{
+  filter:brightness(0.96);
+  transform:translateY(-1px);
+  box-shadow:0 12px 26px rgba(255,148,76,.34);
+}
+
+.btn-proto:active{
+  transform:translateY(0);
+  box-shadow:0 6px 14px rgba(255,148,76,.24);
+}
+
+.btn-proto:focus-visible{
+  outline:3px solid #ffb98d;   /* 접근성 포커스 링 */
+  outline-offset:2px;
+  border-radius:12px;
+}
+
+.design-center {
+  text-align: center;   /* 내부 요소를 가운데 정렬 */
+  margin-top: 20px;     /* 위와 여백 */
+}
+
+.design-center img {
+  max-width: 100%;      /* 반응형 */
+  height: auto;
+  display: block;
+  margin: 0 auto 20px;  /* 가운데 정렬 + 아래 여백 */
+}
+
+.design-center .btn-proto {
+  display: inline-block; /* 버튼도 중앙에 배치 */
+}
+
+.highlight {
+  background-color: #cce5ff;   /* 연한 초록색 형광펜 느낌 */
+  padding: 2px 4px;            /* 글자와 배경 사이 여백 */
+  border-radius: 3px;          /* 살짝 둥근 모서리 */
+}
+
+.hero-buttons {
+  display: flex;
+  flex-direction: column;     /* 세로 정렬 */
+  gap: 12px;                  /* 버튼 사이 간격 */
+  align-items: flex-end;      /* 오른쪽 정렬 */
+  margin-top: 20px;           /* 이미지와 간격 */
+  margin-right: 20px;         /* 화면 오른쪽 여백 */
+}
+
+/* 공통 버튼 스타일 */
+.hero-buttons a {
+  text-decoration: none;
+  font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", "Segoe UI", Roboto, sans-serif;
+  font-weight: 600;
+  padding: 10px 16px;
+  border-radius: 10px;
+  transition: all 0.2s ease;
+}
+
+/* Landing Page 버튼 */
+.btn-landing {
+  background: #111;
+  color: #fff;
+  box-shadow: 0 6px 18px rgba(0,0,0,.18);
+}
+.btn-landing:hover {
+  transform: translateY(-2px);
+  background: #333;
+}
+
+/* App Store 버튼 */
+.btn-appstore {
+  background: #fff;
+  color: #111;
+  border: 1px solid #e5e7eb;
+  box-shadow: 0 6px 16px rgba(0,0,0,.08);
+}
+.btn-appstore:hover {
+  background: #f8f8f8;
+  transform: translateY(-2px);
+}
+
+/* 모바일 대응 */
+@media (max-width: 640px) {
+  .hero-buttons {
+    align-items: center; /* 작은 화면에서는 가운데로 */
+    margin-right: 0;
+  }
+}
+
+.icon {
+  width: 28px;   /* adjust as needed */
+  height: 28px;
+  color: #58C53D; /* inherits; change per section/theme */
+  display: inline-block;
+  vertical-align: middle;
+}
+
+/* 1) 웹 프로토타입(GIF) 이미지를 화면 정중앙에 */
+.solution-web{
+  display: flex;
+  justify-content: center;   /* 가운데 정렬 */
+}
+.solution-web img{
+  display: block;
+  width: clamp(640px, 70vw, 900px);  /* 화면에 맞게 커지되 상한선 ↑ */
+  max-width: 100%;
+  height: auto;
+  margin: 0 auto;
+  border-radius: 14px;
+}
+
+/* 2) 앱 GIF 두 장을 '묶어서' 가운데 배치 + 간격 축소 */
+.solutions-row{
+  display: flex;
+  justify-content: center;   /* 두 이미지를 묶어 가운데 */
+  align-items: flex-start;
+  gap: 10px;                 /* ← 간격 줄임 (원하면 6~14px로 조절) */
+  max-width: 920px;          /* 그룹 너비 제한해서 한 덩어리 느낌 */
+  margin: 16px auto 0;       /* 가운데 정렬 */
+  flex-wrap: wrap;           /* 좁은 화면에선 자동 줄바꿈 */
+}
+
+/* 앱 GIF 크기 살짝 키우거나 맞춰주기 */
+.solution-image img{
+  width: clamp(260px, 28vw, 340px);  /* 반응형, 서로 비슷한 폭 유지 */
+  height: auto;
+  display: block;
+}
+
+/* 모바일에서 살짝 더 여유 */
+@media (max-width: 768px){
+  .solutions-row{ gap: 8px; max-width: 720px; }
+  .solution-image img{ width: clamp(220px, 44vw, 280px); }
+}
+
+/* 앱 GIF 묶음: 간격 '확' 줄이기 */
+.solutions-row.tight{
+  gap: 6px !important;          /* ← 확실히 덮어쓰기 */
+  justify-content: center;
+  max-width: 760px;             /* 한 덩어리 느낌 */
+  margin: 12px auto 0;
+}
+
+.solutions-row.tight .solution-image{
+  margin: 0 !important;         /* 혹시 모를 마진 제거 */
+  padding: 0 !important;
+}
+
+.solutions-row.tight .solution-image img{
+  display: block;
+  width: clamp(240px, 27vw, 320px);  /* 서로 비슷한 폭 */
+  height: auto;
+  margin: 0;                        /* 추가 여백 제거 */
+}
+@media (max-width: 768px){
+  .solutions-row.tight{ gap: 4px; max-width: 680px; }
+  .solutions-row.tight .solution-image img{ width: clamp(200px, 42vw, 260px); }
+}
+
+/* 앱 GIF + 설명 */
+.solution-image {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;  /* 이미지와 설명 사이 여백 */
+}
+
+.solution-image figcaption {
+  font-size: 0.8rem;
+  color: #666;        /* 연한 회색 톤 */
+  text-align: center;
+  line-height: 1.4;
+  max-width: 300px;   /* 줄 길이 제한 */
+}
