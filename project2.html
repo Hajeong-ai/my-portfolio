@@ -128,22 +128,28 @@
   </div>
 </section>
 
+ <section id="User Test Results">
+    <h2>Findings</h2> 그래프 형식으로 만들기
+          <div class="spacer"></div>
+    </section>
+
     <section id="Findings">
-    <h2>Findings & User Persona</h2>
+    <h2>User Persona</h2>
       <div class="spacer"></div>
     <p>1. Users are <span class="highlight">high-technology savviness students</span> who want high-quality, straightforward, and fun interfaces.</br>
     <p>2. Users wanted a straightforward mobile app that has a <span class="highlight">personalized recommendation feature.</span></br>
     <p>3. Users are familiar with finding places using community-oriented apps, such as Reddit, TikTok, and Instagram.</p>
       <div class="spacer"></div>
-    <img src="images/Placie User Persona.png" width="1100">
+      <div class="placie-persona" gap="100">
+    <img src="images/Frame 344892.png" width="400">
+    <img src="images/Frame 344892.png" width="400">
+  </div>
     </section>
 
-
-<section id="Research Questions">
-  <h2>User Journey Map</h2>
-    <div class="spacer"></div>
-<img src="images/User Journey Map.png" width="1100"> 
-</section>
+ <section id="User Test Results">
+    <h2>Problem -> Solution</h2>
+          <div class="spacer"></div>
+    </section>
 
     <section id="Wireframe">
     <h2>Wireframe</h2>
@@ -180,13 +186,19 @@ However, a minor system error occurred when participants asked about what AI but
     <p>Overall, participants highlighted Plaice’s clean interface and intuitive navigation while also identifying opportunities for improvement in review-related and AI pages.</br>
     </section>
 
-
     <section id="User Test Results">
     <h2>Iterate, Iterate, Iterate</h2>
           <div class="spacer"></div>
-    <p>Reflecting the user test results, during the iteration, I realized that using the wording ‘review’ instead of ‘diary’ in the navigation scheme was more appropriate, identified gaps in the flow leading users to the AI feature, and improved the UI of the buttons by removing stroks and using neutral colors.</p>
+    <p>Reflecting the user test results, during the iteration, I realized that using the wording ‘review’ instead of ‘diary’ in the navigation scheme was more appropriate, identified gaps in the flow leading users to the AI feature, changed the background map, and improved the UI of the buttons by removing stroks and using neutral colors.</p>
     <img src="images/placie iterate.png" width="1100">
     </section>
+
+
+        <section id="User Test Results">
+    <h2>Design System</h2>
+          <div class="spacer"></div>
+    </section>
+
 
 <section id="User Test Results">
   <h2>Final Design</h2>
@@ -326,6 +338,27 @@ However, a minor system error occurred when participants asked about what AI but
     return r.top < window.innerHeight * 0.5 && r.bottom > window.innerHeight * 0.2;
   });
   setActive(inViewFirst ? inViewFirst.link : navLinks[0]);
+})();
+</script>
+
+<script>
+(function(){
+  const targets = document.querySelectorAll('.highlight');
+  if(!('IntersectionObserver' in window) || !targets.length){
+    targets.forEach(t => t.classList.add('is-on'));
+    return;
+  }
+
+  const io = new IntersectionObserver((entries, obs) => {
+    entries.forEach(entry => {
+      if(entry.isIntersecting){
+        entry.target.classList.add('is-on');
+        obs.unobserve(entry.target); // 한 번만 실행
+      }
+    });
+  }, { root: null, threshold: 0.2 });
+
+  targets.forEach(t => io.observe(t));
 })();
 </script>
 

@@ -1679,9 +1679,22 @@ section[id="User Test"] img{
 
 
 .highlight {
-  background-color: #cce5ff;   /* 연한 초록색 형광펜 느낌 */
-  padding: 2px 4px;            /* 글자와 배경 사이 여백 */
-  border-radius: 3px;          /* 살짝 둥근 모서리 */
+  --ink-color: #cce5ff;         /* 형광펜 색 */
+  --ink-speed: 1s;              /* 애니메이션 시간 */
+  background-image: linear-gradient(var(--ink-color), var(--ink-color));
+  background-repeat: no-repeat;
+  background-size: 0% 60%;      /* 처음엔 너비 0% */
+  background-position: 0 85%;   /* 아래쪽에 위치 */
+  transition: background-size var(--ink-speed) ease-out;
+  padding: 0 .1em;              /* 글자 양옆 여백 */
+}
+
+.highlight.is-on {
+  background-size: 100% 60%;    /* 100%까지 차오름 */
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .highlight { transition: none; background-size: 100% 60%; }
 }
 
 /* 공통 버튼 스타일 */
