@@ -84,20 +84,19 @@
   </div>
 </section>
 
-
-      <section id="Background">
-        <h2>My Role</h2>
-              <div class="spacer"></div>
-        <p>Duo Mobile is a multifactor authentication app that provides additional security. Many universities use the Duo Mobile app to strengthen security through a second verification. Students verify their account in the Duo Mobile app by approving a push notification during their login process.</p>
-      </section>
-
       <section id="Background">
         <h2>Background</h2>
               <div class="spacer"></div>
         <p>Duo Mobile is a multifactor authentication app that provides additional security. Many universities use the Duo Mobile app to strengthen security through a second verification. Students verify their account in the Duo Mobile app by approving a push notification during their login process.</p>
       </section>
+
+        <section id="Background">
+        <h2>Problem</h2>
+          <div class="spacer"></div>
+        <p>Through my own experience verifying my school account daily, I noticed that the verification process causes frustration and negatively impacts student satisfaction.</p>
+      </section>
     
-<section class="research-section">
+<section id="research-section">
   <div class="research-content">
     <!-- 왼쪽: 아이콘 + 텍스트 -->
     <div class="research-items">
@@ -149,11 +148,12 @@
       <section id="findings" class="findings-section">
   <h2>Affinity Mapping</h2>
         <div class="spacer"></div>
-      <img src="images/Duo affinity.png" width="1000">
+        <p>After finishing interview, I documented and analyzed the responses to identify insights and key findings. Using affinity diagramming, I organized these insights, focusing on three insights that highlight the user's pain points.</p>
+      <img src="images/Duo affinity.png" width="1100">
 </section>
 
 
-      <section id="findings" class="findings-section">
+  <section id="findings" class="findings-section">
   <h2>Research Findings</h2>
         <div class="spacer"></div>
 
@@ -166,14 +166,58 @@
   </div>
 </section>
 
-
       <section id="Research Questions">
-        <h2>Research Questions</h2>
+        <h2>User Persona</h2>
               <div class="spacer"></div>
-        <p>1. How can a redesigned Duo Mobile app deliver a faster, more seamless verification experience?</p>
-        <p>2. How can we ensure that users have more diverse methods of accessing the Duo account, especially when they have problems with their mobile devices?</p>
       </section>
 
+<section id="ps-section">
+  <h2>Questions & Solution</h2>
+  <div class="spacer"></div>
+  <div class="ps-grid">
+    <!-- 1 -->
+    <article class="ps-row">
+      <div class="ps-card ps-problem">
+        <div class="ps-card-head">
+          <span class="ps-eyebrow">How might we…</span>
+        </div>
+        <p class="ps-problem-text">How can a redesigned Duo Mobile app deliver a faster, more seamless verification experience?</p>
+      </div>
+
+      <div class="ps-arrow" aria-hidden="true">→</div>
+
+      <div class="ps-card ps-solution">
+        <div class="ps-card-head">
+          <span class="ps-eyebrow">Solution</span>
+        </div>
+        <p class="ps-solution-text">
+          -
+        </p>
+      </div>
+    </article>
+
+    <!-- 2 -->
+    <article class="ps-row">
+      <div class="ps-card ps-problem">
+        <div class="ps-card-head">
+          <span class="ps-eyebrow">How might we…</span>
+        </div>
+        <h3 class="ps-problem-text">How can we ensure that users have more diverse methods of accessing the Duo account, especially when they have problems with their mobile devices?</h3>
+      </div>
+
+      <div class="ps-arrow" aria-hidden="true">→</div>
+
+      <div class="ps-card ps-solution">
+        <div class="ps-card-head">
+          <span class="ps-eyebrow">Solution</span>
+        </div>
+        <p class="ps-solution-text">
+          <span class="highlight">Add AI algorytm</span>
+        </p>
+      </div>
+    </article>
+    </div>
+</section>
 
       <section id="Design">
         <h2>Design Solution</h2>
@@ -211,6 +255,8 @@
     <figcaption>Original Duo Mobile Verification</figcaption>
   </figure>
 
+      <div class="ps-arrow" aria-hidden="true">→</div>
+
   <figure class="solution-image">
     <img src="images/Duo App.gif" alt="Redesigned App Flow" />
     <figcaption>Redesigned Verification with Face ID</figcaption>
@@ -231,9 +277,9 @@
     <section id="User Test">
     <h2>User Test Results</h2>
     <div class="spacer"></div>
-        <img src="images/Frame 104.png" width="200"/>
-        <img src="images/Frame 105.png" width="200"/>
-        <img src="images/Frame 106.png" width="200"/>
+        <img src="images/Frame 104.png" width="300"/>
+        <img src="images/Frame 105.png" width="300"/>
+        <img src="images/Frame 106.png" width="300"/>
     <div class="spacer"></div>
     <div class="spacer"></div>
       <p>1. User satisfaction with the current Duo was 5.8 on a scale of 1-10 which increased to 8.4 after completing tasks with the redesigned version — a 44.8% improvement.</br>
@@ -349,6 +395,26 @@
     return r.top < window.innerHeight * 0.5 && r.bottom > window.innerHeight * 0.2;
   });
   setActive(inViewFirst ? inViewFirst.link : navLinks[0]);
+})();
+</script>
+<script>
+(function(){
+  const targets = document.querySelectorAll('.highlight');
+  if(!('IntersectionObserver' in window) || !targets.length){
+    targets.forEach(t => t.classList.add('is-on'));
+    return;
+  }
+
+  const io = new IntersectionObserver((entries, obs) => {
+    entries.forEach(entry => {
+      if(entry.isIntersecting){
+        entry.target.classList.add('is-on');
+        obs.unobserve(entry.target); // 한 번만 실행
+      }
+    });
+  }, { root: null, threshold: 0.2 });
+
+  targets.forEach(t => io.observe(t));
 })();
 </script>
 

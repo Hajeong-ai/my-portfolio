@@ -121,13 +121,13 @@
     </div>
   </div>
       <div class="spacer"></div>
-    <img src="images/Frame 262.png" width="1050"/>
+    <img src="images/Frame 262.png" width="1100"/>
       </section>
 
         <section id="User Flow">
         <h2>User Persona</h2>
          <div class="spacer"></div>
-        <img src="images/overleaef User Persona.png"width="1050"/>
+        <img src="images/Overleaf persona.png"width="1100"/>
       </section>
 
       <section id="User Flow">
@@ -197,6 +197,11 @@
         <p>After our presentation, a current Overleaf user suggested adding a feature that lets users control the degree of AI involvement when they are using a AI suggestion feature.</p>
       </section>
 
+        <section id="reflection">
+        <h2>Thanks to 2025 Summer Design for Passion!</h2>
+              <div class="spacer"></div>
+<img src="images/Overleaf DFP.PNG" width="1100">
+      </section>
 
         <section id="reflection">
         <h2>Takeaways</h2>
@@ -292,6 +297,26 @@
     return r.top < window.innerHeight * 0.5 && r.bottom > window.innerHeight * 0.2;
   });
   setActive(inViewFirst ? inViewFirst.link : navLinks[0]);
+})();
+</script>
+<script>
+(function(){
+  const targets = document.querySelectorAll('.highlight');
+  if(!('IntersectionObserver' in window) || !targets.length){
+    targets.forEach(t => t.classList.add('is-on'));
+    return;
+  }
+
+  const io = new IntersectionObserver((entries, obs) => {
+    entries.forEach(entry => {
+      if(entry.isIntersecting){
+        entry.target.classList.add('is-on');
+        obs.unobserve(entry.target); // 한 번만 실행
+      }
+    });
+  }, { root: null, threshold: 0.2 });
+
+  targets.forEach(t => io.observe(t));
 })();
 </script>
 

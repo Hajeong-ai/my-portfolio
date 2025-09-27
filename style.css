@@ -1141,7 +1141,7 @@ color: #000;
 .research-section {
   display: flex;
   flex-direction: column;
-  gap: 32px;               /* 항목 간 간격 */
+  gap: 40px;               /* 항목 간 간격 */
   max-width: 1100px;         /* 필요 시 제한 */
 }
 
@@ -2156,3 +2156,116 @@ section[id="User Test"] img{
 }
 
 .research-section { margin-bottom: 140px; } /* 전역 section 규칙과 동일 */
+
+/* ========== Problem → Solving (white theme) ========== */
+:root{
+  --ps-text:#111;
+  --ps-sub:#6b7280;
+  --ps-line:#e5e7eb;
+  --ps-bg:#fff;
+  --ps-chip:#f3f4f6;
+  --ps-accent:#0b5fff; /* 포인트 컬러 */
+}
+
+.ps-section{
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 24px 20px 80px;
+}
+
+.ps-heading{
+  margin: 0 0 14px;
+  font-weight: 300;
+  font-size: clamp(22px,2.4vw,28px);
+  color: var(--ps-text);
+}
+
+/* 행 컨테이너 (문제 → 화살표 → 해결) */
+.ps-grid{
+  display: grid;
+  gap: 16px;
+}
+
+.ps-row{
+  display: grid;
+  grid-template-columns: 1fr auto 1fr; /* 문제 | → | 해결 */
+  gap: 14px;
+  align-items: stretch;
+}
+
+/* 카드 공통 */
+.ps-card{
+  background: var(--ps-bg);
+  border: 1px solid var(--ps-line);
+  border-radius: 14px;
+  padding: 18px 18px;
+  box-shadow: 0 2px 10px rgba(0,0,0,.04);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.ps-card-head{
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--ps-sub);
+  font-size: .95rem;
+}
+
+.ps-eyebrow{
+  letter-spacing: .02em;
+  text-transform: none;
+}
+
+/* 텍스트 */
+.ps-problem-text{
+  margin: 0;
+  font-size: 16px;
+  font-weight: 300;
+  color: var(--ps-text);
+  line-height: 1.4;
+}
+.ps-solution-text{
+  margin: 0;
+  color: var(--ps-text);
+  line-height: 1.6;
+  font-size: 1rem;
+}
+
+/* 화살표 */
+.ps-arrow{
+  display: grid;
+  place-items: center;
+  color: var(--ps-sub);
+  padding: 0 8px;
+  font-size: 22px;
+}
+
+/* hover 미세 인터랙션 */
+@media (hover:hover){
+  .ps-card{ transition: box-shadow .18s ease, transform .18s ease; }
+  .ps-card:hover{
+    transform: translateY(-2px);
+    box-shadow: 0 8px 22px rgba(0,0,0,.08);
+  }
+}
+
+/* 모바일: 세로 스택 + 화살표 숨기기 */
+@media (max-width:900px){
+  .ps-row{
+    grid-template-columns: 1fr;
+  }
+  .ps-arrow{ display:none; }
+}
+.solutions-row.tight {
+  display: flex;
+  justify-content: center;
+  align-items: center;   /* 세로 가운데 정렬 */
+  gap: 20px;             /* 이미지-화살표 간 간격 */
+}
+
+.ps-arrow {
+  font-size: 2rem;       /* 화살표 크기 */
+  color: #555;           /* 색상 */
+}
