@@ -2269,3 +2269,9 @@ section[id="User Test"] img{
   font-size: 2rem;       /* 화살표 크기 */
   color: #555;           /* 색상 */
 }
+/* 모바일에서는 사이드바 숨기기 */
+@media (max-width: 768px) {
+  .sidebar {
+    display: none;
+  }
+}
