@@ -2275,3 +2275,112 @@ section[id="User Test"] img{
     display: none;
   }
 }
+
+/* ===== Benchmarking (white theme) ===== */
+.bm-section{
+  max-width: 1100px;
+  margin: 0 auto 80px;
+  padding: 0 20px;
+}
+.bm-title{
+  margin: 0 0 14px;
+  font-weight: 300;
+  font-size: clamp(22px,2.4vw,28px);
+  color:#111;
+}
+
+/* 아이템 컨테이너 */
+.bm-item{
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  background: #f3f4f6;              /* 스크린샷과 유사한 연회색 바 */
+  margin-bottom: 12px;
+  overflow: clip;
+}
+
+/* 상단 행(요약) */
+.bm-row{
+  list-style: none;
+  cursor: pointer;
+  display: grid;
+  grid-template-columns: auto 1fr auto;  /* 로고 | 이름 | 아이콘 */
+  align-items: center;
+  gap: 14px;
+  padding: 16px 18px;
+  position: relative;
+}
+
+/* summary 기본 화살표 제거(브라우저 기본 disclosure triangle 숨김) */
+.bm-row::-webkit-details-marker{ display:none; }
+.bm-row { list-style: none; }
+
+/* 로고 박스 */
+.bm-logo{
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  background:#fff;                   /* 흰 박스 */
+  display: grid;
+  place-items: center;
+  box-shadow: inset 0 0 0 1px #e5e7eb;
+  overflow: hidden;
+}
+.bm-logo img{
+  width: 70%;
+  height: 70%;
+  object-fit: contain;
+}
+
+/* 브랜드명 */
+.bm-name{
+  color:#111;
+  font-weight: 500;
+  letter-spacing:.2px;
+}
+
+/* 오른쪽 펼치기 아이콘(chevron) */
+.bm-chevron{
+  width: 20px; height: 20px;
+  display: inline-block;
+  position: relative;
+}
+.bm-chevron::before{
+  content: "";
+  position: absolute; inset: 0;
+  margin: auto;
+  width: 8px; height: 8px;
+  border-right: 2px solid #6b7280;
+  border-bottom: 2px solid #6b7280;
+  transform: rotate(45deg);          /* 기본: 닫힘(▸ 느낌) */
+  transition: transform .2s ease;
+}
+
+/* 열렸을 때 아이콘 회전(▼ 느낌) */
+.bm-item[open] .bm-chevron::before{
+  transform: rotate(225deg);
+}
+
+/* 내용 영역 */
+.bm-content{
+  background:#fff;
+  border-top: 1px solid #e5e7eb;
+  padding: 14px 18px 18px;
+  color:#333;
+  line-height: 1.6;
+}
+.bm-content ul{
+  margin:0; padding-left: 18px;
+}
+.bm-content li{ margin: 4px 0; }
+
+/* Hover 미세 인터랙션 */
+@media (hover:hover){
+  .bm-row:hover{ background:#eceff3; }
+}
+
+/* 반응형 */
+@media (max-width: 640px){
+  .bm-row{ padding: 14px 14px; gap: 10px; }
+  .bm-logo{ width: 36px; height: 36px; }
+  .bm-name{ font-size: .95rem; }
+}
