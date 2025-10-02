@@ -1107,9 +1107,9 @@ color: #000;
 .solution-image-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr); /* 2개씩 가로 배치 */
-  gap: 100px;
-  margin-top: 40px;
-  justify-items: center; /* 각 칸 가운데 정렬 */
+  gap: 40px;
+  max-width: 1100px; /* 페이지 폭 */
+  margin: 0 auto;
 }
 
 .solution-image-grid figure {
@@ -1123,16 +1123,37 @@ color: #000;
 .solution-image-grid img {
   width: 100%;
   height: auto;
-  border-radius: 50px;
+  border-radius: 20px;
   display: block;
 }
 
 .solution-image-grid figcaption {
   margin-top: 8px;
-  font-size: 0.8rem;
-  color: #666;
+  font-size: 0.85rem;
+  color: #555;
   line-height: 1.4;
 }
+
+/* ✅ 두 칸 합치는 설명 */
+.solution-explainer {
+  grid-column: 1 / -1;    /* 두 칸 합침 (1100px 가로 전체 차지) */
+  text-align: left;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: #333;
+  margin-top: 10px;
+  margin-bottom: 20px;
+}
+
+/* ✅ 전체 하단 문구 */
+.solution-overall {
+  grid-column: 1 / -1;    /* 두 칸 합쳐서 전체 폭 */
+  font-weight: 500;
+  color: #111;
+  margin-top: 20px;
+  text-align: center;
+}
+
 
 .spacer {
   height: 30px; /* 행 사이 간격 */
@@ -2384,3 +2405,4 @@ section[id="User Test"] img{
   .bm-logo{ width: 36px; height: 36px; }
   .bm-name{ font-size: .95rem; }
 }
+

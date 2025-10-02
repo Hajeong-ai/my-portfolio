@@ -88,19 +88,22 @@
 
       <section id="My Role">
         <h2>My Role</h2>
-        <p>I conducted user interviews and preliminary research, led ideation for collaboration and AI features to improve suggestions and the AI flow, and prototyped using Figma.</p>
+        <p>I conducted user interviews and preliminary research, led ideation for collaboration and AI features to improve suggestions and the AI flow, and prototyped using Figma.
+          For the strategy and project management, we shared responsibilities.
+        </p>
 </section>
 
       <section id="problem">
         <h2>Problem</h2>
         <div class="spacer"></div>
+        <p>The current suggestion flow is confusing to users, users wanted more clarity on parts of documents when they are collaborating with other users, and in terms of citation, it was perceived as complex and monotomous.</p>
       </section>
 
       <section id="User Research">
         <h2>User Interview</h2>
         <div class="spacer"></div>       
         <p>We conducted qualitative in-depth interview with 6 interviewees. Given a limited time-frame, we kept interviews relatively open-ended. Participants shared their screen and walked through how they use the platform.<br>
-        We asked questions regarding frequency of using platform, typical uses, challanegs with the platform, and compares with competitors.</p>
+        Based on the discussion guide that has a set of questions we have asked, We focused on the questions regarding frequency of using platform, typical uses, challanegs with the platform, and compares with competitors.</p>
        <div class="research-item">
     <div class="icon-circle">
       <img src="chat-icon.svg" alt="Chat Icon">
@@ -125,13 +128,14 @@
         <section id="User Flow">
         <h2>User Persona</h2>
          <div class="spacer"></div>
+         <p>Through the interview, we were able to know the most users of Overleaf were highly-educated students, currently doing their master's or PhD, especially math heavy majors such as statistics, computer science, etc.</p>
         <img src="images/Overleaf persona.png"width="1100"/>
       </section>
 
       <section id="User Flow">
         <h2>User Flow - Current</h2>
          <div class="spacer"></div>
-        <p>Final design mockups, images, and user testing results.</p>
+        <p></p>
         <img src="images/current user flow.png"width="1100"/>
       </section>
 
@@ -139,7 +143,7 @@
         <div class="spacer"></div>
         <h2>User Flow - Expected</h2>
                       <div class="spacer"></div>
-        <p>Final design mockups, images, and user testing results.</p>
+        <p>We've brainstormed new AI powered user flow, and re-structured the information architecture to address the user pain points.</p>
         <img src="images/expected.png"width="1100"/>
       </section>
 
@@ -147,20 +151,30 @@
       <div class="solution-text">
        <h2>Design Solution</h2>
         <h2>1. AI Suggestion Feature</h2>
-        <p>-</p>
-      </div>
+  <p>For solution, we divided AI suggestion into two groups of the suggestions.</br>
+  <p>First is simple grammer issues or code bugs, which is already debugged by Overleaf and opened to all of the users. We unified and streamlined how these two types of suggestions are displayed.</p>
+  <p>Second improvement covers more complex cases, such as writing improvements, and more complex debugging. For these, we've redesigned the Overleaf AI feature experiences so that the user can easily discover, review, and apply the improvements.</p> 
+  </div>
       <div></div>
-
+  <div class="spacer"></div>
+          <div class="spacer"></div>
   <div class="solution-image-grid">
-    <figure>
+  <figure>
       <img src="images/Frame 236.png" alt="Account settings page" />
-      <figcaption>Editing Suggestion Type#1</figcaption>
+      <figcaption>Editing Suggestion Type#1</br>
+        <figcaption>Color-coded Grammer/ Code Errors</br>
+          <figcaption>Consistent Bug Check interactions</figcaption>
     </figure>
     <figure>
       <img src="images/Frame 237.png" alt="Edit profile view" />
-      <figcaption>Editing  Suggestion Type#2</figcaption>
+      <figcaption>Editing  Suggestion Type#2</br>
+      <figcaption>Contextual selection with smooth,</br>
+        <figcaption>targeted questioning or understanding</figcaption>
     </figure>
-    
+   
+  <p>We went one step furtuer, where the current Overleaf have already enabled some AI features. However, at that moment, these features were seperate from the main editing flow. This means that users needed to integrate their edting in order to access the AI support.</p>
+  <p>In our redesigned AI feature, we've added a new tab on the left side of the editing. With this tab, users can quickly switch into the AI feature, chat with TexGPT (Overleaf's GPT), and incorporate AI suggestion seamlessly with just one click.</p>
+
     <figure>
       <img src="images/Frame 238.png" alt="Update email screen" />
       <figcaption>We optimized the information architecture of AI suggestions, making the process of receiving and adopting them more intuitive.</figcaption>
@@ -170,14 +184,23 @@
       <figcaption>We connected previously scattered features to a unified editing-centered experience.</figcaption>
     </figure>
   </div>
+        <div class="spacer"></div>
+        <div class="spacer"></div>
+  <p>Overall, these redesign addresses user painpoints and difficulty of editing help</p>
+
   </section>
 
 
       <section id="Solution">
       <div class="solution-text">
         <h2>2. Collaboration</h2>
-        <p>Chat, Turn chat into a task</p>
-      </div>
+        <p>At the center of resolving collaboration issue is our task board, which connects conversations, comments, and real-time editing into one streamlined workflow.</br>
+        <p>By commenting, collaborators can highlight a section and leave a comment by clicking the button that appears on the task board.</br>
+        <p>Another key feature of the task board is that it enables users to convert a chat into an action item by clicking the "Turn chat into a Task" button.</br>
+      <p>Each task displays who created it, any comments added during editing, and the current staus of each task, whether it is processing, finished, or error.</p>
+    <p>Users can simply check it off when a task is done, and the status updates for the whole team to see, which can be checked on the history page.</p> 
+    </div>
+    <div class="spacer"></div>
   <div class="solution-image-grid">
     <figure>
       <img src="images/Frame 256.png" alt="Account settings page" />
@@ -187,16 +210,20 @@
       <img src="images/Frame 257.png" alt="Edit profile view" />
       <figcaption>Task Board, Task added on a task board</figcaption>
     </figure>
+<p>While enhancing collaboration feature with task board, by showing exactly where each member is working, team can avoid conflicts.</p>
+    <p>Overall, our re-designed collawboration feature turns scattered conversations into organized and trackable ones.</p>
     </section>
       
       <section id="reflection">
-        <h2>Feedbacks</h2>
-              <div class="spacer"></div>
+        <h2>If we had more time... & Feedbacks</h2>
+        <div class="spacer"></div>
+        <p>If we had more time, we would improve the citation workflow as suggested by interviewees—not by manually inputting all citations, but by integrating citation management tools into Overleaf.</p>
+
         <p>After our presentation, a current Overleaf user suggested adding a feature that lets users control the degree of AI involvement when they are using a AI suggestion feature.</p>
       </section>
 
         <section id="reflection">
-        <h2>Thanks to 2025 Summer Design for Passion!</h2>
+        <h2>Thanks to University of Washigton HCDE department, hosting 2025 Summer Design for Passion!</h2>
               <div class="spacer"></div>
 <img src="images/Overleaf DFP.PNG" width="1100">
       </section>
@@ -204,9 +231,8 @@
         <section id="reflection">
         <h2>Takeaways</h2>
               <div class="spacer"></div>
-        <p>1. If we had more time, we would improve the citation workflow as suggested by interviewees—not by manually inputting all citations, but by integrating citation management tools into Overleaf.</p>
-        <p>2. Collaborating with UX designers and UX researcher was a good opportunity to learn how solid user research impacts design.</p>
-        <p>3. Starting from user research to prototyping, this experience enabled me to explore how AI can be effectively incorporated into current designs and how it can further improve them.</p>
+        <p>1. Collaborating with UX designers and UX researcher was a good opportunity to learn how solid user research impacts design.</p>
+        <p>2. Starting from user research to prototyping, this experience enabled me to explore how AI can be effectively incorporated into current designs and how it can further improve them.</p>
       </section>
 
   <!-- ✅ Previous & Next Project Section -->
