@@ -704,9 +704,9 @@ body.dark-mode .project {
 }
 
 .page-wrapper {
-  max-width: 1000px;        /* 홈페이지와 동일 */
+  max-width: 1100px;        /* 홈페이지와 동일 */
   margin: 100px auto 100px; /* 위 아래 여백 일치 */
-  padding: 120px 0 140px;    /* 위쪽 60px, 아래쪽 넉넉히 140px */
+  padding: 60px 0 140px;    /* 위쪽 60px, 아래쪽 넉넉히 140px */
   width: 100%;
   display: block;
   position: relative;
