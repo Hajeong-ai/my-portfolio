@@ -31,7 +31,7 @@
       <h2 class="intro-heading">
         <span class="line1">Hi! I'm Hajeong,</span><br>
         <span class="line2">a <span id="typed-text"></span></span></h2>
-      <img src="images/IMG_9201.jpg" width="300" style="border-radius: 2px; margin-top: 40px;"/>
+        <img src="images/IMG_9201.jpg" width="300" style="border-radius: 2px; margin-top: 40px;"/>
       <p class="image-caption">Picture of myself at New York MoMa</p>  
     </section>
 
@@ -79,7 +79,7 @@
   <div class="project" data-aos="zoom-in-up">
     <img src="images/overeleaf ps thumbnail.png" alt="Project 4 Thumbnail" class="project-image" />
 <h3 class="project-title">
-  <span class="hl" style="--hl:#C8DDCB; --skew:-8deg;">Overleaf Re-design</span>
+  <span class="hl" style="--hl:#C8DDCB; --skew:-8deg;">Overleaf Re-Design</span>
 </h3>
     <div class="project-tags">
       <span class="tag">UX Design</span>
@@ -96,7 +96,7 @@
   <div class="project" data-aos="zoom-in-up">
     <img src="images/141.png" alt="Project 3 Thumbnail" class="project-image" />
 <h3 class="project-title">
-  <span class="hl" style="--hl:#d3f3cb; --skew:-8deg;">Duo Mobile App Re-design</span>
+  <span class="hl" style="--hl:#d3f3cb; --skew:-8deg;">Duo Mobile App Re-Design</span>
 </h3>
     <div class="project-tags">
       <span class="tag">UX Research</span>
@@ -150,7 +150,7 @@
 
     // --- Typed.js
     new Typed('#typed-text', {
-      strings: ['UX Designer', 'UX Researcher', 'Product Designer', 'Problem Solver', 'Design Thinker'],
+      strings: ['UX Designer', 'Product Designer', 'Problem Solver', 'Design Thinker'],
       typeSpeed: 60, backSpeed: 30, backDelay: 2000, loop: true
     });
 
@@ -183,5 +183,78 @@
       if (window.innerWidth > 768) closeMenu();
     });
   </script>
+
+<script>
+const photos = [
+  { src: "images/IMG_9201.jpg",  title: "Picture of myself in NYC MOMA" }, // ← src로, 확장자 포함
+  { src: "images/moma-2.jpg",    title: "MOMA — detail shot" },
+  { src: "images/soho.jpg",      title: "Street in SoHo" },
+  { src: "images/brooklyn.jpg",  title: "Brooklyn Bridge" },
+  { src: "images/cafe.jpg",      title: "Cafe colorway" },
+  { src: "images/green.jpg",     title: "Green palette" }
+];
+
+const img   = document.getElementById("palImg");
+const fade  = document.querySelector(".pal-fade");
+const range = document.getElementById("palRange");
+const title = document.getElementById("palTitle");
+const swBox = document.getElementById("palSwatches");
+const knob  = document.querySelector(".pal-knob");
+
+// 옵션/스와치 렌더
+if (title) {
+  title.innerHTML = photos.map(p => `<option>${p.title}</option>`).join("");
+}
+if (swBox) {
+  swBox.innerHTML = photos.map((p,i)=>`
+    <button class="pal-swatch" data-i="${i}" aria-label="${p.title}">
+      <img src="${p.src}" alt="${p.title}">
+    </button>
+  `.trim()).join("");
+}
+
+function showByIndex(i){
+  i = Math.max(0, Math.min(photos.length-1, i));
+  if (title) title.selectedIndex = i;
+
+  const pct = (i/(photos.length-1))*100;
+  if (range) range.value = pct;
+  if (knob) knob.style.left = `calc(${pct}% * 1.0)`;
+
+  const nextUrl = photos[i].src;        // ← 항상 유효
+  if (!nextUrl) return;                 // 방어
+
+  // 부드럽게 페이드 전환
+  if (fade) fade.style.opacity = 1;
+  const next = new Image();
+  next.onload = () => {
+    img.src = next.src;
+    if (fade) fade.style.opacity = 0;
+  };
+  next.src = nextUrl;
+}
+
+// 이벤트
+if (range) {
+  range.addEventListener("input", (e)=>{
+    const idx = Math.round((e.target.value/100) * (photos.length-1));
+    showByIndex(idx);
+  });
+}
+if (title) {
+  title.addEventListener("change", e => showByIndex(e.target.selectedIndex));
+}
+if (swBox) {
+  swBox.addEventListener("click", e=>{
+    const b = e.target.closest(".pal-swatch");
+    if(!b) return;
+    showByIndex(parseInt(b.dataset.i,10));
+  });
+}
+
+// 초기 표시
+showByIndex(0);
+</script>
+
 </body>
 </html>
