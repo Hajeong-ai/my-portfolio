@@ -276,7 +276,7 @@ h2 {
   position: fixed;
   top: 0;
   left: 0;
-  font-size: 32px;
+  font-size: 34px;
   pointer-events: none;
   opacity: 0;
   transition: opacity 0.2s ease;
@@ -2406,7 +2406,7 @@ section[id="User Test"] img{
   .bm-name{ font-size: .95rem; }
 }
 
-a[href="project4.html"] .project-image{ object-position: 62% 40%; }
+a[href="project4.html"] .project-image{ object-position: 40% 38%; }
 
 /* 프로젝트 카드 제목만 SF Pro Text Semibold */
 .project .project-title{
