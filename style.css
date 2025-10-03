@@ -2521,3 +2521,38 @@ footer .footer-right a {
   transition: color 0.2s ease;
   
 }
+
+/* 색 변수 – 필요하면 한 곳에서 톤만 조절 */
+:root{
+  --text: #111;           /* 기본 본문 */
+  --muted: #6B7280;       /* 살짝 회색(=Tailwind gray-500 느낌) */
+  --caption: #9CA3AF;     /* 캡션용 더 옅은 회색 */
+}
+
+/* 공통 회색 텍스트 유틸 */
+.muted { color: var(--muted); }
+
+/* 섹션별 기본 적용 (원한다면 클래스로도 사용 가능) */
+#intro-description p { color: var(--muted); }
+#education-section p,
+#education-section h4 { color: var(--muted); }
+
+/* 취미 갤러리 & 캡션 스타일 */
+.hobby-gallery{
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 16px;
+}
+.hobby-item{ margin: 0; }
+.hobby-item img{
+  width: 100%;
+  height: auto;
+  border-radius: 16px;
+  display: block;
+}
+.hobby-item figcaption{
+  margin-top: 8px;
+  font-size: 0.85rem;
+  line-height: 1.3;
+  color: var(--caption);
+}
