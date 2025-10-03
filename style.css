@@ -109,7 +109,7 @@ h3 {
 
 .project:hover {
   transform: translateY(-6px);
-  box-shadow: 0 6px 20px #3b82f655; /* 파란색 그림자 */
+  box-shadow: 0 6px 22px #3b82f655; /* 파란색 그림자 */
 }
 
 .project-link:hover .project {
@@ -328,7 +328,7 @@ h2 {
 .project-tags {
   display: flex;
   flex-wrap: wrap;
-  gap: 4px;               /* 태그 간 간격 더 넓게 */
+  gap: 3px;               /* 태그 간 간격 더 넓게 */
   margin-bottom: 20px;     /* 태그 아래 여백 더 넓게 */
   padding-bottom: 20px;    /* 전체 영역에 여유 공간 */
 }
@@ -2404,5 +2404,14 @@ section[id="User Test"] img{
   .bm-row{ padding: 14px 14px; gap: 10px; }
   .bm-logo{ width: 36px; height: 36px; }
   .bm-name{ font-size: .95rem; }
+}
+
+a[href="project4.html"] .project-image{ object-position: 62% 40%; }
+
+/* 프로젝트 카드 제목만 SF Pro Text Semibold */
+.project .project-title{
+  font-family: "SF Pro Text", "SF Pro Display", -apple-system, BlinkMacSystemFont,
+               "Helvetica Neue", "Segoe UI", Roboto, Arial, system-ui, sans-serif !important;
+  font-weight: 600; /* Semibold */
 }
 
