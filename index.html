@@ -2,6 +2,8 @@
 <html lang="en">
 
 <head>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Hajeong Hwang – UX Designer</title>
@@ -111,12 +113,19 @@
   </main>
 
   <footer>
-    <p class="footer-left">© 2025 Hajeong Hwang</p>
-    <div class="footer-right">
-      <a href="hajeongh@uw.edu" target="_blank">email ↗</a>
-      <a href="https://www.linkedin.com/in/hajeong-hwang-211613296/" target="_blank">linkedin ↗</a>
-    </div>
-  </footer>
+  <p class="footer-left">
+    © 2025 Hajeong Hwang. Made with 
+    <span class="cursor-matcha -rich">iced matcha latte</span>
+  </p>
+  <div class="footer-right">
+    <a href="mailto:hajeongh@uw.edu" target="_blank" class="fa-regular fa-envelope"></a>
+    <a href="https://www.linkedin.com/in/hajeong-hwang-211613296/" target="_blank" class="fa-brands fa-linkedin"></a>
+  </div>
+</footer>
+
+<!-- 리치 커서 엘리먼트 -->
+<img id="matchaCursor" src="images/Remove background project.png" alt="" aria-hidden="true">
+
 
   <div class="custom-cursor"></div>
   <div class="emoji-cursor">👀</div>
@@ -185,75 +194,33 @@
   </script>
 
 <script>
-const photos = [
-  { src: "images/IMG_9201.jpg",  title: "Picture of myself in NYC MOMA" }, // ← src로, 확장자 포함
-  { src: "images/moma-2.jpg",    title: "MOMA — detail shot" },
-  { src: "images/soho.jpg",      title: "Street in SoHo" },
-  { src: "images/brooklyn.jpg",  title: "Brooklyn Bridge" },
-  { src: "images/cafe.jpg",      title: "Cafe colorway" },
-  { src: "images/green.jpg",     title: "Green palette" }
-];
+(function(){
+  const trigger = document.querySelector('.cursor-matcha.-rich');
+  const ghost   = document.getElementById('matchaCursor');
+  if(!trigger || !ghost) return;
 
-const img   = document.getElementById("palImg");
-const fade  = document.querySelector(".pal-fade");
-const range = document.getElementById("palRange");
-const title = document.getElementById("palTitle");
-const swBox = document.getElementById("palSwatches");
-const knob  = document.querySelector(".pal-knob");
+  let active = false;
 
-// 옵션/스와치 렌더
-if (title) {
-  title.innerHTML = photos.map(p => `<option>${p.title}</option>`).join("");
-}
-if (swBox) {
-  swBox.innerHTML = photos.map((p,i)=>`
-    <button class="pal-swatch" data-i="${i}" aria-label="${p.title}">
-      <img src="${p.src}" alt="${p.title}">
-    </button>
-  `.trim()).join("");
-}
-
-function showByIndex(i){
-  i = Math.max(0, Math.min(photos.length-1, i));
-  if (title) title.selectedIndex = i;
-
-  const pct = (i/(photos.length-1))*100;
-  if (range) range.value = pct;
-  if (knob) knob.style.left = `calc(${pct}% * 1.0)`;
-
-  const nextUrl = photos[i].src;        // ← 항상 유효
-  if (!nextUrl) return;                 // 방어
-
-  // 부드럽게 페이드 전환
-  if (fade) fade.style.opacity = 1;
-  const next = new Image();
-  next.onload = () => {
-    img.src = next.src;
-    if (fade) fade.style.opacity = 0;
+  const show = () => {
+    active = true;
+    ghost.style.opacity = '1';
+    ghost.style.transform = 'translate(-40%, -60%) scale(1)';
   };
-  next.src = nextUrl;
-}
+  const hide = () => {
+    active = false;
+    ghost.style.opacity = '0';
+    ghost.style.transform = 'translate(-40%, -60%) scale(.98)';
+  };
+  const move = (e) => {
+    if(!active) return;
+    ghost.style.left = e.clientX + 'px';
+    ghost.style.top  = e.clientY + 'px';
+  };
 
-// 이벤트
-if (range) {
-  range.addEventListener("input", (e)=>{
-    const idx = Math.round((e.target.value/100) * (photos.length-1));
-    showByIndex(idx);
-  });
-}
-if (title) {
-  title.addEventListener("change", e => showByIndex(e.target.selectedIndex));
-}
-if (swBox) {
-  swBox.addEventListener("click", e=>{
-    const b = e.target.closest(".pal-swatch");
-    if(!b) return;
-    showByIndex(parseInt(b.dataset.i,10));
-  });
-}
-
-// 초기 표시
-showByIndex(0);
+  trigger.addEventListener('mouseenter', show);
+  trigger.addEventListener('mouseleave', hide);
+  trigger.addEventListener('mousemove', move);
+})();
 </script>
 
 </body>

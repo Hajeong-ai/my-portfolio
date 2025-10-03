@@ -71,6 +71,20 @@
     </section>
   </main>
 
+  <footer>
+  <p class="footer-left">
+    © 2025 Hajeong Hwang. Made with 
+    <span class="cursor-matcha -rich">iced matcha latte</span>
+  </p>
+  <div class="footer-right">
+    <a href="mailto:hajeongh@uw.edu" target="_blank" class="fa-regular fa-envelope"></a>
+    <a href="https://www.linkedin.com/in/hajeong-hwang-211613296/" target="_blank" class="fa-brands fa-linkedin"></a>
+  </div>
+</footer>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<!-- 리치 커서 엘리먼트 -->
+<img id="matchaCursor" src="images/Remove background project.png" alt="" aria-hidden="true">
+
   <script>
   document.addEventListener("DOMContentLoaded", function() {
     var typed = new Typed("#typed-text", {
@@ -78,19 +92,36 @@ strings: ["🇰🇷 → 🇺🇸 → 🇦🇹 → 🇺🇸"]
     });
   });
 </script>
-</body>
 
-</html>
+<script>
+(function(){
+  const trigger = document.querySelector('.cursor-matcha.-rich');
+  const ghost   = document.getElementById('matchaCursor');
+  if(!trigger || !ghost) return;
 
-<footer>
-  <p class="footer-left">© 2025 Hajeong Hwang</p>
-  <div class="footer-right">
-    <a href="hajeongh@uw.edu" target="_blank">email ↗</a>
-    <a href="https://www.linkedin.com/in/hajeong-hwang-211613296/" target="_blank">linkedin ↗</a>
-  </div>
-</footer>
+  let active = false;
 
+  const show = () => {
+    active = true;
+    ghost.style.opacity = '1';
+    ghost.style.transform = 'translate(-40%, -60%) scale(1)';
+  };
+  const hide = () => {
+    active = false;
+    ghost.style.opacity = '0';
+    ghost.style.transform = 'translate(-40%, -60%) scale(.98)';
+  };
+  const move = (e) => {
+    if(!active) return;
+    ghost.style.left = e.clientX + 'px';
+    ghost.style.top  = e.clientY + 'px';
+  };
 
+  trigger.addEventListener('mouseenter', show);
+  trigger.addEventListener('mouseleave', hide);
+  trigger.addEventListener('mousemove', move);
+})();
+</script>
 
 <div class="cursor-circle"></div>
 <script>
@@ -100,4 +131,9 @@ strings: ["🇰🇷 → 🇺🇸 → 🇦🇹 → 🇺🇸"]
     cursor.style.top = e.clientY + 'px';
   });
 </script>
+
+</body>
+</html>
+
+
 
