@@ -2415,3 +2415,48 @@ a[href="project4.html"] .project-image{ object-position: 40% 38%; }
   font-weight: 600; /* Semibold */
 }
 
+/* 카드 제목 기본 */
+.project-title{
+  font-family: "SF Pro Text", -apple-system, BlinkMacSystemFont,
+               "Helvetica Neue","Segoe UI", Roboto, sans-serif;
+  font-weight: 600;
+  color:#171717;
+  line-height: 1.15;
+}
+
+/* 하이라이트 */
+.project-title .hl{
+  position: relative;
+  display: inline;             /* 텍스트 길이만큼만 */
+  padding: 0 .08em;            /* 양옆 살짝 여유 */
+  --hl: #cfe3ff;               /* 기본 색 (프로젝트별로 덮어쓰기) */
+  --skew: -8deg;               /* 끝부분 기울기 (프로젝트별로 조절 가능) */
+}
+
+/* 사선 캡 하이라이트 바 */
+.project-title .hl::after{
+  content:"";
+  position:absolute;
+  left: -6px;                  /* 좌우 살짝 오버슈트 */
+  right: -6px;
+  bottom: .06em;               /* 텍스트 아래쪽에 붙도록 */
+  height: .58em;               /* 두께 */
+  background: var(--hl);
+  z-index: -1;                 /* 텍스트 뒤로 */
+  border-radius: 6px;
+  transform: skewX(var(--skew));
+  /* 모서리 사선 감(약간 찢어진 느낌) */
+  clip-path: polygon(6px 0, 100% 0, calc(100% - 6px) 100%, 0 100%);
+}
+
+/* 옵션: 제목이 두 줄 이상일 때 ‘직사각형’ 하이라이트로 안전하게 처리하고 싶다면 */
+.project-title .hl.multiline{
+  /* 아래 한 줄로 직사각 하이라이트 (사선 없이 안정) */
+  background-image: linear-gradient(var(--hl), var(--hl));
+  background-repeat: no-repeat;
+  background-size: 100% .58em;
+  background-position: 0 85%;
+  box-decoration-break: clone;   /* 줄바꿈마다 배경 복제 */
+}
+
+
