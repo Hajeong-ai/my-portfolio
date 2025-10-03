@@ -650,7 +650,7 @@ body.dark-mode .project {
   position: relative;
   width: 340px;
   height: 340px;
-  perspective: 1000px;
+  perspective: 1100px;
 }
 
 .profile-image {
@@ -713,7 +713,7 @@ body.dark-mode .project {
 }
 
 section {
-  margin-bottom: 140px;
+  margin-bottom: 80px;
   scroll-margin-top: 160px; /* 원하는 간격 */
 }
 
