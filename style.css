@@ -2780,4 +2780,104 @@ summary::-webkit-details-marker { display: none; }
   /* 13) 푸터: 동일 스타일 유지 + 줄바꿈만 */
   footer { flex-direction: column; gap: 12px; padding: 20px 0; }
 }
+/* ================== ABOUT PAGE — MOBILE SAFE OVERRIDES ================== */
+@media (max-width: 900px) {
+  /* 전역 가로 스크롤 방지 */
+  .about-page html,
+  .about-page body { overflow-x: hidden; }
+
+  /* 헤더에 가리지 않게 앵커 스크롤 마진 보정 */
+  .about-page [id] { scroll-margin-top: 90px; }
+
+  /* 1) 인트로 영역: 좌우 2열 → 세로 스택, 간격 정리 */
+  .about-page .intro-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;       /* 가운데 정렬 (디자인 유지) */
+    gap: 18px;                 /* 간격만 정돈 */
+  }
+  .about-page .intro-text {
+    margin-top: 8px;           /* 기존 40px → 모바일 축소 */
+    font-size: 1rem;           /* 톤 유지 */
+    line-height: 1.6;
+    text-align: center;        /* 센터로만 정렬, 색상/폰트 유지 */
+  }
+
+  /* 2) 프로필 이미지(원형) 고정크기 해제 + 안전한 반응형 */
+  .about-page .image-flip-wrapper {
+    width: min(68vw, 320px);
+    height: min(68vw, 320px);
+    margin: 0 auto;
+  }
+  .about-page .profile-image {
+    border-radius: 50%;
+    object-fit: cover;
+  }
+
+  /* 3) 좌측 고정 About(스크롤 시 가림 현상) → 고정 해제 */
+  .about-page #about {
+    position: static;
+    top: auto;
+  }
+
+  /* 4) 페이지 컨테이너 여백/폭: 들쭉날쭉 방지 */
+  .about-page .page-wrapper {
+    max-width: 100%;
+    padding-left: 16px !important;
+    padding-right: 16px !important;
+    margin: 90px auto 40px;        /* 헤더 아래 여백 확보 */
+  }
+
+  /* 5) 취미 갤러리: 그리드 자동 맞춤 + 캡션 가독성 유지 */
+  .about-page .hobby-gallery {
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 14px;
+  }
+  .about-page .hobby-item img {
+    width: 100%;
+    height: auto;
+  }
+  .about-page .hobby-item figcaption {
+    font-size: 0.84rem;
+  }
+
+  /* 6) 교육 섹션 타이포는 유지, 폭만 안전화 */
+  .about-page .education-section {
+    font-size: 0.95rem;      /* 기존 값 유지 */
+    line-height: 1.6;
+  }
+
+  /* 7) 사이드바: 요소는 유지하되 위로 재배치 (숨기지 않음) */
+  .about-page .sidebar {
+    position: static;
+    transform: none;
+    width: auto;
+    padding: 8px 0;
+    margin: 0 auto 10px;
+    background: transparent;
+    border: 0;
+    box-shadow: none;
+  }
+  .about-page .sidebar ul {
+    display: flex;
+    gap: 10px;
+    overflow-x: auto;      /* 항목 많아도 안전 */
+  }
+  .about-page .sidebar li { margin: 0; }
+  .about-page .sidebar a { white-space: nowrap; }
+
+  /* 8) 고정 높이/고정 폭 요소들만 유동화 */
+  .about-page .project-image { height: auto !important; }
+  .about-page .hero-image { padding: 0 !important; margin: 24px auto 40px !important; }
+  .about-page .hero-image img { transform: none !important; }
+
+  /* 9) 커서/호버 전용 데코는 터치에서만 비활성 (요소는 그대로 유지) */
+  @media (hover:none), (pointer:coarse) {
+    .about-page .custom-cursor,
+    .about-page .emoji-cursor,
+    .about-page #matchaCursor {
+      opacity: 0; pointer-events: none;
+    }
+  }
+}
 
