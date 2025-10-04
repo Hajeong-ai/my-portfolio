@@ -2696,3 +2696,88 @@ summary::-webkit-details-marker { display: none; }
   box-shadow: none;
 }
 
+/* ==================== MOBILE SAFE OVERRIDES (NO VISUAL RESTYLE) ==================== */
+@media (max-width: 900px) {
+  /* 0) 전역 가로 스크롤 제거 + 미디어 요소 유동화 */
+  html, body { overflow-x: hidden; }
+  img, video, canvas { max-width: 100%; height: auto; }
+
+  /* 1) 헤더: 기존 스타일은 유지하되 공간만 축소(wrap 방지) */
+  .header-container { padding: 14px 16px; }
+  .logo { white-space: nowrap; }
+
+  /* 2) 내비게이션: 데스크톱 디자인 유지 + 모바일에선 드롭다운 형태로만 배치 변경 */
+  .hamburger { display: block; background: none; border: 0; padding: 6px; cursor: pointer; z-index: 2001; }
+  .hamburger span { display: block; width: 26px; height: 2px; background: #111; margin: 6px 0; transition: transform .25s ease, opacity .25s ease; }
+  .hamburger.is-open span:nth-child(1){ transform: translateY(8px) rotate(45deg); }
+  .hamburger.is-open span:nth-child(2){ opacity: 0; }
+  .hamburger.is-open span:nth-child(3){ transform: translateY(-8px) rotate(-45deg); }
+
+  .nav-links {
+    position: fixed;
+    right: 16px; top: 56px; left: 16px;
+    display: none;            /* 열릴 때만 보이게 */
+    flex-direction: column;
+    gap: 10px;
+    padding: 12px 14px;
+    background: #fff;
+    border: 1px solid #eee;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0,0,0,.08);
+    z-index: 2000;
+  }
+  .nav-links.open { display: flex; }
+  .nav-links a { display: block; padding: 8px 2px; font-size: 1rem; }
+
+  /* 3) 좌측 About + 우측 Projects: 세로 스택 (스타일은 그대로) */
+  .about-project-wrapper { flex-direction: column; gap: 32px; padding: 24px 16px; }
+  #about, #projects { width: 100%; min-width: 0; }
+  #about { position: static; top: auto; }  /* sticky 해제(가림 방지) */
+
+  /* 4) 고정폭/고정높이 해제 (모바일에서만) */
+  .bm-item { width: 100%; }                 /* 1100px → 100% */
+  .project-image { height: auto !important; } /* 400px → auto */
+  .hero-image { padding: 0 !important; margin: 24px auto 40px !important; }
+  .hero-image img { transform: none !important; }
+
+  /* 5) 메타/그리드: 한 컬럼으로만 바꿈 (타이포/색상 그대로) */
+  .project-meta { display: grid; grid-template-columns: 1fr; gap: 18px; margin-top: 28px; }
+  .research-content { display: grid !important; grid-template-columns: 1fr !important; row-gap: 20px !important; }
+
+  /* 6) 슬라이드/프로토타입: 넓이만 유동화 */
+  .ut-stage { width: 100%; aspect-ratio: 16/9; }
+  .ut-slide img { max-width: 94%; max-height: 94%; transform: translateY(0); }
+
+  /* 7) GIF/이미지 묶음: 가운데 정렬 + 반응형 폭만 */
+  .solution-web { justify-content: center; }
+  .solution-web img { width: clamp(560px, 90vw, 900px); }
+  .solutions-row { justify-content: center; gap: 10px; max-width: 920px; margin: 12px auto 0; flex-wrap: wrap; }
+  .solution-image img { width: clamp(200px, 44vw, 340px); }
+
+  /* 8) 사이드바 “숨기지 않고” 상단에 블록으로 재배치 (요소 유지) */
+  .sidebar {
+    position: static; transform: none; left: auto; top: auto;
+    width: auto; padding: 8px 0; margin: 0 16px;
+    background: transparent; box-shadow: none; border: 0;
+  }
+  .sidebar ul { display: flex; gap: 12px; overflow-x: auto; }
+  .sidebar li { margin: 0; }
+  .sidebar a { white-space: nowrap; padding-bottom: 6px; }
+
+  /* 9) 프로젝트 카드/리스트는 기존 스타일 유지, 단 폭만 100% */
+  .project-link, .project { width: 100%; }
+
+  /* 10) 고정 커서/호버 전용 요소는 터치에서만 비표시(요소 제거 아님) */
+  .custom-cursor, .emoji-cursor, #matchaCursor { opacity: 0; pointer-events: none; }
+
+  /* 11) 앵커 스크롤 보정(고정 헤더에 가려지지 않게) */
+  [id], .project { scroll-margin-top: 90px; }
+
+  /* 12) 하단 여백 과다 방지 (디자인 유지, 공간만 축소) */
+  .page-wrapper { padding-bottom: 40px !important; margin-bottom: 24px !important; }
+  .page-wrapper > section:last-child { margin-bottom: 16px !important; }
+
+  /* 13) 푸터: 동일 스타일 유지 + 줄바꿈만 */
+  footer { flex-direction: column; gap: 12px; padding: 20px 0; }
+}
+
