@@ -1455,7 +1455,7 @@ section[id="User Test"]{
   gap: 20px;                 /* 카드 간격 */
   align-items: flex-start;
   overflow-x: auto;          /* 가로 스크롤 */
-  padding: 12px 0 8px;
+  padding: px 0 8px;
   scroll-snap-type: x mandatory;  /* 옵션: 스냅 스크롤 */
 }
 
@@ -1468,6 +1468,7 @@ section[id="User Test"] img{
   border: 1px solid #eaeaea;
   box-shadow: 0 6px 18px rgba(0,0,0,.06);
   scroll-snap-align: start;  /* 옵션: 스냅 위치 */
+  margin-right: 18px; /* 이미지 사이 간격 */
 }
 
 /* ===== Solution Section ===== */
@@ -1714,7 +1715,7 @@ section[id="User Test"] img{
 }
 
 .highlight.is-on {
-  background-size: 100% 60%;    /* 100%까지 차오름 */
+  background-size: 100% 50%;    /* 100%까지 차오름 */
 }
 
 @media (prefers-reduced-motion: reduce) {
