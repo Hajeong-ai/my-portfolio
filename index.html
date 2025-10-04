@@ -33,8 +33,17 @@
       <h2 class="intro-heading">
         <span class="line1">Hi! I'm Hajeong,</span><br>
         <span class="line2">a <span id="typed-text"></span></span></h2>
-        <img src="images/IMG_9201.jpg" width="300" style="border-radius: 2px; margin-top: 40px;"/>
-      <p class="image-caption">Picture of myself at New York MoMa</p>  
+<p class="intro-location">Based in Seattle, Washington</p>
+
+<div class="intro-worklist">
+  <h3 class="intro-subheading">My Work</h3>
+  <nav class="intro-quicknav-vertical" aria-label="Quick project menu">
+    <a href="#overleaf">Overleaf Re-Design</a>
+    <a href="#rol">Routine Out Loud</a>
+    <a href="#duo">Duo Mobile App Re-Design</a>
+    <a href="#placie">Placie</a>
+  </nav>
+</div>
     </section>
 
 <section id="projects" data-aos="fade-up">
@@ -46,15 +55,16 @@
 
 <!-- ✅ Project 4 -->
 <a href="project4.html" class="project-link" target="_self">
-  <div class="project" data-aos="zoom-in-up">
-    <img src="images/overeleaf ps thumbnail.png" alt="Project 4 Thumbnail" class="project-image" />
-<h3 class="project-title">
-  <span class="hl" style="--hl:#C8DDCB; --skew:-8deg;">Overleaf Re-Design</span>
-</h3>
+  <div class="project" data-aos="zoom-in-up" id="overleaf">
+    <img src="images/overeleaf ps thumbnail.png" alt="Overleaf Redesign Thumbnail" class="project-image" />
+    <h3 class="project-title">
+      <span class="hl" style="--hl:#C8DDCB; --skew:-8deg;">Overleaf Re-Design</span>
+      <span class="project-year">· 2025</span>
+    </h3>
     <div class="project-tags">
       <span class="tag">UX Design</span>
       <span class="tag">UX Research</span>
-            <span class="tag">AI</span>
+      <span class="tag">AI</span>
       <span class="tag">Design For Passion</span>
     </div>
   </div>
@@ -62,14 +72,14 @@
 
 <!-- ✅ Project 1 -->
 <a href="project1.html" class="project-link" target="_self">
-  <div class="project" data-aos="zoom-in-up">
-    <img src="images/ROL ps thumbnail.png" alt="Project 1 Thumbnail" class="project-image" />
-<h3 class="project-title">
-  <span class="hl" style="--hl:#cfe3ff; --skew:-8deg;">Routine Out Loud</span>
-</h3>
-
+  <div class="project" data-aos="zoom-in-up" id="rol">
+    <img src="images/ROL ps thumbnail.png" alt="ROL Thumbnail" class="project-image" />
+    <h3 class="project-title">
+      <span class="hl" style="--hl:#cfe3ff; --skew:-8deg;">Routine Out Loud</span>
+      <span class="project-year">· 2025</span>
+    </h3>
     <div class="project-tags">
-      <span class="tag">Internship</span>
+      <span class="tag">Startup</span>
       <span class="tag">Product Design</span>
       <span class="tag">AI Design</span>
       <span class="tag">0 to 1</span>
@@ -79,11 +89,12 @@
 
 <!-- ✅ Project 3 -->
 <a href="project3.html" class="project-link" target="_self">
-  <div class="project" data-aos="zoom-in-up">
-    <img src="images/New duo thumbnail.png" alt="Project 3 Thumbnail" class="project-image" />
-<h3 class="project-title">
-  <span class="hl" style="--hl:#d3f3cb; --skew:-8deg;">Duo Mobile App Re-Design</span>
-</h3>
+  <div class="project" data-aos="zoom-in-up" id="duo">
+    <img src="images/New duo thumbnail.png" alt="Duo Mobile Redesign Thumbnail" class="project-image" />
+    <h3 class="project-title">
+      <span class="hl" style="--hl:#d3f3cb; --skew:-8deg;">Duo Mobile App Re-Design</span>
+      <span class="project-year">· 2024</span>
+    </h3>
     <div class="project-tags">
       <span class="tag">UX Research</span>
       <span class="tag">UX Design</span>
@@ -94,11 +105,12 @@
 
 <!-- ✅ Project 2 -->
 <a href="project2.html" class="project-link" target="_self">
-  <div class="project" data-aos="zoom-in-up">
-    <img src="images/Placie orange thumbnail.png" alt="Project 2 Thumbnail" class="project-image" />
-<h3 class="project-title">
-  <span class="hl" style="--hl:#FFE9CF; --skew:-8deg;">Placie</span>
-</h3>
+  <div class="project" data-aos="zoom-in-up" id="placie">
+    <img src="images/Placie orange thumbnail.png" alt="Placie Thumbnail" class="project-image" />
+    <h3 class="project-title">
+      <span class="hl" style="--hl:#FFE9CF; --skew:-8deg;">Placie</span>
+      <span class="project-year">· 2025</span>
+    </h3>
     <div class="project-tags">
       <span class="tag">UI/UX Design</span>
       <span class="tag">UX Research</span>
@@ -221,6 +233,55 @@
   trigger.addEventListener('mouseleave', hide);
   trigger.addEventListener('mousemove', move);
 })();
+</script>
+<script>
+  // ID ↔ 링크 매핑
+  const map = {
+    rol:      document.querySelector('.intro-quicknav-vertical a[href="#rol"]'),
+    duo:      document.querySelector('.intro-quicknav-vertical a[href="#duo"]'),
+    placie:   document.querySelector('.intro-quicknav-vertical a[href="#placie"]'),
+    overleaf: document.querySelector('.intro-quicknav-vertical a[href="#overleaf"]')
+  };
+
+  // 관찰 대상(프로젝트 섹션들)
+  const targets = Object.keys(map)
+    .map(id => document.getElementById(id))
+    .filter(Boolean);
+
+  // 활성 링크 토글 헬퍼
+  function setActive(id){
+    Object.values(map).forEach(a => a && a.classList.remove('active'));
+    map[id] && map[id].classList.add('active');
+    // 접근성: aria-current 부여
+    Object.entries(map).forEach(([k,a]) => a && a.setAttribute('aria-current', k===id?'true':'false'));
+  }
+
+  // 인터섹션 옵저버: 뷰포트 중앙 근처에 들어오면 활성 처리
+  const io = new IntersectionObserver((entries) => {
+    // 가시율 높은 것 위주로 정렬해 가장 두드러진 섹션을 active
+    const visible = entries
+      .filter(e => e.isIntersecting)
+      .sort((a,b) => b.intersectionRatio - a.intersectionRatio);
+    if (visible[0]) setActive(visible[0].target.id);
+  }, {
+    root: null,
+    threshold: [0.2, 0.4, 0.6],   // 일부만 보여도 반응
+    rootMargin: '-35% 0px -50% 0px' // 중앙 근처에서 잡히도록 오프셋
+  });
+
+  targets.forEach(el => io.observe(el));
+
+  // 링크 클릭 시 부드러운 스크롤(선택)
+  document.querySelector('.intro-quicknav-vertical')
+    .addEventListener('click', (e) => {
+      const a = e.target.closest('a[href^="#"]');
+      if(!a) return;
+      const id = a.getAttribute('href').slice(1);
+      const el = document.getElementById(id);
+      if(!el) return;
+      e.preventDefault();
+      el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
 </script>
 
 </body>

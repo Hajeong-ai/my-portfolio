@@ -647,6 +647,7 @@ body.dark-mode .project {
   font-size: 1rem;
   line-height: 1.6;
   color: #808080;
+  margin-top: 40px; /* 🔹 위쪽 여백 추가 */
 }
 
 .image-flip-wrapper {
@@ -2593,3 +2594,105 @@ summary::-webkit-details-marker { display: none; }
   .bm-content { transition: none !important; }
   .bm-chevron { transition: none !important; }
 }
+.project-title{
+  display:flex;
+  align-items:baseline;
+  gap:12px;                 /* 제목-연도 간격 */
+}
+
+.project-year{
+  color:#9fa4ad;           /* 연한 회색 */
+  font-size:1rem;       /* 제목보다 살짝 작게 */
+  font-weight:400;
+}
+
+.centered-section p {
+  font-size: 0.9rem;       /* 글자 크기 살짝 작게 */
+  color: #8d8d8d;          /* 연한 회색 */
+  margin-top: 18px;        /* 위 문장과 간격 */
+  letter-spacing: 0.2px;   /* 가독성 살짝 높이기 */
+}
+.intro-location {
+  font-size: 1.4rem;
+  color: #6b7280;
+  margin-top: 8px;
+  margin-bottom: 28px; /* 위 글자와 메뉴 간격 */
+}
+
+.intro-subheading {
+  font-size: 0.95rem;
+  font-weight: 400;
+  color: #0b5fff;  /* 부드러운 포인트 컬러 (보라톤) */
+  margin-bottom: 10px;
+}
+
+.intro-quicknav-vertical {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 6px;
+}
+
+.intro-quicknav-vertical a {
+  font-size: 0.95rem;
+  color: #6b7280;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.intro-quicknav-vertical a:hover {
+  color: #0b5fff;
+}
+/* 왼쪽 About 섹션을 고정(헤더 아래에 붙도록) */
+#about {
+  position: sticky;
+  top: 100px;          /* 헤더 높이에 맞춰 조정 */
+  align-self: start;
+}
+
+/* 세로 링크 스타일(이미 있으면 보완) */
+.intro-quicknav-vertical {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.intro-quicknav-vertical a {
+  font-size: 0.95rem;
+  color: #828791;
+  text-decoration: none;
+  transition: color .2s ease;
+}
+
+.intro-quicknav-vertical a:hover { color: #0b5fff; }
+
+/* 활성 상태(현재 보고 있는 섹션) */
+.intro-quicknav-vertical a.active {
+  color: #0b5fff;           /* 포인트 색 */
+  font-weight: 400;
+}
+
+/* 고정 헤더 때문에 앵커로 스크롤할 때 가려지지 않게 */
+.project { scroll-margin-top: 120px; }  /* 헤더 높이에 맞춰 조정 */
+/* ==== Profile image: stop flipping ==== */
+.image-flip-wrapper { perspective: none; }
+
+.profile-image {
+  transform: none !important;                 /* 기본 회전 제거 */
+  transition: transform .25s ease, box-shadow .25s ease;
+  backface-visibility: visible;               /* 뒤집힘 이슈 방지 */
+}
+
+/* hover 시에도 회전 금지 — 원하면 살짝 떠오르게만 */
+.image-flip-wrapper:hover .profile-image {
+  transform: translateY(-2px);                /* 원치 않으면 이 줄 삭제 */
+  box-shadow: 0 6px 20px rgba(59,130,246,.15);
+}
+
+/* 기존 플립 규칙 무력화 */
+.image-flip-wrapper:hover .front,
+.image-flip-wrapper:hover .back {
+  transform: none !important;
+  box-shadow: none;
+}
+
