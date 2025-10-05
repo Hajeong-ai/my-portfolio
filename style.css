@@ -783,7 +783,7 @@ color: #000;
 
 .solution-text {
   flex: 1;
-  max-width: 1000px;
+  max-width: 1100px;
 }
 
 .solution-text h3 {
@@ -2922,5 +2922,33 @@ figcaption {
   font-size: 0.9rem;
   color: #666;
   margin-top: 4px;
+}
+/* 링크의 기본 파란색 제거 + 밑줄 제어는 내부 label에서 */
+.soft-link{
+  color: inherit;            /* 기본 파란색 제거 */
+  text-decoration: none;     /* 앵커 자체 밑줄 제거 */
+}
+
+.soft-link .label{
+  color: #3e3e3e;            /* 약간 회색 (slate-500 정도) */
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  text-decoration-thickness: .08em;
+}
+
+.soft-link .label:hover{
+  color: #000000;            /* 호버 시 살짝 진하게 (선택) */
+}
+
+/* 아이콘은 기본 색(상위 텍스트 색) 유지 → 회색 적용 안 됨 */
+.soft-link .icon{
+  margin-left: .25rem;
+}
+
+/* 접근성: 키보드 포커스 표시 */
+.soft-link:focus-visible{
+  outline: 2px solid currentColor;
+  outline-offset: 2px;
+  border-radius: 4px;
 }
 
