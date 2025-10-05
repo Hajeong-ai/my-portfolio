@@ -2951,4 +2951,259 @@ figcaption {
   outline-offset: 2px;
   border-radius: 4px;
 }
+/* ===== Theming ===== */
+:root{
+  --ix-accent: #6b8bff;
+  --ix-accent-2: #8ee3cf;
+  --ix-ink-900: #1c222f;
+  --ix-ink-700: #334155;
+  --ix-ink-500: #64748b;
+  --ix-line: #e5e7eb;
+  --ix-card: rgba(255,255,255,.6);
+}
 
+/* ===== Section backdrop (소프트 그리드 + 빛 번짐) ===== */
+.impactx{
+  position: relative;
+  padding: clamp(24px,4vw,48px) clamp(12px,3vw,24px);
+  border-radius: 18px;
+  background:
+    radial-gradient(1200px 400px at 10% -10%, color-mix(in oklab, var(--ix-accent) 30%, transparent) 0, transparent 60%),
+    radial-gradient(900px 500px at 100% 10%, color-mix(in oklab, var(--ix-accent-2) 30%, transparent) 0, transparent 60%),
+    #fff;
+  overflow: hidden;
+  border: 1px solid var(--ix-line);
+  margin-bottom: 0;
+}
+.impactx::before{
+  /* 도트 그리드 */
+  content: "";
+  position: absolute; inset: 0;
+  background-image:
+    radial-gradient(#000 1px, transparent 1.5px);
+  background-size: 18px 18px;
+  opacity: .06;
+  pointer-events: none;
+}
+
+/* ===== Header ===== */
+.impactx-title{
+  font-size: clamp(1.4rem, 1rem + 2vw, 2.2rem);
+  font-weight: 400;
+  letter-spacing: -0.02em;
+  margin: 0;
+  display: inline-flex; align-items: center; gap: .6rem;
+  color: var(--ix-ink-900);
+}
+.impactx-title .spark{
+  width: 14px; height: 14px; border-radius: 50%;
+  background: conic-gradient(from 0deg, var(--ix-accent), var(--ix-accent-2), var(--ix-accent));
+  filter: blur(.2px) saturate(1.2);
+  box-shadow: 0 0 24px color-mix(in oklab, var(--ix-accent) 50%, transparent);
+}
+.impactx-sub{
+  margin: 6px 0 14px;
+  color: var(--ix-ink-500);
+  font-size: .95rem;
+}
+
+/* ===== KPI Grid ===== */
+.impactx-kpi-grid{
+  list-style: none; padding: 0; margin: 0;
+  display: grid; gap: clamp(12px,2.4vw,18px);
+  grid-template-columns: repeat(3, minmax(0,1fr));
+}
+@container (max-width: 720px){ .impactx-kpi-grid{ grid-template-columns: 1fr; } } /* 컨테이너쿼리 지원 시 */
+@media (max-width: 860px){ .impactx-kpi-grid{ grid-template-columns: 1fr; } }
+
+.impactx-card{
+  position: relative; border-radius: 16px;
+  background: var(--ix-card);
+  border: 1px solid color-mix(in oklab, var(--ix-line) 80%, transparent);
+  box-shadow:
+    0 1px 0 rgba(16,24,40,.04),
+    0 8px 24px rgba(16,24,40,.06),
+    inset 0 0 0 1px rgba(255,255,255,.3);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  padding: clamp(14px,2.2vw,18px);
+}
+
+.impactx-kpi{
+  display: grid;
+  grid-template-columns: auto 1fr;
+  grid-template-rows: auto auto;
+  column-gap: 14px;
+  align-items: center;
+}
+.impactx-ring{
+  grid-row: 1 / span 2;
+  width: 54px; height: 54px; border-radius: 50%;
+  background: conic-gradient(from 0deg, var(--ix-accent), var(--ix-accent-2), var(--ix-accent));
+  mask: radial-gradient(circle 20px, #000 98%, transparent 100%);
+  filter: saturate(1.2);
+  box-shadow: 0 0 24px color-mix(in oklab, var(--ix-accent) 40%, transparent);
+}
+.impactx-num{
+  font-size: clamp(1.8rem, 1.2rem + 2vw, 2.4rem);
+  font-weight: 900; letter-spacing: -0.02em;
+  color: var(--ix-ink-900);
+  line-height: 1;
+}
+.impactx-label{
+  font-weight: 700; color: var(--ix-ink-700);
+  margin-top: 2px;
+}
+.impactx-note{
+  grid-column: 1 / -1;
+  margin: 8px 0 0;
+  font-size: .92rem; color: var(--ix-ink-500);
+}
+
+/* ===== Proof chips ===== */
+.impactx-proof{
+  display: flex; flex-wrap: wrap; gap: 10px;
+  margin-top: clamp(12px,2vw,16px);
+}
+.impactx-chip{
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 8px 12px; border-radius: 999px;
+  text-decoration: none;
+  background: linear-gradient(#f8fafc, #f3f4f6);
+  border: 1px solid var(--ix-line);
+  color: var(--ix-ink-700);
+  transition: transform .18s ease, box-shadow .18s ease, border-color .18s ease;
+}
+.impactx-chip:hover{
+  transform: translateY(-1px);
+  border-color: color-mix(in oklab, var(--ix-accent) 35%, var(--ix-line));
+  box-shadow: 0 6px 18px rgba(17, 24, 39, .08);
+}
+
+/* ===== Before / After slider ===== */
+.impactx-ba{ margin-top: clamp(14px,2.4vw,22px); }
+.impactx-ba-frame{
+  position: relative; border-radius: 16px; overflow: hidden;
+  border: 1px solid var(--ix-line); background:#fff;
+}
+.impactx-ba-frame img{ display:block; width:100%; height:auto; }
+.impactx-ba-after{
+  position:absolute; inset:0; width:50%; overflow:hidden;
+  border-right: 2px solid var(--ix-ink-900);
+}
+.impactx-range{
+  position:absolute; inset:0; width:100%; height:100%;
+  appearance:none; background:transparent; cursor:ew-resize;
+}
+.impactx-range::-webkit-slider-thumb{
+  appearance:none; width:24px; height:100%; background:transparent;
+}
+.impactx-handle{
+  position:absolute; top:50%; left:50%; transform:translate(-50%,-50%);
+  width:40px; height:40px; border-radius:50%;
+  background: #fff; border: 1px solid var(--ix-line);
+  display:flex; align-items:center; justify-content:center;
+  box-shadow: 0 6px 20px rgba(0,0,0,.1);
+  pointer-events:none; user-select:none;
+}
+.impactx-handle span{ font-size: 18px; color: var(--ix-ink-900); }
+.impactx-ba-caption{ margin: 8px 2px 0; color: var(--ix-ink-500); font-size:.95rem; }
+
+/* ===== Reveal animation ===== */
+.reveal{ opacity:0; transform: translateY(12px); }
+.reveal.is-in{ opacity:1; transform: translateY(0); transition: .5s cubic-bezier(.2,.65,.2,1); }
+@media (prefers-reduced-motion: reduce){
+  .reveal, .reveal.is-in{ opacity:1; transform:none; transition:none; }
+}
+
+/* 1) 왼쪽 동그라미 숨기기 */
+.impactx-ring{
+  display: none !important;
+}
+
+/* 2) KPI 레이아웃을 가로→세로 중앙 정렬로 변경 */
+.impactx-kpi{
+  display: flex !important;          /* 기존 grid 덮어쓰기 */
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;                 /* 글자도 가운데 */
+  gap: 6px;                           /* 숫자/라벨 간격 */
+  min-height: 120px;                  /* 카드 높이 안정 (원하면 조절) */
+}
+
+/* 3) 숫자/라벨 미세 스타일 */
+.impactx-num{
+  line-height: 1;
+  display: block;
+}
+.impactx-label{
+  margin: 0;                          /* 위 여백 초기화 */
+}
+
+/* (선택) 카드 전체 가운데 정렬 보강 */
+.impactx-card{
+  text-align: center;
+}
+/* 텍스트 전용 카드(중앙 정렬 높이 보정) */
+.impactx-kpi--text{
+  min-height: 120px;              /* 숫자 카드와 높이 맞춤 */
+  justify-content: center;
+}
+
+/* 문구 스타일 */
+.impactx-announce{
+  margin: 0;
+  text-align: center;
+  font-weight: 700;
+  font-size: clamp(0.98rem, 0.9rem + 0.4vw, 1.15rem);
+  line-height: 1.4;
+  color: var(--ix-ink-700);
+  max-width: 28ch;                /* 너무 넓어지지 않게 */
+  text-wrap: balance;             /* 지원 브라우저에서 예쁜 줄바꿈 */
+}
+/* 그리드 전체 너비 차지 (3칸 전부) */
+.impactx-card.--wide{
+  grid-column: 1 / -1;
+}
+
+/* 숫자 카드용 중앙 정렬을 텍스트 카드에서는 해제 */
+.impactx-kpi--text{
+  display: flex;            /* grid 덮어쓰기 */
+  align-items: flex-start;
+  justify-content: center;  /* 수직 여백만 중앙으로 */
+  text-align: left;         /* 텍스트는 왼쪽 정렬 */
+  min-height: auto;         /* 높이 강제값 제거 */
+  padding: clamp(14px, 2.2vw, 18px);
+}
+
+/* 문구가 가로로 퍼지도록 너비 제한 제거 */
+.impactx-announce{
+  margin: 0;
+  max-width: none;          /* 이전 28ch 제한 무력화 */
+  width: 100%;
+  line-height: 1.55;
+  font-weight: 400;
+  font-size: clamp(1rem, 0.9rem + 0.4vw, 1.15rem);
+  letter-spacing: .1px;
+}
+/* 이 섹션만 흰색 패널로 보이게 */
+.impactx.prelim{
+  background: #fff !important;   /* 그라데이션 덮어쓰기 */
+  border: 1px solid var(--ix-line);
+  border-radius: 18px;
+  box-shadow: 0 8px 28px rgba(17,24,39,.08);
+  position: relative;
+}
+
+/* impactx의 점무늬/오버레이가 있다면 제거 */
+.impactx.prelim::before{
+  display: none !important;
+}
+
+/* (선택) 유리효과 카드라면 이 섹션 안에서는 순수 흰색 카드로 */
+.impactx.prelim .impactx-card{
+  background: #fff !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+}

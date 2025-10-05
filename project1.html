@@ -57,13 +57,21 @@
 </section>
 
   <div class="spacer"></div>
-<h2>🚀 <span class="highlight">Selected for the Pre-Startup Package, awarded government funding of 30M KRW</span></h2>
+
+<li class="impactx-card reveal --wide">
+  <div class="impactx-kpi impactx-kpi--text">
+    <p class="impactx-announce">
+🏆 Selected for the <strong>Pre-Startup Package</strong>, awarded government funding of <strong>30M KRW</strong>
+    </p>
+  </div>
+</li>
+
   <div class="spacer"></div>
 <section id="overview">
   <h2>Overview</h2>
   <p>Nowadays, people often set ambitious wellness goals but lose motivation along the way.
-The reason for this is because of the pressure to meet ideal standards amplified by constant social comparison, turns what should be a journey of self-care into a source of stress and discouragement. 
-Solution is ROL. ROL is a mobile routine app that allows users to build daily routine and achieve wellness goals. ROL helps users to create, track, and maintain habits for healthier and more productive life.</p>
+The reason for this is because of the pressure to meet ideal standards amplified by constant social comparison, turns what should be a journey of self-care into a source of stress and discouragement.</br>
+<p>Solution is ROL. ROL is a mobile routine app that allows users to build daily routine and achieve wellness goals. ROL helps users to create, track, and maintain habits for healthier and more productive life.</p>
 
   <!-- ✅ 프로젝트 정보: Timeline, Role, Collaborators, Tools -->
   <div class="project-meta">
@@ -465,7 +473,7 @@ On the payment page, users can subscribe for a VIP pass, unlocking the ability t
 
 
       <section id="impact">
-        <h2>Impact</h2>
+        <h2>My Impact</h2>
         <div class="spacer"></div>
         <p>1. By defining a consistent design system during the early stage of the project, 
           we established shared visual and interaction guidelines that streamlined communication between designers and developers. <span class="highlight">This not only ensured design consistency across screens but also enabled developers to implement components more efficiently, reducing rework and development time.</span></br>
@@ -744,6 +752,63 @@ On the payment page, users can subscribe for a VIP pass, unlocking the ability t
       });
     }
   })();
+</script>
+<script>
+// ---------- Reveal on view (공통) ----------
+const revealEls = document.querySelectorAll('.reveal');
+const ioReveal = 'IntersectionObserver' in window
+  ? new IntersectionObserver((ents, obs)=>{
+      ents.forEach(e=>{
+        if(e.isIntersecting){
+          e.target.classList.add('is-in');
+          obs.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.35 })
+  : null;
+
+revealEls.forEach(el=>{
+  if(ioReveal) ioReveal.observe(el);
+  else el.classList.add('is-in'); // 폴백
+});
+
+// ---------- KPI 숫자 카운트업 ----------
+function countUp(el){
+  const target   = Number(el.dataset.target || 0);
+  const suffix   = (el.dataset.suffix || '');
+  const dur      = Number(el.dataset.duration || 1100); // ms
+  const decimals = Number(el.dataset.decimals || 0);     // 소수점 자릿수 (옵션)
+
+  let start = null;
+  const ease = t => 1 - Math.pow(1 - t, 3); // cubic out
+
+  function step(ts){
+    if(!start) start = ts;
+    const p   = Math.min(1, (ts - start) / dur);
+    const val = target * ease(p);
+    el.textContent = val.toFixed(decimals) + suffix;
+    if(p < 1) requestAnimationFrame(step);
+  }
+  requestAnimationFrame(step);
+}
+
+// .impactx-num 이 보일 때 1회만 실행
+const numEls = document.querySelectorAll('.impactx-num');
+const ioNums = 'IntersectionObserver' in window
+  ? new IntersectionObserver((ents, obs)=>{
+      ents.forEach(e=>{
+        if(e.isIntersecting){
+          countUp(e.target);
+          obs.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.6 })
+  : null;
+
+numEls.forEach(el=>{
+  if(ioNums) ioNums.observe(el);
+  else countUp(el); // 폴백
+});
 </script>
 
 </body>
