@@ -1974,10 +1974,10 @@ section[id="User Test"] img{
 }
 
 .hero-subtitle {
-  font-size: 20px;
+  font-size: 18px;
   font-weight: 300;
   color: #7d7d7d;
-  margin-bottom: 0; 
+  margin-top: 0; 
 }
 
 .hero-image img {
@@ -3284,3 +3284,17 @@ figcaption {
 .spacer2 {
   height: 20px; /* 행 사이 간격 */
 }
+/* 작은 섹션 라벨 (검정 글자 / 흰 배경) */
+.kicker{
+  margin: 0 0 8px;
+  font-size: .8rem;           /* 작게 */
+  line-height: 1.2;
+  font-weight: 400;
+  letter-spacing: .06em;
+  text-transform: uppercase;  /* 소문자 유지 원하면 이 줄 지워도 됨 */
+  color: #111;
+}
+
+/* 섹션 공통 간격 보정(선택) */
+.project-section > h2:first-child{ margin-top: 0; }
+.project-section .kicker + *{ margin-top: 0; } /* kicker 바로 뒤 요소 위여백 제거 */
