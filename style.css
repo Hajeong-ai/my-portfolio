@@ -1976,7 +1976,7 @@ section[id="User Test"] img{
 .hero-subtitle {
   font-size: 16px;
   font-weight: 300;
-  color: #7d7d7d;
+  color: #1a1a1a;
   margin-top: 0; 
 }
 
@@ -2169,7 +2169,7 @@ section[id="User Test"] img{
 /* 제목·부제 ↔ 이미지 간격 최소화 */
 .hero-text{ margin: 0 0 6px 0 !important; }
 .hero-title{ margin: 0 !important; font-size: 30px; font-weight: 600; color:#343434; }
-.hero-subtitle{ margin: 2px 0 0 !important; font-size: 18px; font-weight: 300; color:#7d7d7d; }
+.hero-subtitle{ margin: 2px 0 0 !important; font-size: 22px; font-weight: 300; color:#242424; }
 
 /* 4) 모바일은 들여쓰기/폭 통일 */
 @media (max-width: 900px){
@@ -2898,7 +2898,7 @@ summary::-webkit-details-marker { display: none; }
 .project-tags{
   margin-left: 3px;
   margin-top: 4px;
-  font-size: 12px;
+  font-size: 14px;
   color: #6b7280;          /* slate-500 */
   white-space: normal;     /* 필요 시 자동 줄바꿈 허용 */
   word-break: keep-all;    /* 한국어/영어 섞일 때 보기 좋게 */
@@ -3306,4 +3306,9 @@ figcaption {
   width: 100%;
   display: block;
   position: relative;
+}
+/* 카드에 --accent가 주입되면, hover 시 태그 텍스트를 동일 색으로 */
+.project:hover .project-tags{
+  color: var(--accent, #007bff);
+  transition: color .2s ease;
 }

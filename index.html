@@ -31,16 +31,17 @@
     <div class="about-project-wrapper">
      <section id="about" data-aos="fade-up" class="centered-section">
       <h2 class="intro-heading">
-        <span class="line1">Hi! I'm Hajeong,</span><br>
+        <span class="line1">👋 Hi! I'm Hajeong,</span><br>
         <span class="line2">a <span id="typed-text"></span></span></h2>
 <p class="intro-location">Based in Seattle, Washington</p>
-
+        <div class="spacer"></div>
 <div class="intro-worklist">
-
   <nav class="intro-quicknav-vertical" aria-label="Quick project menu">
-    <a href="#overleaf">· Overleaf Redesign</a>
+
+    <!-- <p>Featured Works</p> -->
+    <a href="#overleaf">· Overleaf</a>
     <a href="#rol">· Routine Out Loud</a>
-    <a href="#duo">· Duo Mobile App Redesign</a>
+    <a href="#duo">· Duo Mobile App</a>
     <a href="#placie">· Placie</a>
   </nav>
 </div>
@@ -58,7 +59,7 @@
   <div class="project" data-aos="zoom-in-up" id="overleaf">
     <img src="images/overeleaf ps thumbnail.png" alt="Overleaf Redesign Thumbnail" class="project-image" />
     <h3 class="project-title">
-      <span class="hl" style="--hl:#C8DDCB; --skew:-8deg;">Overleaf Redesign</span>
+      <span class="hl" style="--hl:#C8DDCB; --skew:-8deg;">Redesigning AI-powered web-based LaTex editor</span>
       <span class="project-year">·  2025</span>
     </h3>
     <p class="project-summary">
@@ -79,7 +80,7 @@
   <div class="project" data-aos="zoom-in-up" id="rol">
     <img src="images/ROL ps thumbnail.png" alt="ROL Thumbnail" class="project-image" />
     <h3 class="project-title">
-      <span class="hl" style="--hl:#cfe3ff; --skew:-8deg;">Routine Out Loud</span>
+      <span class="hl" style="--hl:#cfe3ff; --skew:-8deg;">Mobile App Launch for Wellness Habit</span>
       <span class="project-year">·  2025</span>
     </h3>
 
@@ -98,7 +99,7 @@ As the founding UX designer, I led zero-to-one product design and launch from sc
   <div class="project" data-aos="zoom-in-up" id="duo">
     <img src="images/New duo thumbnail.png" alt="Duo Mobile Redesign Thumbnail" class="project-image" />
     <h3 class="project-title">
-      <span class="hl" style="--hl:#d3f3cb; --skew:-8deg;">Duo Mobile App Redesign</span>
+      <span class="hl" style="--hl:#d3f3cb; --skew:-8deg;">Redesigning Two-factor Authentication Platform</span>
       <span class="project-year">·  2024</span>
     </h3>
 
@@ -117,7 +118,7 @@ As the founding UX designer, I led zero-to-one product design and launch from sc
   <div class="project" data-aos="zoom-in-up" id="placie">
     <img src="images/Placie orange thumbnail.png" alt="Placie Thumbnail" class="project-image" />
     <h3 class="project-title">
-      <span class="hl" style="--hl:#FFE9CF; --skew:-8deg;">Placie</span>
+      <span class="hl" style="--hl:#FFE9CF; --skew:-8deg;">AI-powered Mobile App for Personalized Routine</span>
       <span class="project-year">·  2025</span>
     </h3>
 
@@ -137,7 +138,7 @@ As the founding UX designer, I led zero-to-one product design and launch from sc
 
   <footer>
   <p class="footer-left">
-    © 2025 Hajeong Hwang. Made with 
+    © 2025 Hajeong Hwang. Made with HTML/CSS & 
     <span class="cursor-matcha -rich">iced matcha latte</span>
   </p>
   <div class="footer-right">
@@ -293,6 +294,16 @@ As the founding UX designer, I led zero-to-one product design and launch from sc
       e.preventDefault();
       el.scrollIntoView({ behavior: 'smooth', block: 'start' });
     });
+</script>
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  document.querySelectorAll('.project').forEach(card => {
+    const hl = card.querySelector('.project-title .hl');
+    if (!hl) return;
+    const color = getComputedStyle(hl).getPropertyValue('--hl').trim();
+    if (color) card.style.setProperty('--accent', color); // 부모(.project)에 --accent 주입
+  });
+});
 </script>
 
 </body>
