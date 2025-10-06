@@ -504,8 +504,31 @@ On the payment page, users can subscribe for a VIP pass, unlocking the ability t
     </main>
 
   </div>
-
+  <div class="custom-cursor"></div>
   <script>
+        // --- 커스텀 커서 (pointer-events: none; CSS로 꼭 처리!)
+    const cursor = document.querySelector(".custom-cursor");
+    const emojiCursor = document.querySelector('.emoji-cursor');
+    const projects = document.querySelectorAll('.project');
+
+    document.addEventListener("mousemove", (e) => {
+      cursor.style.top = `${e.clientY}px`;
+      cursor.style.left = `${e.clientX}px`;
+      emojiCursor.style.top = `${e.clientY}px`;
+      emojiCursor.style.left = `${e.clientX}px`;
+    });
+
+    projects.forEach(p => {
+      p.addEventListener('mouseenter', () => {
+        emojiCursor.style.opacity = '1';
+        cursor.classList.add('hidden');
+      });
+      p.addEventListener('mouseleave', () => {
+        emojiCursor.style.opacity = '0';
+        cursor.classList.remove('hidden');
+      });
+    });
+
   // 모든 섹션과 사이드바 링크 선택
   const sections = document.querySelectorAll("section");
   const navLinks = document.querySelectorAll(".sidebar a");

@@ -113,9 +113,12 @@
     <a href="https://www.linkedin.com/in/hajeong-hwang-211613296/" target="_blank" class="fa-brands fa-linkedin"></a>
   </div>
 </footer>
+
+  <div class="custom-cursor"></div>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 <!-- 리치 커서 엘리먼트 -->
 <img id="matchaCursor" src="images/Remove background project.png" alt="" aria-hidden="true">
+
 
   <script>
   document.addEventListener("DOMContentLoaded", function() {
@@ -125,7 +128,30 @@ strings: ["🇰🇷 → 🇺🇸 → 🇦🇹 → 🇺🇸"]
   });
 </script>
 
+
 <script>
+      // --- 커스텀 커서 (pointer-events: none; CSS로 꼭 처리!)
+    const cursor = document.querySelector(".custom-cursor");
+    const emojiCursor = document.querySelector('.emoji-cursor');
+    const projects = document.querySelectorAll('.project');
+
+    document.addEventListener("mousemove", (e) => {
+      cursor.style.top = `${e.clientY}px`;
+      cursor.style.left = `${e.clientX}px`;
+      emojiCursor.style.top = `${e.clientY}px`;
+      emojiCursor.style.left = `${e.clientX}px`;
+    });
+
+    projects.forEach(p => {
+      p.addEventListener('mouseenter', () => {
+        emojiCursor.style.opacity = '1';
+        cursor.classList.add('hidden');
+      });
+      p.addEventListener('mouseleave', () => {
+        emojiCursor.style.opacity = '0';
+        cursor.classList.remove('hidden');
+      });
+    });
 (function(){
   const trigger = document.querySelector('.cursor-matcha.-rich');
   const ghost   = document.getElementById('matchaCursor');
@@ -162,6 +188,7 @@ strings: ["🇰🇷 → 🇺🇸 → 🇦🇹 → 🇺🇸"]
     cursor.style.left = e.clientX + 'px';
     cursor.style.top = e.clientY + 'px';
   });
+  
 </script>
 
 </body>
