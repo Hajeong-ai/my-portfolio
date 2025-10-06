@@ -592,7 +592,7 @@ body.dark-mode .project {
   gap: 120px;                         /* 항목 간 간격 조절 */
   margin-top: 60px;
   padding: 0 0px;                    /* 전체 여백 → 더 왼쪽에서 시작 가능 */
-  max-width: 2000px;
+  width: 1100px;
   margin-left: 0;
   margin-right: auto;
   text-align: left;
@@ -1712,7 +1712,7 @@ section[id="User Test"] img{
   --ink-speed: 1s;              /* 애니메이션 시간 */
   background-image: linear-gradient(var(--ink-color), var(--ink-color));
   background-repeat: no-repeat;
-  background-size: 0% 60%;      /* 처음엔 너비 0% */
+  background-size: 0% 100%;      /* 처음엔 너비 0% */
   background-position: 0 85%;   /* 아래쪽에 위치 */
   transition: background-size var(--ink-speed) ease-out;
   padding: 0 .1em;              /* 글자 양옆 여백 */
@@ -2004,7 +2004,7 @@ section[id="User Test"] img{
 /* 3) 컨테이너/텍스트 정렬 보강 */
 .project-hero {
   max-width: 1500px;                   /* 이미지와 동일 폭 컨테이너 */
-  margin: 0 auto 80px;
+  margin: 0 auto 0px;
   padding: 0 !important;               /* 여백으로 인해 라인 어긋나는 것 방지 */
   text-align: left !important; 
   margin-top: -80px;         /* 혹시 상위에서 center일 때 대비 */
@@ -3221,4 +3221,66 @@ figcaption {
 /* 너가 쓴 --wide 카드만 타겟 */
 .impactx-card.--wide{
   list-style: none;
+}
+/* ===== Problem Section ===== */
+.problems {
+  display: flex;
+  justify-content: center;
+  padding: 60px 20px;
+  background-color: #ffffff; /* 전체 배경 흰색 */
+}
+
+.problems__grid {
+  display: grid;
+  gap: 32px;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  max-width: 1100px;
+  width: 100%;
+}
+
+/* Title */
+.problem__title {
+  font-weight: 700;
+  font-size: 1.4rem;
+  color: #000000; /* 검정색 글씨 */
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 16px;
+}
+
+.emoji {
+  font-size: 1.7rem;
+  line-height: 1;
+}
+
+/* Card */
+.problem__card {
+  background-color: #ffffff; /* 카드 배경 흰색 */
+  border: 1.5px solid #dcdcdc;
+  border-radius: 14px;
+  padding: 28px;
+  color: #3a3a3a; /* 텍스트 검정색 */
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05);
+  height: 190px; /* ✅ 높이 더 높게 설정 */
+  display: flex;
+  align-items: center;
+}
+
+/* Description text */
+.problem__desc {
+  font-size: 1.1rem;
+  font-style: italic;
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* Hover effect (optional) */
+.problem__card:hover {
+  transform: translateY(-4px);
+  transition: 0.2s ease;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+.spacer2 {
+  height: 20px; /* 행 사이 간격 */
 }
