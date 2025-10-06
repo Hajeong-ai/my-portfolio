@@ -2613,7 +2613,7 @@ summary::-webkit-details-marker { display: none; }
   letter-spacing: 0.2px;   /* 가독성 살짝 높이기 */
 }
 .intro-location {
-  font-size: 1.4rem;
+  font-size: 1.5rem;
   color: #000000;
   margin-top: 8px;
   margin-bottom: 28px; /* 위 글자와 메뉴 간격 */
@@ -3315,9 +3315,9 @@ figcaption {
 .featured-title {
   font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'SF Pro Text', 'Helvetica Neue', 'Segoe UI', Roboto, sans-serif;
   font-size: .8rem;  
-  font-weight: 400;
+  font-weight: 500;
   letter-spacing: .06em;
-  color: #111;
+  color: #000000;
   text-transform: uppercase;
   margin-bottom: 8px;
 }
