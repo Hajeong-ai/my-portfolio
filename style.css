@@ -563,7 +563,7 @@ body.dark-mode .project {
 .hero-image {
   width: 100%;
   max-width: 1700px;   /* 🔼 전체 최대 크기 더 넓게 */
-  margin: 40px auto 60px; /* 🔼 위쪽 여백 줄이고, 아래 여백도 약간 줄임 */
+  margin: 30px auto 60px; /* 🔼 위쪽 여백 줄이고, 아래 여백도 약간 줄임 */
   padding: 0 10px;     /* 🔼 좌우 패딩 줄여서 이미지 더 크게 */
 }
 
@@ -709,8 +709,8 @@ body.dark-mode .project {
 
 .page-wrapper {
   max-width: 1100px;        /* 홈페이지와 동일 */
-  margin: 100px auto 100px; /* 위 아래 여백 일치 */
-  padding: 60px 0 140px;    /* 위쪽 60px, 아래쪽 넉넉히 140px */
+  margin: 80px auto 100px; /* 위 아래 여백 일치 */
+  padding: -160px 0 140px;    /* 위쪽 60px, 아래쪽 넉넉히 140px */
   width: 100%;
   display: block;
   position: relative;
@@ -2087,7 +2087,7 @@ section[id="User Test"] img{
 /* 4) 히어로 이미지: 텍스트와 라인 안 맞추는 요소 제거/범위 한정 */
 .hero-image{
   max-width: 1500px;                 /* 이미지는 넓게 허용 (텍스트는 위에서 1000px) */
-  margin: 40px auto 60px !important;
+  margin: 30px auto 60px !important;
   padding: 0 !important;             /* 좌우 10px 패딩 제거 → 라인 어긋남 방지 */
 }
 .hero-image img{
@@ -3298,15 +3298,3 @@ figcaption {
 /* 섹션 공통 간격 보정(선택) */
 .project-section > h2:first-child{ margin-top: 0; }
 .project-section .kicker + *{ margin-top: 0; } /* kicker 바로 뒤 요소 위여백 제거 */
-/* 헤더 높이(대략치). JS로 자동 계산도 아래 2) 참고 */
-:root{ --header-h: 30px; }
-@media (max-width: 900px){ :root{ --header-h: 64px; } }
-
-/* 프로젝트 페이지는 헤더 바로 아래에서 시작 */
-body.page--project .page-wrapper{
-  margin-top: calc(var(--header-h) + 8px) !important; /* 위로 붙임 */
-  padding-top: 0 !important;
-}
-
-/* 히어로 영역 위쪽 당기는 음수 마진/여백 제거 */
-.project-hero{ margin-top: 0 !important; }
