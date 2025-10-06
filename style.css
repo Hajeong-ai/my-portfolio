@@ -231,7 +231,7 @@ footer {
   display: flex;
   justify-content: center;     /* 수평 중앙 정렬 */
   align-items: flex-start;     /* 필요에 따라 center로 변경 가능 */
-  max-width: 1200px;
+  max-width: 1500px;
   margin: 0 auto;              /* 전체 페이지 중앙으로 */
   gap: 80px;                   /* About과 Projects 사이 간격 */
   padding-top: 0px;
@@ -243,12 +243,12 @@ footer {
 /* About과 Projects가 나란히 잘 보이도록 width 명시 */
 #about {
   flex: 1;
-  min-width: 300px;
+  min-width: 400px;
 }
 
 #projects {
   flex: 3;
-  min-width: 500px;
+  min-width: 750px;
 }
 
 /* 모든 h2 아래 간격 넓히기 */
@@ -377,7 +377,7 @@ h2 {
 }
 
 .scroll-hint {
-  font-size: 0.75rem;
+  font-size: 0.9rem;
   font-weight: 200;
   color: #5b5b5b;
   text-align: right;
@@ -2614,7 +2614,7 @@ summary::-webkit-details-marker { display: none; }
 }
 .intro-location {
   font-size: 1.4rem;
-  color: #6b7280;
+  color: #000000;
   margin-top: 8px;
   margin-bottom: 28px; /* 위 글자와 메뉴 간격 */
 }
@@ -3311,4 +3311,13 @@ figcaption {
 .project:hover .project-tags{
   color: var(--accent, #007bff);
   transition: color .2s ease;
+}
+.featured-title {
+  font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'SF Pro Text', 'Helvetica Neue', 'Segoe UI', Roboto, sans-serif;
+  font-size: .8rem;  
+  font-weight: 400;
+  letter-spacing: .06em;
+  color: #111;
+  text-transform: uppercase;
+  margin-bottom: 8px;
 }
