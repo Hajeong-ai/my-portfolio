@@ -126,12 +126,6 @@ h3 {
 
 /* 커스텀 커서 */
 
-a:hover ~ .custom-cursor,
-button:hover ~ .custom-cursor {
-  width: 48px;
-  height: 48px;
-  background-color: rgba(100, 100, 100, 0.3);
-}
 
 /* 사이드바 */
 /* 기존 top: 400px; 을 아래로 교체 */
@@ -243,7 +237,7 @@ footer {
 /* About과 Projects가 나란히 잘 보이도록 width 명시 */
 #about {
   flex: 1;
-  min-width: 510px;
+  min-width: 508px;
 }
 
 #projects {
@@ -257,20 +251,6 @@ h2 {
   margin-bottom: 5px; /* or 40px 등 원하는 값 */
   margin-top: 0px;
 
-}
-
-/* 기본 회색 커서 */
-.custom-cursor {
-  position: fixed;
-  width: 34px;
-  height: 34px;
-  border-radius: 50%;
-  background-color: rgba(100, 100, 100, 0.2);
-  border: 1.5px solid rgba(255, 255, 255, 0.5);
-  pointer-events: none;
-  z-index: 9999;
-  transform: translate(-50%, -50%);
-  transition: all 0.2s ease;
 }
 
 
