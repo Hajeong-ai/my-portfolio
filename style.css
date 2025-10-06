@@ -2087,7 +2087,7 @@ section[id="User Test"] img{
 /* 4) 히어로 이미지: 텍스트와 라인 안 맞추는 요소 제거/범위 한정 */
 .hero-image{
   max-width: 1500px;                 /* 이미지는 넓게 허용 (텍스트는 위에서 1000px) */
-  margin: 30px auto 60px !important;
+  margin: 24px auto 60px !important;
   padding: 0 !important;             /* 좌우 10px 패딩 제거 → 라인 어긋남 방지 */
 }
 .hero-image img{
@@ -3298,3 +3298,12 @@ figcaption {
 /* 섹션 공통 간격 보정(선택) */
 .project-section > h2:first-child{ margin-top: 0; }
 .project-section .kicker + *{ margin-top: 0; } /* kicker 바로 뒤 요소 위여백 제거 */
+
+.page-wrapper1 {
+  max-width: 1100px;        /* 홈페이지와 동일 */
+  margin: 130px auto 100px; /* 위 아래 여백 일치 */
+  padding: -200px 0 140px;    /* 위쪽 60px, 아래쪽 넉넉히 140px */
+  width: 100%;
+  display: block;
+  position: relative;
+}
