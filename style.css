@@ -1974,7 +1974,7 @@ section[id="User Test"] img{
 }
 
 .hero-subtitle {
-  font-size: 18px;
+  font-size: 16px;
   font-weight: 300;
   color: #7d7d7d;
   margin-top: 0; 
@@ -2169,7 +2169,7 @@ section[id="User Test"] img{
 /* 제목·부제 ↔ 이미지 간격 최소화 */
 .hero-text{ margin: 0 0 6px 0 !important; }
 .hero-title{ margin: 0 !important; font-size: 30px; font-weight: 600; color:#343434; }
-.hero-subtitle{ margin: 2px 0 0 !important; font-size: 20px; font-weight: 300; color:#7d7d7d; }
+.hero-subtitle{ margin: 2px 0 0 !important; font-size: 18px; font-weight: 300; color:#7d7d7d; }
 
 /* 4) 모바일은 들여쓰기/폭 통일 */
 @media (max-width: 900px){
@@ -3298,3 +3298,15 @@ figcaption {
 /* 섹션 공통 간격 보정(선택) */
 .project-section > h2:first-child{ margin-top: 0; }
 .project-section .kicker + *{ margin-top: 0; } /* kicker 바로 뒤 요소 위여백 제거 */
+/* 헤더 높이(대략치). JS로 자동 계산도 아래 2) 참고 */
+:root{ --header-h: 30px; }
+@media (max-width: 900px){ :root{ --header-h: 64px; } }
+
+/* 프로젝트 페이지는 헤더 바로 아래에서 시작 */
+body.page--project .page-wrapper{
+  margin-top: calc(var(--header-h) + 8px) !important; /* 위로 붙임 */
+  padding-top: 0 !important;
+}
+
+/* 히어로 영역 위쪽 당기는 음수 마진/여백 제거 */
+.project-hero{ margin-top: 0 !important; }
