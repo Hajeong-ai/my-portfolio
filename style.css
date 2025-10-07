@@ -687,7 +687,7 @@ body.dark-mode .project {
 }
 
 .page-wrapper {
-  max-width: 1100px;        /* 홈페이지와 동일 */
+  max-width: 1200px;        /* 홈페이지와 동일 */
   margin: 80px auto 100px; /* 위 아래 여백 일치 */
   padding: -160px 0 140px;    /* 위쪽 60px, 아래쪽 넉넉히 140px */
   width: 100%;
@@ -1221,7 +1221,7 @@ color: #000;
 }
 
 .stats-ctr{
-  max-width: 1100px;           /* 네 page-wrapper와 어울리는 폭 */
+  max-width: 1200px;           /* 네 page-wrapper와 어울리는 폭 */
   margin: 0 auto;
   padding: 0 20px;
 }
@@ -1954,7 +1954,7 @@ section[id="User Test"] img{
 
 /* research-section을 다른 섹션과 동일 기준으로 중앙 정렬 */
 .research-section {
-  max-width: 1100px !important;   /* page-wrapper와 동일 값으로 맞추고 싶으면 그 값 */
+  max-width: 1200px !important;   /* page-wrapper와 동일 값으로 맞추고 싶으면 그 값 */
   padding-right: 20px !important;
 }
 
@@ -1981,7 +1981,7 @@ section[id="User Test"] img{
 
 /* 1) 전역 컨테이너 폭 정의 */
 :root{
-  --container: 1100px;            /* 본문 라인 폭 (page-wrapper와 동일) */
+  --container: 1200px;            /* 본문 라인 폭 (page-wrapper와 동일) */
 }
 
 /* 2) 오프셋으로 오른쪽 밀던 계산식 무력화 → 중앙 정렬로 환원 */
@@ -3134,9 +3134,6 @@ figcaption {
 .impactx-kpi-grid > li{
   list-style: none;     /* 일부 브라우저 보강 */
 }
-.impactx-kpi-grid > li::marker{
-  content: "";          /* 사파리 등 보강 */
-}
 /* 너가 쓴 --wide 카드만 타겟 */
 .impactx-card.--wide{
   list-style: none;
@@ -3219,7 +3216,7 @@ figcaption {
 .project-section .kicker + *{ margin-top: 0; } /* kicker 바로 뒤 요소 위여백 제거 */
 
 .page-wrapper1 {
-  max-width: 1100px;        /* 홈페이지와 동일 */
+  max-width: 1200px;        /* 홈페이지와 동일 */
   margin: 130px auto 100px; /* 위 아래 여백 일치 */
   padding: -220px 0 140px;    /* 위쪽 60px, 아래쪽 넉넉히 140px */
   width: 100%;
