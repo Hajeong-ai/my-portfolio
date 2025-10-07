@@ -2631,12 +2631,6 @@ summary::-webkit-details-marker { display: none; }
   .header-container { padding: 14px 16px; }
   .logo { white-space: nowrap; }
 
-  /* 2) 내비게이션: 데스크톱 디자인 유지 + 모바일에선 드롭다운 형태로만 배치 변경 */
-  .hamburger { display: block; background: none; border: 0; padding: 6px; cursor: pointer; z-index: 2001; }
-  .hamburger span { display: block; width: 26px; height: 2px; background: #111; margin: 6px 0; transition: transform .25s ease, opacity .25s ease; }
-  .hamburger.is-open span:nth-child(1){ transform: translateY(8px) rotate(45deg); }
-  .hamburger.is-open span:nth-child(2){ opacity: 0; }
-  .hamburger.is-open span:nth-child(3){ transform: translateY(-8px) rotate(-45deg); }
 
   .nav-links {
     position: fixed;
