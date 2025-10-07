@@ -3335,3 +3335,220 @@ body{
   -moz-osx-font-smoothing: auto;
   text-rendering: optimizeLegibility;
 }
+/* ================== FINAL ALIGN RAILS (HOME ONLY) ================== */
+
+/* 1) 헤더 좌우 패딩 값을 변수로 통일 → 레일 기준선 */
+:root{
+  --rail-x: 60px;   /* 헤더의 좌우 패딩값(header-container padding X)과 동일하게 */
+  --about-col: 440px; /* 왼쪽 About 컬럼 너비(필요시 400~520 사이로 조절) */
+  --gutter: 28px;
+}
+
+/* 2) 헤더 패딩도 변수 기준으로 통일 (이미 있으면 그대로 두고, 없으면 적용) */
+.header-container{
+  padding: 40px var(--rail-x) 30px !important;
+}
+
+/* 3) 랜딩 전용 래퍼: 헤더와 같은 좌우선(레일)에 맞춰 패딩만 주고, 폭은 100% */
+.page--home .page-rails{
+  max-width: none !important;
+  width: 100%;
+  padding-left: var(--rail-x) !important;   /* ← 로고의 'h'와 같은 시작선 */
+  padding-right: var(--rail-x) !important;  /* → 내비쪽과 같은 끝선 */
+  margin: 0 auto;
+}
+
+/* 4) About / Projects 2열 그리드
+      - 왼쪽(About) 컬럼: 고정폭 (--about-col)
+      - 오른쪽(Projects) 컬럼: 나머지 전부
+      → 결과적으로 오른쪽 컬럼 시작선이 내비 영역 아래 레일에 시각적으로 맞춤 */
+.page--home .about-project-wrapper{
+  display: grid !important;
+  grid-template-columns: var(--about-col) minmax(0, 1fr) !important;
+  column-gap: var(--gutter) !important;
+  align-items: start;
+  max-width: none !important;
+  margin: 0;              /* 레일 패딩이 전체 정렬을 책임짐 */
+  padding: 0 !important;
+}
+
+/* 5) 각 컬럼에 명시 클래스가 없다면 아이디로 바인딩 */
+.page--home #about{ grid-column: 1; }
+.page--home #projects{ grid-column: 2; }
+
+/* 6) 히어로/대표 이미지, 카드 등도 같은 레일 안으로 */
+.page--home .hero-image,
+.page--home .projects-section,
+.page--home .projects-header,
+.page--home footer{
+  padding-left: var(--rail-x) !important;
+  padding-right: var(--rail-x) !important;
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+}
+
+/* 7) 이미지/카드가 내부에서 추가 마진으로 선이 흐트러지지 않게 */
+.page--home .hero-image{ margin: 24px 0 56px !important; padding: 0 !important; }
+.page--home .hero-image img{ transform: none !important; }
+
+/* 8) 반응형: 폭이 좁아지면 1열 스택 + 동일 좌우 레일 유지 */
+@media (max-width: 980px){
+  :root{
+    --rail-x: 16px;     /* 모바일에서 헤더 좌우 패딩도 16px로 줄이는 경우 여기에만 바꾸면 전부 동기화 */
+    --about-col: min(420px, 100%);  /* 의미만 유지 */
+    --gutter: 18px;
+  }
+  .header-container{ padding: 14px var(--rail-x) !important; }
+
+  .page--home .about-project-wrapper{
+    grid-template-columns: 1fr !important;
+    row-gap: var(--gutter);
+  }
+  .page--home #about,
+  .page--home #projects{
+    grid-column: 1 !important;
+  }
+}
+
+/* 9) 다른 전역 규칙이 레일을 밀어내지 못하도록 몇 가지 흔한 충돌 무력화 */
+.page--home .page-wrapper,
+.page--home .project-intro,
+.page--home .stats-ctr,
+.page--home .feature-ctr,
+.page--home .proto__ctr,
+.page--home .ai-brief,
+.page--home .research-section,
+.page--home .ut-deck,
+.page--home .solu{
+  max-width: none !important;
+  margin: 0 !important;
+  padding-left: var(--rail-x) !important;
+  padding-right: var(--rail-x) !important;
+}
+
+/* 10) 프로젝트 카드 이미지 고정높이로 라인 깨지는 것 방지 */
+.page--home .project-image{
+  width: 100%;
+  height: auto !important;
+  aspect-ratio: 16/9;
+  object-fit: cover;
+}
+@media (max-width: 768px){
+  .page--home .project-image{ aspect-ratio: auto; }
+}
+
+/* 11) sticky 사이드바가 레일을 넘지 않게 */
+.page--home .sidebar{
+  left: auto !important;
+  margin-left: 0 !important;
+  padding-left: 0 !important;
+}
+/* ================== SCOPED RESPONSIVE (OPT-IN) ================== */
+
+/* 스코프 변수: 이 페이지들만 공통 레일/간격 사용 */
+.r-scope{
+  --rail-x: 60px;   /* 데스크톱 좌우 여백 */
+  --gutter: 20px;
+}
+
+/* 헤더도 스코프 안에서만 패딩 동기화 */
+.r-scope .header-container{
+  padding: 40px var(--rail-x) 30px;
+}
+
+/* 공통 컨테이너: 스코프 안에서만 중앙정렬/레일 적용 */
+.r-scope .page-rails,
+.r-scope .page-wrapper,
+.r-scope .project-intro,
+.r-scope .stats-ctr,
+.r-scope .feature-ctr,
+.r-scope .proto__ctr,
+.r-scope .ai-brief,
+.r-scope .research-section,
+.r-scope .ut-deck,
+.r-scope .solu,
+.r-scope .ps-section,
+.r-scope .bm-section,
+.r-scope main,
+.r-scope section[id]{
+  max-width: 1100px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: var(--rail-x);
+  padding-right: var(--rail-x);
+}
+
+/* 랜딩 정렬 요구사항: About = 로고 'h' 라인 / Projects = 내비 라인 */
+.r-scope.page--home .about-project-wrapper{
+  display: grid;
+  grid-template-columns: clamp(260px, 32vw, 460px) minmax(0,1fr);
+  column-gap: clamp(18px, 2.6vw, 36px);
+  align-items: start;
+}
+.r-scope.page--home #about{ grid-column:1; }
+.r-scope.page--home #projects{ grid-column:2; }
+
+/* 프로젝트 카드: 스코프 안에서만 유동 그리드 */
+.r-scope .projects-grid{
+  display: grid;
+  gap: clamp(14px, 2vw, 24px);
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+}
+.r-scope .project{
+  width: 100%;
+  max-width: 100%;
+  padding: clamp(12px, 1.8vw, 20px);
+  border-radius: 12px;
+}
+.r-scope .project-image{
+  width: 100%;
+  aspect-ratio: 16/9;
+  height: auto;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+/* 타이포도 스코프 안에서만 유동 */
+.r-scope h1{ font-size: clamp(28px, 4.5vw, 40px); }
+.r-scope h2{ font-size: clamp(22px, 3vw, 30px); }
+.r-scope h3{ font-size: clamp(18px, 2.4vw, 22px); }
+.r-scope body, .r-scope p, .r-scope li{ font-size: clamp(14px, 1.5vw, 16px); }
+
+/* 미디어 안전화(스코프 안만) */
+.r-scope img, .r-scope video, .r-scope canvas, .r-scope svg{
+  max-width: 100%; height: auto;
+}
+
+/* 모바일 브레이크포인트: 스코프 안만 영향 */
+@media (max-width: 980px){
+  .r-scope{ --rail-x: 16px; }
+  .r-scope .header-container{ padding: 14px var(--rail-x); }
+  .r-scope.page--home .about-project-wrapper{
+    grid-template-columns: 1fr;
+    row-gap: clamp(16px, 3vw, 22px);
+  }
+}
+@media (max-width: 640px){
+  .r-scope .project-image{ aspect-ratio: auto; }
+}
+
+/* 내비 드롭다운(스코프 안에서만) */
+@media (max-width: 768px){
+  .r-scope .nav-links{
+    position: fixed; left: var(--rail-x); right: var(--rail-x); top: 56px;
+    display: none; flex-direction: column; gap: 10px;
+    padding: 12px 14px; background:#fff; border:1px solid #eee; border-radius:12px;
+    box-shadow: 0 10px 30px rgba(0,0,0,.08); z-index:2000;
+  }
+  .r-scope .nav-links.open{ display:flex; }
+}
+
+/* 사이드바(스코프 안만) */
+@media (max-width: 900px){
+  .r-scope .sidebar{
+    position: static; transform:none; width:auto;
+    padding: 8px 0; background:transparent; box-shadow:none; border:0;
+  }
+  .r-scope .sidebar ul{ display:flex; gap:12px; overflow-x:auto; }
+  .r-scope .sidebar li{ margin:0; }
+}
