@@ -227,7 +227,7 @@ footer {
   align-items: flex-start;     /* 필요에 따라 center로 변경 가능 */
   max-width: 1800px;
   margin: 0 auto;              /* 전체 페이지 중앙으로 */
-  gap: 90px;                   /* About과 Projects 사이 간격 */
+  gap: 74px;                   /* About과 Projects 사이 간격 */
   padding-top: 0px;
   margin-top: 0px;
   padding-bottom: 100px;
@@ -237,7 +237,7 @@ footer {
 /* About과 Projects가 나란히 잘 보이도록 width 명시 */
 #about {
   flex: 1;
-  min-width: 508px;
+  min-width: 516px;
 }
 
 #projects {
@@ -3216,7 +3216,7 @@ figcaption {
 .project-section .kicker + *{ margin-top: 0; } /* kicker 바로 뒤 요소 위여백 제거 */
 
 .page-wrapper1 {
-  max-width: 1200px;        /* 홈페이지와 동일 */
+  max-width: 1300px;        /* 홈페이지와 동일 */
   margin: 130px auto 100px; /* 위 아래 여백 일치 */
   padding: -220px 0 140px;    /* 위쪽 60px, 아래쪽 넉넉히 140px */
   width: 100%;
