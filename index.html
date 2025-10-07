@@ -55,9 +55,13 @@ studying Human-Centered Design and Engineering</h2>
 
 
 <!-- ✅ Project 4 -->
-<a href="project4.html" class="project-link" target="_self">
+<a href="project4.html"
+   class="project-link"
+   target="_self"
+   data-hover="images/overleaf thumbnail.png">
   <div class="project" data-aos="zoom-in-up" id="overleaf">
     <img src="images/overeleaf ps thumbnail.png" alt="Overleaf Redesign Thumbnail" class="project-image" />
+
     <h3 class="project-title">
       <span class="hl" style="--hl:#C8DDCB; --skew:-8deg;">Redesigning AI-powered web-based LaTex editor</span>
       <span class="project-year">·  2025</span>
@@ -68,7 +72,6 @@ studying Human-Centered Design and Engineering</h2>
       and enhance document quality through AI features.
     </p>
 
-     <!-- ✅ 태그는 텍스트 해시만 -->
     <div class="project-tags">
       #UXDesign #UXResearch #AI #DesignForPassion
     </div>
@@ -303,6 +306,35 @@ document.addEventListener('DOMContentLoaded', () => {
     if (color) card.style.setProperty('--accent', color); // 부모(.project)에 --accent 주입
   });
 });
+</script>
+<script>
+(function(){
+  // a.project-link[data-hover] 안의 .project-image를 호버 시 교체
+  const cards = document.querySelectorAll('.project-link[data-hover]');
+  cards.forEach(card => {
+    const img = card.querySelector('.project-image');
+    if (!img) return;
+
+    const hoverSrc = card.dataset.hover;           // 교체할 이미지
+    const originalSrc = img.getAttribute('src');   // 원본 이미지
+    img.dataset.original = originalSrc;
+
+    // 미리 로드(깜빡임 방지)
+    const pre = new Image();
+    pre.src = hoverSrc;
+
+    const showHover = () => { img.src = hoverSrc; };
+    const showOriginal = () => { img.src = img.dataset.original; };
+
+    // 마우스/펜
+    card.addEventListener('mouseenter', showHover);
+    card.addEventListener('mouseleave', showOriginal);
+
+    // 키보드 포커스 접근성
+    card.addEventListener('focus', showHover, true);
+    card.addEventListener('blur', showOriginal, true);
+  });
+})();
 </script>
 
 </body>
