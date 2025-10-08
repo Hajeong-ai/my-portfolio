@@ -3219,8 +3219,6 @@ body{
 }
 
 
-:root{ --header-pad: 60px; } /* 헤더 좌우 패딩 값(기본 폴백) */
-
 
 /* === [MOBILE FIT-ONE-SCREEN PACK] : 붙여넣기-끝에 === */
 @media (max-width: 480px){
