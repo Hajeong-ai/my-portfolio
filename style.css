@@ -3365,7 +3365,7 @@ section#user-test img{
 }
 
 /* ================== MOBILE HEADER ONLY ================== */
-@media (max-width: 768px) {
+@media (max-width: 800px) {
   :root{
     --header-h: 56px;      /* 모바일 헤더 높이 */
     --m-pad: 16px;         /* 모바일 좌우 레일(본문과 동일) */
@@ -3388,7 +3388,7 @@ section#user-test img{
 
   /* 로고 크기/줄바꿈 방지 */
   .logo {
-    font-size: 1rem;
+    font-size: 1.1rem;
     font-weight: 500;
     white-space: nowrap;
   }
