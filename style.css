@@ -690,7 +690,7 @@ body.dark-mode .project {
 .page-wrapper {
   max-width: 1200px;        /* 홈페이지와 동일 */
   margin: 80px auto 100px; /* 위 아래 여백 일치 */
-  padding: -160px 0 140px;    /* 위쪽 60px, 아래쪽 넉넉히 140px */
+  padding: -10px 0 140px;    /* 위쪽 60px, 아래쪽 넉넉히 140px */
   width: 100%;
   display: block;
   position: relative;
@@ -1951,7 +1951,7 @@ section[id="User Test"] img{
 
 /* 1) 전역 컨테이너 폭 정의 */
 :root{
-  --container: 1200px;            /* 본문 라인 폭 (page-wrapper와 동일) */
+  --container: 1300px;            /* 본문 라인 폭 (page-wrapper와 동일) */
 }
 
 /* 2) 오프셋으로 오른쪽 밀던 계산식 무력화 → 중앙 정렬로 환원 */
@@ -3316,14 +3316,14 @@ body{
   .prev-wrapper, .next-wrapper{ max-width:none; }
 
   /* 페이지 래퍼 */
-  .page-wrapper{ margin:16px auto 40px; padding:0; max-width:100%; }
+  .page-wrapper{ margin:50px auto 40px; padding:0; max-width:100%; }
 
   /* 푸터 */
   footer{ position:static; padding:0 var(--m-pad); margin-top:16px; }
 }
 
 :root{
-  --container: 1200px;   /* 본문 최대 폭 */
+  --container: 1300px;   /* 본문 최대 폭 */
   --gutter: clamp(16px, 3vw, 28px);
 
 }
