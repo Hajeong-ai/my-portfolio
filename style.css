@@ -229,7 +229,7 @@ footer {
   margin: 0 auto;              /* 전체 페이지 중앙으로 */
   gap: 74px;                   /* About과 Projects 사이 간격 */
   padding-top: 0px;
-  margin-top: 0px;
+  margin-top: -30px;
   padding-bottom: 100px;
 }
 
@@ -3368,10 +3368,10 @@ body.page--home .about-project-wrapper{
 }
 
 /* 모바일에선 정밀 정렬 비활성(드롭다운 등으로 레이아웃 달라지니 안전하게) */
-@media (max-width: 900px){
+@media (max-width: 1000px){
   body.page--home .about-project-wrapper{
-    padding-left: 16px !important;
-    padding-right: 16px !important;
+    padding-left: 10px !important;
+    padding-right: 10px !important;
     flex-direction: column;
   }
 }
@@ -3401,7 +3401,7 @@ body.page--home .about-project-wrapper{
 
     flex-direction: column;
     gap: 0;                 /* 항목 사이 간격 제거 (라인만 보이게) */
-    z-index: 1050;
+    z-index: 1100;
   }
   .nav-links.open{ display: flex; }
 
