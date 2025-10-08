@@ -825,15 +825,6 @@ color: #000;
     padding: 0;
     display: block; /* 데스크톱 flex 강제 해제 */
   }
-
-  /* 헤더 */
-  .header-container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 18px 20px;
-  }
-
   /* 로고 크기 축소 */
   .logo {
     font-size: 1.1rem;
@@ -2580,11 +2571,6 @@ summary::-webkit-details-marker { display: none; }
   html, body { overflow-x: hidden; }
   img, video, canvas { max-width: 100%; height: auto; }
 
-  /* 1) 헤더: 기존 스타일은 유지하되 공간만 축소(wrap 방지) */
-  .header-container { padding: 14px 16px; }
-  .logo { white-space: nowrap; }
-
-
   .nav-links {
     position: fixed;
     right: 16px; top: 56px; left: 16px;
@@ -3223,10 +3209,7 @@ body{
   --gutter: 28px;
 }
 
-/* 2) 헤더 패딩도 변수 기준으로 통일 (이미 있으면 그대로 두고, 없으면 적용) */
-.header-container{
-  padding: 40px var(--rail-x) 30px !important;
-}
+
 /* 10) 프로젝트 카드 이미지 고정높이로 라인 깨지는 것 방지 */
 .page--home .project-image{
   width: 100%;
@@ -3241,18 +3224,11 @@ body{
 
 /* === [MOBILE FIT-ONE-SCREEN PACK] : 붙여넣기-끝에 === */
 @media (max-width: 480px){
-  :root{ --header-h:56px; --m-pad:14px; --m-gap:10px; }
 
   html,body{ overflow-x:hidden; }
   body{ padding-top:var(--header-h); font-size:15px; line-height:1.55; }
 
-  /* 헤더/내비 (햄버거: 라인만, 배경 없음) */
-  .header-container{
-    position:fixed; top:0; left:0; right:0;
-    padding:14px var(--m-pad); background:#fff;
-    display:flex; align-items:center; justify-content:space-between;
-    box-shadow:0 1px 0 rgba(0,0,0,.06); z-index:1000;
-  }
+
   .logo{ font-size:.95rem; font-weight:400; white-space:nowrap; }
   .hamburger{ display:block; background:none; border:0; padding:6px; margin-left:auto; }
   .hamburger span{ display:block; width:22px; height:2px; background:#111; margin:4px 0; }
@@ -3351,7 +3327,7 @@ body{
 :root{
   --container: 1200px;   /* 본문 최대 폭 */
   --gutter: clamp(16px, 3vw, 28px);
-  --header-h: 72px;      /* 헤더 높이 */
+
 }
 .container{ width:min(100% - 40px, var(--container)); margin-inline:auto; }
 section{ margin-bottom: clamp(56px, 10vw, 120px); }
