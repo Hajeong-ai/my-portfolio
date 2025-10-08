@@ -247,7 +247,7 @@ footer {
 
 /* 모든 h2 아래 간격 넓히기 */
 h2 {
-  font-weight: 200;
+  font-weight: 300;
   margin-bottom: 5px; /* or 40px 등 원하는 값 */
   margin-top: 0px;
 
@@ -709,7 +709,7 @@ section {
 }
 
 .intro-heading {
-  font-weight: 200;
+  font-weight: 300;
   font-size: 1.5rem;
   line-height: 1;
   margin-bottom: 10;
@@ -1893,7 +1893,7 @@ section[id="User Test"] img{
 
 .hero-title {
   font-size: 30px;
-  font-weight: 600;
+  font-weight: 300;
   margin: 0 0 0px;
   color: #343434;
 }
@@ -3208,7 +3208,8 @@ figcaption {
   font-weight: 400;
   letter-spacing: .06em;
   text-transform: uppercase;  /* 소문자 유지 원하면 이 줄 지워도 됨 */
-  color: #111;
+  color: #000000;
+  
 }
 
 /* 섹션 공통 간격 보정(선택) */
@@ -3230,7 +3231,7 @@ figcaption {
 }
 .featured-title {
   font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'SF Pro Text', 'Helvetica Neue', 'Segoe UI', Roboto, sans-serif;
-  font-size: .8rem;  
+  font-size: .8rem; 
   font-weight: 500;
   letter-spacing: .06em;
   color: #000000;
@@ -3262,7 +3263,10 @@ body {
        .hero-title, .hero-subtitle, .hero-buttons a,
        .sidebar a, .next-title, .bm-name, .bm-content, .kicker
 ) {
-  font-family: var(--font-sans) !important;
+  --font-sans: -apple-system, system-ui, "SF Pro Text", "SF Pro Display",
+               "Segoe UI", Roboto, Arial,
+               "Noto Sans KR", "Apple SD Gothic Neo", "Malgun Gothic",
+               sans-serif;
 }
 
 /* 렌더링 톤: Chrome을 Safari에 가깝게(너무 얇지 않게) */
