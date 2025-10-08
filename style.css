@@ -3331,7 +3331,6 @@ body{
 }
 .container{ width:min(100% - 40px, var(--container)); margin-inline:auto; }
 section{ margin-bottom: clamp(56px, 10vw, 120px); }
-[id]{ scroll-margin-top: calc(var(--header-h) + 12px); } /* 앵커 가림 방지 */
 .project-image{ width:100%; aspect-ratio: 16/9; height:auto; object-fit:cover; border-radius: 12px; }
 .hero-image img{ width:100%; height:auto; display:block; object-fit:cover; }
 .bm-item{ width:100%; max-width: var(--container); } /* 고정폭 → 유동폭 */
