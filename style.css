@@ -227,7 +227,7 @@ footer {
   align-items: flex-start;     /* 필요에 따라 center로 변경 가능 */
   max-width: 1800px;
   margin: 0 auto;              /* 전체 페이지 중앙으로 */
-  gap: 74px;                   /* About과 Projects 사이 간격 */
+  gap: 70px;                   /* About과 Projects 사이 간격 */
   padding-top: 0px;
   margin-top: -30px;
   padding-bottom: 100px;
