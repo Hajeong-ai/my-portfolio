@@ -2789,15 +2789,6 @@ summary::-webkit-details-marker { display: none; }
   .about-page .project-image { height: auto !important; }
   .about-page .hero-image { padding: 0 !important; margin: 24px auto 40px !important; }
   .about-page .hero-image img { transform: none !important; }
-
-  /* 9) 커서/호버 전용 데코는 터치에서만 비활성 (요소는 그대로 유지) */
-  @media (hover:none), (pointer:coarse) {
-    .about-page .custom-cursor,
-    .about-page .emoji-cursor,
-    .about-page #matchaCursor {
-      opacity: 0; pointer-events: none;
-    }
-  }
 }
 /* ✅ 프로젝트 요약: 작은 글씨, 1~2줄 클램프 */
 .project-summary{
@@ -3331,25 +3322,6 @@ body{
 .page--home .hero-image{ margin: 24px 0 56px !important; padding: 0 !important; }
 .page--home .hero-image img{ transform: none !important; }
 
-/* 8) 반응형: 폭이 좁아지면 1열 스택 + 동일 좌우 레일 유지 */
-@media (max-width: 980px){
-  :root{
-    --rail-x: 16px;     /* 모바일에서 헤더 좌우 패딩도 16px로 줄이는 경우 여기에만 바꾸면 전부 동기화 */
-    --about-col: min(420px, 100%);  /* 의미만 유지 */
-    --gutter: 18px;
-  }
-  .header-container{ padding: 14px var(--rail-x) !important; }
-
-  .page--home .about-project-wrapper{
-    grid-template-columns: 1fr !important;
-    row-gap: var(--gutter);
-  }
-  .page--home #about,
-  .page--home #projects{
-    grid-column: 1 !important;
-  }
-}
-
 /* 9) 다른 전역 규칙이 레일을 밀어내지 못하도록 몇 가지 흔한 충돌 무력화 */
 .page--home .page-wrapper,
 .page--home .project-intro,
@@ -3372,9 +3344,6 @@ body{
   height: auto !important;
   aspect-ratio: 16/9;
   object-fit: cover;
-}
-@media (max-width: 768px){
-  .page--home .project-image{ aspect-ratio: auto; }
 }
 
 /* 11) sticky 사이드바가 레일을 넘지 않게 */
@@ -3429,7 +3398,7 @@ body { padding-top: var(--header-h); }
     position: fixed; left: 16px; right: 16px;
     top: calc(var(--header-h) + 8px);
     flex-direction: column; gap: 10px;
-    background: #fff; border: 1px solid #eee; border-radius: 12px;
+    background: #fff;  border-radius: 12px;
     padding: 12px; box-shadow: 0 12px 30px rgba(0,0,0,.08);
     z-index: 1050;
   }

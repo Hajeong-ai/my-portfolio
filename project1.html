@@ -9,20 +9,22 @@
 <body class="with-sidebar">
 
   <!-- ✅ 헤더는 가장 위에 위치 -->
-  <header>
-    <div class="header-container">
+  <div class="header-container">
     <a href="index.html" class="logo">Hajeong Hwang</a>
-      <nav class="nav-links">
-        <a href="index.html">Works</a></li>
-        <a href="https://drive.google.com/file/d/1GNbSC2s9YiPBUwB4mYVHiBcrDVFBX_Tr/view?usp=sharing">Resume</a>
-          <a href="About.html">About</a>
-      </nav>
-    </div>
-        <!-- ✅ 햄버거 버튼 -->
-    <button class="hamburger" aria-label="Open menu" aria-expanded="false" aria-controls="primary-nav">
+
+    <!-- ✅ 햄버거 버튼은 헤더 컨테이너 안에 -->
+    <button class="hamburger" aria-label="Open menu"
+            aria-expanded="false" aria-controls="primary-nav">
       <span></span><span></span><span></span>
     </button>
 
+    <!-- ✅ aria-controls와 매칭되도록 id 추가 -->
+    <nav class="nav-links" id="primary-nav">
+      <a href="index.html">Works</a>
+      <a href="https://drive.google.com/file/d/1GNbSC2s9YiPBUwB4mYVHiBcrDVFBX_Tr/view?usp=sharing">Resume</a>
+      <a href="About.html">About</a>
+    </nav>
+  </div>
   </header>
 
   <!-- ✅ 전체 페이지 컨테이너 -->
@@ -507,28 +509,6 @@ On the payment page, users can subscribe for a VIP pass, unlocking the ability t
   </div>
   <div class="custom-cursor"></div>
   <script>
-        // --- 커스텀 커서 (pointer-events: none; CSS로 꼭 처리!)
-    const cursor = document.querySelector(".custom-cursor");
-    const emojiCursor = document.querySelector('.emoji-cursor');
-    const projects = document.querySelectorAll('.project');
-
-    document.addEventListener("mousemove", (e) => {
-      cursor.style.top = `${e.clientY}px`;
-      cursor.style.left = `${e.clientX}px`;
-      emojiCursor.style.top = `${e.clientY}px`;
-      emojiCursor.style.left = `${e.clientX}px`;
-    });
-
-    projects.forEach(p => {
-      p.addEventListener('mouseenter', () => {
-        emojiCursor.style.opacity = '1';
-        cursor.classList.add('hidden');
-      });
-      p.addEventListener('mouseleave', () => {
-        emojiCursor.style.opacity = '0';
-        cursor.classList.remove('hidden');
-      });
-    });
 
   // 모든 섹션과 사이드바 링크 선택
   const sections = document.querySelectorAll("section");
