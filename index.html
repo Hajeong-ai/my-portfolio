@@ -160,28 +160,6 @@ As the founding UX designer, I led zero-to-one product design and launch from sc
   <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
 
   <script>
-    // --- 커스텀 커서 (pointer-events: none; CSS로 꼭 처리!)
-    const cursor = document.querySelector(".custom-cursor");
-    const emojiCursor = document.querySelector('.emoji-cursor');
-    const projects = document.querySelectorAll('.project');
-
-    document.addEventListener("mousemove", (e) => {
-      cursor.style.top = `${e.clientY}px`;
-      cursor.style.left = `${e.clientX}px`;
-      emojiCursor.style.top = `${e.clientY}px`;
-      emojiCursor.style.left = `${e.clientX}px`;
-    });
-
-    projects.forEach(p => {
-      p.addEventListener('mouseenter', () => {
-        emojiCursor.style.opacity = '1';
-        cursor.classList.add('hidden');
-      });
-      p.addEventListener('mouseleave', () => {
-        emojiCursor.style.opacity = '0';
-        cursor.classList.remove('hidden');
-      });
-    });
 
     // --- Typed.js
     new Typed('#typed-text', {
@@ -190,7 +168,7 @@ As the founding UX designer, I led zero-to-one product design and launch from sc
     });
 
     // --- 햄버거 토글
-    const btn = document.getElementById('hamburger');
+
     const nav = document.getElementById('nav');
 
     function closeMenu(){

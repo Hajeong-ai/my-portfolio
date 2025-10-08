@@ -3232,7 +3232,7 @@ figcaption {
 .featured-title {
   font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'SF Pro Text', 'Helvetica Neue', 'Segoe UI', Roboto, sans-serif;
   font-size: .8rem; 
-  font-weight: 500;
+  font-weight: 400;
   letter-spacing: .06em;
   color: #000000;
   text-transform: uppercase;
@@ -3405,4 +3405,76 @@ body.page--home .about-project-wrapper{
     padding-right: 16px !important;
     flex-direction: column;
   }
+}
+/* ==== [MOBILE FINAL PATCH] ======================================= */
+:root{ --header-h: 64px; }
+
+/* 가로 스크롤 방지 + 고정헤더 보정 */
+html, body { max-width: 100%; overflow-x: hidden; }
+body { padding-top: var(--header-h); }
+
+
+.hamburger span{ display:block; width:22px; height:2px; background:#111; margin:3px 0; }
+
+/* 데스크톱에서는 햄버거 숨기고 nav 노출 */
+@media (min-width: 900px){
+  .hamburger{ display: none; }
+  .nav-links{ display: flex !important; position: static !important; background: transparent !important; box-shadow: none !important; }
+}
+
+/* 모바일에서 nav 드롭다운 */
+@media (max-width: 899px){
+  .nav-links{
+    display: none;
+    position: fixed; left: 16px; right: 16px;
+    top: calc(var(--header-h) + 8px);
+    flex-direction: column; gap: 10px;
+    background: #fff; border: 1px solid #eee; border-radius: 12px;
+    padding: 12px; box-shadow: 0 12px 30px rgba(0,0,0,.08);
+    z-index: 1050;
+  }
+  .nav-links.open{ display: flex; }
+  .nav-links a{ padding: 8px 4px; }
+}
+
+/* 사이드바: 모바일에선 숨기지 말고 가로 스크롤 탭바처럼 */
+@media (max-width: 900px){
+  .page-wrapper{ padding: 16px; }
+
+  .sidebar{
+    position: static !important; top: auto !important; left: auto !important;
+    width: auto; padding: 6px 0; margin: 0 0 10px;
+    background: transparent; border: 0; box-shadow: none;
+  }
+  .sidebar ul{
+    display: flex; gap: 10px; overflow-x: auto;
+    padding: 0; margin: 0;
+  }
+  .sidebar li{ margin: 0; list-style: none; }
+  .sidebar a{
+    white-space: nowrap; font-size: 14px;
+    padding-bottom: 4px; text-decoration: none;
+    color: #666; border-bottom: 1px solid transparent;
+  }
+  .sidebar a.active{ color:#0b5fff; border-bottom-color:#0b5fff; }
+}
+
+/* 앵커가 헤더에 가려지지 않도록 */
+[id]{ scroll-margin-top: calc(var(--header-h) + 12px); }
+
+/* 고정 폭/높이 요소들 모바일 유동화 */
+@media (max-width: 900px){
+  .bm-item{ width: 100% !important; }       /* (기존 1100px 강제 폭 보정) */
+  .project-image{ height: auto !important; }/* 카드 이미지 세로 고정 해제 */
+  .hero-image{ margin: 12px 0 !important; padding: 0 !important; }
+  .hero-image img{ width: 100% !important; height: auto !important; }
+  .project-meta{
+    display: grid; gap: 14px;
+    grid-template-columns: 1fr !important;  /* 메타 정보 한 칼럼 */
+  }
+}
+
+/* 페이지 하단 과도한 여백 축소(모바일) */
+@media (max-width: 900px){
+  .page-wrapper{ padding-bottom: 56px !important; }
 }
