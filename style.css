@@ -3335,6 +3335,7 @@ section{ margin-bottom: clamp(56px, 10vw, 120px); }
 
 .grid{ display:grid; gap: var(--gutter); }
 .grid-2{ grid-template-columns: repeat(2,minmax(0,1fr)); }
+
 @media (max-width: 900px){ .grid-2{ grid-template-columns: 1fr; } }
 .project-tags{
   display:flex; flex-wrap:wrap; gap:8px; margin: 10px 0 16px;
@@ -3361,11 +3362,4 @@ section#user-test img{
     border:1px solid #eee; border-radius:12px; box-shadow:0 10px 30px rgba(0,0,0,.08); z-index:2000;
   }
   .nav-links.open{ display:flex; }
-}
-/* 반응형 패딩 */
-@media (max-width: 768px) {
-  .header-inner {
-    width: 100%;
-    padding-inline: 16px;
-  }
 }
