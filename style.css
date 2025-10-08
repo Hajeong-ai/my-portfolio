@@ -3363,3 +3363,71 @@ section#user-test img{
   }
   .nav-links.open{ display:flex; }
 }
+
+/* ================== MOBILE HEADER ONLY ================== */
+@media (max-width: 768px) {
+  :root{
+    --header-h: 56px;      /* 모바일 헤더 높이 */
+    --m-pad: 16px;         /* 모바일 좌우 레일(본문과 동일) */
+  }
+
+  /* 헤더: 본문 레일과 정렬, 높이/패딩 컴팩트 */
+  .header-container {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    height: var(--header-h);
+    padding: 12px var(--m-pad);  /* ← 본문과 동일 좌우 패딩 */
+    background: #fff;            /* 스크롤 위에서도 읽기 쉽도록 */
+    border-bottom: 1px solid #eee;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    z-index: 1000;
+  }
+
+  /* 로고 크기/줄바꿈 방지 */
+  .logo {
+    font-size: 1rem;
+    font-weight: 500;
+    white-space: nowrap;
+  }
+
+  /* 햄버거 버튼 (이미 있으면 이 스타일만 덮어써짐) */
+  .hamburger{
+    display: block;
+    background: none;
+    border: 0;
+    padding: 6px;
+    margin-left: auto;
+    cursor: pointer;
+  }
+  .hamburger span{
+    display: block;
+    width: 22px; height: 2px;
+    background: #111;
+    margin: 4px 0;
+  }
+
+  /* 드롭다운 메뉴: 이미 있는 규칙 유지 + 레일 맞춤 */
+  .nav-links{
+    left: var(--m-pad);
+    right: var(--m-pad);
+    top: calc(var(--header-h) + 6px);
+  }
+
+  /* 본문이 헤더에 가려지지 않게 패딩 상단 추가 */
+  body { padding-top: var(--header-h); }
+
+  /* 사이드바는 상단 바 형태로 (네가 이미 설정해둔 스타일과 조화) */
+  .sidebar{
+    position: static;
+    transform: none;
+    width: 100%;
+    padding: 0 var(--m-pad);
+    margin: 10px 0 0;
+    background: transparent;
+    box-shadow: none;
+    border: 0;
+  }
+}
