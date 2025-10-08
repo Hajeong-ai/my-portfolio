@@ -3362,3 +3362,10 @@ section#user-test img{
   }
   .nav-links.open{ display:flex; }
 }
+/* 반응형 패딩 */
+@media (max-width: 768px) {
+  .header-inner {
+    width: 100%;
+    padding-inline: 16px;
+  }
+}
