@@ -92,8 +92,7 @@
 
   <footer>
   <p class="footer-left">
-    © 2025 Hajeong Hwang. Made with 
-    <span class="cursor-matcha -rich">iced matcha latte</span>
+    © 2025 Hajeong Hwang. Made with HTML/CSS & Iced Matcha Latte
   </p>
   <div class="footer-right">
     <a href="mailto:hajeongh@uw.edu" target="_blank" class="fa-regular fa-envelope"></a>
@@ -117,11 +116,6 @@ strings: ["🇰🇷 → 🇺🇸 → 🇦🇹 → 🇺🇸"]
 
 
 <script>
-      // --- 커스텀 커서 (pointer-events: none; CSS로 꼭 처리!)
-    const cursor = document.querySelector(".custom-cursor");
-    const emojiCursor = document.querySelector('.emoji-cursor');
-    const projects = document.querySelectorAll('.project');
-
     document.addEventListener("mousemove", (e) => {
       cursor.style.top = `${e.clientY}px`;
       cursor.style.left = `${e.clientX}px`;
@@ -167,14 +161,6 @@ strings: ["🇰🇷 → 🇺🇸 → 🇦🇹 → 🇺🇸"]
   trigger.addEventListener('mousemove', move);
 })();
 </script>
-
-<div class="cursor-circle"></div>
-<script>
-  const cursor = document.querySelector('.cursor-circle');
-  document.addEventListener('mousemove', (e) => {
-    cursor.style.left = e.clientX + 'px';
-    cursor.style.top = e.clientY + 'px';
-  });
   
 </script>
 
