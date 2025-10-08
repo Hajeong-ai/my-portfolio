@@ -2545,13 +2545,6 @@ summary::-webkit-details-marker { display: none; }
   margin-bottom: 28px; /* 위 글자와 메뉴 간격 */
 }
 
-.intro-subheading {
-  font-size: 0.95rem;
-  font-weight: 400;
-  color: #0b5fff;  /* 부드러운 포인트 컬러 (보라톤) */
-  margin-bottom: 10px;
-}
-
 .intro-quicknav-vertical {
   display: flex;
   flex-direction: column;
@@ -2561,7 +2554,7 @@ summary::-webkit-details-marker { display: none; }
 
 .intro-quicknav-vertical a {
   font-size: 0.95rem;
-  color: #6b7280;
+  color: #999;
   text-decoration: none;
   transition: color 0.2s ease;
 }
