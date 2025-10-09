@@ -2023,7 +2023,43 @@ textarea:focus-visible {
   outline-offset: 2px;
   border-radius: var(--radius-xs);
 }
-
+/* ===== 15. 모바일 전용 (768px 이하) ===== */
+@media (max-width: 768px) {
+  /* 햄버거 메뉴 표시 */
+  .hamburger {
+    display: flex;
+  }
+  
+  /* ... 기존 네비게이션 코드 ... */
+  
+  /* 프로젝트 카드 최적화 */
+  .project-summary {
+    display: none;
+  }
+  
+  .project-year {
+    display: none;
+  }
+  
+  /* 하이라이트 인터랙션 제거 */
+  .hl::after {
+    display: none;
+  }
+  
+  .hl {
+    padding: 0;
+  }
+  
+  /* About 고정 해제 */
+  #about {
+    position: static;
+  }
+  
+  .project-image {
+    height: auto;
+    max-height: 60vh;
+  }
+}
 /* ===== 18. 인쇄 ===== */
 @media print {
   .header-container,
