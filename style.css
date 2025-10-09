@@ -3435,3 +3435,133 @@ section#user-test img{
     object-fit: cover;
   }
 }
+html, body {
+  overflow-x: hidden;
+  max-width: 100vw;
+}
+
+* {
+  box-sizing: border-box;
+}/* Before */
+.bm-item { width: 1100px; }
+
+/* After */
+.bm-item { 
+  width: 100%;
+  max-width: min(1100px, calc(100vw - 32px));
+}:root {
+  --mobile-padding: clamp(16px, 4vw, 24px);
+  --content-max: 1100px;
+  --header-height: 60px;
+  --mobile-header-height: 56px;
+}/* ===== MASTER MOBILE STYLES (max-width: 768px) ===== */
+@media (max-width: 768px) {
+  /* Header */
+  .header-container {
+    padding: 12px var(--mobile-padding);
+    height: var(--mobile-header-height);
+  }
+  
+  /* Navigation */
+  .nav-links {
+    position: fixed;
+    inset: var(--mobile-header-height) 16px auto 16px;
+    flex-direction: column;
+    display: none;
+  }
+  .nav-links.open { display: flex; }
+  
+  /* Two-column → Single column */
+  .about-project-wrapper,
+  .research-content,
+  .feature-ctr,
+  .proto__ctr {
+    grid-template-columns: 1fr !important;
+    gap: 24px;
+  }
+  
+  /* Images: responsive sizing */
+  .project-image,
+  .hero-image img,
+  .solution-web img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+  }
+  
+  /* Fixed dimensions → fluid */
+  .image-flip-wrapper {
+    width: min(280px, 80vw);
+    height: min(280px, 80vw);
+  }
+  
+  /* Remove sticky positioning */
+  #about {
+    position: static;
+  }
+  
+  /* Sidebar → horizontal scroll tabs */
+  .sidebar {
+    position: static;
+    transform: none;
+    width: 100%;
+    padding: 0 var(--mobile-padding);
+  }
+  .sidebar ul {
+    display: flex;
+    gap: 10px;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+  
+  /* Typography scaling */
+  h1 { font-size: clamp(1.5rem, 5vw, 2rem); }
+  h2 { font-size: clamp(1.2rem, 4vw, 1.5rem); }
+  p { font-size: clamp(0.9rem, 3vw, 1rem); }
+  
+  /* Spacing reduction */
+  section { margin-bottom: 48px; }
+  .page-wrapper { padding: 0 var(--mobile-padding) 40px; }
+}@media (max-width: 768px) {
+  /* Benchmarking items */
+  .bm-item {
+    width: 100%;
+    margin: 0 0 12px;
+  }
+  
+  /* Ensure chevrons are tappable */
+  .bm-chevron {
+    width: 44px;
+    height: 44px;
+    display: grid;
+    place-items: center;
+  }
+  
+  /* Image sliders */
+  .ut-arrow {
+    width: 44px;
+    height: 44px;
+  }
+}/* Replace scattered values with variables */
+:root {
+  --mobile-bp: 768px;
+  --tablet-bp: 900px;
+  --mobile-gap: 16px;
+  --mobile-radius: 12px;
+}@media (max-width: 768px) {
+  /* Ensure all content aligns to same left edge */
+  .page-wrapper,
+  .project-intro,
+  .stats-ctr,
+  .hero-image {
+    padding-left: var(--mobile-padding) !important;
+    padding-right: var(--mobile-padding) !important;
+  }
+  
+  /* Remove negative margins that break alignment */
+  .hero-text,
+  .project-hero {
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+  }
+}
