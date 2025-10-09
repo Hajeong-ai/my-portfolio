@@ -227,23 +227,6 @@ p {
   color: var(--color-text-secondary);
 }
 
-/* 크롬 전용 최적화 */
-@supports (-webkit-appearance: none) {
-  body,
-  h1, h2, h3, h4, h5, h6,
-  p, a, span, div {
-    -webkit-font-smoothing: subpixel-antialiased;
-    text-rendering: optimizeLegibility;
-  }
-}
-
-/* 파이어폭스 전용 최적화 */
-@-moz-document url-prefix() {
-  body {
-    -moz-osx-font-smoothing: auto;
-  }
-}
-
 /* 텍스트 유틸리티 */
 .text-primary { color: var(--color-text-primary); }
 .text-secondary { color: var(--color-text-secondary); }
@@ -1004,16 +987,6 @@ section {
     height: auto;
     max-height: 60vh;
   }
-  @keyframes slideDown {
-    from {
-      opacity: 0;
-      transform: translateY(-10px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
 }
 
 /* ===== 16. 추가 컴포넌트 ===== */
