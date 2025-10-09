@@ -570,19 +570,26 @@ body {
 }
 
 
-/* 프로젝트 카드 - Consistent Spacing */
 .project-link {
+  text-decoration: none;
+  color: inherit;
   display: block;
-  margin-bottom: var(--space-8);
+  transition: transform 0.3s ease;
 }
 
 .project {
-  background: var(--color-bg-primary);
-  padding: var(--space-3);
-  border-radius: var(--radius-lg);
-  border: 1px solid var(--color-border-light);
-  box-shadow: var(--shadow-sm);
-  transition: all var(--duration-slow) var(--easing);
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  padding: 2rem;
+  margin-bottom: 4rem;
+  border-radius: 20px;
+  background: #fafafa;
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+  min-height: 520px; /* 일관된 높이 */
 }
 
 .project:hover {
@@ -590,31 +597,43 @@ body {
   box-shadow: var(--shadow-lg);
   border-color: var(--color-border);
 }
+.project-content {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  position: relative;
+  z-index: 2;
+  flex: 1;
+}
+
 
 .project-image {
   width: 100%;
-  height: auto;
-  aspect-ratio: 16 / 9;
-  border-radius: var(--radius-md);
-  margin-bottom: var(--space-1);
+  height: 400px;
   object-fit: cover;
-  background: var(--color-bg-secondary);
+  border-radius: 12px;
+  transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  z-index: 2;
 }
 
+.project-link:hover .project-image {
+  transform: scale(1.02);
+}
 .project-title {
-  font-family: var(--font-text);
-  font-weight: var(--weight-semibold);
-  font-size: var(--text-lg);
+  font-size: 1.5rem;
+  font-weight: 700;
   line-height: 1.3;
-  color: var(--color-text-primary);
-  margin-bottom: var(--space-2);
+  margin: 0;
   display: flex;
   align-items: baseline;
-  gap: var(--space-3);
+  gap: 0.5rem;
   flex-wrap: wrap;
-  letter-spacing: -0.01em;
+  transition: all 0.3s ease;
 }
-
+.project-link:hover .project-title {
+  letter-spacing: 0.01em;
+}
 .project-year {
   font-family: var(--font-text);
   color: var(--color-text-muted);
@@ -639,15 +658,141 @@ body {
 }
 
 .project-tags {
-  display: flex;
-  flex-wrap: wrap;
-  gap: var(--space-2);
-  margin-top: var(--space-3);
-  font-family: var(--font-text);
-  font-size: var(--text-2xs);
-  font-weight: var(--weight-regular);
-  color: var(--color-text-muted);
-  letter-spacing: 0.01em;
+  font-size: 0.9rem;
+  color: rgba(0, 0, 0, 0.6);
+  margin-top: auto; /* 하단으로 밀기 */
+  padding-top: 1rem;
+  border-top: 1px solid rgba(0, 0, 0, 0.08);
+  letter-spacing: 0.02em;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+.project-link:hover .project-tags {
+  color: rgba(0, 0, 0, 0.8);
+  transform: translateX(4px);
+}
+   반응형 - 모바일
+======================================== */
+@media (max-width: 768px) {
+  .project {
+    gap: 1.25rem;
+    padding: 1.5rem;
+    margin-bottom: 3rem;
+    min-height: 480px;
+    border-radius: 16px;
+  }
+
+  .project-image {
+    height: 220px;
+    border-radius: 10px;
+  }
+
+  .project-title {
+    font-size: 1.25rem;
+    gap: 0.4rem;
+  }
+
+  .project-year {
+    font-size: 0.9rem;
+  }
+
+  .project-summary {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    -webkit-line-clamp: 4; /* 모바일에서 4줄 */
+  }
+
+  .project-tags {
+    font-size: 0.85rem;
+    padding-top: 0.75rem;
+  }
+
+  /* 모바일에서는 호버 효과 제거 */
+  .project-link:hover .project {
+    transform: none;
+    box-shadow: none;
+  }
+
+  .project-link:active .project {
+    transform: scale(0.98);
+  }
+}
+
+/* ========================================
+   반응형 - 태블릿
+======================================== */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .project {
+    gap: 1.35rem;
+    padding: 1.75rem;
+    min-height: 500px;
+  }
+
+  .project-image {
+    height: 240px;
+  }
+
+  .project-title {
+    font-size: 1.35rem;
+  }
+
+  .project-summary {
+    font-size: 1rem;
+  }
+}
+
+/* ========================================
+   반응형 - 큰 화면
+======================================== */
+@media (min-width: 1400px) {
+  .project {
+    padding: 2.5rem;
+    min-height: 560px;
+  }
+
+  .project-image {
+    height: 320px;
+  }
+
+  .project-title {
+    font-size: 1.65rem;
+  }
+
+  .project-summary {
+    font-size: 1.1rem;
+  }
+}
+
+/* ========================================
+   접근성
+======================================== */
+.project-link:focus {
+  outline: none;
+}
+
+.project-link:focus .project {
+  outline: 3px solid #000;
+  outline-offset: 4px;
+}
+
+.project-link:focus:not(:focus-visible) .project {
+  outline: none;
+}
+
+/* Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+  .project,
+  .project-image,
+  .project-title,
+  .project-summary,
+  .project-tags,
+  .project::before {
+    transition: none;
+  }
+  
+  .project-link:hover .project {
+    transform: none;
+  }
 }
 
 /* ===== 8. 사이드바 (데스크탑) ===== */
@@ -2869,10 +3014,24 @@ textarea:focus-visible {
     min-width: 100%;
     margin-top: 0.3em;
   }
+
+  /* 호버 효과 */
+.project::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, 
+    rgba(255,255,255,0.9) 0%, 
+    rgba(255,255,255,0.7) 100%);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  pointer-events: none;
+  z-index: 1;
 }
-.project-link {
-  position: relative;
-}
+
 
 .project-link::before {
   content: '';
@@ -2887,6 +3046,15 @@ textarea:focus-visible {
 .project-link:focus-within::before {
   opacity: 1;
   box-shadow: 0 0 0 3px var(--color-primary-light);
+}
+.project-link:hover .project::before {
+  opacity: 1;
+}
+
+.project-link:hover .project {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
+  border-color: rgba(0, 0, 0, 0.1);
 }
 
 /* Smooth reveal */
