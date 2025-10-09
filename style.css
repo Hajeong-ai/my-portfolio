@@ -694,22 +694,61 @@ footer {
   }
 }
 
+/* Footer 아이콘 크기 조정 */
 .footer-right {
   display: flex;
-  gap: var(--space-4);
-  flex-wrap: wrap;
-  justify-content: center;
+  gap: 1.5rem;
+  align-items: center;
 }
 
 .footer-right a {
+  font-size: 1.5rem; /* 아이콘 크기 */
   color: var(--color-text-muted);
-  transition: color var(--duration-base) var(--easing);
+  transition: all 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .footer-right a:hover {
-  color: var(--color-primary);
+  color: #000;
+  transform: translateY(-3px);
 }
 
+/* 더 크게 하고 싶다면 */
+.footer-right a {
+  font-size: 1.75rem; /* 더 큰 사이즈 */
+}
+
+/* 또는 아주 크게 */
+.footer-right a {
+  font-size: 2rem;
+}
+
+/* 모바일 */
+@media (max-width: 768px) {
+  .footer-right {
+    gap: 1.25rem;
+  }
+  
+  .footer-right a {
+    font-size: 1.35rem;
+  }
+}
+
+/* 태블릿 */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .footer-right a {
+    font-size: 1.5rem;
+  }
+}
+
+/* 데스크탑 */
+@media (min-width: 1025px) {
+  .footer-right a {
+    font-size: 1.75rem; /* 또는 2rem */
+  }
+}
 /* ===== 10. 프로젝트 상세 페이지 ===== */
 .page-wrapper {
   max-width: var(--container-max);
