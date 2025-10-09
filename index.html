@@ -32,7 +32,7 @@
      <section id="about" data-aos="fade-up" class="centered-section">
       <h2 class="intro-heading">
         <span class="line1">👋 Hi! I'm 👩‍💻 Hajeong Hwang, a <span id="typed-text"></span></span></h2>
-<h2 class="intro-location">passionate designing with empathy,</br>🪄 Turning everyday challenges into intuitive experiences that connect people, data, and purpose</h2>
+<h2 class="intro-location">Passionate designing with empathy,</br>🪄 Turning everyday challenges into intuitive experiences that connect people, data, and purpose</h2>
 <h2 class="intro-location">🎓 Currently a Master’s Student @ </br>University of Washington,</br>
 Studying Human-Centered Design and Engineering</h2>
 
@@ -333,6 +333,24 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 })();
 </script>
-
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+  const typedElement = document.getElementById("typed-text");
+  const isMobile = window.innerWidth <= 768;
+  
+  if (isMobile) {
+    // 모바일에서는 즉시 표시 - 레이아웃 안정적
+    typedElement.textContent = "a designer";
+    typedElement.style.opacity = "1";
+  } else {
+    // 데스크탑에서만 타이핑 효과
+    var typed = new Typed("#typed-text", {
+      strings: ["a designer"],
+      typeSpeed: 50,
+      showCursor: true
+    });
+  }
+});
+</script>
 </body>
 </html>
