@@ -193,52 +193,27 @@ strings: ["🇰🇷 → 🇺🇸 → 🇦🇹 → 🇺🇸"]
   
 </script>
 <script>
-(() => {
-  const burger = document.querySelector('.hamburger');
-  const nav = document.getElementById('primary-nav') || document.querySelector('.nav-links');
-  if (!burger || !nav) return;
-
-  const open = () => {
-    nav.classList.add('open');
-    burger.classList.add('is-open');
-    burger.setAttribute('aria-expanded', 'true');
-    document.body.classList.add('no-scroll'); // 선택: 모바일에서 바디 스크롤 잠금
-  };
-
-  const close = () => {
-    nav.classList.remove('open');
-    burger.classList.remove('is-open');
-    burger.setAttribute('aria-expanded', 'false');
-    document.body.classList.remove('no-scroll');
-  };
-
-  burger.addEventListener('click', (e) => {
-    e.stopPropagation();
-    nav.classList.contains('open') ? close() : open();
-  });
-
-  // 메뉴 링크 클릭 시 닫기
-  nav.addEventListener('click', (e) => {
-    if (e.target.matches('a')) close();
-  });
-
-  // 바깥 클릭 시 닫기
-  document.addEventListener('click', (e) => {
-    if (!nav.contains(e.target) && !burger.contains(e.target)) close();
-  });
-
-  // ESC로 닫기
-  document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape') close();
-  });
-
-  // 데스크톱으로 커지면 상태 초기화
-  window.addEventListener('resize', () => {
-    if (window.innerWidth >= 901) close();
-  });
-})();
+// 햄버거 메뉴 토글 기능
+document.addEventListener("DOMContentLoaded", function() {
+  const hamburger = document.querySelector('.hamburger');
+  const navLinks = document.querySelector('.nav-links');
+  
+  if (hamburger && navLinks) {
+    hamburger.addEventListener('click', function() {
+      // 메뉴 열기/닫기
+      navLinks.classList.toggle('active');
+      hamburger.classList.toggle('active');
+      
+      // aria-expanded 속성 업데이트 (접근성)
+      const isExpanded = hamburger.getAttribute('aria-expanded') === 'true';
+      hamburger.setAttribute('aria-expanded', !isExpanded);
+      
+      // body 스크롤 막기 (선택사항)
+      document.body.classList.toggle('menu-open');
+    });
+  }
+});
 </script>
-
 </body>
 </html>
 

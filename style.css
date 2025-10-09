@@ -827,11 +827,12 @@ section {
   box-shadow: 0 12px 32px rgba(0, 123, 255, 0.15);
 }
 
-/* Typed text 커서 효과 */
 #typed-text {
-  border-right: 2px solid var(--color-text-primary);
-  animation: blink 0.7s steps(1) infinite;
+  display: inline-block;
+  min-width: 250px; /* 타이핑될 텍스트 공간 확보 */
+  min-height: 1.4em;
 }
+
 
 @keyframes blink {
   50% { border-color: transparent; }
@@ -2483,7 +2484,32 @@ textarea:focus-visible {
   transform: translateY(-4px);
   box-shadow: var(--shadow-xl);
 }
+/* 타이핑 텍스트 영역 고정 */
+.intro-text h1, 
+.intro-text h2 {
+  min-height: 2.5em; /* 높이를 미리 확보 */
+}
 
+#typed-text {
+  display: inline-block;
+  min-width: 120px; /* 타이핑될 텍스트 공간 확보 */
+  white-space: nowrap;
+}
+
+/* 모바일 최적화 */
+@media (max-width: 768px) {
+  .intro-text h1,
+  .intro-text h2 {
+    min-height: auto;
+    line-height: 1.3;
+  }
+  
+  #typed-text {
+    display: block; /* 블록으로 변경해서 한 줄 차지 */
+    min-width: 100%;
+    margin-top: 0.3em;
+  }
+}
 .project-link {
   position: relative;
 }
