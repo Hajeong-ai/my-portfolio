@@ -276,7 +276,7 @@ p {
 
 .logo {
   font-family: var(--font-display);
-  font-weight: var(--weight-medium);
+  font-weight: var(--weight-light);
   font-size: var(--text-md);
   line-height: 1;
   white-space: nowrap;
@@ -1247,7 +1247,7 @@ section {
 /* ===== Problem Section ===== */
 #problem {
   max-width: var(--container-max, 1200px);
-
+  margin: 0 auto;
   padding:  var(--padding-x-mobile, 40px);
 }
 
