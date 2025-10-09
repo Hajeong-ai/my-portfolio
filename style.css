@@ -81,11 +81,18 @@
   --header-height-tablet: 72px;
   --header-height-desktop: 84px;
   
-  /* SF Pro 폰트 스택 */
-  --font-display: "SF Pro Display", -apple-system, system-ui, BlinkMacSystemFont, 
-                   "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-  --font-text: "SF Pro Text", -apple-system, system-ui, BlinkMacSystemFont,
-               "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    /* SF Pro 폰트 스택 - 사파리 우선 */
+  --font-display: -apple-system, BlinkMacSystemFont, "SF Pro Display", 
+                   "Segoe UI", system-ui, Roboto, "Helvetica Neue", Arial, sans-serif;
+  --font-text: -apple-system, BlinkMacSystemFont, "SF Pro Text",
+               "Segoe UI", system-ui, Roboto, "Helvetica Neue", Arial, sans-serif;
+  
+  /* 폰트 웨이트 - 크롬에서 더 진하게 */
+  --weight-light: 350;        /* 300 → 350 */
+  --weight-regular: 450;      /* 400 → 450 */
+  --weight-medium: 550;       /* 500 → 550 */
+  --weight-semibold: 650;     /* 600 → 650 */
+  --weight-bold: 750;         /* 700 → 750 */
   
   /* 그림자 (절제된) */
   --shadow-xs: 0 1px 2px rgba(0, 0, 0, 0.04);
