@@ -227,6 +227,23 @@ p {
   color: var(--color-text-secondary);
 }
 
+/* 크롬 전용 최적화 */
+@supports (-webkit-appearance: none) {
+  body,
+  h1, h2, h3, h4, h5, h6,
+  p, a, span, div {
+    -webkit-font-smoothing: subpixel-antialiased;
+    text-rendering: optimizeLegibility;
+  }
+}
+
+/* 파이어폭스 전용 최적화 */
+@-moz-document url-prefix() {
+  body {
+    -moz-osx-font-smoothing: auto;
+  }
+}
+
 /* 텍스트 유틸리티 */
 .text-primary { color: var(--color-text-primary); }
 .text-secondary { color: var(--color-text-secondary); }
@@ -289,20 +306,20 @@ p {
   color: var(--color-primary);
 }
 
-/* 햄버거 메뉴 */
+/* 햄버거 메뉴 - 평범한 3줄 디자인 */
 .hamburger {
   display: none;
   background: none;
   border: 0;
-  padding: var(--space-3);
+  padding: var(--space-2);
   cursor: pointer;
-  width: 40px;
-  height: 40px;
-  position: relative;
+  width: 44px;
+  height: 44px;
   align-items: center;
   justify-content: center;
-  transition: transform var(--duration-base) var(--easing);
-  border-radius: var(--radius-sm);
+  flex-direction: column;
+  gap: 5px;
+  transition: opacity var(--duration-base) var(--easing);
 }
 
 .hamburger:active {
@@ -930,23 +947,23 @@ section {
     display: flex;
   }
   
-  /* 네비게이션 드롭다운 */
   .nav-links {
     position: fixed;
-    top: calc(var(--header-height-mobile) + var(--space-2));
-    left: var(--padding-x-mobile);
-    right: var(--padding-x-mobile);
+    top: var(--header-height-mobile);
+    left: 0;
+    right: 0;
     display: none;
     flex-direction: column;
     gap: 0;
-    padding: var(--space-2);
+    padding: var(--space-4);
     background: rgba(255, 255, 255, 0.98);
-    border: 1px solid var(--color-border);
-    border-radius: var(--radius-lg);
-    box-shadow: var(--shadow-xl);
+    border-bottom: 1px solid var(--color-border-light);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
     z-index: 2000;
-    backdrop-filter: blur(12px);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
   }
+  
   
   .nav-links.open {
     display: flex;
@@ -987,6 +1004,16 @@ section {
     height: auto;
     max-height: 60vh;
   }
+  @keyframes slideDown {
+    from {
+      opacity: 0;
+      transform: translateY(-10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
 }
 
 /* ===== 16. 추가 컴포넌트 ===== */
