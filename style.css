@@ -2387,8 +2387,103 @@ textarea:focus-visible {
     gap: var(--space-4);
   }
 }
+/* ===== Research Section ===== */
+/* ===== Research Section ===== */
+#research {
+  max-width: var(--container-max, 1200px);
+  margin: 0 auto;
+  padding: var(--section-gap-md, 80px) var(--padding-x-mobile, 40px);
+}
 
-/* ===== 20. 마이크로 인터랙션 (디테일) ===== */
+/* 섹션 제목 */
+#research > h3 {
+  color: var(--color-text-primary);
+  margin-bottom: 0;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+}
+
+/* 연구 컨텐츠 레이아웃 */
+.research-content {
+  display: grid;
+  grid-template-columns: 380px 1fr;
+  gap: var(--space-16, 64px);
+  align-items: flex-start;
+  margin-top: var(--space-6, 24px);
+}
+
+/* 왼쪽: 아이템들 */
+.research-items {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-8, 32px);
+}
+
+/* 연구 아이템 */
+.research-item {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-5, 20px);
+}
+
+/* ... 나머지 스타일 동일 ... */
+/* 아이콘 서클 */
+.icon-circle {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: var(--color-bg-secondary);
+  border: 1px solid var(--color-border-light);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  box-shadow: var(--shadow-sm);
+  margin-top: 2px;
+}
+
+.icon-circle img {
+  width: 34px;
+  height: 34px;
+  object-fit: contain;
+}
+
+/* 텍스트 */
+.research-item .text {
+  font-family: var(--font-text);
+  font-size: var(--text-md);
+  line-height: 1.6;
+  color: var(--color-text-secondary);
+  letter-spacing: -0.01em;
+  padding-top: 4px;
+}
+
+.research-item .text strong {
+  font-weight: var(--weight-semibold);
+  color: var(--color-text-primary);
+}
+
+/* 오른쪽: 이미지 */
+.research-image {
+  width: 100%;
+  max-width: 100%;
+}
+
+.research-image img {
+  width: 100%;
+  height: auto;
+  border-radius: var(--radius-lg, 14px);
+  box-shadow: var(--shadow-lg);
+  display: block;
+  transition: transform var(--duration-slow) var(--easing),
+              box-shadow var(--duration-slow) var(--easing);
+}
+
+.research-image img:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-xl);
+}
+
 .project-link {
   position: relative;
 }
