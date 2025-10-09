@@ -264,6 +264,8 @@ p {
 }
 
 /* ===== 4. 헤더 (Consistent Spacing & Alignment) ===== */
+
+/* ===== 4. 헤더 (Consistent Spacing & Alignment) ===== */
 .header-container {
   position: fixed;
   top: 0;
@@ -280,18 +282,16 @@ p {
   z-index: 1000;
   /* 보더 제거 - 깔끔한 통합감 */
 }
-
 .logo {
-  font-family: var(--font-display);
-  font-weight: var(--weight-light);
-  font-size: var(--text-md);
+  font-family: var(--font-text);
+  font-weight: var(--weight-regular);
+  font-size: var(--text-sm);
   line-height: 1;
   white-space: nowrap;
-  color: var(--color-text-primary);
-  letter-spacing: -0.02em;
+  color: var(--color-text-secondary);
+  letter-spacing: 0;
   transition: color var(--duration-base) var(--easing);
 }
-
 .logo:hover {
   color: var(--color-primary);
 }
