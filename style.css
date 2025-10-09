@@ -596,7 +596,7 @@ body {
   height: auto;
   aspect-ratio: 16 / 9;
   border-radius: var(--radius-md);
-  margin-bottom: var(--space-4);
+  margin-bottom: var(--space-1);
   object-fit: cover;
   background: var(--color-bg-secondary);
 }
@@ -667,9 +667,31 @@ footer {
   font-size: var(--text-sm);
   font-weight: var(--weight-regular);
   color: var(--color-text-muted);
-  margin-top: var(--section-gap-xl);
+  margin-top: 3rem; /* --section-gap-xl 대신 4rem으로 조정 */
   text-align: center;
   border-top: 1px solid var(--color-border-light);
+}
+
+/* 모바일에서는 조금 더 줄이기 */
+@media (max-width: 768px) {
+  footer {
+    margin-top: 3rem;
+    padding: 2rem var(--padding-x-mobile);
+  }
+}
+
+/* 태블릿 */
+@media (min-width: 769px) and (max-width: 1024px) {
+  footer {
+    margin-top: 3.5rem;
+  }
+}
+
+/* 데스크탑 */
+@media (min-width: 1025px) {
+  footer {
+    margin-top: 5rem;
+  }
 }
 
 .footer-right {
@@ -1310,77 +1332,338 @@ section {
 
 /* ===== 16. 추가 컴포넌트 ===== */
 
-/* Next/Prev 프로젝트 네비게이션 */
-.next-project,
-.dual-project-nav {
+/* ========================================
+   Project Navigation (Single or Dual)
+======================================== */
+.next-project.dual-project-nav {
   display: flex;
   justify-content: space-between;
-  gap: var(--space-8);
-  padding: var(--space-16) 0;
-  margin-top: var(--section-gap-lg);
-  border-top: 1px solid var(--color-border-light);
-  flex-wrap: wrap;
+  align-items: flex-start;
+  gap: 4rem;
+  padding: 4rem 0;
+  max-width: 1200px; /* 프로젝트와 동일한 너비 */
+  margin: 6rem auto 0;
+  padding-left: 5%;
+  padding-right: 5%;
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
 }
 
 .prev-wrapper,
 .next-wrapper {
-  max-width: 320px;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  flex: 0 0 auto;
+  max-width: 480px; /* 버튼 최대 너비 */
+}
+
+/* Previous는 왼쪽 정렬 */
+.prev-wrapper {
+  align-items: flex-start;
+  margin-right: auto;
+}
+
+/* Next는 오른쪽 정렬 */
+.next-wrapper {
+  align-items: flex-end;
+  margin-left: auto;
+}
+
+/* 한 개만 있을 때 */
+.prev-wrapper:only-child {
+  margin-right: auto;
+  margin-left: 0;
+}
+
+.next-wrapper:only-child {
+  margin-left: auto;
+  margin-right: 0;
+}
+
+/* 라벨 스타일 */
+.next-label {
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: rgba(0, 0, 0, 0.5);
+  font-weight: 500;
+  margin-bottom: 0.25rem;
+}
+
+/* Previous 라벨은 왼쪽 정렬 */
+.prev-wrapper .next-label {
+  text-align: left;
+  align-self: flex-start;
+}
+
+/* Next 라벨은 오른쪽 정렬 */
+.next-wrapper .next-label {
+  text-align: right;
+  align-self: flex-end;
+}
+
+/* 링크 스타일 */
+.next-link {
+  text-decoration: none;
+  color: inherit;
+  display: block;
   width: 100%;
 }
 
-.next-label {
-  font-family: var(--font-text);
-  font-size: var(--text-2xs);
-  font-weight: var(--weight-medium);
-  color: var(--color-text-muted);
-  margin-bottom: var(--space-3);
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-}
-
-.next-link {
-  text-decoration: none;
-}
-
+/* 카드 스타일 */
 .next-card {
-  padding: var(--space-5);
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-lg);
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  background-color: var(--color-bg-primary);
-  transition: all var(--duration-slow) var(--easing);
+  gap: 1.25rem;
+  padding: 1.75rem 2rem;
+  background: #f9f9f9;
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  border-radius: 16px;
+  transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+  width: 100%;
 }
 
-.next-card:hover {
-  background-color: var(--color-bg-hover);
-  border-color: var(--color-primary);
-  transform: translateX(4px);
+/* 호버 효과 */
+.next-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 100%;
+  background: linear-gradient(
+    90deg, 
+    rgba(0, 0, 0, 0.02), 
+    rgba(0, 0, 0, 0.04)
+  );
+  transition: width 0.45s ease;
+  z-index: 0;
 }
 
-.prev-wrapper .next-card:hover {
-  transform: translateX(-4px);
+.next-link:hover .next-card::before {
+  width: 100%;
 }
 
-.next-title {
-  font-family: var(--font-text);
-  font-size: var(--text-base);
-  font-weight: var(--weight-medium);
-  letter-spacing: -0.01em;
-  color: var(--color-text-primary);
+.next-link:hover .next-card {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.1);
+  background: #ffffff;
+  border-color: rgba(0, 0, 0, 0.08);
 }
 
+/* 화살표 스타일 */
 .next-arrow {
-  font-size: var(--text-lg);
-  color: var(--color-text-muted);
-  transition: color var(--duration-base) var(--easing);
+  font-size: 1.75rem;
+  font-weight: 300;
+  transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: 1;
+  position: relative;
+  color: rgba(0, 0, 0, 0.7);
+  flex-shrink: 0;
 }
 
-.next-card:hover .next-arrow {
-  color: var(--color-primary);
+.next-link:hover .next-arrow {
+  color: #000;
 }
 
+/* Previous 카드 - 왼쪽 정렬 */
+.prev-wrapper .next-card {
+  justify-content: flex-start;
+}
+
+.prev-wrapper .next-link:hover .next-arrow {
+  transform: translateX(-8px);
+}
+
+/* Next 카드 - 오른쪽 정렬 */
+.next-wrapper .next-card {
+  justify-content: flex-end;
+  flex-direction: row-reverse;
+}
+
+.next-wrapper .next-link:hover .next-arrow {
+  transform: translateX(8px);
+}
+
+/* 타이틀 스타일 */
+.next-title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  line-height: 1.4;
+  margin: 0;
+  z-index: 1;
+  position: relative;
+  transition: all 0.3s ease;
+  color: rgba(0, 0, 0, 0.85);
+  flex: 1;
+}
+
+.next-link:hover .next-title {
+  color: #000;
+  letter-spacing: 0.01em;
+}
+
+/* Previous 타이틀은 왼쪽 정렬 */
+.prev-wrapper .next-title {
+  text-align: left;
+}
+
+/* Next 타이틀은 오른쪽 정렬 */
+.next-wrapper .next-title {
+  text-align: right;
+}
+
+/* ========================================
+   모바일 반응형 (768px 이하)
+======================================== */
+@media (max-width: 768px) {
+  .next-project.dual-project-nav {
+    flex-direction: column;
+    gap: 2rem;
+    padding: 3rem 8%;
+    margin-top: 4rem;
+    max-width: 100%;
+  }
+
+  .prev-wrapper,
+  .next-wrapper {
+    width: 100%;
+    max-width: 100%;
+    align-items: flex-start;
+    margin: 0;
+  }
+
+  /* 모바일에서는 모두 왼쪽 정렬 */
+  .next-label {
+    text-align: left !important;
+    align-self: flex-start !important;
+  }
+
+  .next-card {
+    padding: 1.5rem 1.5rem;
+    gap: 1rem;
+    border-radius: 12px;
+    justify-content: flex-start !important;
+    flex-direction: row !important;
+  }
+
+  .next-title {
+    font-size: 1.05rem;
+    text-align: left !important;
+  }
+
+  .next-arrow {
+    font-size: 1.5rem;
+  }
+
+  .next-label {
+    font-size: 0.75rem;
+    letter-spacing: 0.08em;
+  }
+  
+  .next-link:hover .next-card {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+  }
+}
+
+/* ========================================
+   태블릿 (769px ~ 1024px)
+======================================== */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .next-project.dual-project-nav {
+    padding: 3.5rem 5%;
+    gap: 2rem;
+    margin-top: 5rem;
+  }
+
+  .prev-wrapper,
+  .next-wrapper {
+    max-width: 420px;
+  }
+
+  .next-card {
+    padding: 1.5rem 1.75rem;
+    gap: 1rem;
+  }
+
+  .next-title {
+    font-size: 1.15rem;
+  }
+
+  .next-arrow {
+    font-size: 1.5rem;
+  }
+}
+
+/* ========================================
+   중간 화면 (1025px ~ 1400px)
+======================================== */
+@media (min-width: 1025px) and (max-width: 1400px) {
+  .next-project.dual-project-nav {
+    gap: 3rem;
+  }
+}
+
+/* ========================================
+   큰 화면 (1400px 이상)
+======================================== */
+@media (min-width: 1400px) {
+  .next-project.dual-project-nav {
+    padding: 5rem 0;
+    padding-left: calc((100% - 1200px) / 2);
+    padding-right: calc((100% - 1200px) / 2);
+  }
+
+  .next-card {
+    padding: 2rem 2.5rem;
+  }
+}
+
+/* ========================================
+   접근성
+======================================== */
+.next-link:focus {
+  outline: none;
+}
+
+.next-link:focus .next-card {
+  outline: 3px solid rgba(0, 0, 0, 0.5);
+  outline-offset: 4px;
+  box-shadow: 0 0 0 4px rgba(0, 0, 0, 0.05);
+}
+
+.next-link:focus:not(:focus-visible) .next-card {
+  outline: none;
+  box-shadow: none;
+}
+
+.next-link:focus-visible .next-card {
+  outline: 3px solid #000;
+  outline-offset: 4px;
+}
+
+/* ========================================
+   Reduced Motion
+======================================== */
+@media (prefers-reduced-motion: reduce) {
+  .next-card,
+  .next-arrow,
+  .next-title,
+  .next-card::before {
+    transition: none;
+  }
+  
+  .next-link:hover .next-card {
+    transform: none;
+  }
+  
+  .next-link:hover .next-arrow {
+    transform: none;
+  }
+}
 /* Problem-Solution Grid */
 .ps-grid {
   display: flex;
