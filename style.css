@@ -294,15 +294,15 @@ p {
   display: none;
   background: none;
   border: 0;
-  padding: var(--space-2);
+  padding: var(--space-3);
   cursor: pointer;
-  width: 44px;
-  height: 44px;
+  width: 40px;
+  height: 40px;
+  position: relative;
   align-items: center;
   justify-content: center;
-  flex-direction: column;
-  gap: 5px;
   transition: transform var(--duration-base) var(--easing);
+  border-radius: var(--radius-sm);
 }
 
 .hamburger:active {
@@ -818,10 +818,9 @@ section {
 /* ===== 13. 데스크탑 (900px+) ===== */
 @media (min-width: 900px) {
   .header-container {
-    padding: var(--space-6) var(--padding-x-desktop) var(--space-5);
+    padding: var(--space-6) var(--padding-x-desktop);
     height: var(--header-height-desktop);
   }
-  
   body {
     padding-top: var(--header-height-desktop);
   }
