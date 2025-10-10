@@ -176,12 +176,6 @@ As the founding UX designer, I led zero-to-one product design and launch from sc
       });
     });
 
-    // --- Typed.js
-    new Typed('#typed-text', {
-      strings: ['Product Designer', 'UX Designer', 'Design Thinker'],
-      typeSpeed: 60, backSpeed: 30, backDelay: 2000, loop: true
-    });
-
     // --- 햄버거 토글
     const btn = document.getElementById('hamburger');
     const nav = document.getElementById('nav');
@@ -300,6 +294,7 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 });
 </script>
+
 <script>
 (function(){
   // a.project-link[data-hover] 안의 .project-image를 호버 시 교체
@@ -327,6 +322,7 @@ document.addEventListener('DOMContentLoaded', () => {
     card.addEventListener('focus', showHover, true);
     card.addEventListener('blur', showOriginal, true);
   });
+  
 })();
 </script>
 <script>
@@ -335,18 +331,21 @@ document.addEventListener("DOMContentLoaded", function() {
   const isMobile = window.innerWidth <= 768;
   
   if (isMobile) {
-    // 모바일에서는 즉시 표시 - 레이아웃 안정적
-    typedElement.textContent = "a designer";
+    // 모바일에서는 즉시 표시
+    typedElement.textContent = "Product Designer";
     typedElement.style.opacity = "1";
   } else {
     // 데스크탑에서만 타이핑 효과
     var typed = new Typed("#typed-text", {
-      strings: ["a designer"],
-      typeSpeed: 50,
-      showCursor: true
+      strings: ["Product Designer", "UX Designer", "Design Thinker"],
+      typeSpeed: 60,
+      backSpeed: 30,
+      backDelay: 2000,
+      loop: true,
+      showCursor: true,
+      cursorChar: '|'
     });
   }
 });
-</script>
-</body>
+</script></body>
 </html>

@@ -3612,14 +3612,22 @@ textarea:focus-visible {
 .intro-text h2 {
   min-height: 2.5em; /* 높이를 미리 확보 */
 }
-
-#typed-text {
-  display: inline-block;
-  min-width: 120px; /* 타이핑될 텍스트 공간 확보 */
-  white-space: nowrap;
+/* line1 스팬을 인라인으로 */
+.line1 {
+  display: inline;
 }
 
 
+#typed-text {
+  display: inline;        /* block → inline */
+  white-space: nowrap;    /* 줄바꿈 방지 */
+}
+
+/* 타이핑 커서 강제 인라인 */
+.typed-cursor {
+  display: inline !important;
+  white-space: nowrap;
+}
 /* ========================================
    Prototype Feature Block - 이미지 수직 중앙 정렬
 ======================================== */
@@ -4076,6 +4084,7 @@ textarea:focus-visible {
     margin-top: 0.3em;
   }
 
+  
   /* 호버 효과 */
 .project::before {
   content: '';
