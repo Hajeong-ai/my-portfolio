@@ -1565,123 +1565,170 @@ section {
   margin: 0 auto;
   padding: var(--section-gap-md, 80px) var(--padding-x-mobile, 40px);
   display: grid;
-  grid-template-columns: repeat(3, 1fr); /* 3개 동일한 컬럼 */
-  gap: var(--space-12, 48px);
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-16, 64px);
+  position: relative;
 }
 
-/* 각 컬럼 */
+/* 각 컬럼 공통 스타일 */
 .edu-column,
 .exp-column,
 .connect-column {
   display: flex;
   flex-direction: column;
+  gap: var(--space-3, 12px);
 }
 
-/* 리스트 스타일 제거 */
+/* 섹션 헤더 - 보더 제거, 간격 축소 */
+#education-section h4 {
+  font-family: var(--font-display);
+  font-size: var(--text-lg);
+  font-weight: var(--weight-medium);
+  color: var(--color-text-primary);
+  margin-bottom: var(--space-2, 8px);
+  letter-spacing: -0.02em;
+}
+
+#education-section h5 {
+  font-family: var(--font-text);
+  font-size: var(--text-base);
+  font-weight: var(--weight-medium);
+  color: var(--color-text-primary);
+  margin-top: var(--space-4, 16px);
+  margin-bottom: var(--space-2, 8px);
+}
+
+/* 리스트 - 간격 축소 */
 #education-section ul {
   list-style: none;
   padding: 0;
   margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4, 16px);
 }
 
-/* 텍스트 스타일 */
+#education-section li {
+  position: relative;
+  padding-left: var(--space-5, 20px);
+  transition: transform var(--duration-base) var(--easing);
+}
+
+/* 리스트 아이템 인디케이터 */
+#education-section li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 6px;
+  width: 6px;
+  height: 6px;
+  background: var(--color-primary);
+  border-radius: 50%;
+  transition: transform var(--duration-base) var(--easing);
+}
+
+#education-section li:hover {
+  transform: translateX(4px);
+}
+
+#education-section li:hover::before {
+  transform: scale(1.3);
+}
+
+/* 텍스트 스타일 - 간격 축소 */
 #education-section p {
   font-family: var(--font-text);
   font-size: var(--text-sm);
   line-height: 1.7;
-  color: var(--color-text-secondary);
-  margin-bottom: var(--space-5, 20px);
+  color: var(--color-text-tertiary);
+  margin-bottom: var(--space-3, 12px);
   letter-spacing: -0.01em;
 }
 
-/* 강조 텍스트 (검정색) */
+/* 강조 텍스트 */
 #education-section span[style*="color: black"] {
   color: var(--color-text-primary) !important;
   font-weight: var(--weight-medium);
+  display: block;
+  margin-bottom: var(--space-1, 4px);
 }
 
-/* 구분선 (선택사항) */
-.edu-column::after,
-.exp-column::after {
+/* Experience 섹션 - Education과 동일한 스타일 */
+.exp-column p {
+  position: relative;
+  padding-left: var(--space-5, 20px);
+  transition: transform var(--duration-base) var(--easing);
+  margin-bottom: var(--space-3, 12px);
+}
+
+.exp-column p::before {
   content: '';
   position: absolute;
-  right: calc(var(--space-12, 48px) / -2);
-  top: 0;
-  height: 100%;
-  width: 1px;
-  background: var(--color-border-light);
+  left: 0;
+  top: 6px;
+  width: 6px;
+  height: 6px;
+  background: var(--color-primary);
+  border-radius: 50%;
+  transition: transform var(--duration-base) var(--easing);
 }
 
-/* 컬럼 위치 조정 */
-.edu-column {
+.exp-column p:hover {
+  transform: translateX(4px);
+}
+
+.exp-column p:hover::before {
+  transform: scale(1.3);
+}
+
+/* Connect 섹션 - 화살표 + 언더라인 */
+.connect-column p {
+  font-size: var(--text-sm);
+  color: var(--color-text-secondary);
+  cursor: pointer;
+  transition: all var(--duration-base) var(--easing);
+  padding: var(--space-2, 8px) 0;
+  border-bottom: 1px solid transparent;
   position: relative;
+  padding-left: var(--space-6, 24px);
+  margin-bottom: var(--space-2, 8px);
 }
 
+.connect-column p::before {
+  content: '→';
+  position: absolute;
+  left: 0;
+  opacity: 0;
+  transition: all var(--duration-base) var(--easing);
+  color: var(--color-primary);
+}
+
+.connect-column p:hover {
+  color: var(--color-primary);
+  padding-left: var(--space-8, 32px);
+  border-bottom-color: var(--color-primary-light);
+}
+
+.connect-column p:hover::before {
+  opacity: 1;
+}
+
+/* 컬럼 구분선 - 내용 전체 높이 */
+.edu-column,
 .exp-column {
   position: relative;
 }
 
-.connect-column {
-  /* 마지막 컬럼은 구분선 없음 */
-}
-
-/* 태블릿 (768px ~ 899px) - 2컬럼으로 변경 */
-@media (min-width: 768px) and (max-width: 899px) {
-  #education-section {
-    grid-template-columns: repeat(2, 1fr); /* 2컬럼 */
-    gap: var(--space-10, 40px);
-    padding: var(--section-gap-lg, 96px) var(--padding-x-tablet, 48px);
-  }
-
-  .connect-column {
-    grid-column: 1 / -1; /* Connect 섹션은 전체 너비 */
-  }
-
-  #education-section h2,
-  #education-section h3 {
-    font-size: var(--text-lg);
-  }
-}
-
-/* 모바일 (768px 이하) - 1컬럼으로 변경 */
-@media (max-width: 767px) {
-  #education-section {
-    grid-template-columns: 1fr; /* 1컬럼 */
-    gap: var(--space-10, 40px);
-    padding: var(--space-12, 48px) var(--padding-x-mobile, 20px);
-  }
-
-  .edu-column::after,
-  .exp-column::after {
-    display: none; /* 구분선 제거 */
-  }
-
-  #education-section h2,
-  #education-section h3 {
-    font-size: var(--text-lg);
-  }
-
-  #education-section h4 {
-    font-size: var(--text-base);
-    margin-top: var(--space-6, 24px);
-  }
-
-  #education-section p {
-    font-size: var(--text-sm);
-  }
-}
-
-@media (max-width: 480px) {
-  #education-section {
-    padding: var(--space-10, 40px) var(--padding-x-mobile, 16px);
-  }
-
-  #education-section h2,
-  #education-section h3 {
-    font-size: var(--text-md);
-  }
-}
-/* Margin utilities */
+.edu-column::after,
+.exp-column::after {
+  content: '';
+  position: absolute;
+  right: calc(var(--space-16, 64px) / -2);
+  top: 0;
+  bottom: 0;
+  width: 1px;
+  background: var(--color-border-light);
+}/* Margin utilities */
 .mb-2 { margin-bottom: var(--space-2); }
 .mb-3 { margin-bottom: var(--space-3); }
 .mb-4 { margin-bottom: var(--space-4); }
