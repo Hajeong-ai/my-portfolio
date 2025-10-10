@@ -1013,7 +1013,7 @@ body {
   transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   position: relative;
   overflow: hidden;
-  min-height: 520px; /* 일관된 높이 */
+  /* min-height 제거 - 콘텐츠에 맞게 자동 조절 */
 }
 
 .project:hover {
@@ -1032,7 +1032,7 @@ body {
 
 .project-image {
   width: 100%;
-  height: 400px;
+  height: 600px;
   object-fit: cover;
   border-radius: 12px;
   transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
@@ -1101,7 +1101,7 @@ body {
     gap: 1.25rem;
     padding: 1.5rem;
     margin-bottom: 3rem;
-    min-height: 480px;
+    min-height: auto;
     border-radius: 16px;
   }
 
@@ -1116,13 +1116,14 @@ body {
   }
 
   .project-year {
-    font-size: 0.9rem;
+    display: none; /* 연도 숨김 */
   }
 
   .project-summary {
     font-size: 0.95rem;
     line-height: 1.6;
     -webkit-line-clamp: 4; /* 모바일에서 4줄 */
+    display: none; /* 설명 숨김 */
   }
 
   .project-tags {
@@ -2172,32 +2173,37 @@ section {
 /* ========================================
    태블릿 (769px ~ 1024px)
 ======================================== */
-@media (min-width: 769px) and (max-width: 1024px) {
-  .next-project.dual-project-nav {
-    padding: 3.5rem 5%;
-    gap: 2rem;
-    margin-top: 5rem;
+/* 현재 모바일 섹션 (768px 이하) - 라인 2158 근처 */
+@media (max-width: 768px) {
+  .project {
+    gap: 1.25rem;
+    padding: 1.5rem;
+    margin-bottom: 3rem;
+    min-height: auto;  /* ← 이 부분이 있는지 확인 */
+    border-radius: 16px;
   }
 
-  .prev-wrapper,
-  .next-wrapper {
-    max-width: 420px;
+  .project-image {
+    height: 220px;  /* ← 280px로 변경 */
+    border-radius: 10px;
   }
 
-  .next-card {
-    padding: 1.5rem 1.75rem;
-    gap: 1rem;
+  .project-title {
+    font-size: 1.25rem;
+    gap: 0.4rem;
   }
 
-  .next-title {
-    font-size: 1.15rem;
+  .project-year {
+    display: none; /* 연도 숨김 */
   }
 
-  .next-arrow {
-    font-size: 1.5rem;
+  .project-summary {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    -webkit-line-clamp: 4;
+    display: none; /* ← 설명 숨김 */
   }
 }
-
 /* ========================================
    중간 화면 (1025px ~ 1400px)
 ======================================== */
@@ -2207,21 +2213,25 @@ section {
   }
 }
 
-/* ========================================
-   큰 화면 (1400px 이상)
-======================================== */
+/* 라인 2228 근처 - 큰 화면 (1400px 이상) */
 @media (min-width: 1400px) {
-  .next-project.dual-project-nav {
-    padding: 5rem 0;
-    padding-left: calc((100% - 1200px) / 2);
-    padding-right: calc((100% - 1200px) / 2);
+  .project {
+    padding: 2.5rem;
+    min-height: 560px;
   }
 
-  .next-card {
-    padding: 2rem 2.5rem;
+  .project-image {
+    height: 420px;  /* ← 320px에서 750px로 변경 */
+  }
+
+  .project-title {
+    font-size: 1.65rem;
+  }
+
+  .project-summary {
+    font-size: 1.1rem;
   }
 }
-
 /* ========================================
    접근성
 ======================================== */
