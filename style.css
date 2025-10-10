@@ -3749,7 +3749,7 @@ textarea:focus-visible {
   box-shadow: var(--shadow-xl);
 }
 /* 타이핑 텍스트 영역 고정 */
-.intro-text h1, 
+
 .intro-text h2 {
   min-height: 2.5em; /* 높이를 미리 확보 */
 }
