@@ -1978,8 +1978,101 @@ section {
   }
 }
 
-/* ===== 16. 추가 컴포넌트 ===== */
+/* Pre-Startup Package Card */
+.impactx-card {
+  background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+  border-radius: 16px;
+  padding: 40px;
+  margin: 40px 0;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+  list-style: none; /* 리스트 스타일 제거 */
+}
 
+/* 중간점 제거 - CRITICAL */
+.impactx-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, #667eea 0%, #0054FF 100%);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Education 섹션 스타일 무효화 */
+.impactx-card li::before {
+  display: none !important;
+}
+
+.impactx-card .impactx-kpi::before,
+.impactx-card .impactx-announce::before {
+  display: none !important;
+}
+
+/* 호버 효과 */
+.impactx-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.1);
+}
+
+.impactx-card:hover::before {
+  transform: scaleX(1);
+}
+
+/* 한 줄로 유지 */
+.impactx-announce {
+  font-size: 1.125rem;
+  line-height: 1.8;
+  color: #2d3748;
+  margin: 0;
+  text-align: center;
+  letter-spacing: -0.01em;
+  white-space: normal; /* 자연스럽게 줄바꿈 허용 */
+}
+
+.impactx-announce strong {
+  color: #1a202c;
+  font-weight: 700;
+  background: linear-gradient(135deg, #667eea 0%, #0054FF 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  padding: 0 4px;
+  display: inline; /* 인라인으로 변경 */
+}
+
+/* 반응형 */
+@media (max-width: 768px) {
+  .impactx-card {
+    padding: 30px 24px;
+    margin: 30px 0;
+    border-radius: 12px;
+  }
+
+  .impactx-announce {
+    font-size: 1rem;
+    line-height: 1.7;
+  }
+}
+
+@media (max-width: 480px) {
+  .impactx-card {
+    padding: 24px 20px;
+    margin: 24px 0;
+  }
+
+  .impactx-announce {
+    font-size: 0.9375rem;
+    line-height: 1.6;
+  }
+}
 /* ========================================
    Project Navigation (Single or Dual)
 ======================================== */
