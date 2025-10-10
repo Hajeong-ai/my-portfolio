@@ -3073,7 +3073,7 @@ section {
 #bm-section {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 80px 40px;
+padding: 20px 40px 80px;
 }
 
 /* Benchmarking Item Container */
@@ -3684,10 +3684,9 @@ textarea:focus-visible {
   gap: var(--space-8, 32px);
 }
 
-/* 연구 아이템 */
 .research-item {
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   gap: var(--space-5, 20px);
 }
 
@@ -3772,7 +3771,18 @@ textarea:focus-visible {
 /* ========================================
    Prototype Feature Block - 이미지 수직 중앙 정렬
 ======================================== */
+/* GIF/비디오 자동재생 보장 */
+.design-row video {
+  display: block;
+}
 
+.design-row video::-webkit-media-controls {
+  display: none !important;
+}
+
+.design-row video::-webkit-media-controls-enclosure {
+  display: none !important;
+}
 .proto {
   max-width: 1200px;
   margin: 0 auto;
