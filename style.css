@@ -2058,7 +2058,7 @@ section {
   width: 100%;
 }
 
-/* 카드 스타일 */
+/* Card Styles */
 .next-card {
   display: flex;
   align-items: center;
@@ -2070,7 +2070,8 @@ section {
   transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
   position: relative;
   overflow: hidden;
-  width: 100%;
+  width: 480px; /* 고정 너비 설정 */
+  min-width: 480px; /* 최소 너비 보장 */
 }
 
 /* 호버 효과 */
