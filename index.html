@@ -8,6 +8,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Hajeong Hwang – UX Designer</title>
   <link rel="stylesheet" href="style.css" />
+
+    <!-- General Sans 폰트 추가 -->
+  <link href="https://api.fontshare.com/v2/css?f[]=general-sans@400,500,600,700&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="style.css" />
+  
 </head>
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5">
   <header>
@@ -337,6 +343,7 @@ document.querySelectorAll('.project, .intro-section').forEach(el => {
   observer.observe(el);
 });
 </script>
+
 <script>
 document.addEventListener("DOMContentLoaded", function() {
   const typedElement = document.getElementById("typed-text");
@@ -349,7 +356,7 @@ document.addEventListener("DOMContentLoaded", function() {
   } else {
     // 데스크탑에서만 타이핑 효과
     var typed = new Typed("#typed-text", {
-      strings: ["Product Designer", "UX Designer", "Design Thinker"],
+      strings: ["Product Designer", "UX Designer", "UX Researcher", "Design Thinker"],
       typeSpeed: 60,
       backSpeed: 30,
       backDelay: 2000,
@@ -359,5 +366,7 @@ document.addEventListener("DOMContentLoaded", function() {
     });
   }
 });
-</script></body>
+</script>
+
+</body>
 </html>

@@ -115,8 +115,10 @@
   --duration-slow: 350ms;
   --easing: cubic-bezier(0.4, 0, 0.2, 1);
 }
+/* ===== 2
 
-/* ===== 2. 리셋 & 기본 설정 ===== */
+
+. 리셋 & 기본 설정 ===== */
 *,
 *::before,
 *::after {
@@ -921,22 +923,105 @@ body {
   align-items: center;
 }
 
-/* 프로필 이미지 */
+/* 프로필 이미지 - 폴라로이드 스타일 */
+/* 오른쪽 블록 - 이미지 */
 .image-flip-wrapper {
   position: relative;
-  width: min(260px, 75vw);
-  height: min(260px, 75vw);
-  margin: 0 auto;
-  transition: all 0.3s ease;
+  width: 320px;
+  height: auto;
+  flex-shrink: 0;
+  align-self: center; /* 추가: 세로 중앙 정렬 */
+  padding: var(--space-5, 20px);
+  padding-bottom: var(--space-16, 64px);
+  background: #ffffff;
+  box-shadow: 
+    0 4px 12px rgba(0, 0, 0, 0.08),
+    0 8px 24px rgba(0, 0, 0, 0.06);
+  transition: all var(--duration-slow) var(--easing);
+  border-radius: 2px;
 }
 
 .image-flip-wrapper:hover {
   transform: translateY(-4px);
   box-shadow: 
-    0 8px 20px rgba(0, 0, 0, 0.12),
-    0 12px 32px rgba(0, 0, 0, 0.08);
+    0 8px 20px rgba(178, 229, 255, 0.389),
+    0 12px 32px rgba(178, 229, 255, 0.389);
 }
 
+/* 이미지 자체는 정사각형 유지 */
+.profile-image {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  display: block;
+  border: none;
+}
+
+/* 모바일 */
+@media (max-width: 768px) {
+  .image-flip-wrapper {
+    width: min(260px, 75vw);
+    padding: var(--space-4, 16px);
+    padding-bottom: var(--space-12, 48px);
+  }
+}
+
+@media (max-width: 480px) {
+  .image-flip-wrapper {
+    width: min(220px, 70vw);
+    padding: var(--space-3, 12px);
+    padding-bottom: var(--space-10, 40px);
+  }
+}
+
+/* 태블릿 */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .image-flip-wrapper {
+    width: 280px;
+    padding: var(--space-4, 16px);
+    padding-bottom: var(--space-12, 48px);
+  }
+}
+
+/* 데스크탑 */
+@media (min-width: 1025px) {
+  .image-flip-wrapper {
+    width: 320px;
+    padding: var(--space-5, 20px);
+    padding-bottom: var(--space-16, 64px);
+  }
+}
+
+/* 태블릿 (768px ~ 899px) */
+@media (min-width: 768px) and (max-width: 899px) {
+  .intro-section {
+    grid-template-columns: 1fr 280px;
+    gap: var(--space-12, 48px);
+    align-items: center; /* 중앙 정렬 유지 */
+  }
+  
+  .image-flip-wrapper {
+    width: 280px;
+    align-self: center;
+  }
+}
+
+/* 모바일 (768px 이하) */
+@media (max-width: 767px) {
+  .intro-section {
+    grid-template-columns: 1fr;
+    gap: var(--space-8, 32px);
+    text-align: center;
+    align-items: center; /* 중앙 정렬 */
+  }
+  
+  .image-flip-wrapper {
+    order: -1;
+    width: min(260px, 75vw);
+    margin: 0 auto;
+  }
+}
 /* ===== 프로젝트 섹션 ===== */
 .projects-header {
   display: flex;
@@ -1155,23 +1240,9 @@ body {
   .project-title {
     font-size: 1.2rem;
   }
-  
-  .image-flip-wrapper {
-    width: min(260px, 75vw);
-    height: min(260px, 75vw);
-    padding: var(--space-4, 16px);
-    padding-bottom: var(--space-12, 48px);
-  }
+
 }
 
-@media (max-width: 480px) {
-  .image-flip-wrapper {
-    width: min(220px, 70vw);
-    height: min(220px, 70vw);
-    padding: var(--space-3, 12px);
-    padding-bottom: var(--space-10, 40px);
-  }
-}
 
 /* 태블릿 */
 @media (min-width: 769px) and (max-width: 1024px) {
@@ -1198,12 +1269,6 @@ body {
     right: 2rem;
   }
   
-  .image-flip-wrapper {
-    width: 280px;
-    height: 280px;
-    padding: var(--space-4, 16px);
-    padding-bottom: var(--space-12, 48px);
-  }
 }
 
 /* 대형 화면 */
@@ -1256,15 +1321,14 @@ body {
   .project-title, 
   .project-summary, 
   .project-tags,
-  .image-flip-wrapper {
     transition: none;
   }
   
-  .project:hover,
-  .image-flip-wrapper:hover {
+  .project:hover,{
     transform: none;
   }
-}
+
+
 /* ===== 9. 푸터 (End - Closure) ===== */
 footer {
   width: 100%;
@@ -1467,15 +1531,13 @@ section {
 .grid-2 {
   grid-template-columns: 1fr;
 }
-/* ===== 6. About 섹션 (Intro - Beginning) ===== */
 .intro-section {
   display: grid;
-  grid-template-columns: 1fr 320px; /* 왼쪽 텍스트, 오른쪽 이미지 */
+  grid-template-columns: 1fr 320px;
   gap: var(--space-16, 64px);
-  align-items: center; /* flex-start → center */
+  align-items: center; /* flex-start → center로 변경 */
   margin-top: 0;
 }
-
 /* 왼쪽 블록 - 텍스트 */
 .intro-text {
   width: 100%;
@@ -1500,38 +1562,6 @@ section {
   letter-spacing: -0.01em;
 }
 
-/* 오른쪽 블록 - 이미지 */
-.image-flip-wrapper {
-  position: relative;
-  width: 400px;
-  height: auto;
-  flex-shrink: 0;
-  align-self: center;
-  padding: var(--space-5, 20px);
-  padding-bottom: var(--space-16, 64px);
-  background: #ffffff;
-  box-shadow: 
-    0 4px 12px rgba(0, 0, 0, 0.08),
-    0 8px 24px rgba(0, 0, 0, 0.06);
-  transition: all var(--duration-slow) var(--easing);
-  border-radius: 2px;
-}
-
-/* 이미지 */
-.profile-image {
-  width: 100%;
-  height: auto;
-  aspect-ratio: 1 / 1;
-  object-fit: cover;
-  display: block;
-  border: none;
-}
-
-.profile-image:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 12px 32px rgba(0, 123, 255, 0.15);
-}
-
 
 @keyframes blink {
   50% { border-color: transparent; }
@@ -1544,11 +1574,7 @@ section {
     gap: var(--space-12, 48px);
     align-items: center;
   }
-  
-  .image-flip-wrapper {
-    width: 280px;
-    height: 280px;
-  }
+
 
   .intro-text h2 {
     font-size: var(--text-xl);
@@ -1567,13 +1593,7 @@ section {
     text-align: center;
     align-items: center;
   }
-  
-  .image-flip-wrapper {
-    order: -1;
-    width: min(260px, 75vw);
-    height: min(260px, 75vw);
-    margin: 0 auto;
-  }
+
   
   .intro-text h2 {
     font-size: var(--text-xl);
@@ -1590,11 +1610,6 @@ section {
 }
 
 @media (max-width: 480px) {
-  .image-flip-wrapper {
-    width: min(220px, 70vw);
-    height: min(220px, 70vw);
-  }
-  
   .intro-text h2 {
     font-size: var(--text-lg);
   }
@@ -1818,12 +1833,6 @@ section {
     align-items: flex-start;
   }
   
-  .image-flip-wrapper {
-    width: 280px;
-    height: 280px;
-    flex-shrink: 0;
-  }
-  
   .project-meta {
     grid-template-columns: repeat(2, 1fr);
     gap: var(--space-12);
@@ -1889,12 +1898,7 @@ section {
   .intro-quicknav-vertical {
     align-items: flex-start;
   }
-  
-  .image-flip-wrapper {
-    width: 320px;
-    height: 320px;
-  }
-  
+
   /* 사이드바 표시 */
   .sidebar {
     display: block;
@@ -5594,3 +5598,5 @@ textarea:focus-visible {
       border-radius: 12px;
       box-shadow: 0 2px 20px rgba(0,0,0,0.06);
     }
+
+    
