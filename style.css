@@ -4357,6 +4357,54 @@ textarea:focus-visible {
   background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
 }
 
+
+/* ===== Scroll to Top Button ===== */
+.scroll-to-top-wrapper {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding: var(--space-0);  /* 48px → 16px로 줄임 */
+  margin-top: var(--space-0);  /* 64px → 32px로 줄임 */
+}
+
+.scroll-top-btn {
+  background: none;
+  border: none;
+  font-family: var(--font-text);
+  font-size: var(--text-base, 1rem);
+  font-weight: var(--weight-regular, 400);
+  color: var(--color-text-secondary, #3a3a3a);
+  cursor: pointer;
+  text-decoration: underline;
+  padding: var(--space-2, 8px);
+  transition: color var(--duration-base, 250ms) var(--easing);
+}
+
+.scroll-top-btn:hover {
+  color: var(--color-primary, #007bff);
+}
+
+.scroll-top-btn:focus {
+  outline: 2px solid var(--color-primary, #007bff);
+  outline-offset: 4px;
+  border-radius: var(--radius-xs, 4px);
+}
+
+.scroll-top-btn:focus:not(:focus-visible) {
+  outline: none;
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .scroll-to-top-wrapper {
+    padding: var(--space-3, 12px) 0;  /* 24px → 12px로 줄임 */
+    margin-top: var(--space-6, 24px);  /* 40px → 24px로 줄임 */
+  }
+
+  .scroll-top-btn {
+    font-size: var(--text-sm, 0.9rem);
+  }
+}
 /* ========================================
    Responsive Design - Tablet
 ======================================== */

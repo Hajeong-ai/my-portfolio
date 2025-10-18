@@ -332,6 +332,13 @@ However, a minor system error occurred when participants asked about what AI but
         <p><strong>· </strong>As someone who closely observed my peers’ pain points, I found it meaningful to directly interview them, incorporate their feedback into the app, and ultimately work toward addressing their challenges.</p>
     </section>
 
+  <div class="custom-cursor"></div>
+      <div class="scroll-to-top-wrapper">
+    <button id="scrollTopBtn" class="scroll-top-btn" aria-label="Scroll to top">
+      <span class="scroll-top-text">Scroll to the top! :)</span>
+      <span class="scroll-top-arrow">↑</span>
+    </button>
+  </div>
 
     <!-- ✅ Previous & Next Project Section -->
 <section class="next-project dual-project-nav">
@@ -453,6 +460,21 @@ However, a minor system error occurred when participants asked about what AI but
   targets.forEach(t => io.observe(t));
 })();
 </script>
+
+<script>
+  // Scroll to Top Button
+  const scrollTopBtn = document.getElementById('scrollTopBtn');
+  
+  if (scrollTopBtn) {
+    scrollTopBtn.addEventListener('click', () => {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+    });
+  }
+</script>
+
 <script>
   (function() {
     const burger = document.querySelector('.hamburger');

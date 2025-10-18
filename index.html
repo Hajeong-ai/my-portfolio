@@ -143,6 +143,13 @@ Reimagining collaborative academic writing through AI-powered workflows and intu
 
   </main>
 
+  <!-- Scroll to Top Button -->
+  <div class="scroll-to-top-wrapper">
+    <button id="scrollTopBtn" class="scroll-top-btn" aria-label="Scroll to top">
+      <span class="scroll-top-text">Scroll to the top! :)</span>
+      <span class="scroll-top-arrow">↑</span>
+    </button>
+  </div>
   <footer>
   <p class="footer-left">
     © 2025 Hajeong Hwang. Made with HTML/CSS & Iced Matcha Latte
@@ -329,6 +336,20 @@ document.addEventListener('DOMContentLoaded', () => {
   });
   
 })();
+</script>
+
+<script>
+  // Scroll to Top Button
+  const scrollTopBtn = document.getElementById('scrollTopBtn');
+  
+  if (scrollTopBtn) {
+    scrollTopBtn.addEventListener('click', () => {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+    });
+  }
 </script>
 <script>
 const observer = new IntersectionObserver((entries) => {

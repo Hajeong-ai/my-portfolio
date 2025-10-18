@@ -292,6 +292,13 @@
       <p><strong>· </strong>The Duo Mobile Re-design project gave me the opportunity to equip the skills needed to implement detailed interfaces and interactions using Figma.</p>
       <p><strong>· </strong>Conducting surveys with users taught me the importance of empathizing with users and understanding their pain points before initiating ideation.</p>
     </section>
+  <div class="custom-cursor"></div>
+      <div class="scroll-to-top-wrapper">
+    <button id="scrollTopBtn" class="scroll-top-btn" aria-label="Scroll to top">
+      <span class="scroll-top-text">Scroll to the top! :)</span>
+      <span class="scroll-top-arrow">↑</span>
+    </button>
+  </div>
 
 
     <!-- ✅ Previous & Next Project Section -->
@@ -322,6 +329,8 @@
 
   </div>
   <div class="custom-cursor"></div>
+
+  
     <footer>
   <p class="footer-left">
     © 2025 Hajeong Hwang. Made with HTML/CSS & Iced Matcha Latte
@@ -425,6 +434,21 @@
   targets.forEach(t => io.observe(t));
 })();
 </script>
+
+<script>
+  // Scroll to Top Button
+  const scrollTopBtn = document.getElementById('scrollTopBtn');
+  
+  if (scrollTopBtn) {
+    scrollTopBtn.addEventListener('click', () => {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+    });
+  }
+</script>
+
 <script>
   (function() {
     const burger = document.querySelector('.hamburger');

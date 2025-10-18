@@ -864,8 +864,8 @@ The payment page allows users to subscribe to a VIP pass, which unlocks unlimite
       <section id="reflection">
         <h3>What did I learn?</h3>
         <div class="spacer"></div>
-        <h4>On Cross-Functional Communication and Design Implementation</h4>
-        <p><strong>· </strong>Collaborating with front-end and back-end developers and the project manager revealed a crucial insight: effective communication directly accelerates app launch timeline, particularly in early-stage startups where 
+        <h4>About Cross-Functional Communication and Design Implementation</h4>
+        <p>Collaborating with front-end and back-end developers and the project manager revealed a crucial insight: effective communication directly accelerates app launch timeline, particularly in early-stage startups where 
           resources are constrained. 
           I learned that the quality of handoff documentation, the clarity of design specifications, and the proactive addressing of technical constraints during the design phase significantly reduced back-and-forth iterations. 
           When designers understand developers' workflows and limitations, such as component reusability, API constraints, or technical debt—they can create more implementable solutions from the start. 
@@ -873,17 +873,18 @@ The payment page allows users to subscribe to a VIP pass, which unlocks unlimite
           Regular check-ins with developers allowed me to catch potential implementation issues early, adjust designs based on feasibility constraints, and prioritize features that delivered maximum value within technical limitations. 
           This collaborative approach transformed design from a siloed activity into an integrated team effort, 
           where everyone's expertise informed better, faster decisions.</br>
-        <h4>On Managing Ambiguity in a High-Autonomy Environment</h4>
-        <p><strong>· </strong>The startup environment threw me into situations where I had to make decisions without clear guidelines or complete information. 
-          At first, this was uncomfortable—I kept waiting for someone to tell me the "right" approach. 
-          But I learned that waiting wasn't an option when things moved this fast. 
-          I had to get comfortable making judgment calls with whatever information I had, knowing I could adjust later. 
+        <h4>About Managing Ambiguity in a High-Autonomy Environment</h4>
+        <p>The startup environment threw me into situations where I had to make decisions without clear guidelines or complete information. 
+          At first, I kept waiting for someone to tell me the "right" approach. 
+          But after became adjust into that environment, I learned that waiting wasn't an option when things moved this fast. 
+          I had to get comfortable making judgment with whatever information I had, knowing I could adjust later. 
           The autonomy was actually freeing once I stopped second-guessing myself constantly. 
           I developed my own mental frameworks for decision-making: What matters most to users right now? 
-          What can we realistically build? What aligns with where we're trying to go? Not every decision was perfect, but making them quickly and learning from what didn't work turned out to be more valuable than trying to get everything right the first time. T
-          his experience changed how I view uncertainty—it's just part of the job, not something to avoid.</br>
-        <h4>On Prioritizing Feedback Through Iterative Reflection</h4>
-        <p><strong>· </strong>One of my biggest lessons came from trying to incorporate everyone's feedback and realizing that was actually making the design worse. 
+          What can we realistically build? What aligns with where we're trying to go? Not every decision was perfect, 
+          but making them quickly and learning from what didn't work turned out to be more valuable than trying to get everything right the first time. T
+          his experience changed how I view uncertainty, which now I believe it's just part of the job, not something to avoid.</br>
+        <h4>About Prioritizing Feedback Through Iterative Reflection</h4>
+        <p>One of my biggest lessons came from trying to incorporate everyone's feedback and realizing that was actually making the design worse. 
           I was treating all input as equally valid and important, which meant I was constantly revising without a clear direction. 
           When I started reflecting on the iteration process itself—asking myself why I was making certain changes and what problem they actually solved—things clicked. 
           I began categorizing feedback differently. Some comments pointed to real user problems that needed fixing right away. 
@@ -892,10 +893,16 @@ The payment page allows users to subscribe to a VIP pass, which unlocks unlimite
           It wasn't about ignoring people's input. It was about being intentional with where I focused my energy so the design actually improved rather than just changed. 
           This made me a more decisive designer and helped me build conviction in my choices.</p>
       </section>
+  <div class="custom-cursor"></div>
 
-      <!-- ✅ Next Project Section -->
-      <section class="next-project">
-        <div class="next-wrapper">
+      <div class="scroll-to-top-wrapper">
+    <button id="scrollTopBtn" class="scroll-top-btn" aria-label="Scroll to top">
+      <span class="scroll-top-text">Scroll to the top! :)</span>
+      <span class="scroll-top-arrow">↑</span>
+    </button>
+  </div>
+<section class="next-project dual-project-nav">
+  <div class="next-wrapper">
           <p class="next-label">Next Project</p>
           <a href="project4.html" class="next-link">
             <div class="next-card">
@@ -908,7 +915,7 @@ The payment page allows users to subscribe to a VIP pass, which unlocks unlimite
     </main>
 
   </div>
-  <div class="custom-cursor"></div>
+
 
     <footer>
   <p class="footer-left">
@@ -1134,7 +1141,21 @@ The payment page allows users to subscribe to a VIP pass, which unlocks unlimite
 })();
 </script>
 <script>
+  // Scroll to Top Button
+  const scrollTopBtn = document.getElementById('scrollTopBtn');
+  
+  if (scrollTopBtn) {
+    scrollTopBtn.addEventListener('click', () => {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+    });
+  }
 </script>
+
+
+
 <script>
 // ---------- Reveal on view (공통) ----------
 const revealEls = document.querySelectorAll('.reveal');
