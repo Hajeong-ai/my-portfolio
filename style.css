@@ -4356,14 +4356,125 @@ textarea:focus-visible {
 .role-section .overview-icon {
   background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
 }
+/* ===== Photo Gallery Section (Before Outside of Work) ===== */
+.photo-gallery-section {
+  max-width: var(--container-max, 1200px);
+  margin: 0 auto;
+  padding: var(--section-gap-md, 80px) var(--padding-x-mobile, 40px);
+}
 
+.photo-gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-8, 32px);
+  width: 100%;
+}
+
+.gallery-photo {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3, 12px);
+}
+
+.gallery-photo > img {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 4 / 3; /* 직사각형 비율 */
+  object-fit: cover;
+  display: block;
+  border-radius: var(--radius-lg, 14px);
+  box-shadow: var(--shadow-md);
+  transition: all var(--duration-slow, 350ms) var(--easing);
+}
+
+.gallery-photo:hover > img {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-xl);
+}
+
+.gallery-photo figcaption {
+  font-family: var(--font-text);
+  font-size: var(--text-sm, 0.9rem);
+  font-weight: var(--weight-regular, 400);
+  color: var(--color-text-tertiary, #505050);
+  text-align: center;
+  line-height: 1.5;
+  letter-spacing: -0.01em;
+}
+
+/* Tablet (768px ~ 1024px) */
+@media (min-width: 768px) and (max-width: 1024px) {
+  .photo-gallery-section {
+    padding: var(--section-gap-sm, 64px) var(--padding-x-tablet, 48px);
+  }
+
+  .photo-gallery-grid {
+    gap: var(--space-6, 24px);
+  }
+
+  .gallery-photo figcaption {
+    font-size: var(--text-xs, 0.85rem);
+  }
+}
+
+/* Mobile (768px 이하) */
+@media (max-width: 768px) {
+  .photo-gallery-section {
+    padding: var(--section-gap-sm, 64px) var(--padding-x-mobile, 20px);
+  }
+
+  .photo-gallery-grid {
+    grid-template-columns: 1fr;
+    gap: var(--space-6, 24px);
+  }
+
+  .gallery-photo > img {
+    aspect-ratio: 16 / 10; /* 모바일에서는 조금 더 넓은 비율 */
+  }
+
+  .gallery-photo figcaption {
+    font-size: var(--text-xs, 0.85rem);
+    text-align: left;
+  }
+}
+
+/* Small Mobile (480px 이하) */
+@media (max-width: 480px) {
+  .photo-gallery-section {
+    padding: var(--space-12, 48px) var(--padding-x-mobile, 16px);
+  }
+
+  .photo-gallery-grid {
+    gap: var(--space-4, 16px);
+  }
+
+  .gallery-photo {
+    gap: var(--space-2, 8px);
+  }
+
+  .gallery-photo figcaption {
+    font-size: var(--text-2xs, 0.75rem);
+  }
+}
+
+/* Accessibility */
+@media (prefers-reduced-motion: reduce) {
+  .gallery-photo > img {
+    transition: none;
+  }
+
+  .gallery-photo:hover > img {
+    transform: none;
+  }
+}
 
 /* ===== Scroll to Top Button ===== */
 .scroll-to-top-wrapper {
   width: 100%;
   display: flex;
   justify-content: center;
-  padding: var(--space-0);  /* 48px → 16px로 줄임 */
+  padding: var(--space-0) 0;  /* 48px → 16px로 줄임 */
   margin-top: var(--space-0);  /* 64px → 32px로 줄임 */
 }
 
