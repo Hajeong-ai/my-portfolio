@@ -1222,7 +1222,53 @@ body {
     filter: none !important;
   }
 }
+/* 폴라로이드 캡션 스타일 */
+.polaroid-caption {
+  font-family: 'Kalam', cursive;
+  font-size: 1.6rem;
+  color: #333;
+  text-align: center;
+  margin: 0;
+  padding: var(--space-4, 16px) 0;
+  position: absolute;
+  bottom: var(--space-0, 20px);
+  left: 0;
+  right: 0;
+  font-weight: 400;
+  letter-spacing: 0.02em;
+}
 
+/* 폴라로이드 래퍼 위치 조정 */
+.image-flip-wrapper {
+  position: relative;
+  width: 320px;
+  height: auto;
+  flex-shrink: 0;
+  align-self: center;
+  padding: var(--space-5, 20px);
+  padding-bottom: var(--space-16, 64px);
+  background: #ffffff;
+  box-shadow: 
+    0 4px 12px rgba(0, 0, 0, 0.08),
+    0 8px 24px rgba(0, 0, 0, 0.06);
+  transition: all var(--duration-slow) var(--easing);
+  border-radius: 2px;
+}
+
+/* 모바일 반응형 */
+@media (max-width: 768px) {
+  .polaroid-caption {
+    font-size: 1.25rem;
+    bottom: var(--space-4, 16px);
+  }
+}
+
+@media (max-width: 480px) {
+  .polaroid-caption {
+    font-size: 1.1rem;
+    bottom: var(--space-3, 12px);
+  }
+}
 /* ===== 9. 푸터 (End - Closure) ===== */
 footer {
   width: 100%;
