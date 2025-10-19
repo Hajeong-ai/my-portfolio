@@ -4773,6 +4773,230 @@ textarea:focus-visible {
 /* ========================================
    Journey Phase Card
 ======================================== */
+/* ========================================
+   Context Section Styles
+   ======================================== */
+
+.context-section {
+  padding: 80px 0;
+  border-radius: 16px;
+  margin: 60px 0;
+}
+
+
+.context-container {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 40px;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 40px;
+}
+
+/* Context Block */
+.context-block {
+  background: white;
+  border-radius: 12px;
+  padding: 40px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border-left: 4px solid #4a90e2;
+}
+
+.context-block:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+}
+
+.context-block:nth-child(2) {
+  border-left-color: #7b68ee;
+}
+
+.context-block:nth-child(3) {
+  border-left-color: #ff6b6b;
+}
+
+.context-block:nth-child(4) {
+  border-left-color: #51cf66;
+}
+
+/* Context Icon */
+.context-icon {
+  font-size: 3rem;
+  margin-bottom: 20px;
+  display: inline-block;
+  animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+}
+
+.context-block:nth-child(2) .context-icon {
+  animation-delay: 0.2s;
+}
+
+.context-block:nth-child(3) .context-icon {
+  animation-delay: 0.4s;
+}
+
+.context-block:nth-child(4) .context-icon {
+  animation-delay: 0.6s;
+}
+
+/* Context Headings */
+.context-block h4 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #2c3e50;
+  margin-bottom: 16px;
+  line-height: 1.4;
+}
+
+/* Context Paragraphs */
+.context-block p {
+  font-size: 1.05rem;
+  line-height: 1.8;
+  color: #4a5568;
+  margin-bottom: 0;
+}
+
+.context-block p strong {
+  color: #2c3e50;
+  font-weight: 600;
+}
+
+/* Context List */
+.context-list {
+  list-style: none;
+  padding-left: 0;
+  margin-top: 20px;
+}
+
+.context-list li {
+  font-size: 1.05rem;
+  line-height: 1.8;
+  color: #4a5568;
+  padding-left: 32px;
+  margin-bottom: 12px;
+  position: relative;
+}
+
+.context-list li::before {
+  content: "✓";
+  position: absolute;
+  left: 0;
+  color: #51cf66;
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+
+/* ========================================
+   Responsive Design
+   ======================================== */
+
+@media (max-width: 768px) {
+  .context-section {
+    padding: 60px 0;
+    margin: 40px 0;
+  }
+
+  .context-section h3 {
+    font-size: 2rem;
+  }
+
+  .context-container {
+    padding: 0 20px;
+    gap: 30px;
+  }
+
+  .context-block {
+    padding: 30px 24px;
+  }
+
+  .context-icon {
+    font-size: 2.5rem;
+  }
+
+  .context-block h4 {
+    font-size: 1.3rem;
+  }
+
+  .context-block p,
+  .context-list li {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .context-section {
+    padding: 40px 0;
+    margin: 30px 0;
+    border-radius: 12px;
+  }
+
+  .context-section h3 {
+    font-size: 1.75rem;
+  }
+
+  .context-container {
+    padding: 0 16px;
+    gap: 24px;
+  }
+
+  .context-block {
+    padding: 24px 20px;
+  }
+
+  .context-icon {
+    font-size: 2rem;
+    margin-bottom: 16px;
+  }
+
+  .context-block h4 {
+    font-size: 1.2rem;
+  }
+
+  .context-list li {
+    padding-left: 28px;
+    margin-bottom: 10px;
+  }
+}
+
+/* ========================================
+   Optional: Dark Mode Support
+   ======================================== */
+
+@media (prefers-color-scheme: dark) {
+  .context-section {
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+  }
+
+  .context-block {
+    background: #0f3460;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  }
+
+  .context-block:hover {
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4);
+  }
+
+  .context-section h3,
+  .context-block h4 {
+    color: #e4e4e7;
+  }
+
+  .context-block p,
+  .context-list li {
+    color: #cbd5e1;
+  }
+
+  .context-block p strong {
+    color: #f1f5f9;
+  }
+}
+
 
 .journey-phase {
   position: relative;
