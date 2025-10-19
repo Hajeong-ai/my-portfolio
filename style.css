@@ -140,7 +140,7 @@ body {
   font-family: var(--font-text);
   font-size: var(--text-base);
   font-weight: var(--weight-regular);
-  background-color: #FAFAF8; /* 또는 #F8F7F4 */
+  background-color: var(--color-bg-primary);
   color: var(--color-text-secondary);
   line-height: 1.65;
   letter-spacing: -0.01em;
