@@ -1157,177 +1157,71 @@ body {
   aspect-ratio: var(--project-aspect);
   height: auto;
   min-height: clamp(650px, 85vh, 1400px);
-  object-fit: cover;
+  object-fit: cover; /* cover → contain으로 변경하여 이미지 잘림 방지 */
   border-radius: var(--project-radius);
   transition: opacity 0.4s ease;  /* ← transform에서 opacity로 변경 */
   position: relative;  /* ← 추가 */
 }
 
-/* 이미지 호버 효과 - 데스크톱만 */
+/* === Hover 튜닝용 토큰 === */
+:root {
+  --hover-scale: 1.012;        /* 1.02 → 1.012 로 완만하게 */
+  --hover-duration: 260ms;     /* 400~600ms → 260ms 로 경쾌하게 */
+  --hover-ease: cubic-bezier(.22,.61,.36,1); /* 자연스러운 감속 */
+  --hover-overlay-opacity: 0.85;  /* 오버레이는 약간만 진하게 */
+  --hover-image-contrast: 1.03;   /* 살짝 대비만 ↑ */
+}
+
+/* 공통 전환 (이미 선언돼 있다면 이 값으로 덮어쓰기) */
+.project-image {
+  transition:
+    transform var(--hover-duration) var(--hover-ease),
+    filter var(--hover-duration) var(--hover-ease),
+    opacity 0.24s ease;
+  transform-origin: center center;   /* 확대 기준 중앙 고정 */
+  will-change: transform, filter;
+}
+
+/* 오버레이는 과하지 않게 */
+.project-media.has-hover::before {
+  transition: opacity var(--hover-duration) var(--hover-ease);
+  opacity: 0;
+}
+
 @media (min-width: 1025px) {
-  .project-link {
-    position: relative;
+  /* ✅ 그리드 안에서만, 작게 확대 + 대비 살짝 */
+  .project-link:hover .project-image {
+    transform: scale(var(--hover-scale));
+    filter: contrast(var(--hover-image-contrast));
   }
-  
-  .project-image {
-    transition: opacity 0.4s ease;
-  }
-  
-  /* JavaScript로 hover 이미지 설정할 때 사용 */
-  .project-image.has-hover {
-    cursor: pointer;
-  }
-  
-  .project-image.has-hover::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-image: var(--hover-image);
-    background-size: cover;
-    background-position: center;
-    border-radius: var(--project-radius);
-    opacity: 0;
-    transition: opacity 0.4s ease;
-    z-index: 1;
-  }
-  
-  .project-link:hover .project-image.has-hover::before {
-    opacity: 1;
+
+  /* 오버레이도 살짝만 */
+  .project-link:hover .project-media.has-hover::before {
+    opacity: var(--hover-overlay-opacity);
   }
 }
 
-.project-link:hover .project-image {
-  transform: scale(1.02);
-}
-
-/* ===== 반응형 ===== */
-
-/* 모바일 */
-@media (max-width: 768px) {
-  :root {
-    --project-media-width: min(100%, 800px);
-  }
-  
-  .about-project-wrapper {
-    gap: 4rem;
-    padding: 2rem 1rem;
-  }
-  
-  .projects-header {
-    text-align: center;
-    margin-bottom: 2rem;
-  }
-  
-  .scroll-hint {
-    position: static;
-    display: block;
-    font-size: 0.85rem;
-    margin: 0 auto;
-  }
-  
-  .project {
-    padding: 0;
-    margin-bottom: 4rem;
-  }
-  
-  .project-image {
-    min-height: clamp(450px, 70vh, 950px);
-  }
-  
-  .project-title {
-    font-size: 1.2rem;
-  }
-
-}
-
-
-/* 태블릿 */
-@media (min-width: 769px) and (max-width: 1024px) {
-  :root {
-    --project-media-width: min(95vw, 1200px);
-  }
-  
-  .project {
-    padding: 0;
-    gap: 1.5rem;
-    margin-bottom: 4.5rem;
-  }
-  
-  .project-image {
-    min-height: clamp(520px, 75vh, 1100px);
-  }
-  
-  .project-title {
-    font-size: 1.35rem;
-  }
-  
-  .scroll-hint {
-    font-size: 0.85rem;
-    right: 2rem;
-  }
-  
-}
-
-/* 대형 화면 */
-@media (min-width: 1025px) {
-  :root {
-    --project-media-width: min(92vw, 1600px);
-  }
-  
-  .project {
-    padding: 0;
-    margin-bottom: 5.5rem;
-  }
-  
-  .project-image {
-    min-height: clamp(700px, 85vh, 1350px);
-  }
-  
-  .project-title {
-    font-size: 1.5rem;
-  }
-}
-
-@media (min-width: 1400px) {
-  :root {
-    --project-media-width: min(88vw, 1600px);
-  }
-  
-  .project-image {
-    min-height: clamp(750px, 88vh, 1450px);
-  }
-}
-
-/* 접근성 */
-.project-link:focus {
-  outline: none;
-}
-
-.project-link:focus .project {
-  outline: 3px solid #000;
-  outline-offset: 8px;
-}
-
-.project-link:focus:not(:focus-visible) .project {
-  outline: none;
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .project, 
-  .project-image, 
-  .project-title, 
-  .project-summary, 
-  .project-tags,
-    transition: none;
-  }
-  
-  .project:hover,{
+/* 터치/포인터 환경에서는 효과 줄이기(실수 탭 방지) */
+@media (hover: none), (pointer: coarse) {
+  .project-link:hover .project-image,
+  .project-link:hover .project-media.has-hover::before {
     transform: none;
+    filter: none;
+    opacity: 0; /* 오버레이 비활성화 */
   }
+}
 
+/* 모션 최소화 설정 */
+@media (prefers-reduced-motion: reduce) {
+  .project-image,
+  .project-media.has-hover::before {
+    transition: none !important;
+  }
+  .project-link:hover .project-image {
+    transform: none !important;
+    filter: none !important;
+  }
+}
 
 /* ===== 9. 푸터 (End - Closure) ===== */
 footer {
