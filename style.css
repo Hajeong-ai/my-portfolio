@@ -1081,7 +1081,7 @@ body {
 
 .project-content {
   width: 100%;
-  max-width: var(--project-media-width);
+  max-width: 1000px;
   margin: 0 auto;
   text-align: left;
   display: flex;
@@ -1143,26 +1143,23 @@ body {
 
 /* 이미지 크기 설정 - 넓이와 높이 모두 최대한 크게 */
 :root {
-  --project-media-width: min(98vw, 1600px);
-  --project-aspect: 3 / 2.5;
-  --project-radius: 4px;
+  --project-aspect: 16 / 9;
+  --project-radius: 10px;
 }
-
 
 .project-image {
   display: block;
   width: 100%;
-  max-width: var(--project-media-width);
-  margin: 0 auto;
+  max-width: 100%; /* ✅ 부모 너비 전체 사용 */
   aspect-ratio: var(--project-aspect);
   height: auto;
   min-height: clamp(650px, 85vh, 1400px);
-  object-fit: cover; /* cover → contain으로 변경하여 이미지 잘림 방지 */
+  object-fit: contain;
   border-radius: var(--project-radius);
-  transition: opacity 0.4s ease;  /* ← transform에서 opacity로 변경 */
-  position: relative;  /* ← 추가 */
+  transition: opacity 0.4s ease;
+  position: relative;
+  background: var(--color-bg-primary);
 }
-
 /* === Hover 튜닝용 토큰 === */
 :root {
   --hover-scale: 1.012;        /* 1.02 → 1.012 로 완만하게 */
@@ -1269,6 +1266,8 @@ body {
     bottom: var(--space-3, 12px);
   }
 }
+
+
 /* ===== 9. 푸터 (End - Closure) ===== */
 footer {
   width: 100%;
@@ -1894,7 +1893,7 @@ section {
   }
   
   #projects {
-    min-width: 800px;
+    min-width: 1000px;
   }
 }
 
@@ -1988,10 +1987,12 @@ section {
 .project-image,
 .project-content,
 .projects-header {
-  width: min(100%, var(--project-media-width, 960px));
+  width: 1000px;
   margin-inline: auto;           /* 이미지/텍스트 블록 중앙 */
   text-align: left;              /* 텍스트는 좌측 정렬 유지 */
 }
+
+
 
 /* Pre-Startup Package Card */
 .impactx-card {
@@ -2340,7 +2341,7 @@ section {
   .project {
     gap: 1.25rem;
     padding: 1.5rem;
-    margin-bottom: 3rem;
+    margin-bottom: 1rem;
     min-height: auto;  /* ← 이 부분이 있는지 확인 */
     border-radius: 16px;
   }
@@ -2381,7 +2382,7 @@ section {
     min-height: 560px;
   }
 
-    .project-image { aspect-ratio: 21 / 9; }
+    .project-image { aspect-ratio: 16 / 9; }
 
   .project-title {
     font-size: 1.65rem;
@@ -5922,4 +5923,44 @@ textarea:focus-visible {
       box-shadow: 0 2px 20px rgba(0,0,0,0.06);
     }
 
-    
+/* Featured Works 제목 - 이미지 왼쪽 정렬 */
+.featured-works-title {
+  font-family: var(--font-display);
+  font-size: var(--text-2xl, 2rem);
+  font-weight: var(--weight-light, 300);
+  color: var(--color-text-primary);
+  margin-bottom: var(--space-6, 24px);
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+  text-align: left;
+  width: 100%;
+  max-width: var(--project-media-width, 1400px); /* ✅ 이미지와 같은 최대 너비 */
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 0; /* ✅ 왼쪽 패딩 제거 */
+}
+
+.featured-works-title {
+  font-family: var(--font-heading);
+  font-weight: 600;
+  font-size: 2rem;
+  text-align: left;
+  width: 100%;
+  max-width: var(--project-media-width, 1000px); /* ✅ 프로젝트 이미지와 동일한 너비 */
+  margin: 0.5rem auto; /* ✅ 가운데 기준 정렬, 텍스트는 왼쪽 정렬 */
+  padding-left: var(--space-2, 1rem); /* 선택: 이미지 여백이 있을 경우 동일 padding */
+}
+
+.projects-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: var(--space-4, 1rem);
+  position: relative;
+  margin-bottom: 3rem;
+  width: 100%;
+  max-width: var(--project-media-width, 1400px); /* ✅ 동일 기준 */
+  margin-left: auto;
+  margin-right: auto;
+}
