@@ -1473,17 +1473,24 @@ body {
     margin-bottom: var(--space-3, 0.5rem); /* ✅ 1rem → 0.75rem */
   }
 
-
-  .scroll-hint {
-    font-size: 0.75rem;
-    padding: 0;
+  .intro-heading {
+    font-size: var(--text-sm, 0.9rem);
+    line-height: 1.4;
+    margin-bottom: var(--space-2, 8px);
   }
 
-  .projects-header {
+  .intro-location {
+    font-size: var(--text-xs, 0.85rem);
+    line-height: 1.5;
+    margin-bottom: var(--space-2, 8px);
+  }
+
+  .featured-works-title {
+    font-size: var(--text-lg, 1.25rem);
     padding: 0 var(--padding-x-mobile, 16px);
-    margin-bottom: var(--space-3, 12px);
+    margin-bottom: var(--space-2, 8px);
   }
-}
+
 /* ===== 9. 푸터 (End - Closure) ===== */
 footer {
   width: 100%;
