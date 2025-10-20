@@ -1207,44 +1207,33 @@ body {
     opacity: 0; /* 오버레이 비활성화 */
   }
 }
-
+/* ========================================
+   모바일 반응형 (768px 이하) - 이미지만 표시
+======================================== */
 
 @media (max-width: 768px) {
   .project {
-    gap: 1.5rem; /* ✅ 이미지와 텍스트 간격 */
-    margin-bottom: 4rem;
+    gap: 2rem; /* ✅ 이미지 간 간격 */
+    margin-bottom: 2rem; /* ✅ 프로젝트 간 여백 축소 */
+    padding: 0;
   }
 
+  /* ✅ 텍스트 전체 숨김 */
   .project-content {
-    gap: 1rem; /* ✅ 텍스트 요소 간 간격 축소 */
-    padding: 0 var(--padding-x-mobile, 20px);
+    display: none;
   }
 
-  .project-title {
-    font-size: 1.15rem; /* ✅ 모바일 타이틀 크기 */
-    line-height: 1.4;
-    gap: 0.4rem;
-  }
-
-  .project-year {
-    font-size: 0.7rem; /* ✅ 연도 크기 축소 */
-  }
-
-  .project-summary {
-    font-size: 0.9rem; /* ✅ 설명 크기 축소 */
-    line-height: 1.5;
-    -webkit-line-clamp: 3; /* ✅ 3줄까지 표시 */
-  }
-
-  .project-tags {
-    font-size: 0.8rem; /* ✅ 태그 크기 축소 */
+  /* ✅ 이미지 전체 너비 */
+  .project-image {
+    width: 100%;
+    border-radius: var(--project-radius, 10px);
   }
 
   /* Featured Works 제목 */
   .featured-works-title {
     font-size: var(--text-xl, 1.5rem);
     padding: 0 var(--padding-x-mobile, 20px);
-    margin-bottom: var(--space-5, 20px);
+    margin-bottom: var(--space-4, 16px);
   }
 
   /* Scroll hint */
@@ -1255,7 +1244,7 @@ body {
 
   .projects-header {
     padding: 0 var(--padding-x-mobile, 20px);
-    margin-bottom: 2rem;
+    margin-bottom: 1.5rem;
   }
 }
 
@@ -1265,31 +1254,8 @@ body {
 
 @media (max-width: 480px) {
   .project {
-    gap: 1.25rem;
-    margin-bottom: 3rem;
-  }
-
-  .project-content {
-    gap: 0.75rem;
-    padding: 0 var(--padding-x-mobile, 16px);
-  }
-
-  .project-title {
-    font-size: 1rem; /* ✅ 더 작은 화면 대응 */
-    line-height: 1.4;
-  }
-
-  .project-year {
-    font-size: 0.65rem;
-  }
-
-  .project-summary {
-    font-size: 0.85rem;
-    line-height: 1.5;
-  }
-
-  .project-tags {
-    font-size: 0.75rem;
+    gap: 1.5rem; /* ✅ 더 작은 간격 */
+    margin-bottom: 1.5rem;
   }
 
   .featured-works-title {
@@ -1304,28 +1270,7 @@ body {
 
   .projects-header {
     padding: 0 var(--padding-x-mobile, 16px);
-  }
-}
-
-/* ========================================
-   태블릿 (769px ~ 1024px)
-======================================== */
-
-@media (min-width: 769px) and (max-width: 1024px) {
-  .project-content {
-    padding: 0 var(--padding-x-tablet, 32px);
-  }
-
-  .project-title {
-    font-size: 1.3rem;
-  }
-
-  .project-summary {
-    font-size: 0.95rem;
-  }
-
-  .project-tags {
-    font-size: 0.85rem;
+    margin-bottom: 1.25rem;
   }
 }
 
@@ -1388,7 +1333,45 @@ body {
   }
 }
 
+@media (max-width: 768px) {
+  .intro-heading {
+    font-size: var(--text-base, 1rem); /* ✅ 1.5rem → 1rem */
+    line-height: 1.4;
+    margin-bottom: var(--space-3, 12px);
+  }
 
+  .intro-location {
+    font-size: var(--text-sm, 0.9rem); /* ✅ 1.5rem → 0.9rem */
+    line-height: 1.5;
+    margin-bottom: var(--space-3, 12px);
+  }
+
+  #typed-text {
+    display: block;
+    min-width: 100%;
+    margin-top: 0.3em;
+  }
+
+  .centered-section {
+    padding: 0 var(--padding-x-mobile, 20px);
+  }
+}
+
+/* ========================================
+   작은 모바일 (480px 이하)
+======================================== */
+
+@media (max-width: 480px) {
+  .intro-heading {
+    font-size: var(--text-sm, 0.9rem); /* ✅ 더 작게 */
+    line-height: 1.4;
+  }
+
+  .intro-location {
+    font-size: var(--text-xs, 0.85rem); /* ✅ 더 작게 */
+    line-height: 1.5;
+  }
+}
 /* ===== 9. 푸터 (End - Closure) ===== */
 footer {
   width: 100%;
