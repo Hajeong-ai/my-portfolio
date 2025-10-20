@@ -1464,32 +1464,15 @@ body {
 
 @media (max-width: 480px) {
   .about-project-wrapper {
-    gap: var(--space-6, 1.5rem); /* ✅ 2rem → 1.5rem */
-    padding: var(--space-6, 1.5rem) var(--padding-x-mobile, 16px);
+    gap: var(--space-6, 1rem); /* ✅ 2rem → 1.5rem */
+    padding: var(--space-6, 1rem) var(--padding-x-mobile, 16px);
   }
 
   .project {
     gap: 0;
-    margin-bottom: var(--space-3, 0.75rem); /* ✅ 1rem → 0.75rem */
+    margin-bottom: var(--space-3, 0.5rem); /* ✅ 1rem → 0.75rem */
   }
 
-  .intro-heading {
-    font-size: var(--text-sm, 0.9rem);
-    line-height: 1.4;
-    margin-bottom: var(--space-2, 8px);
-  }
-
-  .intro-location {
-    font-size: var(--text-xs, 0.85rem);
-    line-height: 1.5;
-    margin-bottom: var(--space-2, 8px);
-  }
-
-  .featured-works-title {
-    font-size: var(--text-lg, 1.25rem);
-    padding: 0 var(--padding-x-mobile, 16px);
-    margin-bottom: var(--space-2, 8px);
-  }
 
   .scroll-hint {
     font-size: 0.75rem;
