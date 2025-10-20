@@ -1604,8 +1604,8 @@ body {
 
 @media (max-width: 480px) {
   .about-project-wrapper {
-    gap: var(--space-6, 1.5rem);
-    padding: var(--space-6, 1.5rem) var(--padding-x-mobile, 16px);
+    gap: var(--space-6, 1rem);
+    padding: var(--space-0, 1.5rem) var(--padding-x-mobile, 10px);
   }
 
   .project-link {
@@ -1622,21 +1622,25 @@ body {
   .project-image {
     border-radius: 0; /* ✅ 둥근 모서리 제거 */
     margin: 0;
+    width: 100%;
   }
 
   .intro-heading {
+        display: block;
     font-size: var(--text-sm, 0.9rem);
     line-height: 1.4;
     margin-bottom: var(--space-2, 8px);
   }
 
   .intro-location {
+        display: block;
     font-size: var(--text-xs, 0.85rem);
     line-height: 1.5;
     margin-bottom: var(--space-2, 8px);
   }
 
   .featured-works-title {
+        display: block;
     font-size: var(--text-lg, 1.25rem);
     padding: 0 var(--padding-x-mobile, 16px);
     margin-bottom: var(--space-2, 8px);
@@ -1645,6 +1649,12 @@ body {
   .scroll-hint {
     font-size: 0.75rem;
     padding: 0;
+  }  
+  
+  #typed-text {
+    display: block;
+    min-width: 100%;
+    margin-top: 0.3em;
   }
 
   .projects-header {
@@ -1652,6 +1662,10 @@ body {
     margin-bottom: var(--space-3, 12px);
   }
 }
+
+
+
+
 /* ===== 9. 푸터 (End - Closure) ===== */
 footer {
   width: 100%;
