@@ -1509,8 +1509,8 @@ body {
 @media (max-width: 768px) {
   /* ✅ About 섹션과 Projects 섹션 간격 축소 */
   .about-project-wrapper {
-    gap: var(--space-8, 2rem);
-    padding: var(--space-8, 2rem) var(--padding-x-mobile, 1.5rem);
+    gap: var(--space-12, 3rem);
+    padding: var(--space-12, 3rem) var(--padding-x-mobile, 3rem);
   }
 
   /* ✅ 인트로 텍스트 하단 여백 제거 */
@@ -1604,8 +1604,8 @@ body {
 
 @media (max-width: 480px) {
   .about-project-wrapper {
-    gap: var(--space-6, 1rem);
-    padding: var(--space-0, 1.5rem) var(--padding-x-mobile, 10px);
+    gap: var(--space-14, 3rem);
+    padding: var(--space-14, 3rem) var(--padding-x-mobile, 20px);
   }
 
   .project-link {
@@ -1640,9 +1640,9 @@ body {
   }
 
   .featured-works-title {
-        display: block;
+    display: block;
     font-size: var(--text-lg, 1.25rem);
-    padding: 0 var(--padding-x-mobile, 16px);
+    padding: 3 var(--padding-x-mobile, 16px);
     margin-bottom: var(--space-2, 8px);
   }
 
@@ -6326,7 +6326,7 @@ textarea:focus-visible {
   font-family: var(--font-display);
   font-size: var(--text-2xl, 2rem);
   font-weight: var(--weight-light, 300);
-  color: var(--color-text-primary);
+  color: var(--color-text-secondary);
   margin-bottom: var(--space-6, 24px);
   letter-spacing: -0.02em;
   line-height: 1.2;
