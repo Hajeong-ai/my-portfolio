@@ -1527,7 +1527,9 @@ body {
     box-shadow: 0 6px 18px rgba(0,0,0,.08);
     margin: 0 var(--padding-x-mobile, 16px) 20px;
   }
-
+.typed-text {
+  display: block
+}
   .project-title {
     font-size: .5rem;
     line-height: 1.4;
