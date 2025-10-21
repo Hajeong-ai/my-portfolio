@@ -418,161 +418,59 @@
   50% { opacity: 0; }
 }
 
-/* Projects Section */
-#projects {
-  max-width: 1100px;
-  margin: 0 auto;
-  padding: 2rem 2rem 4rem;
-}
+/* PROJECTS */
+    #projects{ max-width:1100px; margin:0 auto; padding:2rem 2rem 4rem; }
 
-.projects-header {
-  text-align: center;
-  margin-bottom: 4rem;
-}
+    .project-link{ text-decoration:none; display:block; margin-bottom:5rem; color:inherit; }
 
-.scroll-hint {
-  font-size: 0.85rem;
-  color: #a0a0a0;
-  font-weight: 400;
-  letter-spacing: 0.3px;
-}
+    .project{
+      display:grid; grid-template-columns:1.2fr 1fr; gap:4rem; align-items:start;
+      transition:transform .3s ease;
+    }
+    .project:hover{ transform:translateX(8px); }
 
-/* Project Link */
-.project-link {
-  text-decoration: none;
-  display: block;
-  margin-bottom: 5rem;
-}
+    .project-image{
+      width:100%; height:auto; display:block; border-radius:6px; object-fit:cover;
+      box-shadow:0 2px 16px rgba(0,0,0,.06); transition:box-shadow .4s ease;
+    }
+    .project:hover .project-image{ box-shadow:0 8px 32px rgba(0,0,0,.12); }
 
-/* Project Card - 미니멀 디자인 */
-.project {
-  display: grid;
-  grid-template-columns: 1.2fr 1fr;
-  gap: 4rem;
-  align-items: center;
-  transition: transform 0.3s ease;
-}
+    .project-content{ padding:0; min-width:0; }            /* ★ 줄바꿈 핵심 */
+    .project-title,
+    .project-summary{ max-width:100%; white-space:normal; overflow-wrap:anywhere; word-break:break-word; }
 
-.project:hover {
-  transform: translateX(8px);
-}
+    .project-title{
+      font-size:1.6rem; font-weight:400; line-height:1.5; margin-bottom:1.2rem; letter-spacing:-.02em;
+    }
+    .project-title .hl{ border-bottom:2px solid var(--hl, #e0f2fe); padding:0 2px 2px; }
+    .project-year{ font-size:.9rem; font-weight:300; color:#a0a0a0; margin-left:.5rem; }
 
-/* Project Image - 미니멀 */
-.project-image {
-  width: 100%;
-  height: auto;
-  border-radius: 6px;
-  object-fit: cover;
-  transition: all 0.4s ease;
-  box-shadow: 0 2px 16px rgba(0,0,0,0.06);
-}
+    .project-summary{ font-size:1rem; line-height:1.7; color:#606060; margin-bottom:1.5rem; font-weight:300; }
+    .project-tags{ display:inline-flex; flex-wrap:wrap; gap:.8rem; font-size:.8rem; color:#909090; letter-spacing:.3px; }
 
-.project:hover .project-image {
-  box-shadow: 0 8px 32px rgba(0,0,0,0.12);
-}
+    /* 태블릿 */
+    @media (max-width:1024px){
+      .project{ grid-template-columns:1fr; gap:2.5rem; }
+      .project-title{ font-size:1.4rem; }
+    }
 
-/* Project Content */
-.project-content {
-  padding: 0;
-}
+    /* 모바일 */
+    @media (max-width:768px){
+      .header-container{ padding:1rem 1.5rem; }
+      .intro-heading{ font-size:1.8rem; }
+      .intro-description{ font-size:1.1rem; }
+      .intro-location{ font-size:1rem; }
 
-/* Project Title - 세련됨 */
-.project-title {
-  font-size: 1.6rem;
-  font-weight: 400;
-  line-height: 1.5;
-  color: #111;
-  margin-bottom: 1.2rem;
-  letter-spacing: -0.02em;
-}
+      #projects{ padding:2rem 1.5rem; }
+      .project-link{ margin-bottom:4rem; }
+      .project{ gap:2rem; }
+      .project-title{ font-size:1.3rem; }
+      .project-summary{ font-size:.95rem; }
+      .project:hover{ transform:none; }
+    }
+  </style> 
 
-.project-title .hl {
-  background: transparent;
-  border-bottom: 2px solid var(--hl, #e0f2fe);
-  padding: 0 2px 2px;
-  display: inline;
-  transition: border-color 0.3s ease;
-}
-
-.project:hover .project-title .hl {
-  border-bottom-width: 3px;
-}
-
-.project-year {
-  font-size: 0.9rem;
-  font-weight: 300;
-  color: #a0a0a0;
-  margin-left: 0.5rem;
-}
-
-/* Project Summary - 간결함 */
-.project-summary {
-  font-size: 1rem;
-  line-height: 1.7;
-  color: #606060;
-  margin-bottom: 1.5rem;
-  font-weight: 300;
-}
-
-/* Project Tags - 심플 */
-.project-tags {
-  display: inline-flex;
-  flex-wrap: wrap;
-  gap: 0.8rem;
-  font-size: 0.8rem;
-  color: #909090;
-  font-weight: 400;
-  letter-spacing: 0.3px;
-}
-
-.project-tags::before {
-  content: '';
-  display: none;
-}
-
-/* 각 태그를 구분 */
-.project-tags::after {
-  content: '';
-}
-
-/* Responsive */
-@media (max-width: 1024px) {
-  .project {
-    grid-template-columns: 1fr;
-    gap: 2.5rem;
-  }
   
-  .project-title {
-    font-size: 1.4rem;
-  }
-}
-
-@media (max-width: 768px) {
-  #projects {
-    padding: 2rem 1.5rem;
-  }
-  
-  .project-link {
-    margin-bottom: 4rem;
-  }
-  
-  .project {
-    gap: 2rem;
-  }
-  
-  .project-title {
-    font-size: 1.3rem;
-  }
-  
-  .project-summary {
-    font-size: 0.95rem;
-  }
-  
-  .project:hover {
-    transform: none;
-  }
-}
-  </style>
 </head>
 <body>
   <!-- Header -->
