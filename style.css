@@ -822,17 +822,6 @@ body {
   align-items: center;
 }
 
-/* Intro Section */
-.intro-section {
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-8, 2rem);
-  align-items: center;
-  text-align: center;
-  margin: 0;
-  animation: fadeInUp 0.8s ease-out;
-}
-
 @keyframes fadeInUp {
   from {
     opacity: 0;
@@ -1868,13 +1857,13 @@ section {
 .grid-2 {
   grid-template-columns: 1fr;
 }
-.intro-section {
+/* .intro-section {
   display: grid;
   grid-template-columns: 1fr 320px;
   gap: var(--space-16, 64px);
   align-items: center; /* flex-start → center로 변경 */
   margin-top: 0;
-}
+} */
 /* 왼쪽 블록 - 텍스트 */
 .intro-text {
   width: 100%;
@@ -6362,3 +6351,4 @@ textarea:focus-visible {
   margin-left: auto;
   margin-right: auto;
 }
+
