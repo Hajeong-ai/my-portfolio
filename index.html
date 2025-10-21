@@ -13,6 +13,35 @@
       padding: 0;
       box-sizing: border-box;
     }
+    /* Footer - 홈페이지와 동일 */
+    footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 2rem 3rem;
+      border-top: 1px solid rgba(0, 0, 0, 0.05);
+      margin-top: 4rem;
+    }
+
+    .footer-left {
+      font-size: 0.85rem;
+      color: #707070;
+    }
+
+    .footer-right {
+      display: flex;
+      gap: 1rem;
+    }
+
+    .footer-right a {
+      color: #3a3a3a;
+      font-size: 1.2rem;
+      transition: color 0.3s;
+    }
+
+    .footer-right a:hover {
+      color: #007bff;
+    }
 
     body {
       font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
@@ -173,7 +202,11 @@
       margin-bottom: 2rem;
       animation: fadeInUp 1s ease-out 0.2s backwards;
     }
-
+@media (max-width: 480px) {
+  .intro-heading {
+font size: 10px;
+  }
+}
     .intro-heading .highlight {
       background: linear-gradient(120deg, #e0f2fe 0%, #fce7f3 100%);
       padding: 2px 12px;
@@ -626,13 +659,19 @@
     </div>
   </header>
 
-<article class="project" data-aos="fade-up">
+<section id="projects" data-aos="fade-up">
+  <!-- <h3 class="featured-works-title">Featured Works</h3> -->
+
+
+<!-- ✅ Project 1 -->
+
+<!-- <section id="projects" data-aos="fade-up"> -->
   
 <a href="project1.html" class="project-link" target="_self">
   <div class="project" data-aos="zoom-in-up" id="rol">
     <img src="images/Shot.png" alt="ROL Thumbnail" class="project-image" />
     
-    <div class="project-body">
+    <div class="project-content">
       <h3 class="project-title">
         <span class="hl" style="--hl:#cfe3ff; --skew:-8deg;">Launching Community App for Enhanced Wellness Routine</span>
         <span class="project-year">·  2025</span>
@@ -655,7 +694,7 @@
   <div class="project" data-aos="zoom-in-up" id="overleaf">
     <img src="images/141.png" width=1000 alt="Overleaf Redesign Thumbnail" class="project-image" />
     
-    <div class="project-body">
+    <div class="project-content">
       <h3 class="project-title">
         <span class="hl" style="--hl:#C8DDCB; --skew:-8deg;">Redesigning AI-powered web-based LaTex editor</span>
         <span class="project-year">·  2025</span>
@@ -677,7 +716,7 @@
   <div class="project" data-aos="zoom-in-up" id="duo">
     <img src="images/New duo thumbnail.png" alt="Duo Mobile Redesign Thumbnail" class="project-image" />
     
-    <div class="project-body">
+    <div class="project-content">
       <h3 class="project-title">
         <span class="hl" style="--hl:#d3f3cb; --skew:-8deg;">Redesigning Two-factor Authentication Platform</span>
         <span class="project-year">·  2024</span>
@@ -700,7 +739,7 @@
   <div class="project" data-aos="zoom-in-up" id="placie">
     <img src="images/placie thumbnail.png" alt="Placie Thumbnail" class="project-image" />
     
-    <div class="project-body">
+    <div class="project-content">
       <h3 class="project-title">
         <span class="hl" style="--hl:#FFE9CF; --skew:-8deg;">Designing an AI Assistant for Smarter Place Discovery</span>
         <span class="project-year">·  2025</span>
