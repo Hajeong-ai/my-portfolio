@@ -1579,7 +1579,7 @@ body {
 
   .project {
     gap: 0;
-    margin: 0; /* ✅ 모든 여백 제거 */
+    margin: 2; /* ✅ 모든 여백 제거 */
     padding: 0;
   }
   .scroll-hint {
@@ -1626,7 +1626,6 @@ body {
   .project{
     background:#fff;
     border-radius:16px;
-    box-shadow:0 8px 24px rgba(0,0,0,.08);
     overflow:hidden;                 /* 둥근모서리 안으로 모두 클립 */
     margin: 0 var(--padding-x-mobile,20px) 24px;
     padding:0;                       /* 이미지가 가장자리까지 차게 */
@@ -1867,14 +1866,7 @@ section {
 .grid-2 {
   grid-template-columns: 1fr;
 }
-/* .intro-section {
-  display: grid;
-  grid-template-columns: 1fr 320px;
-  gap: var(--space-16, 64px);
-  align-items: center; /* flex-start → center로 변경 */
-  margin-top: 0;
-} */
-/* 왼쪽 블록 - 텍스트 */
+
 .intro-text {
   width: 100%;
 }
@@ -2736,7 +2728,7 @@ section {
 
 @media (max-width: 768px) {
   .project {
-    gap: 0rem;
+    gap: 2rem;
     padding: 0rem;
     margin-bottom: 1rem;
     min-height: auto;  /* ← 이 부분이 있는지 확인 */
