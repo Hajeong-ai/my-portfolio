@@ -866,7 +866,7 @@ body {
   max-width: 65ch;
 }
 
-.intro-heading {
+/* .intro-heading {
   font-family: var(--font-display);
   font-weight: var(--weight-light, 300);
   font-size: var(--text-lg, 1.5rem);
@@ -874,7 +874,7 @@ body {
   margin-bottom: var(--space-4, 1rem);
   letter-spacing: -0.01em;
   color: var(--color-text-primary);
-}
+} */
 
 .intro-location {
   font-family: var(--font-text);
@@ -1626,7 +1626,7 @@ body {
   }
 
   .intro-heading {
-        display: block;
+    display: block;
     font-size: var(--text-sm, 0.9rem);
     line-height: 1.4;
     margin-bottom: var(--space-2, 8px);
