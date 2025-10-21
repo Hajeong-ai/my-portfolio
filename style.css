@@ -1208,9 +1208,7 @@ body {
   }
 
   /* ✅ 텍스트 전체 숨김 */
-  .project-content {
-    display: none;
-  }
+
 
   /* ✅ 이미지 전체 너비 */
   .project-image {
@@ -1410,9 +1408,6 @@ body {
   }
 
   /* ✅ 텍스트 전체 숨김 */
-  .project-content {
-    display: none;
-  }
 
   /* ✅ 이미지 전체 너비 */
   .project-image {
@@ -1548,9 +1543,6 @@ body {
   }
 
   /* ✅ 텍스트 전체 숨김 */
-  .project-content {
-    display: none;
-  }
 
   /* ✅ 이미지 설정 */
   .project-image {
