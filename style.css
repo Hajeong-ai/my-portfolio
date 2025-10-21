@@ -802,25 +802,11 @@ body {
 }
 
 /* About + Projects 래퍼 - 세로 나열 */
-.about-project-wrapper {
-  display: flex;
-  flex-direction: column;
-  gap: var(--section-gap-lg, 6rem);
-  max-width: var(--container-max, 1400px);
-  margin: 0 auto;
-  padding: var(--space-12, 3rem) var(--padding-x-mobile, 1.5rem);
-}
 
 #about {
   width: 100%;
 }
 
-#projects {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
 
 @keyframes fadeInUp {
   from {
@@ -1202,7 +1188,7 @@ body {
 
 @media (max-width: 768px) {
   .project {
-    gap: var(--space-0); /* ✅ 이미지 간 간격 */
+    gap: var(--space-0); 
     margin-bottom: var(--space-0); /* ✅ 프로젝트 간 여백 축소 */
     padding: 0;
   }
@@ -1242,7 +1228,6 @@ body {
 @media (max-width: 480px) {
   .project {
     gap: var(--space-0); /* ✅ 더 작은 간격 */
-    margin-bottom: var(--space-0);
   }
 
   .featured-works-title {
@@ -1551,6 +1536,9 @@ body {
     margin: 0; /* ✅ 모든 여백 제거 */
     padding: 0;
     display: block;
+    height: auto;            /* 또는 컨테이너를 채우려면 height:100% + object-fit 사용 */
+    vertical-align: top;     /* 혹시 inline이어도 여백 최소화 */
+    border-radius: var(--project-radius, 10px);
   }
 
   /* Featured Works 제목 */
@@ -1584,11 +1572,6 @@ body {
 ======================================== */
 
 @media (max-width: 480px) {
-  .about-project-wrapper {
-    gap: var(--space-14, 3rem);
-    padding: var(--space-14, 3rem) var(--padding-x-mobile, 20px);
-  }
-
   .project-link {
     margin: 0;
     padding: 0;
@@ -1599,34 +1582,6 @@ body {
     margin: 0; /* ✅ 모든 여백 제거 */
     padding: 0;
   }
-
-  .project-image {
-    border-radius: 0; /* ✅ 둥근 모서리 제거 */
-    margin: 0;
-    width: 100%;
-  }
-
-  .intro-heading {
-    display: block;
-    font-size: var(--text-sm, 0.9rem);
-    line-height: 1.4;
-    margin-bottom: var(--space-2, 8px);
-  }
-
-  .intro-location {
-        display: block;
-    font-size: var(--text-xs, 0.85rem);
-    line-height: 1.5;
-    margin-bottom: var(--space-2, 8px);
-  }
-
-  .featured-works-title {
-    display: block;
-    font-size: var(--text-lg, 1.25rem);
-    padding: 3 var(--padding-x-mobile, 16px);
-    margin-bottom: var(--space-2, 8px);
-  }
-
   .scroll-hint {
     font-size: 0.75rem;
     padding: 0;
@@ -1638,14 +1593,77 @@ body {
     margin-top: 0.3em;
   }
 
-  .projects-header {
-    padding: 0 var(--padding-x-mobile, 16px);
-    margin-bottom: var(--space-3, 12px);
+   /* 텍스트/메타 블록은 '자리 자체'를 없애기 */
+  .project-title,
+  .project-description,
+  .project-meta,
+  .project-tags,
+  .project-text,
+  .project-content { 
+    margin: 0 !important;
+    padding: 0 !important;
   }
+
+  /* 이미지 컨테이너에 남아있는 내부 여백 제거 */
+  .project-media {
+    margin: 0 !important;
+    padding: 0 !important;
+    /* 만약 비율 박스 쓰고 있으면 확인: padding-top, ::before로 비율 잡는 코드 제거/비활성화 */
+  }
+
+  /* baseline 간격 제거 */
+  .project-image {
+    display: inline;          /* inline → block */
+    width: 100%;
+    height: auto;            /* 또는 컨테이너를 채우려면 height:100% + object-fit 사용 */
+    vertical-align: top;     /* 혹시 inline이어도 여백 최소화 */
+    border-radius: var(--project-radius, 10px);
+}
 }
 
+@media (max-width:768px){
+  /* 카드: 하얀 박스는 부모에 */
+  .project{
+    background:#fff;
+    border-radius:16px;
+    box-shadow:0 8px 24px rgba(0,0,0,.08);
+    overflow:hidden;                 /* 둥근모서리 안으로 모두 클립 */
+    margin: 0 var(--padding-x-mobile,20px) 24px;
+    padding:0;                       /* 이미지가 가장자리까지 차게 */
+  }
 
+  /* 이미지 쪽은 부모가 radius 갖으니 0으로 */
+  .project-media{
+    margin:0 !important;
+    padding:0 !important;
+    border-radius:0 !important;
+  }
+  .project-image{
+    display:block;
+    width:100%;
+    height:auto;
+    vertical-align:top;
+  }
 
+  /* 이미지 아래의 텍스트들이 카드 '안'으로 들어오게 패딩만 주기 */
+  .project-title,
+  .project-meta,
+  .project-description,
+  .project-tags{
+    padding: 12px 16px 0;           /* 좌우 패딩만 통일 */
+    margin:0;                        /* 남은 음수/불일치 마진 제거 */
+    transform:none !important;       /* translateX 등 초기화 */
+  }
+  .project-title{ padding-top:16px; }
+  .project-tags{ padding-bottom:16px; }
+
+  /* 타이틀 밑줄/장식이 있다면 기준을 0으로 리셋 */
+  .project-title::after{
+    left:0 !important;
+    right:auto;
+    transform:none !important;
+  }
+}
 
 /* ===== 9. 푸터 (End - Closure) ===== */
 footer {
@@ -1747,7 +1765,7 @@ footer {
   margin: 0 auto;
   padding: var(--space-12) var(--padding-x-mobile) var(--section-gap-lg); /* 상단 여백 통일: 48px */
 }
-
+.project-body{ padding:16px 16px 18px; }
 .project-hero {
   margin-bottom: var(--section-gap-md);
   margin-top: 0; /* 상단 여백 제거 */
@@ -2718,8 +2736,8 @@ section {
 
 @media (max-width: 768px) {
   .project {
-    gap: 1.25rem;
-    padding: 1.5rem;
+    gap: 0rem;
+    padding: 0rem;
     margin-bottom: 1rem;
     min-height: auto;  /* ← 이 부분이 있는지 확인 */
     border-radius: 16px;
