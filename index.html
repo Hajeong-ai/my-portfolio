@@ -61,7 +61,7 @@
 
     /* Hero Section */
     .hero-section {
-      min-height: 100vh;
+      min-height: 80vh;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -150,6 +150,7 @@
       text-align: center;
       max-width: 900px;
       animation: fadeInUp 1s ease-out;
+          padding-bottom: 0; /* 하단 패딩 제거 */
     }
 
     @keyframes fadeInUp {
@@ -268,7 +269,64 @@
       border-radius: 4px;
     }
 
-    /* Decorative Elements */
+.scroll-indicator {
+    text-align: center;
+    opacity: 0;
+    transform: translateY(30px);
+    animation: fadeInUp 1s ease forwards;
+    animation-delay: 1.5s;
+    margin-top: -15rem;
+}
+
+@keyframes fadeInUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.scroll-text {
+    font-size: 0.9rem;
+    color: #999;
+    margin-bottom: 1rem;
+    letter-spacing: 1px;
+    font-weight: 400;
+}
+
+.scroll-arrow {
+    font-size: 1.8rem;
+    color: #999;
+    animation: bounce 2s infinite;
+    animation-delay: 2.5s;
+}
+
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% { 
+        transform: translateY(0); 
+    }
+    40% { 
+        transform: translateY(-15px); 
+    }
+    60% { 
+        transform: translateY(-10px); 
+    }
+}
+
+/* 반응형 */
+@media (max-width: 768px) {
+    .scroll-indicator {
+        margin-top: 2rem;
+    }
+    
+    .scroll-text {
+        font-size: 0.8rem;
+    }
+    
+    .scroll-arrow {
+        font-size: 1.5rem;
+    }
+  
+  }    /* Decorative Elements */
     .sparkle {
       position: absolute;
       width: 8px;
@@ -536,14 +594,21 @@
         Studying <strong>Human-Computer Interaction</strong>
       </p>
     </div>
+    
   </section> 
-
+    <div class="scroll-indicator">
+      <p class="scroll-text">Scroll down to view more works</p>
+      <div class="scroll-arrow">↓</div>
+    </div>
+  </div>
+</section>
     <!-- General Sans 폰트 추가 -->
   <link href="https://api.fontshare.com/v2/css?f[]=general-sans@400,500,600,700&display=swap" rel="stylesheet">
   
   <link rel="stylesheet" href="style.css" />
 
 </head>
+
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5">
   <header>
     <div class="header-container">
@@ -561,15 +626,9 @@
     </div>
   </header>
 
-
-<!-- </div> -->
-    </section>
-
 <section id="projects" data-aos="fade-up">
   <!-- <h3 class="featured-works-title">Featured Works</h3> -->
-  <div class="projects-header">
-    <span class="scroll-hint">Scroll down to view more works ↓</span>
-  </div>
+
 
 <!-- ✅ Project 1 -->
 
@@ -868,6 +927,26 @@ document.addEventListener('DOMContentLoaded', () => {
     setTimeout(type, 500);
   </script>
   
+<script>
+    // Intersection Observer for scroll animations
+    const observerOptions = {
+        threshold: 0.3,
+        rootMargin: '0px 0px -100px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+            }
+        });
+    }, observerOptions);
+
+    // Observe scroll indicator
+    const scrollIndicator = document.querySelector('.scroll-indicator');
+    observer.observe(scrollIndicator);
+</script>
+
   <script>
 (function(){
   // a.project-link[data-hover] 안의 .project-image를 호버 시 교체
