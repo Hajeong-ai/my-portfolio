@@ -63,24 +63,6 @@
     .nav-links a.active {
       color: #007bff;
     }
-
-    .hamburger {
-      display: none;
-      flex-direction: column;
-      gap: 5px;
-      background: none;
-      border: none;
-      cursor: pointer;
-      padding: 8px;
-    }
-
-    .hamburger span {
-      width: 24px;
-      height: 2px;
-      background: #3a3a3a;
-      transition: all 0.3s;
-    }
-
     /* Page Background with Blobs - 페이지 전체 배경 */
     body::before {
       content: '';
@@ -551,17 +533,17 @@
 <body class="about-page">
   <header>
     <div class="header-container">
-      <a href="index.html" class="logo">HAJEONG HWANG</a>
-      <nav class="nav-links">
-        <a href="index.html">Works</a>
-        <a href="Hajeong Hwang - UX Designer Resume.pdf">Resume</a>
-        <a href="About.html" class="active">About</a>
-      </nav>
+    <a href="index.html" class="logo"><strong>H.</strong></a>
 
-      <button class="hamburger" aria-label="Open menu"
-              aria-expanded="false" aria-controls="primary-nav">
+      <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false">
         <span></span><span></span><span></span>
       </button>
+
+      <nav class="nav-links" id="nav">
+        <a href="index.html">Works</a></li>
+        <a href="Hajeong Hwang - UX Designer Resume.pdf" target="_blank">Resume</a>
+          <a href="About.html">About</a>
+      </nav>
     </div>
   </header>
   
@@ -759,27 +741,52 @@ strings: ["🇰🇷 → 🇺🇸 → 🇦🇹 → 🇺🇸"]
   
 </script>
 <script>
-// 햄버거 메뉴 토글 기능
-document.addEventListener("DOMContentLoaded", function() {
-  const hamburger = document.querySelector('.hamburger');
-  const navLinks = document.querySelector('.nav-links');
-  
-  if (hamburger && navLinks) {
-    hamburger.addEventListener('click', function() {
-      // 메뉴 열기/닫기
-      navLinks.classList.toggle('active');
-      hamburger.classList.toggle('active');
-      
-      // aria-expanded 속성 업데이트 (접근성)
-      const isExpanded = hamburger.getAttribute('aria-expanded') === 'true';
-      hamburger.setAttribute('aria-expanded', !isExpanded);
-      
-      // body 스크롤 막기 (선택사항)
-      document.body.classList.toggle('menu-open');
-    });
-  }
-});
+(() => {
+  const burger = document.querySelector('.hamburger');
+  const nav = document.getElementById('primary-nav') || document.querySelector('.nav-links');
+  if (!burger || !nav) return;
+
+  const open = () => {
+    nav.classList.add('open');
+    burger.classList.add('is-open');
+    burger.setAttribute('aria-expanded', 'true');
+    document.body.classList.add('no-scroll'); // 선택: 모바일에서 바디 스크롤 잠금
+  };
+
+  const close = () => {
+    nav.classList.remove('open');
+    burger.classList.remove('is-open');
+    burger.setAttribute('aria-expanded', 'false');
+    document.body.classList.remove('no-scroll');
+  };
+
+  burger.addEventListener('click', (e) => {
+    e.stopPropagation();
+    nav.classList.contains('open') ? close() : open();
+  });
+
+  // 메뉴 링크 클릭 시 닫기
+  nav.addEventListener('click', (e) => {
+    if (e.target.matches('a')) close();
+  });
+
+  // 바깥 클릭 시 닫기
+  document.addEventListener('click', (e) => {
+    if (!nav.contains(e.target) && !burger.contains(e.target)) close();
+  });
+
+  // ESC로 닫기
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') close();
+  });
+
+  // 데스크톱으로 커지면 상태 초기화
+  window.addEventListener('resize', () => {
+    if (window.innerWidth >= 901) close();
+  });
+})();
 </script>
+
 </body>
 </html>
 
