@@ -1128,13 +1128,14 @@ body {
   max-width: 100%; /* ✅ 부모 너비 전체 사용 */
   aspect-ratio: var(--project-aspect);
   height: auto;
-  min-height: clamp(250px, 50vh, 700px);;
+  min-height: clamp(200px, 50vh, 700px);;
   object-fit: contain;
   border-radius: var(--project-radius);
   transition: opacity 0.4s ease;
   position: relative;
   background: var(--color-bg-primary); */
 }
+
 /* === Hover 튜닝용 토큰 === */
 :root {
   --hover-scale: 1.012;        /* 1.02 → 1.012 로 완만하게 */
@@ -2413,7 +2414,7 @@ section {
 
   .project-title {
     font-size: 1rem;
-    gap: 1rem;
+    gap: 0.4rem;
   }
 
   .project-year {
