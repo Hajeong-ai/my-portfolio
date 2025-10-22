@@ -1133,7 +1133,7 @@ body {
   border-radius: var(--project-radius);
   transition: opacity 0.4s ease;
   position: relative;
-  background: var(--color-bg-primary);
+  background: var(--color-bg-primary); */
 }
 /* === Hover 튜닝용 토큰 === */
 :root {
@@ -1227,7 +1227,8 @@ body {
 
 @media (max-width: 480px) {
   .project {
-    gap: var(--space-0); /* ✅ 더 작은 간격 */
+    gap: var(--space-0); 
+
   }
 
   .featured-works-title {
