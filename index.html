@@ -723,6 +723,16 @@ html, body { -webkit-text-size-adjust: 100%; }
         Studying <strong>Human-Computer Interaction</strong>
       </p>
       <p>Made with HTML/CSS</p>
+
+<!-- Local time widget -->
+
+<div id="local-clock" class="local-clock">
+  <i class="fa-solid fa-location-dot"></i>
+  <span id="clockCity">Detecting...</span>
+  <i class="fa-regular fa-clock"></i>
+  <span id="clockTime">--:--:--</span>
+</div>
+
     </div>
     
   </section> 
@@ -1115,6 +1125,40 @@ document.addEventListener('DOMContentLoaded', () => {
     card.addEventListener('mouseenter', () => img.src = hoverSrc);
     card.addEventListener('mouseleave', () => img.src = originalSrc);
   });
+})();
+</script>
+
+<script>
+(function(){
+  const cityEl = document.getElementById('clockCity');
+  const timeEl = document.getElementById('clockTime');
+
+  // 1️⃣ 브라우저 시간대 가져오기
+  const tz = Intl.DateTimeFormat().resolvedOptions().timeZone;
+
+  // 2️⃣ 시간대 → 도시 이름 매핑
+  const tzToCity = {
+    'America/Los_Angeles': 'Seattle, WA',
+    'America/Vancouver': 'Vancouver, BC',
+    'America/New_York': 'New York, NY',
+    'Asia/Seoul': 'Seoul, KR',
+    'Europe/London': 'London, UK',
+    'Asia/Tokyo': 'Tokyo, JP'
+  };
+  const cityName = tzToCity[tz] || tz.split('/').pop().replace(/_/g, ' ');
+  cityEl.textContent = cityName;
+
+  // 3️⃣ 시계 업데이트 함수
+  function updateClock(){
+    const now = new Date();
+    const formatted = now.toLocaleTimeString('en-US', {
+      hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: true, timeZone: tz
+    });
+    timeEl.textContent = formatted;
+  }
+
+  updateClock();
+  setInterval(updateClock, 1000);
 })();
 </script>
 
