@@ -47,22 +47,6 @@
       text-decoration: none;
     }
 
-    .nav-links {
-      display: flex;
-      gap: 2rem;
-    }
-
-    .nav-links a {
-      text-decoration: none;
-      color: #3a3a3a;
-      font-size: 0.9rem;
-      transition: color 0.3s;
-    }
-
-    .nav-links a:hover,
-    .nav-links a.active {
-      color: #007bff;
-    }
     /* Page Background with Blobs - 페이지 전체 배경 */
     body::before {
       content: '';
@@ -450,24 +434,6 @@
         display: flex;
         z-index: 1001;
       }
-
-      .nav-links {
-        position: fixed;
-        top: 60px;
-        right: -100%;
-        flex-direction: column;
-        background: white;
-        padding: 2rem;
-        box-shadow: -2px 0 10px rgba(0,0,0,0.1);
-        transition: right 0.3s ease;
-        width: 250px;
-        height: calc(100vh - 60px);
-      }
-
-      .nav-links.active {
-        right: 0;
-      }
-
       .hero-section {
         padding: 6rem 1.5rem 2rem;
         min-height: 40vh;
