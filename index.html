@@ -468,9 +468,85 @@
       .project-summary{ font-size:.95rem; }
       .project:hover{ transform:none; }
     }
+
+    /* 초소형 폰 (<=480px) */
+@media (max-width:480px){
+  .header-container{ padding:.85rem 1rem; }
+
+  /* 히어로 */
+  .intro-heading{ font-size:1.5rem; line-height:1.35; }
+  .intro-description{ font-size:1rem; line-height:1.6; }
+  .intro-location{ font-size:.95rem; line-height:1.6; }
+
+  /* 프로젝트 섹션 패딩/간격 */
+  #projects{ padding:1.5rem 1rem 2.5rem; }
+  .project-link{ margin-bottom:3rem; }
+
+  /* 카드 레이아웃(단일 컬럼 시 여백 타이트) */
+  .project{ gap:1.25rem; }
+
+  /* 이미지는 가로 꽉 차게 */
+  .project-image{
+    display:block;
+    width:100%;
+    height:auto;
+    vertical-align:top;
+    border-radius:6px;
+  }
+
+  /* 텍스트 크기/줄바꿈 안정화 */
+  .project-title{
+    font-size:1.15rem;
+    line-height:1.45;
+  }
+  .project-summary{
+    font-size:.9rem;
+    line-height:1.55;
+  }
+
+  /* 줄바꿈 강제(긴 영어/URL 방지) */
+  .project-content,
+  .project-title,
+  .project-summary{
+    min-width:0;
+    white-space:normal;
+    overflow-wrap:anywhere;
+    word-break:break-word;
+  }
+}
+
+/* 초초소형 폰 (<=360px) */
+@media (max-width:360px){
+  .header-container{ padding:.75rem .875rem; }
+
+  .intro-heading{ font-size:1.35rem; }
+  .intro-description{ font-size:.95rem; }
+  .intro-location{ font-size:.9rem; }
+
+  #projects{ padding:1.25rem .875rem 2rem; }
+  .project-link{ margin-bottom:2.25rem; }
+  .project{ gap:1rem; }
+
+  .project-title{ font-size:1.05rem; }
+  .project-summary{ font-size:.875rem; }
+
+  /* 태그 크기도 살짝 축소 */
+  .project-tags{ font-size:.78rem; gap:.6rem; }
+}
+
+/* 매우 작은 폰/구형 기기 (<=320px) */
+@media (max-width:320px){
+  .intro-heading{ font-size:1.25rem; }
+  .intro-description{ font-size:.9rem; }
+  #projects{ padding:1rem .75rem 1.75rem; }
+
+  .project-title{ font-size:1rem; }
+  .project-summary{ font-size:.85rem; line-height:1.5; }
+}
+
   </style> 
 
-  
+
 </head>
 <body>
   <!-- Header -->

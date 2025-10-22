@@ -1826,7 +1826,9 @@ section {
     padding-top: var(--header-height-tablet);
   }
   
-
+  .about-project-wrapper {
+    padding: var(--space-16) var(--padding-x-tablet); /* 상단 여백 통일: 64px */
+  }
   
   .page-wrapper {
     padding: var(--space-16) var(--padding-x-tablet) var(--section-gap-lg); /* 상단 여백 통일: 64px */
