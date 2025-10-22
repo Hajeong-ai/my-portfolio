@@ -427,13 +427,12 @@
       display:grid; grid-template-columns:1.2fr 1fr; gap:4rem; align-items:start;
       transition:transform .3s ease;
     }
-    .project:hover{ transform:translateX(8px); }
 
     .project-image{
       width:100%; height:auto; display:block; border-radius:6px; object-fit:cover;
       box-shadow:0 2px 16px rgba(0,0,0,.06); transition:box-shadow .4s ease;
     }
-    .project:hover .project-image{ box-shadow:0 8px 32px rgba(0,0,0,.12); }
+    .project-image{ box-shadow:0 8px 32px rgba(0,0,0,.12); }
 
     .project-content{ padding:0; min-width:0; }            /* ★ 줄바꿈 핵심 */
     .project-title,
@@ -466,7 +465,6 @@
       .project{ gap:2rem; }
       .project-title{ font-size:1.3rem; }
       .project-summary{ font-size:.95rem; }
-      .project:hover{ transform:none; }
     }
 
     /* 초소형 폰 (<=480px) */
@@ -542,6 +540,14 @@
 
   .project-title{ font-size:1rem; }
   .project-summary{ font-size:.85rem; line-height:1.5; }
+}
+/* 모바일에서 | 커서 완전히 숨기기 */
+@media (max-width: 768px) {
+  #typed-text::after,
+  .no-cursor::after {
+    content: none !important;
+    display: none !important;
+  }
 }
 
   </style> 
@@ -893,43 +899,37 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 });
 </script>
- <script>
-    // Simple typing effect
+<script>
+  // 화면 너비가 768px 이하이면 모바일로 간주
+  const isMobile = window.matchMedia("(max-width: 768px)").matches;
+  const typedText = document.getElementById('typed-text');
+
+  if (!isMobile) {
+    // 데스크탑: 타이핑 애니메이션 실행
     const words = ['Product Designer', 'UX Designer', 'UX Researcher', 'Design Thinker'];
-    let wordIndex = 0;
-    let charIndex = 0;
-    let isDeleting = false;
-    const typedText = document.getElementById('typed-text');
-    
-    // 초기 텍스트 비우기
+    let wi = 0, ci = 0, del = false;
+
     typedText.textContent = '';
 
     function type() {
-      const currentWord = words[wordIndex];
-      
-      if (isDeleting) {
-        typedText.textContent = currentWord.substring(0, charIndex - 1);
-        charIndex--;
-      } else {
-        typedText.textContent = currentWord.substring(0, charIndex + 1);
-        charIndex++;
-      }
+      const w = words[wi];
+      typedText.textContent = del ? w.substring(0, ci - 1) : w.substring(0, ci + 1);
+      ci += del ? -1 : 1;
 
-      if (!isDeleting && charIndex === currentWord.length) {
-        setTimeout(() => isDeleting = true, 2000);
-      } else if (isDeleting && charIndex === 0) {
-        isDeleting = false;
-        wordIndex = (wordIndex + 1) % words.length;
-      }
+      if (!del && ci === w.length) setTimeout(() => del = true, 1200);
+      else if (del && ci === 0) { del = false; wi = (wi + 1) % words.length; }
 
-      const speed = isDeleting ? 50 : 100;
-      setTimeout(type, speed);
+      setTimeout(type, del ? 50 : 100);
     }
 
-    // 약간의 딜레이 후 타이핑 시작
-    setTimeout(type, 500);
-  </script>
-  
+    setTimeout(type, 400);
+  } else {
+    // ✅ 모바일: 애니메이션, 커서 모두 제거
+    typedText.textContent = 'UX Designer';
+    typedText.classList.add('no-cursor');  // CSS에서 커서 숨기기용 클래스 추가
+  }
+</script>
+
 <script>
     // Intersection Observer for scroll animations
     const observerOptions = {
