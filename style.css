@@ -1201,6 +1201,7 @@ body {
   .project-image {
     width: 100%;
     border-radius: var(--project-radius, 10px);
+     min-height: clamp(100px, 50vh, 700px);
   }
 
   /* Featured Works 제목 */

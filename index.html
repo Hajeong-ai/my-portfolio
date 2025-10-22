@@ -552,6 +552,28 @@
     display: none !important;
   }
 }
+
+/* 모바일에서 비율 강제 해제 */
+@media (max-width:768px){
+  .project-image{
+    aspect-ratio:auto !important;  /* ← 핵심 */
+    min-height:0 !important;       /* 혹시 남아있으면 제거 */
+  }
+
+  /* 카드/링크의 상하 여백도 최소화 */
+  .project,
+  .project-link{
+    padding-top:0 !important;
+    padding-bottom:10 !important;
+    margin-top:0 !important;
+    margin-bottom:1.5rem; /* 카드 간 간격만 여기서 통제 (필요시 0) */
+  }
+}
+@media (max-width: 768px){
+  .project .project-content{
+    margin-top: 1.2rem;   /* ← 원하는 값으로 조절 (예: 1.25rem, 1.5rem) */
+  }
+}
   </style>
 
 </head>
@@ -633,6 +655,29 @@
 
 <!-- <section id="projects" data-aos="fade-up"> -->
   
+<!-- ✅ Project 4 -->
+<a href="project4.html" class="project-link"  data-hover="images/frame 344939.png" target="_self">
+  <div class="project" data-aos="zoom-in-up" id="overleaf">
+    <img src="images/Frame 344935.png" alt="Overleaf Redesign Thumbnail" class="project-image" />
+      
+    <div class="project-content">
+      <h3 class="project-title">
+        <span class="hl" style="--hl:#C8DDCB; --skew:-8deg;">Redesigning AI-powered web-based LaTex editor</span>
+        <span class="project-year">·  2025</span>
+      </h3>
+      
+      <p class="project-summary">
+        Reimagining collaborative academic writing through AI-powered workflows and intuitive design
+      </p>
+
+      <div class="project-tags">
+        UX Design, UX Research, AI
+      </div>
+    </div>
+  </div>
+</a>
+
+  
 <a href="project1.html" class="project-link" target="_self">
 <div class="project" data-aos="zoom-in-up" id="rol">
     <img src="images/Shot.png" alt="ROL Thumbnail" class="project-image"/>
@@ -650,28 +695,6 @@
 
       <div class="project-tags">
         Startup, Product Design, Wellness, 0to1
-      </div>
-    </div>
-  </div>
-</a>
-
-<!-- ✅ Project 4 -->
-<a href="project4.html" class="project-link" target="_self">
-  <div class="project" data-aos="zoom-in-up" id="overleaf">
-    <img src="images/overleaf thumbnail.png" width=1000 alt="Overleaf Redesign Thumbnail" class="project-image" />
-    
-    <div class="project-content">
-      <h3 class="project-title">
-        <span class="hl" style="--hl:#C8DDCB; --skew:-8deg;">Redesigning AI-powered web-based LaTex editor</span>
-        <span class="project-year">·  2025</span>
-      </h3>
-      
-      <p class="project-summary">
-        Reimagining collaborative academic writing through AI-powered workflows and intuitive design
-      </p>
-
-      <div class="project-tags">
-        UX Design, UX Research, AI
       </div>
     </div>
   </div>
@@ -940,34 +963,24 @@ document.addEventListener('DOMContentLoaded', () => {
     observer.observe(scrollIndicator);
 </script>
 
-  <script>
+<script>
 (function(){
-  // a.project-link[data-hover] 안의 .project-image를 호버 시 교체
   const cards = document.querySelectorAll('.project-link[data-hover]');
   cards.forEach(card => {
     const img = card.querySelector('.project-image');
     if (!img) return;
 
-    const hoverSrc = card.dataset.hover;           // 교체할 이미지
-    const originalSrc = img.getAttribute('src');   // 원본 이미지
-    img.dataset.original = originalSrc;
+    const hoverSrc = card.dataset.hover;
+    const originalSrc = img.getAttribute('src');
 
-    // 미리 로드(깜빡임 방지)
+    // 미리 로드 (깜빡임 방지)
     const pre = new Image();
     pre.src = hoverSrc;
 
-    const showHover = () => { img.src = hoverSrc; };
-    const showOriginal = () => { img.src = img.dataset.original; };
-
-    // 마우스/펜
-    card.addEventListener('mouseenter', showHover);
-    card.addEventListener('mouseleave', showOriginal);
-
-    // 키보드 포커스 접근성
-    card.addEventListener('focus', showHover, true);
-    card.addEventListener('blur', showOriginal, true);
+    // hover 시 교체
+    card.addEventListener('mouseenter', () => img.src = hoverSrc);
+    card.addEventListener('mouseleave', () => img.src = originalSrc);
   });
-  
 })();
 </script>
 
