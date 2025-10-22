@@ -4491,7 +4491,7 @@ textarea:focus-visible {
   background: none;
   border: none;
   font-family: var(--font-text);
-  font-size: var(--text-base, 1rem);
+  font-size: 1rem;
   font-weight: var(--weight-regular, 400);
   color: var(--color-text-secondary, #3a3a3a);
   cursor: pointer;
