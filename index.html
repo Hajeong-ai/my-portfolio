@@ -486,10 +486,13 @@
   /* 이미지는 가로 꽉 차게 */
   .project-image{
     display:block;
-    width:100%;
-    height:auto;
     vertical-align:top;
+    aspect-ratio: var(--project-aspect);
     border-radius:6px;
+  width: 100%;
+  height: auto;
+  margin: 0;            /* 이미지 자체 여백 제거 */
+  padding: 0;           /* 이미지 주변 패딩 제거 */
   }
 
   /* 텍스트 크기/줄바꿈 안정화 */
@@ -580,7 +583,7 @@
 </h2>
 
       <p class="intro-description">
-        Passionate about designing <span style="background: linear-gradient(120deg, #a5d8ff 0%, #faa2c1 50%, #dda5f3 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; font-weight: 600;">SaaS tools,</span><br>
+        Passionate about designing <span style="background: linear-gradient(120deg, #a5d8ff 0%, #faa2c1 50%, #dda5f3 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; font-weight: 600;">software systems,</span><br>
         <span class="magic">🪄 Turning everyday challenges into intuitive experiences</span> that connect people, data, and purpose
       </p>
 
@@ -655,7 +658,7 @@
 <!-- ✅ Project 4 -->
 <a href="project4.html" class="project-link" target="_self">
   <div class="project" data-aos="zoom-in-up" id="overleaf">
-    <img src="images/141.png" width=1000 alt="Overleaf Redesign Thumbnail" class="project-image" />
+    <img src="images/overleaf thumbnail.png" width=1000 alt="Overleaf Redesign Thumbnail" class="project-image" />
     
     <div class="project-content">
       <h3 class="project-title">
@@ -677,7 +680,7 @@
 <!-- ✅ Project 3 -->
 <a href="project3.html" class="project-link" target="_self">
   <div class="project" data-aos="zoom-in-up" id="duo">
-    <img src="images/New duo thumbnail.png" alt="Duo Mobile Redesign Thumbnail" class="project-image" />
+    <img src="images/141.png" alt="Duo Mobile Redesign Thumbnail" class="project-image" />
     
     <div class="project-content">
       <h3 class="project-title">

@@ -1231,7 +1231,12 @@ body {
     gap: var(--space-0); 
 
   }
-
+  .project-image {
+ width: 100%;
+  height: auto;
+  margin: 0;            /* 이미지 자체 여백 제거 */
+  padding: 0;           /* 이미지 주변 패딩 제거 */
+  }
   .featured-works-title {
     font-size: var(--text-lg, 1.25rem);
     padding: 0 var(--padding-x-mobile, 16px);
