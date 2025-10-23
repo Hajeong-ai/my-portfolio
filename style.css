@@ -5033,6 +5033,98 @@ textarea:focus-visible {
   }
 }
 
+
+/* ===== Featured Grid Section ===== */
+:root{
+  --fg-bg: #f7f9fb;      /* 섹션 배경색 (원하면 transparent 로 바꿔도 OK) */
+  --fg-gap-x: 3rem;      /* 열 사이 간격 */
+  --fg-gap-y: 2.5rem;    /* 행 사이 간격 */
+  --fg-radius: 12px;     /* 이미지 둥글기 */
+}
+
+.featured-grid-section{
+  position: relative;
+  padding: 4rem 2rem;
+  background: var(--fg-bg);
+  /* 섹션만 배경색 다르게 보이게 하고 싶을 때 풀블리드 느낌 */
+  /* 필요 없으면 아래 before 블록을 삭제해도 됩니다 */
+}
+.featured-grid-section::before{
+  content:"";
+  position:absolute; inset:0;
+  left:50%; right:50%;
+  margin-left:-50vw; margin-right:-50vw;
+  background: var(--fg-bg);
+  z-index:-1;
+}
+
+.fg-wrap{
+  max-width: 1000px;             /* 한 라인 1000px 컨테이너 */
+  margin: 0 auto;
+}
+
+.fg-title{
+  font-size: 1.25rem;
+  font-weight: 600;
+  letter-spacing: .02em;
+  color: #111;
+  margin-bottom: 1.5rem;
+}
+
+.fg-grid{
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* 2열 */
+  column-gap: var(--fg-gap-x);
+  row-gap: var(--fg-gap-y);
+}
+
+.fg-card{
+  display: block;
+  text-decoration: none;
+  color: inherit;
+}
+
+.fg-media{
+  width: 100%;
+  aspect-ratio: 16 / 9;                  /* 회색 박스 비율 */
+  border-radius: var(--fg-radius);
+  background:
+    var(--img, none),
+    linear-gradient(#bfbfbf,#bfbfbf);     /* 플레이스홀더(회색) */
+  background-size: cover;
+  background-position: center;
+  box-shadow: 0 2px 14px rgba(0,0,0,.06);
+  transition: transform .25s ease, box-shadow .25s ease;
+}
+.fg-card:hover .fg-media{
+  transform: translateY(-2px);
+  box-shadow: 0 6px 22px rgba(0,0,0,.10);
+}
+
+.fg-card-title{
+  margin-top: .9rem;
+  font-size: 1.1rem;
+  font-weight: 600;
+  letter-spacing: -.01em;
+}
+.fg-card-desc{
+  margin-top: .35rem;
+  font-size: .98rem;
+  line-height: 1.6;
+  color: #525252;
+}
+
+/* 반응형 */
+@media (max-width: 900px){
+  .featured-grid-section{ padding: 3rem 1.5rem; }
+  .fg-grid{ column-gap: 2rem; row-gap: 2rem; }
+}
+@media (max-width: 680px){
+  .fg-grid{ grid-template-columns: 1fr; } /* 모바일 1열 */
+  .fg-card-title{ font-size: 1.05rem; }
+  .fg-card-desc{ font-size: .95rem; }
+}
+
 /* ========================================
    Optional: Dark Mode Support
    ======================================== */
@@ -6054,3 +6146,4 @@ textarea:focus-visible {
   .local-clock{ color: #ddd; }
   .local-clock i{ color: #bbb; }
 }
+
