@@ -4374,11 +4374,10 @@ textarea:focus-visible {
 
 .photo-gallery-grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(3, 1fr); /* ✅ 한 줄에 3개의 이미지 */
   gap: var(--space-8, 32px);
   width: 100%;
 }
-
 .gallery-photo {
   margin: 0;
   display: flex;
