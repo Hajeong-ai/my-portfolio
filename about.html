@@ -635,7 +635,7 @@
     <section class="intro-section">
       <div class="intro-text">
         <h3>“Ten times better at something.”</h3>
-        <p>When I think about the three things that differentiates me from others in words,</br>
+        <p>When I think about the three things that differentiates me ten times better than others in words,</br>
           1. Interdisciplinary Connectiveness</br>
           2. Builder Mindset</br>
           3. Global Perspective</br>
@@ -741,13 +741,21 @@ I studied independently in Berkeley and Los Angeles, where living alone cultivat
 </section>
 
   </main>
+  <!-- Scroll to Top Button -->
+  <div class="scroll-to-top-wrapper">
+    <button id="scrollTopBtn" class="scroll-top-btn" aria-label="Scroll to top">
+      <span class="scroll-top-text">Scroll to the top! :)</span>
+      <span class="scroll-top-arrow">↑</span>
+    </button>
+  </div>
 
+  
 <footer class="site-footer">
   <div class="footer-wrap">
     <!-- 왼쪽 -->
     <div class="col col-left">
       <h4 class="brand">Hajeong Hwang</h4>
-      <p class="muted">© 2025. 
+      <p class="muted">© 2025. <br>Made with HTML/CSS & Iced Matcha Latte</p>
     </div>
 
     <!-- 오른쪽 그룹 -->
@@ -883,6 +891,19 @@ strings: ["🇰🇷 → 🇺🇸 → 🇦🇹 → 🇺🇸"]
     if (window.innerWidth >= 901) close();
   });
 })();
+</script>
+<script>
+  // Scroll to Top Button
+  const scrollTopBtn = document.getElementById('scrollTopBtn');
+  
+  if (scrollTopBtn) {
+    scrollTopBtn.addEventListener('click', () => {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+    });
+  }
 </script>
 
 </body>

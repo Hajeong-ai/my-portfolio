@@ -902,7 +902,7 @@ body {
 /* 오른쪽 블록 - 이미지 */
 .image-flip-wrapper {
   position: relative;
-  width: 320px;
+  width: 350px;
   height: auto;
   flex-shrink: 0;
   align-self: center; /* 추가: 세로 중앙 정렬 */
@@ -4811,6 +4811,56 @@ textarea:focus-visible {
 /* ========================================
    Timeline Container
 ======================================== */
+/* === Media wrapper (이미지 안에 배지 얹기) === */
+.project-media{
+  position: relative;
+  display: block;
+  border-radius: 6px;
+  overflow: hidden;                 /* 배지가 둥근 모서리 밖으로 안 튀게 */
+}
+
+/* === Glass 'Shipped' Badge (오른쪽 하단) === */
+.ship-badge{
+  position: absolute;
+  right: 12px;
+  bottom: 12px;
+  z-index: 2;
+  padding: .42rem .85rem;
+  font-size: .82rem;
+  line-height: 1;
+  border-radius: 999px;
+  color: #0f5132;
+  background: linear-gradient(180deg, rgba(255,255,255,.58), rgba(255,255,255,.34));
+  border: 1px solid rgba(255,255,255,.7);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  box-shadow: 0 6px 18px rgba(0,0,0,.12);
+  display: inline-flex;
+  align-items: center;
+  gap: .45rem;
+  white-space: nowrap;
+  user-select: none;
+}
+.ship-badge::before{
+  content: "✔";
+  font-size: .9em;
+  opacity: .9;
+}
+
+/* Hover 시 살짝 뜨는 느낌 */
+.project-media:hover .ship-badge{
+  transform: translateY(-1px);
+  box-shadow: 0 8px 22px rgba(0,0,0,.14);
+}
+
+/* 모바일 축소 */
+@media (max-width:768px){
+  .ship-badge{
+    right: 10px; bottom: 10px;
+    padding: .34rem .7rem;
+    font-size: .74rem;
+  }
+}
 
 .journey-timeline {
   position: relative;
@@ -5064,11 +5114,11 @@ textarea:focus-visible {
 }
 
 .fg-title{
-  font-size: 1.25rem;
+  font-size: 1.5rem;
   font-weight: 600;
   letter-spacing: .02em;
   color: #111;
-  margin-bottom: 1.5rem;
+  margin-bottom: 3rem;
 }
 
 .fg-grid{
