@@ -76,41 +76,94 @@
       font-weight: 500;
     }
 
-    .metric-grid {
-      margin: 32px 0;
-    }
+/* ===================== METRIC GRID (Modernized Style) ===================== */
+.metric-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 20px;
+  margin-top: 28px;
+  margin-bottom: 28px;
+}
 
-    .metric-card {
-      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-      padding: 28px;
-      border-radius: 12px;
-      color: white;
-      margin-bottom: 20px;
-      display: inline-block;
-      min-width: 280px;
-      margin-right: 20px;
-    }
+.metric-card {
+  position: relative;
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 32px 28px;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  box-shadow: 0 4px 22px rgba(0, 0, 0, 0.05);
+  transition: all 0.35s ease;
+  overflow: hidden;
+}
 
-    .metric-card.secondary {
-      background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
-    }
+.metric-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(102, 126, 234, 0.12), rgba(118, 75, 162, 0.1));
+  opacity: 0;
+  transition: opacity 0.35s ease;
+  z-index: 0;
+}
 
-    .metric-card.tertiary {
-      background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
-    }
+.metric-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
+  border-color: rgba(102, 126, 234, 0.2);
+}
 
-    .metric-number {
-      font-size: 3em;
-      font-weight: 700;
-      line-height: 1;
-      margin-bottom: 8px;
-    }
+.metric-card:hover::before {
+  opacity: 1;
+}
 
-    .metric-label {
-      font-size: 1em;
-      opacity: 0.95;
-      font-weight: 500;
-    }
+/* Number emphasis */
+.metric-number {
+  font-size: clamp(2.2rem, 3vw, 2.8rem);
+  font-weight: 800;
+  color: #1e293b;
+  letter-spacing: -0.02em;
+  margin-bottom: 10px;
+  position: relative;
+  z-index: 1;
+}
+
+/* Add gradient underline */
+.metric-number::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 6px;
+  width: 36%;
+  background: linear-gradient(90deg, #667eea, #764ba2);
+  border-radius: 4px;
+  opacity: 0.6;
+}
+
+/* Label text */
+.metric-label {
+  font-size: 1rem;
+  color: #475569;
+  line-height: 1.5;
+  font-weight: 500;
+  position: relative;
+  z-index: 1;
+}
+
+/* Variants */
+.metric-card.secondary::before {
+  background: linear-gradient(135deg, rgba(240, 147, 251, 0.12), rgba(245, 87, 108, 0.1));
+}
+.metric-card.tertiary::before {
+  background: linear-gradient(135deg, rgba(79, 172, 254, 0.12), rgba(0, 242, 254, 0.1));
+}
+
+/* Subtle colored accent ring on hover */
+.metric-card:hover .metric-number {
+  background: linear-gradient(90deg, #667eea, #764ba2);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
 
     .process-flow {
       margin: 32px 0;
@@ -380,8 +433,251 @@
   .label{ font-size: .8rem; letter-spacing: .12em; }
   .col a{ font-size: .95rem; }
   .muted{ font-size: .9rem; }
+}  
+/* ===================== DEMOGRAPHICS CARDS ===================== */
+.demo{
+  --ink:#0f172a; --muted:#475569; --line:#e5e7eb;
+  --bg:#ffffff; --chip:#eef2ff; --accent:#3b5bfd; --accent2:#0ea5e9;
+  margin: 22px 0 10px;
 }
-  </style>
+.demo__title{
+  display:flex; align-items:center; gap:.6rem;
+  font-size:1.05rem; font-weight:800; color:var(--ink); margin:0 0 14px;
+}
+.demo__title::before{
+  content:"";
+  inline-size:10px; block-size:10px; border-radius:999px;
+  background:linear-gradient(135deg,var(--accent),var(--accent2));
+  box-shadow:0 0 0 4px rgba(59,91,253,.15);
+}
+.demo__grid{
+  display:grid;
+  grid-template-columns: repeat(2, minmax(260px, 1fr));
+  gap:18px;
+}
+@media (max-width:800px){
+  .demo__grid{ grid-template-columns: 1fr; }
+}
+.demo__card{
+  background: var(--bg);
+  border:1px solid var(--line);
+  border-radius:14px;
+  padding:16px 16px 18px;
+  box-shadow:0 8px 22px rgba(2,6,23,.06);
+  transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease;
+}
+.demo__card:hover{
+  transform: translateY(-2px);
+  border-color: rgba(59,91,253,.33);
+  box-shadow:0 14px 28px rgba(2,6,23,.10);
+}
+.demo__icon{
+  inline-size:36px; block-size:36px; border-radius:10px;
+  display:grid; place-items:center; font-size:18px;
+  background:linear-gradient(135deg,rgba(59,91,253,.12),rgba(14,165,233,.10));
+  margin-bottom:10px;
+}
+.demo__head{
+  display:flex; align-items:center; justify-content:space-between;
+  gap:10px; margin-bottom:8px;
+}
+.demo__head h5{
+  margin:0; font-size:1rem; font-weight:800; color:var(--ink);
+  letter-spacing:.01em;
+}
+.demo__chip{
+  background: var(--chip);
+  color:#1e1b4b;
+  border:1px solid #c7d2fe;
+  padding:.25rem .55rem;
+  font-size:.8rem; border-radius:999px; font-weight:700;
+}
+.demo__desc{ color:var(--muted); margin:0 0 10px; font-size:.95rem; }
+
+/* Simple range bar */
+.demo__bar{
+  position:relative; inline-size:100%; block-size:8px;
+  background:#f3f4f6; border-radius:999px; overflow:hidden;
+}
+.demo__bar-fill{
+  display:block; block-size:100%;
+  background:linear-gradient(90deg,var(--accent),var(--accent2));
+  border-radius:999px;
+}
+.demo__bar-labels{
+  display:flex; justify-content:space-between;
+  color:#64748b; font-size:.8rem; margin-top:6px;
+}
+
+/* Stacked (Female/Male) */
+.demo__stack{ display:grid; gap:10px; margin-top:6px; }
+.demo__stack-row{
+  display:grid; grid-template-columns: 90px 1fr 42px; align-items:center; gap:10px;
+}
+.demo__stack-label{ font-size:.9rem; color:var(--muted); }
+.demo__stack-bar{
+  inline-size:100%; block-size:8px; background:#f3f4f6; border-radius:999px; overflow:hidden;
+}
+.demo__stack-fill{
+  display:block; block-size:100%;
+  border-radius:999px; background:linear-gradient(90deg,#94a3b8,#64748b);
+}
+.demo__stack-fill.-f{ background:linear-gradient(90deg,#ec4899,#f472b6); }
+.demo__stack-fill.-m{ background:linear-gradient(90deg,#60a5fa,#3b82f6); }
+.demo__stack-val{ font-size:.9rem; font-weight:700; color:var(--ink); }
+
+/* Bullet list (screening) */
+.demo__list{ margin:8px 0 0; padding:0 0 0 18px; color:var(--muted); }
+.demo__list li{ margin:.4rem 0; }
+
+/* Segments */
+.demo__seg{ list-style:none; margin:6px 0 0; padding:0; display:grid; gap:8px; }
+.demo__seg li{ display:grid; grid-template-columns: 1fr auto; align-items:center; gap:10px; }
+.demo__seg-name{ color:var(--muted); font-size:.92rem; }
+.demo__seg-val{ font-weight:800; color:var(--ink); }
+.demo__seg-bar{
+  grid-column: 1 / span 2;
+  inline-size:100%; block-size:8px; background:#f3f4f6; border-radius:999px; overflow:hidden;
+}
+.demo__seg-fill{ display:block; block-size:100%; border-radius:999px; }
+.demo__seg-fill.-good{ background:linear-gradient(90deg,#22c55e,#16a34a); }
+.demo__seg-fill.-mid{  background:linear-gradient(90deg,#f59e0b,#f97316); }
+.demo__seg-fill.-risk{ background:linear-gradient(90deg,#ef4444,#dc2626); }
+
+.demo__note{
+  margin-top:12px; font-size:.9rem; color:#6b7280;
+  border-left:4px solid rgba(59,91,253,.35);
+  padding:10px 12px; background:rgba(59,91,253,.06); border-radius:10px;
+}
+
+/* ===================== MY IMPACT — Refined Minimalist Style ===================== */
+
+/* 카드 컨테이너: 세로 1열 */
+#impact .impact-grid,
+#impact .metric-grid,
+#impact .impactx-grid {
+  display: grid !important;
+  grid-template-columns: 1fr !important;
+  gap: 20px !important;
+  margin-top: 24px;
+}
+
+/* 카드 베이스 */
+#impact .impact-item,
+#impact .metric-card,
+#impact .impactx-card {
+  background: #fff !important;
+  border: 1px solid rgba(0, 0, 0, 0.08) !important;
+  border-radius: 14px !important;
+  padding: 28px 30px !important;
+  box-shadow: none !important;
+  transition: border-color 0.25s ease, transform 0.25s ease;
+}
+#impact .impact-item:hover,
+#impact .metric-card:hover {
+  border-color: rgba(0, 0, 0, 0.15);
+  transform: translateY(-2px);
+}
+
+/* 불필요한 그래디언트 라인, 오버레이 제거 */
+#impact .metric-card::before,
+#impact .metric-number::after {
+  display: none !important;
+}
+
+/* 이모티콘/아이콘 제거 */
+#impact .impact-icon,
+#impact .impactx-announce::before,
+#impact .metric-icon {
+  display: none !important;
+}
+/* 카드 내부 타이틀 */
+#impact .impact-item h4,
+#impact .metric-label strong {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: #111827;
+  margin-bottom: 8px;
+}
+
+/* 숫자 강조 */
+#impact .metric-number {
+  font-size: 1.6rem !important;
+  font-weight: 700 !important;
+  color: #1e293b !important;
+  margin: 2px 0 10px !important;
+  line-height: 1.1;
+}
+
+/* 설명 텍스트 */
+#impact p,
+#impact .metric-label {
+  font-size: 1rem;
+  color: #475569;
+  line-height: 1.6;
+  margin-bottom: 6px;
+}
+
+/* 리스트/부가 내용 */
+#impact ul {
+  margin-top: 8px;
+  padding-left: 18px;
+  color: #4b5563;
+  font-size: 0.95rem;
+}
+#impact li { margin: 5px 0; }
+
+/* subtle divider */
+#impact .impact-item + .impact-item::before,
+#impact .metric-card + .metric-card::before {
+  content: "";
+  display: block;
+  height: 1px;
+  background: rgba(0, 0, 0, 0.05);
+  margin-bottom: 8px;
+}
+/* Compact spacing version */
+#impact .impact-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 14px;
+  margin-top: 18px;
+}
+
+#impact .impact-item {
+  background: #fff;
+  border: 1px solid rgba(0,0,0,0.08);
+  border-radius: 10px;
+  padding: 20px 22px;
+  transition: border-color .2s ease;
+}
+#impact .impact-item:hover {
+  border-color: rgba(0,0,0,0.18);
+}
+
+#impact .impact-item h4 {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: #111827;
+  margin-bottom: 6px;
+}
+
+#impact p {
+  font-size: 0.97rem;
+  color: #475569;
+  line-height: 1.5;
+  margin-bottom: 4px;
+}
+
+#impact ul {
+  margin-top: 6px;
+  padding-left: 18px;
+  font-size: 0.93rem;
+  color: #4b5563;
+}
+#impact li { margin: 4px 0; }
+
+</style>
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
@@ -438,7 +734,7 @@
     <!-- ✅ 대표 이미지 -->
 <section class="project-hero">
   <div class="hero-text" >
-     <p class="kicker">APP LAUNCH · SUMMER 2025</p>
+     <p class="kicker">APP LAUNCH · 2025</p>
          <p class="hero-subtitle">🔍 Launching an AI-powered mobile app that helps users to achieve daily wellness goals</p>
     <h1 class="hero-title">Routine Out Loud</h1>
   </div>
@@ -468,7 +764,7 @@
 <li class="impactx-card reveal --wide">
   <div class="impactx-kpi impactx-kpi--text">
     <p class="impactx-announce">
-🚀 <strong>0-to-1 product launch</strong> with AI-powered wellness platform ·  Decreased<strong>usability error from 68% to 37.4%</strong>
+🚀 <strong>0-to-1 product launch</strong> with AI-powered wellness platform ·  Decreased <strong>usability errors from 68% to 37.4%</strong>
     </p>
   </div>
 </li>
@@ -487,13 +783,11 @@
         <h3>What is ROL?</h3>
         <p>
           ROL is a personalized wellness app that helps users build mindful routines through community-driven motivation and shared accountability.
-          ROL helps users to create, track, and maintain habits for healthier and more productive life.
+          ROL helps users to create, track, and maintain habits for a healthier and more productive life.
         </p>
         </div>
       </div>
     </div>
-
-
 
   <div class="spacer"></div>
           <div class="spacer"></div>
@@ -501,10 +795,14 @@
   <h3>Overview</h2>
   <div class="spacer"></div>
   <p>Nowadays, people often set ambitious wellness goals but lose motivation along the way.
-The reason for this is because of the pressure to meet ideal standards amplified by constant social comparison, turns what should be a journey of self-care into a source of stress and discouragement.</br>
-<p>Through this project, I was responsible for <span class="highlight">0 to 1 product design and launch</span>, including design planning, content strategy, design system, prototyping, app store screenshot creation, social media marketing, and leading the app launch with iterative testing and QA.
+The reason for this is because of the pressure to meet ideal standards amplified by constant social comparison, which turns what should be a journey of self-care into a source of stress and discouragement.</br>
 </p>
 
+<section id="overview">
+  <h3>My Role</h2>
+  <div class="spacer"></div>
+<p>As a solo ux designer in our team, I was responsible for 0 to 1 product design, including design planning, content strategy, design system, prototyping, app store screenshot creation, social media marketing, and iterative testing and QA.
+</p>
   <!-- ✅ 프로젝트 정보: Timeline, Role, Collaborators, Tools -->
   <div class="project-meta">
     <div class="meta-block">
@@ -512,7 +810,7 @@ The reason for this is because of the pressure to meet ideal standards amplified
       <p>May 2025 - Sep 2025</br>(Summer 2025)</p>
     </div>
     <div class="meta-block">
-      <h3>Role</h3>
+      <h3>My Role</h3>
       <p>Product Designer</br>
       User Researcher</br>
     </div>
@@ -521,10 +819,12 @@ The reason for this is because of the pressure to meet ideal standards amplified
       <p>1 Product Designer</br>1 Frontend Developer</br>2 Backend Developers</br>1 Project Manager</p>
     </div>
     <div class="meta-block">
-      <h3>Tools</h3>
-      <p>Figma</br>
-    Adobe Illustrator</br>
-Adobe Photoshop</br>
+      <h3>Process</h3>
+      <p>Market, User Research</br>
+      Design System</br>
+      Prototype</br>
+      QA & Iteration</br>
+      Android/App Store Screenshots</br>
     </div>
   </div>
 </section>
@@ -564,10 +864,9 @@ Adobe Photoshop</br>
 
   <section id="problem-highlight">
     <h3>Problem</h3>
-    <p>Users abandon their wellness goals within 2 weeks due to lack of 
-    personalized support and community connection. Current routine apps focus on 
-    individual tracking but fail to address the <strong>social motivation gap</strong> 
-    that keeps users engaged long-term.</p>
+    <p>Users fail to achieve their wellness goals within 2 weeks due to a 
+      lack of personalized support and community connection. Current routine apps have a feature that 
+      focuses on individual tracking but fail to address the social motivation gap that keeps users engaged in the long term.</p>
     </section>
 
     <section id="My Role">
@@ -576,56 +875,112 @@ Adobe Photoshop</br>
 <p>Before designing ROL, I led a comprehensive research initiative to understand the psychological and behavioral patterns behind goal abandonment. My hypothesis was that <strong>social isolation and lack of personalized support</strong> were primary drivers of user disengagement.</p>        </p>
  <div class="spacer"></div>
 
-         <div class="research-content">
-    <!-- 왼쪽: 아이콘 + 텍스트 -->
-    <div class="research-items">
-      <div class="research-item">
-        <div class="icon-circle">
-          <!-- User Research Icon -->
-      <img src="images/message-chat-circle.png" alt="Group Icon">
+<section class="demo" aria-labelledby="demo-title">
+  <h4 id="demo-title" class="demo__title">Participant Criteria &amp; Demographics</h4>
+
+  <div class="demo__grid">
+
+    <!-- Age Range -->
+    <article class="demo__card">
+      <div class="demo__icon">🎂</div>
+      <header class="demo__head">
+        <h5>Age Range</h5>
+        <span class="demo__chip">22–35</span>
+      </header>
+      <p class="demo__desc">Primary target demographic</p>
+      <div class="demo__bar">
+        <span class="demo__bar-fill" style="width: 75%"></span>
+      </div>
+      <div class="demo__bar-labels">
+        <span>18</span><span>40</span>
+      </div>
+    </article>
+
+    <!-- Gender Split -->
+    <article class="demo__card">
+      <div class="demo__icon">⚧️</div>
+      <header class="demo__head">
+        <h5>Gender Balance</h5>
+        <span class="demo__chip">6F · 6M</span>
+      </header>
+
+      <div class="demo__stack">
+        <div class="demo__stack-row">
+          <span class="demo__stack-label">Female</span>
+          <div class="demo__stack-bar" aria-label="Female 50%">
+            <span class="demo__stack-fill -f" style="width: 50%"></span>
+          </div>
+          <span class="demo__stack-val">50%</span>
         </div>
-        <div class="text">
-          <strong>Semi-structured Interview</strong>
+        <div class="demo__stack-row">
+          <span class="demo__stack-label">Male</span>
+          <div class="demo__stack-bar" aria-label="Male 50%">
+            <span class="demo__stack-fill -m" style="width: 50%"></span>
+          </div>
+          <span class="demo__stack-val">50%</span>
         </div>
       </div>
-      <div class="research-item">
-        <div class="icon-circle">
-          <!-- Interviewees Icon -->
-      <img src="images/Group_light.png" alt="Group Icon">
-        </div>
-        <div class="text">
-          Number of Interviewees: 12
-        </div>
-      </div>
-    </div>
-  </div>
-        <div class="spacer"></div>
-                <div class="spacer"></div>
- <h4>Participant Criteria & Demographics</h4>
-      <ul>
-        <li><strong>Age range:</strong> 22-35 years old (primary target demographic)</li>
-        <li><strong>Gender balance:</strong> 6 male, 6 female participants</li>
-        <li><strong>Screening criteria:</strong> Active goal-setters who use or have used wellness apps in the past 6 months</li>
-        <li><strong>Behavioral diversity:</strong> Mix of consistent achievers (3), inconsistent users (6), and abandoners (3)</li>
+    </article>
+
+    <!-- Screening Criteria -->
+    <article class="demo__card">
+      <div class="demo__icon">🧪</div>
+      <header class="demo__head">
+        <h5>Screening Criteria</h5>
+        <span class="demo__chip">Past 6 months</span>
+      </header>
+      <ul class="demo__list">
+        <li>Active goal-setters</li>
+        <li>Used a wellness app in last 6 months</li>
+        <li>Comfortable with semi-structured interviews</li>
       </ul>
+    </article>
+
+    <!-- Behavioral Segments -->
+    <article class="demo__card">
+      <div class="demo__icon">🧭</div>
+      <header class="demo__head">
+        <h5>Behavioral Segments</h5>
+        <span class="demo__chip">n = 12</span>
+      </header>
+
+      <ul class="demo__seg">
+        <li>
+          <span class="demo__seg-name">Consistent achievers</span>
+          <div class="demo__seg-bar">
+            <span class="demo__seg-fill -good" style="width: 25%"></span>
+          </div>
+          <span class="demo__seg-val">3</span>
+        </li>
+        <li>
+          <span class="demo__seg-name">Inconsistent users</span>
+          <div class="demo__seg-bar">
+            <span class="demo__seg-fill -mid" style="width: 50%"></span>
+          </div>
+          <span class="demo__seg-val">6</span>
+        </li>
+        <li>
+          <span class="demo__seg-name">Abandoners</span>
+          <div class="demo__seg-bar">
+            <span class="demo__seg-fill -risk" style="width: 25%"></span>
+          </div>
+          <span class="demo__seg-val">3</span>
+        </li>
+      </ul>
+    </article>
+
+  </div>
+  <p class="demo__note">Balanced gender, tightly targeted age band, and behavior diversity ensured robust qualitative signals.</p>
+</section>
+
                 <div class="spacer"></div>
                         <div class="spacer"></div>
 <p>We interviewed 12 potential stakeholders (6M and 6F), while focusing on understanding how often participants set daily goals, what types of goals they usually set, and how frequently they felt discouraged when trying to achieve them,
-            as well as genral questions about their daily life.
+            as well as general questions about their daily life.
         </p>
-
-
-        <!-- <img src="images/rol affiinty.png" width="1200"> -->
 
 </section>
       </section>
-
-
-<!-- <section id="My Role"> -->
-        <!-- <h2>User Persona</h2> -->
-        <!-- <div class="spacer"></div> -->
-        <!-- <p>After the user interview, we were able to define the user persona, and ().</p> -->
-<!-- </section> -->
 
         <section id="ideation">
         <h3>User Interview Result</h3>
@@ -767,7 +1122,7 @@ users to maintain their wellness routines?</h3>
     <div class="bm-content">
       <ul>
       <li>1.5M+ users, Social based routine management</li>
-      <li>No real-time interaction, Domestic focused (South Korea), Personalized recommendation based on templete</li>
+      <li>No real-time interaction, Domestic focused (South Korea), Personalized recommendation based on template</li>
       <li>Revenue Model: Free focused</li>
     </ul>
     </div>
@@ -775,8 +1130,8 @@ users to maintain their wellness routines?</h3>
           <div class="spacer"></div>
           <div class="spacer"></div>
         <h3>Key Competitive Insights</h3>
-      <p>After finishing the competitiva analysis, I identified three findings that can 
-        differenciate ROL with other wellness mobile applications.
+      <p>After finishing the competitive analysis, I identified three findings that can 
+        differentiate ROL with other wellness mobile applications.
       </p>
       <div class="metric-grid">
         <div class="metric-card">
@@ -799,7 +1154,7 @@ users to maintain their wellness routines?</h3>
           <div class="spacer"></div>
       <p>After identifying the insights from the competitive analysis, our team came up with the three 
         key features that that can differenciate ROL; 
-        AI feature, community, and global conection.</p>
+        AI feature, community, and global connection.</p>
                 <div class="spacer"></div>    
       <section class="solu" aria-labelledby="solu-title">
   <div class="solu__head">
@@ -843,7 +1198,7 @@ users to maintain their wellness routines?</h3>
           <div class="spacer"></div>
         <p>Establishing a design system in early stage was important, since I thought a well-defined and consistent system will result in minimizing the communication gaps between developers during the development process.
         </br>
-        <p>I chose Noto Sans, which is a global font collection that has modern vibe (Google Fonts), that matches the app's goal to reach out and connect people around the world.</br>
+        <p>I chose Noto Sans, which is a global font collection that has modern vibe from Google Fonts that matches the app's goal to reach out and connect people around the world.</br>
           <div class="spacer"></div>   
          <h4>Color Psychology Rationale:</h4>
       <ul>
@@ -942,14 +1297,15 @@ These insights are then translated into actionable routines, where users can sha
     <!-- 오른쪽 이미지 (폰 목업 없이 바로 이미지) -->
     <figure class="proto__media">
       <img src="images/Rolly screen.png" alt="Animation" loading="eager">
-      <figcaption class="proto__cap">ROl AI Screen</figcaption>
+      <figcaption class="proto__cap">ROL AI Screen</figcaption>
     </figure>
   </div>
 </section>
 </section>
-<section class="proto feature-block" aria-labelledby="proto-03-title">
+<!-- <section class="proto feature-block" aria-labelledby="proto-03-title">
   <div class="proto__ctr">
-    <!-- 왼쪽 텍스트 -->
+    왼쪽 텍스트 -->
+<!-- 
     <div class="proto__copy">
       <p class="proto__eyebrow">05</p>
       <h3 id="proto-03-title" class="proto__title">Payment Page</h3>
@@ -958,70 +1314,62 @@ These insights are then translated into actionable routines, where users can sha
 The payment page allows users to subscribe to a VIP pass, which unlocks unlimited routines and exclusive access to VIP rooms.</p>
     </div>
 
-    <!-- 오른쪽 이미지 (폰 목업 없이 바로 이미지) -->
-    <figure class="proto__media">
+ 오른쪽 이미지 (폰 목업 없이 바로 이미지) -->
+    <!-- <figure class="proto__media">
       <img src="images/Screenshot 2025-10-03 at 8.53.54 PM.png" alt="VIP Pass screen" class="proto__img" width="370">
       <figcaption class="proto__cap">Payment Page</figcaption>
     </figure>
   </div>
+</section>  -->
+
+<section class="impact">
+  <h3>My Impact</h3>
+
+  <div class="impact-grid">
+    <!-- 1️⃣ Designer–Developer Communication -->
+    <div class="impact-item">
+      <h3>🤝 Bridged Designer–Developer Communication</h3>
+      <p><strong>60% ↓</strong> clarification churn through a detailed Design System and developer-ready documentation.</p>
+      <ul>
+        <li>Standardized Figma Tokens & Specs (spacing, states, naming)</li>
+        <li>Defined props, variants, and API parameters for each component</li>
+        <li>Reduced redundant clarification messages between teams</li>
+      </ul>
+    </div>
+
+    <!-- 2️⃣ Startup Package -->
+    <div class="impact-item">
+      <h3>🏆 Secured Government Startup Package</h3>
+      <p>Collaborated with the Product Manager to prepare a data-driven proposal that won the <strong>30M KRW Pre-Startup Package</strong>.</p>
+      <ul>
+        <li>Structured proposal based on problem–solution–market timing</li>
+        <li>Visualized insights and KPIs for investor evaluation</li>
+        <li>Contributed design artifacts for grant documentation</li>
+      </ul>
+    </div>
+
+    <!-- 3️⃣ Launch & QA -->
+    <div class="impact-item">
+      <h3>🚀 Accelerated Launch Timeline</h3>
+      <p>Advanced product release by <strong>1 week</strong> through organized iteration and QA documentation.</p>
+      <ul>
+        <li>Prioritized issues and reduced redundant rework cycles</li>
+        <li>Created reusable QA checklist and bug report templates</li>
+        <li>Streamlined weekly testing flow and release reviews</li>
+      </ul>
+    </div>
+  </div>
 </section>
-
-      <section id="impact">
-        <h3>My Impact</h3>
-        <div class="spacer"></div>
-    <h3>Team Efficiency Impact</h3>
-      <div class="impact-grid">
-        <div class="impact-item">
-          <div class="impact-icon">⚡</div>
-          <h4>Reduced Dev Questions</h4>
-          <p>Design system decreased developer clarification requests by ~60%, enabling faster implementation</p>
-        </div>
-
-        <div class="impact-item">
-          <div class="impact-icon">🔄</div>
-          <h4>Minimized Rework</h4>
-          <p>Early user testing caught critical issues before development, avoiding costly post-launch fixes</p>
-        </div>
-
-        <div class="impact-item">
-          <div class="impact-icon">📈</div>
-          <h4>Accelerated Timeline</h4>
-          <p>Component library and clear documentation enabled 2-week early launch</p>
-        </div>
-      </div>
-      </section>
                         
       <section id="reflection">
         <h3>What did I learn?</h3>
         <div class="spacer"></div>
         <h4>About Cross-Functional Communication and Design Implementation</h4>
-        <p>Collaborating with front-end and back-end developers and the project manager revealed a crucial insight: effective communication directly accelerates app launch timeline, particularly in early-stage startups where 
-          resources are constrained. 
-          I learned that the quality of handoff documentation, the clarity of design specifications, and the proactive addressing of technical constraints during the design phase significantly reduced back-and-forth iterations. 
-          When designers understand developers' workflows and limitations, such as component reusability, API constraints, or technical debt—they can create more implementable solutions from the start. 
-          Equally important, I discovered that cross-functional feedback sessions weren't just helpful but essential during this stage. 
-          Regular check-ins with developers allowed me to catch potential implementation issues early, adjust designs based on feasibility constraints, and prioritize features that delivered maximum value within technical limitations. 
-          This collaborative approach transformed design from a siloed activity into an integrated team effort, 
-          where everyone's expertise informed better, faster decisions.</br>
+        <p>Effective cross-functional communication with developers and PM was crucial for accelerating our app launch. Regular check-ins and clear documentation reduced iterations by catching implementation issues early and creating more feasible designs from the start.</br>
         <h4>About Managing Ambiguity in a High-Autonomy Environment</h4>
-        <p>The startup environment threw me into situations where I had to make decisions without clear guidelines or complete information. 
-          At first, I kept waiting for someone to tell me the "right" approach. 
-          But after became adjust into that environment, I learned that waiting wasn't an option when things moved this fast. 
-          I had to get comfortable making judgment with whatever information I had, knowing I could adjust later. 
-          The autonomy was actually freeing once I stopped second-guessing myself constantly. 
-          I developed my own mental frameworks for decision-making: What matters most to users right now? 
-          What can we realistically build? What aligns with where we're trying to go? Not every decision was perfect, 
-          but making them quickly and learning from what didn't work turned out to be more valuable than trying to get everything right the first time. T
-          his experience changed how I view uncertainty, which now I believe it's just part of the job, not something to avoid.</br>
+        <p>The startup environment forced me to make decisions quickly with incomplete information rather than waiting for perfect clarity. I developed mental frameworks—prioritizing user needs, technical feasibility, and strategic alignment—learning that fast iteration was more valuable than perfect first attempts.</br>
         <h4>About Prioritizing Feedback Through Iterative Reflection</h4>
-        <p>One of my biggest lessons came from trying to incorporate everyone's feedback and realizing that was actually making the design worse. 
-          I was treating all input as equally valid and important, which meant I was constantly revising without a clear direction. 
-          When I started reflecting on the iteration process itself—asking myself why I was making certain changes and what problem they actually solved—things clicked. 
-          I began categorizing feedback differently. Some comments pointed to real user problems that needed fixing right away. 
-          Others were about personal taste or rare scenarios that didn't warrant immediate attention. 
-          Learning to distinguish between these types, and being okay with not acting on every piece of feedback, was liberating. 
-          It wasn't about ignoring people's input. It was about being intentional with where I focused my energy so the design actually improved rather than just changed. 
-          This made me a more decisive designer and helped me build conviction in my choices.</p>
+        <p>I learned that treating all feedback as equally important was making the design worse, not better. By categorizing feedback—distinguishing real user problems from personal preferences—I became more decisive and focused my energy on changes that actually improved the product.</p>
       </section>
   <div class="custom-cursor"></div>
 

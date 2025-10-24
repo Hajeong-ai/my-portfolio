@@ -93,6 +93,80 @@
 .social a{ font-size:1.25rem; color:#6b7280; }
 .social a:hover{ color:#007bff; }
 
+
+/* ===================== DEMOGRAPHICS CARDS ===================== */
+.demo{
+  --ink:#0f172a; --muted:#475569; --line:#e5e7eb;
+  --bg:#ffffff; --chip:#eef2ff; --accent:#3b5bfd; --accent2:#0ea5e9;
+  margin: 22px 0 10px;
+}
+.demo__title{
+  display:flex; align-items:center; gap:.6rem;
+  font-size:1.05rem; font-weight:800; color:var(--ink); margin:0 0 14px;
+}
+.demo__title::before{
+  content:""; inline-size:10px; block-size:10px; border-radius:999px;
+  background:linear-gradient(135deg,var(--accent),var(--accent2));
+  box-shadow:0 0 0 4px rgba(59,91,253,.15);
+}
+.demo__grid{
+  display:grid;
+  grid-template-columns: repeat(2, minmax(260px, 1fr));
+  gap:18px;
+}
+@media (max-width:800px){
+  .demo__grid{ grid-template-columns: 1fr; }
+}
+.demo__card{
+  background: var(--bg);
+  border:1px solid var(--line);
+  border-radius:14px;
+  padding:16px 16px 18px;
+  box-shadow:0 8px 22px rgba(2,6,23,.06);
+  transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease;
+}
+.demo__card:hover{
+  transform: translateY(-2px);
+  border-color: rgba(59,91,253,.33);
+  box-shadow:0 14px 28px rgba(2,6,23,.10);
+}
+.demo__icon{
+  inline-size:36px; block-size:36px; border-radius:10px;
+  display:grid; place-items:center; font-size:18px;
+  background:linear-gradient(135deg,rgba(59,91,253,.12),rgba(14,165,233,.10));
+  margin-bottom:10px;
+}
+.demo__head{
+  display:flex; align-items:center; justify-content:space-between;
+  gap:10px; margin-bottom:8px;
+}
+.demo__head h5{
+  margin:0; font-size:1rem; font-weight:800; color:var(--ink);
+  letter-spacing:.01em;
+}
+.demo__chip{
+  background: var(--chip);
+  color:#1e1b4b;
+  border:1px solid #c7d2fe;
+  padding:.25rem .55rem;
+  font-size:.8rem; border-radius:999px; font-weight:700;
+}
+.demo__desc{ color:var(--muted); margin:0 0 10px; font-size:.95rem; }
+
+.demo__list{ margin:8px 0 0; padding:0 0 0 18px; color:var(--muted); }
+.demo__list li{ margin:.4rem 0; }
+
+.demo__seg{ list-style:none; margin:6px 0 0; padding:0; display:grid; gap:8px; }
+.demo__seg li{ display:flex; justify-content:space-between; gap:12px; }
+.demo__seg-name{ color:var(--muted); font-size:.92rem; }
+.demo__seg-val{ font-weight:800; color:var(--ink); }
+
+.demo__note{
+  margin-top:12px; font-size:.9rem; color:#6b7280;
+  border-left:4px solid rgba(59,91,253,.35);
+  padding:10px 12px; background:rgba(59,91,253,.06); border-radius:10px;
+}
+
 /* ---------- 반응형 ---------- */
 
 /* 태블릿 (두 줄 배치) */
@@ -212,7 +286,7 @@
         <!-- ✅ 대표 이미지 -->
 <section class="project-hero">
   <div class="hero-text">
-         <p class="kicker">WEB REDESIGN · SUMMER 2025</p>
+         <p class="kicker">SOFTWARE REDESIGN · 2025</p>
         <p class="hero-subtitle">🔍 Reimagining collaborative academic writing through AI-powered workflows and intuitive design</p>
         <h1 class="hero-title">Overleaf Redesign</h1> 
         <!-- <h1 class="hero-title">Overleaf Redesign</h1> -->
@@ -314,8 +388,7 @@
           </li>
         </ul>
         <p class="collaboration-note">
-          <strong>Cross-functional collaboration:</strong> Worked closely with UX Researcher Maham Khawar 
-          on research methodology and UX Designer Lori Lei Cai on visual design and prototyping.
+          <strong>Cross-functional collaboration:</strong> Worked closely with UX Researcher on user interview and UX Designer on visual design and prototyping.
         </p>
       </div>
     </div>
@@ -552,10 +625,8 @@
 </section>
 
 <section class="process-journey">
-<h3>Research Process</h3>
+<h3>User Research</h3>
           <div class="spacer"></div>
-      <section id="User Research">
-        <h3>User Research</h3>
         <div class="spacer"></div>       
         <p>We conducted qualitative in-depth interviews with 6 interviewees. Given the limited time frame, we kept 
 interviews relatively open-ended. Through the interviews, participants shared their screens and walked 
@@ -563,25 +634,80 @@ through how they use the platform.<br>
 Based on a discussion guide with a set of prepared questions, we focused on topics regarding frequency 
 of platform use, typical use cases, challenges with the platform, and comparisons with competitors.</p>
            <div class="spacer"></div>
-        <div class="research-item">
-    <div class="icon-circle">
-      <img src="images/overleafresearch2.png" alt="Chat Icon">
-    </div>
-    <div class="text">
-      <strong>Semi-structured Interview</strong>
-    </div>
+<section id="user-demographics" class="demo" aria-labelledby="user-demo-title">
+  <h4 id="user-demo-title" class="demo__title">User Demographics</h4>
+
+  <div class="demo__grid">
+
+    <!-- Participants -->
+    <article class="demo__card">
+      <div class="demo__icon">👥</div>
+      <header class="demo__head">
+        <h5>Participants</h5>
+        <span class="demo__chip">n = 6</span>
+      </header>
+      <p class="demo__desc">Graduate-level Overleaf users involved in collaborative research writing.</p>
+      <ul class="demo__list">
+        <li>Screened for active Overleaf use</li>
+        <li>Comfortable with semi-structured interviews</li>
+      </ul>
+    </article>
+
+    <!-- Education Level -->
+    <article class="demo__card">
+      <div class="demo__icon">🎓</div>
+      <header class="demo__head">
+        <h5>Education Level</h5>
+        <span class="demo__chip">Master’s · PhD</span>
+      </header>
+      <p class="demo__desc">Participants were primarily Master’s and PhD students or researchers.</p>
+      <ul class="demo__list">
+        <li>Hands-on LaTeX/Overleaf experience</li>
+        <li>Active involvement in paper/thesis workflows</li>
+      </ul>
+    </article>
+
+    <!-- Disciplines -->
+    <article class="demo__card">
+      <div class="demo__icon">📚</div>
+      <header class="demo__head">
+        <h5>Disciplines</h5>
+        <span class="demo__chip">STEM-heavy</span>
+      </header>
+      <ul class="demo__seg">
+        <li>
+          <span class="demo__seg-name">Computer Science</span>
+          <span class="demo__seg-val">core</span>
+        </li>
+        <li>
+          <span class="demo__seg-name">Statistics / Data Science</span>
+          <span class="demo__seg-val">core</span>
+        </li>
+        <li>
+          <span class="demo__seg-name">Mathematics / Related</span>
+          <span class="demo__seg-val">common</span>
+        </li>
+      </ul>
+    </article>
+
+    <!-- Collaboration Style -->
+    <article class="demo__card">
+      <div class="demo__icon">🤝</div>
+      <header class="demo__head">
+        <h5>Collaboration Style</h5>
+        <span class="demo__chip">Team-based</span>
+      </header>
+      <ul class="demo__list">
+        <li>Frequent co-authoring and review cycles</li>
+        <li>Mix of Overleaf comments + external chat tools</li>
+        <li>Need clarity on ownership & edit history</li>
+      </ul>
+    </article>
+
   </div>
-        <div class="spacer2"></div> 
- 
-        <div class="research-item">
-    <div class="icon-circle">
-      <img src="images/overleafresearch1.png" alt="Group Icon">
-    </div>
-   
-    <div class="text">
-      Number of Interviewees: 6
-    </div>
-  </div>
+
+  <p class="demo__note">Graduate researchers in CS/Stats/Math collaborating on LaTeX documents; all actively use Overleaf in real projects.</p>
+</section>
            <div class="spacer"></div>
                       <div class="spacer"></div>
                                       <div class="spacer"></div>
